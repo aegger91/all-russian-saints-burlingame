@@ -19,7 +19,10 @@
       },
       "image": {
         "src": "/assets/img/sample-news-1.jpg",
-        "alt": { "en": "Sample photo of the church", "ru": "Образец фотографии храма" }
+        "alt": {
+          "en": "Sample image: an Orthodox church",
+          "ru": "Образец изображения: православный храм"
+        }
       },
       "gallery": "parish-life"
     },
@@ -41,7 +44,7 @@
       },
       "image": {
         "src": "/assets/img/sample-news-2.jpg",
-        "alt": { "en": "Sample photo of parishioners", "ru": "Образец фотографии прихожан" }
+        "alt": { "en": "Sample image: a chalice", "ru": "Образец изображения: потир" }
       },
       "links": [
         {

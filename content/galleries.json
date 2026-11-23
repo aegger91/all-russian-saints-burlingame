@@ -7,27 +7,36 @@
       "images": [
         {
           "src": "/assets/img/sample-gallery-1.jpg",
-          "alt": { "en": "Sample photo 1", "ru": "Образец фотографии 1" }
+          "alt": {
+            "en": "Sample image: an Orthodox church",
+            "ru": "Образец изображения: православный храм"
+          }
         },
         {
           "src": "/assets/img/sample-gallery-2.jpg",
-          "alt": { "en": "Sample photo 2", "ru": "Образец фотографии 2" }
+          "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" }
         },
         {
           "src": "/assets/img/sample-gallery-3.jpg",
-          "alt": { "en": "Sample photo 3", "ru": "Образец фотографии 3" }
+          "alt": {
+            "en": "Sample image: a candle stand with lit candles",
+            "ru": "Образец изображения: подсвечник с горящими свечами"
+          }
         },
         {
           "src": "/assets/img/sample-gallery-4.jpg",
-          "alt": { "en": "Sample photo 4", "ru": "Образец фотографии 4" }
+          "alt": {
+            "en": "Sample image: an Orthodox church",
+            "ru": "Образец изображения: православный храм"
+          }
         },
         {
           "src": "/assets/img/sample-gallery-5.jpg",
-          "alt": { "en": "Sample photo 5", "ru": "Образец фотографии 5" }
+          "alt": { "en": "Sample image: a belfry", "ru": "Образец изображения: звонница" }
         },
         {
           "src": "/assets/img/sample-gallery-6.jpg",
-          "alt": { "en": "Sample photo 6", "ru": "Образец фотографии 6" }
+          "alt": { "en": "Sample image: a prayer rope", "ru": "Образец изображения: чётки" }
         }
       ]
     },
@@ -40,15 +49,18 @@
       "images": [
         {
           "src": "/assets/img/sample-gallery-2.jpg",
-          "alt": { "en": "Sample project photo 2", "ru": "Образец фотографии проекта 2" }
+          "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" }
         },
         {
           "src": "/assets/img/sample-gallery-4.jpg",
-          "alt": { "en": "Sample project photo 4", "ru": "Образец фотографии проекта 4" }
+          "alt": {
+            "en": "Sample image: an Orthodox church",
+            "ru": "Образец изображения: православный храм"
+          }
         },
         {
           "src": "/assets/img/sample-gallery-5.jpg",
-          "alt": { "en": "Sample project photo 5", "ru": "Образец фотографии проекта 5" }
+          "alt": { "en": "Sample image: a belfry", "ru": "Образец изображения: звонница" }
         }
       ]
     }

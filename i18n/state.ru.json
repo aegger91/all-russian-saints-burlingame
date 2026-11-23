@@ -22,16 +22,16 @@
     "events.json#events.[sample-retreat].title": { "source": "650e501fda912f09" },
     "events.json#events.[sample-yolka].location": { "source": "e271f7f91cc7ae40" },
     "events.json#events.[sample-yolka].title": { "source": "fbfcd77e88e9baa8" },
-    "galleries.json#galleries.[parish-life].images.[0].alt": { "source": "644dbd8a90d52c4e" },
-    "galleries.json#galleries.[parish-life].images.[1].alt": { "source": "eaa88bd97488abd6" },
-    "galleries.json#galleries.[parish-life].images.[2].alt": { "source": "e8eafb43152b120f" },
-    "galleries.json#galleries.[parish-life].images.[3].alt": { "source": "8bf63b15a6a1e3f7" },
-    "galleries.json#galleries.[parish-life].images.[4].alt": { "source": "6d6831793acc7a24" },
-    "galleries.json#galleries.[parish-life].images.[5].alt": { "source": "c562af6899f5deea" },
+    "galleries.json#galleries.[parish-life].images.[0].alt": { "source": "2472b0520cdc84be" },
+    "galleries.json#galleries.[parish-life].images.[1].alt": { "source": "71f1725b2967e54d" },
+    "galleries.json#galleries.[parish-life].images.[2].alt": { "source": "9316af3061c513a8" },
+    "galleries.json#galleries.[parish-life].images.[3].alt": { "source": "2472b0520cdc84be" },
+    "galleries.json#galleries.[parish-life].images.[4].alt": { "source": "dc3a9b44659c9b2b" },
+    "galleries.json#galleries.[parish-life].images.[5].alt": { "source": "bec9180f1a9cbb9d" },
     "galleries.json#galleries.[parish-life].title": { "source": "1046a98543a38fd7" },
-    "galleries.json#galleries.[projects].images.[0].alt": { "source": "3a395e5f2b299672" },
-    "galleries.json#galleries.[projects].images.[1].alt": { "source": "e909d3d9a1085248" },
-    "galleries.json#galleries.[projects].images.[2].alt": { "source": "2096becb206299a6" },
+    "galleries.json#galleries.[projects].images.[0].alt": { "source": "71f1725b2967e54d" },
+    "galleries.json#galleries.[projects].images.[1].alt": { "source": "2472b0520cdc84be" },
+    "galleries.json#galleries.[projects].images.[2].alt": { "source": "dc3a9b44659c9b2b" },
     "galleries.json#galleries.[projects].title": { "source": "08e91a006d6e98b5" },
     "giving.json#dues.rates.[family].label": { "source": "aa11c5c158e569e3" },
     "giving.json#dues.rates.[individual].label": { "source": "c2a92aebbde2f09e" },
@@ -58,19 +58,19 @@
     "links.json#groups.[resources].links.[1].label": { "source": "bc160f5260b6ddf3" },
     "links.json#groups.[resources].links.[2].label": { "source": "a7dfb25523d2ec5d" },
     "links.json#groups.[resources].title": { "source": "e89b30aa1dc30a6a" },
-    "ministries.json#ministries.[choir].image.alt": { "source": "6e4ba4c93cb8c90e" },
+    "ministries.json#ministries.[choir].image.alt": { "source": "dc3a9b44659c9b2b" },
     "ministries.json#ministries.[choir].link.label": { "source": "94c152ab83ad19e4" },
     "ministries.json#ministries.[choir].text": { "source": "9c7ea7e209a1ccfd" },
     "ministries.json#ministries.[choir].title": { "source": "5e0f384b14ec9fc4" },
-    "ministries.json#ministries.[clergy].image.alt": { "source": "6d1bdd0b996c7bfa" },
+    "ministries.json#ministries.[clergy].image.alt": { "source": "71f1725b2967e54d" },
     "ministries.json#ministries.[clergy].link.label": { "source": "8bc5824f258bdec5" },
     "ministries.json#ministries.[clergy].text": { "source": "6a002a8babffd5e8" },
     "ministries.json#ministries.[clergy].title": { "source": "97f7f9f898abedab" },
-    "ministries.json#ministries.[school].image.alt": { "source": "64d4af6dfa1bc718" },
+    "ministries.json#ministries.[school].image.alt": { "source": "a14c4defed138678" },
     "ministries.json#ministries.[school].link.label": { "source": "17bf5b4a8daffc74" },
     "ministries.json#ministries.[school].text": { "source": "f23879492e818e5d" },
     "ministries.json#ministries.[school].title": { "source": "0cc77fa68c4ce416" },
-    "ministries.json#ministries.[sisterhood].image.alt": { "source": "54ec67cd9a528f34" },
+    "ministries.json#ministries.[sisterhood].image.alt": { "source": "9316af3061c513a8" },
     "ministries.json#ministries.[sisterhood].link.label": { "source": "383a81d91eeeee18" },
     "ministries.json#ministries.[sisterhood].text": { "source": "71f66a2566c2124d" },
     "ministries.json#ministries.[sisterhood].title": { "source": "6f0f0e20fc9f02d4" },
@@ -126,11 +126,11 @@
     "navigation.json#topbar.links.[facebook].label": { "source": "d41f5b4977ee05c6" },
     "navigation.json#topbar.links.[livestream].label": { "source": "9d4e6fe6676ded0f" },
     "news.json#items.[sample-feast-day].body": { "source": "64cf1c09f41d1c1a" },
-    "news.json#items.[sample-feast-day].image.alt": { "source": "648bed98de2c61a5" },
+    "news.json#items.[sample-feast-day].image.alt": { "source": "2472b0520cdc84be" },
     "news.json#items.[sample-feast-day].summary": { "source": "b7be6b270fd98113" },
     "news.json#items.[sample-feast-day].title": { "source": "ec3cb7e64e5c7ba3" },
     "news.json#items.[sample-newsletter].body": { "source": "9afa01c17963ad94" },
-    "news.json#items.[sample-newsletter].image.alt": { "source": "54ec67cd9a528f34" },
+    "news.json#items.[sample-newsletter].image.alt": { "source": "588d2bc8be8c00af" },
     "news.json#items.[sample-newsletter].links.[0].label": { "source": "9a2fb61b11981f35" },
     "news.json#items.[sample-newsletter].summary": { "source": "855e4513a2973b1f" },
     "news.json#items.[sample-newsletter].title": { "source": "c7a43e98daeeed61" },
@@ -139,7 +139,7 @@
     "news.json#items.[sample-volunteers].summary": { "source": "5e1999f015ba967d" },
     "news.json#items.[sample-volunteers].title": { "source": "57d455de61cf12f2" },
     "pages/about.json#sections.[about-header].eyebrow": { "source": "99ce33d5060dca60" },
-    "pages/about.json#sections.[about-header].image.alt": { "source": "db8413e325e08b50" },
+    "pages/about.json#sections.[about-header].image.alt": { "source": "2472b0520cdc84be" },
     "pages/about.json#sections.[about-header].lede": { "source": "c72b11b751f13101" },
     "pages/about.json#sections.[about-header].title": { "source": "edcff7fc696f765a" },
     "pages/about.json#sections.[about].columns.[0].body": { "source": "5584a1247a7c700e" },
@@ -148,7 +148,7 @@
     "pages/about.json#sections.[about].columns.[0].notice.title": { "source": "68f7d7fbb52dd931" },
     "pages/about.json#sections.[about].columns.[0].title": { "source": "43ac4acf1d52fff9" },
     "pages/about.json#sections.[about].columns.[about-aside].blocks.[0].image.alt": {
-      "source": "c130a83093f28c05"
+      "source": "547c89d68c2fd7ea"
     },
     "pages/about.json#sections.[about].columns.[about-aside].blocks.[at-a-glance].eyebrow": {
       "source": "46b396c85919af7d"
@@ -193,7 +193,7 @@
     "pages/about.json#sections.[faith].title": { "source": "ac649aaede97bb0b" },
     "pages/about.json#sections.[history].body": { "source": "9ae80b7302fc2025" },
     "pages/about.json#sections.[history].eyebrow": { "source": "e008b0d700e2d047" },
-    "pages/about.json#sections.[history].media.alt": { "source": "54ec67cd9a528f34" },
+    "pages/about.json#sections.[history].media.alt": { "source": "9316af3061c513a8" },
     "pages/about.json#sections.[history].more.body": { "source": "5584a1247a7c700e" },
     "pages/about.json#sections.[history].more.title": { "source": "83b794145c0cc3f5" },
     "pages/about.json#sections.[history].navLabel": { "source": "0e76960093379060" },
@@ -260,7 +260,7 @@
       "source": "9fa6d0370d3ec4c5"
     },
     "pages/give.json#sections.[give-header].eyebrow": { "source": "c6402106c8212060" },
-    "pages/give.json#sections.[give-header].image.alt": { "source": "db8413e325e08b50" },
+    "pages/give.json#sections.[give-header].image.alt": { "source": "71f1725b2967e54d" },
     "pages/give.json#sections.[give-header].lede": { "source": "d31949d0352a1762" },
     "pages/give.json#sections.[give-header].title": { "source": "eccc21ff8306303b" },
     "pages/give.json#sections.[your-gifts-at-work].eyebrow": { "source": "1c564b3ce9f0c801" },
@@ -295,7 +295,7 @@
     "pages/home.json#sections.[hero].actions.[1].label": { "source": "4ff9f6d01317f429" },
     "pages/home.json#sections.[hero].actions.[2].label": { "source": "b6bf097372d01e95" },
     "pages/home.json#sections.[hero].eyebrow": { "source": "e053a26440fafb4a" },
-    "pages/home.json#sections.[hero].image.alt": { "source": "015b3625441f96fd" },
+    "pages/home.json#sections.[hero].image.alt": { "source": "2472b0520cdc84be" },
     "pages/home.json#sections.[hero].nextServices.title": { "source": "6d92a6b84bbdbfbd" },
     "pages/home.json#sections.[hero].text": { "source": "9701688745c49553" },
     "pages/home.json#sections.[hero].title": { "source": "929d0abf754f994c" },
@@ -327,7 +327,7 @@
       "source": "0e2226b5235f0ff9"
     },
     "pages/home.json#sections.[welcome].columns.[welcome-text].media.alt": {
-      "source": "6d1bdd0b996c7bfa"
+      "source": "71f1725b2967e54d"
     },
     "pages/home.json#sections.[welcome].columns.[welcome-text].title": {
       "source": "f8aacfe6d4916dd8"
@@ -351,7 +351,7 @@
     "pages/ministries.json#sections.[hall].text": { "source": "e34b572653af71fb" },
     "pages/ministries.json#sections.[hall].title": { "source": "63eba909a067b172" },
     "pages/ministries.json#sections.[ministries-header].eyebrow": { "source": "efc1f280fa15b57c" },
-    "pages/ministries.json#sections.[ministries-header].image.alt": { "source": "db8413e325e08b50" },
+    "pages/ministries.json#sections.[ministries-header].image.alt": { "source": "dc3a9b44659c9b2b" },
     "pages/ministries.json#sections.[ministries-header].lede": { "source": "56ea2fe5a85bdd6e" },
     "pages/ministries.json#sections.[ministries-header].title": { "source": "2886dec38d47fac0" },
     "pages/ministries.json#sections.[photos].eyebrow": { "source": "5e3147ab51e0084c" },
@@ -392,7 +392,7 @@
       "source": "6f0f0e20fc9f02d4"
     },
     "pages/ministries.json#sections.[sisterhood].columns.[0].media.alt": {
-      "source": "43a515f47f282d1e"
+      "source": "9316af3061c513a8"
     },
     "pages/ministries.json#sections.[sisterhood].columns.[0].title": {
       "source": "e62dadaeba5eca2f"
@@ -406,7 +406,7 @@
     "pages/ministries.json#sections.[sisterhood].navLabel": { "source": "6f0f0e20fc9f02d4" },
     "pages/ministries.json#title": { "source": "2886dec38d47fac0" },
     "pages/news.json#sections.[news-header].eyebrow": { "source": "69752f2313b2f017" },
-    "pages/news.json#sections.[news-header].image.alt": { "source": "db8413e325e08b50" },
+    "pages/news.json#sections.[news-header].image.alt": { "source": "588d2bc8be8c00af" },
     "pages/news.json#sections.[news-header].lede": { "source": "8bb97d2a510a318f" },
     "pages/news.json#sections.[news-header].title": { "source": "3412b692754ac116" },
     "pages/news.json#title": { "source": "0010b0e70d389e5e" },
@@ -494,7 +494,7 @@
     "pages/services.json#sections.[service-texts].navLabel": { "source": "ccb16ca02306b3e6" },
     "pages/services.json#sections.[service-texts].title": { "source": "ccb16ca02306b3e6" },
     "pages/services.json#sections.[services-header].eyebrow": { "source": "604dce445e326d95" },
-    "pages/services.json#sections.[services-header].image.alt": { "source": "db8413e325e08b50" },
+    "pages/services.json#sections.[services-header].image.alt": { "source": "71f1725b2967e54d" },
     "pages/services.json#sections.[services-header].lede": { "source": "0cfa391c05738b7c" },
     "pages/services.json#sections.[services-header].title": { "source": "15f50a38b4420c6c" },
     "pages/services.json#sections.[upcoming].columns.[schedules].blocks.[livestream].actions.[0].label": {

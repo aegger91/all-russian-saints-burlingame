@@ -24,8 +24,8 @@
       "image": {
         "src": "/assets/img/sample-hero.jpg",
         "alt": {
-          "en": "Sample photo of an Orthodox church",
-          "ru": "Образец фотографии православного храма"
+          "en": "Sample image: an Orthodox church",
+          "ru": "Образец изображения: православный храм"
         },
         "position": "50% 60%"
       },
@@ -75,10 +75,7 @@
           ],
           "media": {
             "src": "/assets/img/sample-interior.jpg",
-            "alt": {
-              "en": "Sample photo of the church interior",
-              "ru": "Образец фотографии интерьера храма"
-            }
+            "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" }
           },
           "mediaPosition": "below"
         },

@@ -18,7 +18,7 @@
       "accent": "Служения",
       "image": {
         "src": "/assets/img/sample-choir.jpg",
-        "alt": { "en": "Sample photo", "ru": "Образец фотографии" },
+        "alt": { "en": "Sample image: a belfry", "ru": "Образец изображения: звонница" },
         "position": "50% 50%"
       }
     },
@@ -66,8 +66,8 @@
           "media": {
             "src": "/assets/img/sample-community.jpg",
             "alt": {
-              "en": "Sample photo of the sisterhood",
-              "ru": "Образец фотографии сестричества"
+              "en": "Sample image: a candle stand with lit candles",
+              "ru": "Образец изображения: подсвечник с горящими свечами"
             }
           },
           "mediaPosition": "below"

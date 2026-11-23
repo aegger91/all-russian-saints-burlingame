@@ -10,10 +10,7 @@
       },
       "image": {
         "src": "/assets/img/sample-interior.jpg",
-        "alt": {
-          "en": "Sample photo of the church interior",
-          "ru": "Образец фотографии интерьера храма"
-        }
+        "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" }
       },
       "link": {
         "page": "clergy",
@@ -29,7 +26,7 @@
       },
       "image": {
         "src": "/assets/img/sample-choir.jpg",
-        "alt": { "en": "Sample photo of the choir", "ru": "Образец фотографии хора" }
+        "alt": { "en": "Sample image: a belfry", "ru": "Образец изображения: звонница" }
       },
       "link": {
         "page": "ministries",
@@ -46,7 +43,10 @@
       },
       "image": {
         "src": "/assets/img/sample-community.jpg",
-        "alt": { "en": "Sample photo of parishioners", "ru": "Образец фотографии прихожан" }
+        "alt": {
+          "en": "Sample image: a candle stand with lit candles",
+          "ru": "Образец изображения: подсвечник с горящими свечами"
+        }
       },
       "link": {
         "page": "ministries",
@@ -64,8 +64,8 @@
       "image": {
         "src": "/assets/img/sample-school.jpg",
         "alt": {
-          "en": "Sample photo of the church school",
-          "ru": "Образец фотографии церковной школы"
+          "en": "Sample image: the Gospel on a lectern",
+          "ru": "Образец изображения: Евангелие на аналое"
         }
       },
       "link": {

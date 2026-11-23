@@ -16,7 +16,7 @@
       },
       "image": {
         "src": "/assets/img/sample-news-2.jpg",
-        "alt": { "en": "Sample photo", "ru": "Образец фотографии" },
+        "alt": { "en": "Sample image: a chalice", "ru": "Образец изображения: потир" },
         "position": "50% 50%"
       }
     },
