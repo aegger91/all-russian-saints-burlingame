@@ -1297,6 +1297,47 @@
   background: var(--surface-alt);
 }
 
+.contact-map__map--slot {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--text-soft);
+  background-color: var(--surface-highlight);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--brand) 7%, transparent) 2px, transparent 2px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand) 7%, transparent) 2px, transparent 2px),
+    linear-gradient(32deg, transparent 48%, color-mix(in srgb, var(--accent) 30%, transparent) 48.5%, color-mix(in srgb, var(--accent) 30%, transparent) 50%, transparent 50.5%);
+  background-size: 64px 64px, 64px 64px, 100% 100%;
+}
+
+.contact-map__pin {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-map__pin-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--text-inverse);
+}
+
+.contact-map__slot-text {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-lg);
+  color: var(--heading);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
 .contact-map__map iframe {
   position: absolute;
   inset: 0;

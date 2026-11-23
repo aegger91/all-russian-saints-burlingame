@@ -1,7 +1,8 @@
 /**
  * contact-map — address, phone, email, social links and an embedded map.
  *
- * Props: eyebrow, title, intro, body (markdown), showMap (default true),
+ * Props: eyebrow, title, intro, body (markdown), showMap (default true; `true`
+ *        without site.contact.mapEmbedUrl shows a styled map slot),
  *        actions (defaults to Directions + 360° tour from site.contact)
  * Data:  site.contact, site.social
  */
@@ -42,6 +43,8 @@ export function render(p, ctx) {
     </div>
     ${p.showMap !== false && c.mapEmbedUrl
       ? html`<div class="contact-map__map"><iframe src="${c.mapEmbedUrl}" title="${ctx.t('contact.mapTitle')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`
-      : ''}
+      : p.showMap === true
+        ? html`<div class="contact-map__map contact-map__map--slot" role="img" aria-label="${ctx.t('contact.mapTitle')}"><span class="contact-map__pin">${icon('pin', 'contact-map__pin-icon')}</span><span class="contact-map__slot-text">${addressLines(ctx).join(', ')}</span></div>`
+        : ''}
   </div>`;
 }

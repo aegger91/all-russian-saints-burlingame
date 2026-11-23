@@ -3,6 +3,7 @@
 //
 //   node scripts/check-links.mjs              internal links, anchors, images, assets
 //   node scripts/check-links.mjs --external   also request every external URL
+//                                             (except example.com/.net/.org placeholders)
 //
 // Checks every HTML file in dist/ (all locales): href/src/srcset/poster/
 // data-full targets, #anchors (same page and cross page), CSS url() assets,
@@ -168,9 +169,12 @@ for (const file of [path.join(OUT, 'sitemap.xml')]) {
 
 // ---------------------------------------------------------------- external
 
+let reserved = 0;
 async function checkExternal() {
   const SOFT = /(^|\.)(facebook\.com|instagram\.com|linkedin\.com|twitter\.com|x\.com)$/; // block automated requests
-  const urls = [...external.keys()];
+  const RESERVED = /(^|\.)(example\.(com|net|org)|[^.]+\.example)$/; // RFC 2606 placeholder domains
+  const urls = [...external.keys()].filter((url) => !RESERVED.test(new URL(url).hostname));
+  reserved = external.size - urls.length;
   let i = 0;
   const worker = async () => {
     while (i < urls.length) {
@@ -199,4 +203,4 @@ if (errors.length) {
   console.error(`Link check failed (${errors.length}):\n  ${[...new Set(errors)].join('\n  ')}`);
   process.exit(1);
 }
-console.log(`Links OK — ${htmlFiles.length} HTML files (${summary}); ${checked} internal targets resolved; ${external.size} external URLs ${EXTERNAL ? 'checked' : 'skipped (use --external)'}.`);
+console.log(`Links OK — ${htmlFiles.length} HTML files (${summary}); ${checked} internal targets resolved; ${external.size} external URLs ${EXTERNAL ? `checked${reserved ? ` (${reserved} placeholder example.* URLs skipped)` : ''}` : 'skipped (use --external)'}.`);
