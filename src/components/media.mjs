@@ -30,7 +30,10 @@ export function galleryGrid(galleryId, ctx, { limit, columns = 4 } = {}) {
   if (!gallery) throw new Error(`Unknown gallery "${galleryId}"`);
   const images = limit ? gallery.images.slice(0, limit) : gallery.images;
   const fallbackAlt = gallery.title;
-  return html`<ul class="${cx('gallery', `gallery--${columns}`)}" data-gallery="${gallery.id}">
+  // A short album fills the row instead of leaving empty columns; three photos
+  // stay on one row on phones rather than leaving one orphan.
+  const cols = Math.max(2, Math.min(columns, images.length));
+  return html`<ul class="${cx('gallery', `gallery--${cols}`, images.length === 3 && 'gallery--trio')}" data-gallery="${gallery.id}">
     ${images.map(
       (img, i) => html`<li class="gallery__item"><a class="gallery__link" href="${ctx.asset(img.src)}" data-lightbox aria-label="${ctx.t('gallery.open', { n: i + 1, total: images.length })}">${image({ ...img, alt: img.alt || fallbackAlt }, ctx, { className: 'gallery__img', sizes: '(min-width: 900px) 25vw, 50vw' })}</a></li>`
     )}

@@ -10,8 +10,8 @@
     "noNote": "0"
   },
   "note": {
-    "en": "Payment can be made through PayPal or by credit cards. Payments go to the parish PayPal account and open in a new window.",
-    "ru": "Оплатить можно через PayPal или банковской картой. Платежи поступают на счёт прихода в PayPal; страница оплаты откроется в новом окне."
+    "en": "Payments go to the parish PayPal account and open in a new window.",
+    "ru": "Платежи поступают на счёт прихода в PayPal; страница оплаты откроется в новом окне."
   },
   "funds": [
     {

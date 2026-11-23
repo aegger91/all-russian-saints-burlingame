@@ -251,27 +251,47 @@
   /* ------------------------------------------------------------ page nav */
 
   var pageNav = doc.querySelector('[data-page-nav]');
-  if (pageNav && 'IntersectionObserver' in window) {
+  if (pageNav) {
     var links = $all('.page-nav__link', pageNav);
-    var targets = links
-      .map(function (a) { return doc.getElementById(a.getAttribute('href').slice(1)); })
-      .filter(Boolean);
-    var setActive = function (id) {
-      links.forEach(function (a) {
-        var on = a.getAttribute('href') === '#' + id;
+    var strip = pageNav.querySelector('.page-nav__list');
+    var targets = links.map(function (a) { return doc.getElementById(a.getAttribute('href').slice(1)); });
+    var activeIndex = -2;
+    var setActive = function (index) {
+      if (index === activeIndex) return;
+      activeIndex = index;
+      links.forEach(function (a, i) {
+        var on = i === index;
         a.classList.toggle('is-active', on);
         if (on) a.setAttribute('aria-current', 'true');
         else a.removeAttribute('aria-current');
       });
+      var link = links[index];
+      if (link && strip && strip.scrollWidth > strip.clientWidth) {
+        var left = link.offsetLeft - (strip.clientWidth - link.offsetWidth) / 2;
+        strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+      }
     };
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    );
-    targets.forEach(function (t) { observer.observe(t); });
+    // The active section is the last one whose top has passed a line just
+    // below the sticky header and page nav; at the very bottom it is the last.
+    var update = function () {
+      var line = pageNav.getBoundingClientRect().bottom + 24;
+      var index = -1;
+      targets.forEach(function (t, i) {
+        if (t && t.getBoundingClientRect().top <= line) index = i;
+      });
+      if (window.innerHeight + window.scrollY >= doc.documentElement.scrollHeight - 2 && index >= 0) {
+        for (var i = targets.length - 1; i >= 0; i--) if (targets[i]) { index = i; break; }
+      }
+      setActive(index);
+    };
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { ticking = false; update(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
 })();

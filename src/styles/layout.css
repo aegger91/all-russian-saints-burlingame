@@ -531,29 +531,50 @@ a.topbar__item:hover {
   color: var(--accent-soft);
 }
 
-.site-footer__top {
+.site-footer__brand {
   display: grid;
-  grid-template-columns: minmax(260px, 1.35fr) minmax(250px, 1.25fr) repeat(3, minmax(0, 0.9fr));
-  gap: var(--space-9) var(--space-8);
-  padding-block: var(--space-11) var(--space-10);
+  grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-8) var(--space-10);
+  padding-block: var(--space-11) var(--space-9);
+  border-bottom: 1px solid color-mix(in srgb, var(--text-inverse) 16%, transparent);
+}
+
+.site-footer__logo-link {
+  display: block;
+  justify-self: start;
 }
 
 .site-footer__logo {
-  width: min(340px, 100%);
+  display: block;
+  width: min(430px, 100%);
   height: auto;
 }
 
+.site-footer__intro {
+  padding-left: var(--space-9);
+  border-left: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
 .site-footer__about {
-  margin-top: var(--space-6);
-  max-width: 38ch;
+  margin: 0;
+  max-width: 56ch;
   line-height: var(--line-height-relaxed);
 }
 
 .site-footer__slavonic {
-  margin-top: var(--space-4);
+  margin: var(--space-4) 0 0;
   font-family: var(--font-slavonic);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
   color: var(--accent-soft);
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: var(--space-9) var(--space-8);
+  padding-block: var(--space-9) var(--space-10);
 }
 
 .site-footer__title {
@@ -624,28 +645,24 @@ a.topbar__item:hover {
   color: var(--accent);
 }
 
-@media (max-width: 1100px) {
-  .site-footer__top {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
+@media (max-width: 900px) {
   .site-footer__brand {
-    grid-column: 1 / -1;
-  }
-
-  .site-footer__visit {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 700px) {
-  .site-footer__top {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     padding-block: var(--space-10) var(--space-8);
   }
 
-  .site-footer__visit {
-    grid-column: 1 / -1;
+  .site-footer__logo {
+    width: min(380px, 100%);
+  }
+
+  .site-footer__intro {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .site-footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-block: var(--space-8);
   }
 }
 
@@ -654,6 +671,7 @@ a.topbar__item:hover {
     gap: var(--space-8) var(--space-5);
   }
 
+  .site-footer__visit,
   .site-footer__col:last-child {
     grid-column: 1 / -1;
   }

@@ -119,12 +119,14 @@ function footer(ctx) {
   const year = new Date().getFullYear();
   return html`<footer class="site-footer">
     <div class="container">
-      <div class="site-footer__top">
-        <div class="site-footer__brand">
-          <a href="${ctx.pagePath('home')}" class="site-footer__logo-link"><img class="site-footer__logo" src="${ctx.asset(logo.footer.src)}" alt="${ctx.l(logo.footer.alt)}" width="${logo.footer.width}" height="${logo.footer.height}" loading="lazy"></a>
+      <div class="site-footer__brand">
+        <a href="${ctx.pagePath('home')}" class="site-footer__logo-link"><img class="site-footer__logo" src="${ctx.asset(logo.footer.src)}" alt="${ctx.l(logo.footer.alt)}" width="${logo.footer.width}" height="${logo.footer.height}" loading="lazy"></a>
+        <div class="site-footer__intro">
           <p class="site-footer__about">${ctx.l(f.about)}</p>
           <p class="site-footer__slavonic" lang="ru">${ctx.site.name.ru}</p>
         </div>
+      </div>
+      <div class="site-footer__top">
         <div class="site-footer__visit">
           <h2 class="site-footer__title">${ctx.t('footer.visit')}</h2>
           <address class="site-footer__address">${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}${l}`)}</address>
