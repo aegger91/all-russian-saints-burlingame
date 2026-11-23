@@ -58,14 +58,16 @@ function component(type) {
 export function renderBlock(block, ctx) {
   if (!visible(block, ctx)) return '';
   const { render } = component(block.type);
-  return html`<div${attrs({ class: cx('block', `block--${block.type}`), id: block.id, 'data-section-type': block.type })}>${render(block, ctx, { renderBlock })}</div>`;
+  const inner = render(block, ctx, { renderBlock });
+  if (!String(inner).trim()) return '';
+  return html`<div${attrs({ class: cx('block', `block--${block.type}`), id: block.id, 'data-section-type': block.type })}>${inner}</div>`;
 }
 
 export function renderSection(section, ctx) {
   if (!visible(section, ctx)) return '';
   const { meta, render } = component(section.type);
   const inner = render(section, ctx, { renderBlock });
-  if (meta.bare) return inner;
+  if (meta.bare || !String(inner).trim()) return inner;
   return html`<section${attrs({
     id: section.id,
     class: cx(

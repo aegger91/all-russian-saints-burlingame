@@ -85,6 +85,7 @@ export function renderFeed(p, ctx) {
 
 export function renderCta(p, ctx) {
   const cfg = ctx.site.integrations?.orthodoxconnect || {};
+  if (!cfg.enabled) return '';
   return html`<div class="oc-cta">
     <div class="oc-cta__mark" aria-hidden="true">${icon('cross', 'oc-cta__cross')}</div>
     <div class="oc-cta__text">
