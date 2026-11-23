@@ -58,6 +58,7 @@ export function renderCards(p, ctx) {
         const body = html`
           ${c.image ? html`<div class="card__media">${image({ ...c.image, alt: c.image.alt || '' }, ctx)}</div>` : ''}
           <div class="card__body">
+            ${c.icon ? html`<span class="card__icon">${icon(c.icon, 'card__icon-svg')}</span>` : ''}
             ${eyebrow(ctx.l(c.eyebrow))}
             <h3 class="card__title">${ctx.l(c.title)}</h3>
             ${accent(c.accent, ctx, 'card__accent accent')}

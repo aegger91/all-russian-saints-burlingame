@@ -50,7 +50,7 @@
       { "id": "contact", "label": { "en": "Contact", "ru": "Контакты" }, "page": "contact" }
     ],
     "actions": [
-      { "id": "give", "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give", "style": "accent", "icon": "heart" }
+      { "id": "give", "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give", "style": "accent", "icon": "candle" }
     ]
   },
   "footer": {

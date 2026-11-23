@@ -37,7 +37,7 @@ function paypalForm(fund, ctx) {
   };
   return html`<form class="give-card__form" action="${pp.action}" method="post" target="_blank">
     ${Object.entries(fields).map(([name, value]) => html`<input type="hidden" name="${name}" value="${value}">`)}
-    <button class="btn btn--accent btn--block" type="submit">${icon('heart', 'btn__icon')}<span>${ctx.l(fund.button)}</span></button>
+    <button class="btn btn--accent btn--block" type="submit">${icon('candle', 'btn__icon')}<span>${ctx.l(fund.button)}</span></button>
   </form>`;
 }
 
