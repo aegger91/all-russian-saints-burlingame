@@ -40,6 +40,7 @@ export function loadContent({ feedOverride } = {}) {
     giving: f('giving.json'),
     documents: f('documents.json'),
     links: f('links.json'),
+    redirects: fs.existsSync(path.join(CONTENT_DIR, 'redirects.json')) ? f('redirects.json').redirects : [],
     pages
   };
 

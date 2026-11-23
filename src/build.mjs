@@ -68,37 +68,41 @@ function pageFile(locale, page) {
   return path.join(OUT, locale, page.slug || '', 'index.html');
 }
 
-function rootRedirect(content, siteUrl) {
+// Forwards to `suffix` (path after the locale, e.g. "choir/#concerts") in the
+// visitor's language: stored choice, then browser language, then sourceLocale.
+function redirectPage(content, siteUrl, suffix = '') {
   const { site } = content;
   const codes = site.locales.map((l) => l.code);
-  const target = `${BASE_PATH}/${site.sourceLocale}/`;
+  const [pathPart, hash = ''] = suffix.split('#');
+  const target = `${BASE_PATH}/${site.sourceLocale}/${pathPart}`;
+  const at = (code) => `${BASE_PATH}/${code}/${pathPart}${hash ? `#${hash}` : ''}`;
   return `<!doctype html>
 <html lang="${site.sourceLocale}">
 <head>
 <meta charset="utf-8">
 <title>${site.seo.siteName[site.sourceLocale]}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <link rel="canonical" href="${siteUrl}${target}">
-${site.locales.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${siteUrl}${BASE_PATH}/${l.code}/">`).join('\n')}
-<link rel="alternate" hreflang="x-default" href="${siteUrl}${target}">
-<script>
+${pathPart ? '' : `${site.locales.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${siteUrl}${BASE_PATH}/${l.code}/">`).join('\n')}\n<link rel="alternate" hreflang="x-default" href="${siteUrl}${target}">\n`}<script>
 (function () {
   var codes = ${JSON.stringify(codes)}, pick = null;
   try { pick = localStorage.getItem('site-lang'); } catch (e) {}
   if (codes.indexOf(pick) < 0) {
+    pick = null;
     var langs = navigator.languages || [navigator.language || ''];
     for (var i = 0; i < langs.length && !pick; i++) {
       var c = String(langs[i]).slice(0, 2).toLowerCase();
       if (codes.indexOf(c) >= 0) pick = c;
     }
   }
-  location.replace(${JSON.stringify(BASE_PATH)} + '/' + (pick || ${JSON.stringify(site.sourceLocale)}) + '/' + location.hash);
+  location.replace(${JSON.stringify(BASE_PATH)} + '/' + (pick || ${JSON.stringify(site.sourceLocale)}) + '/' + ${JSON.stringify(pathPart)} + (location.hash || ${JSON.stringify(hash ? `#${hash}` : '')}));
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="0; url=${target}"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=${at(site.sourceLocale)}"></noscript>
 </head>
 <body>
-<p>${site.locales.map((l) => `<a href="${target.replace(`/${site.sourceLocale}/`, `/${l.code}/`)}" hreflang="${l.code}">${l.name}</a>`).join(' · ')}</p>
+<p>${site.locales.map((l) => `<a href="${at(l.code)}" hreflang="${l.code}">${l.name}</a>`).join(' · ')}</p>
 </body>
 </html>
 `;
@@ -152,7 +156,13 @@ export async function build() {
 
   const notFound = content.index.pages['not-found'];
   if (notFound) fs.copyFileSync(pageFile(content.site.sourceLocale, notFound), path.join(OUT, '404.html'));
-  writeFile(path.join(OUT, 'index.html'), rootRedirect(content, siteUrl));
+  writeFile(path.join(OUT, 'index.html'), redirectPage(content, siteUrl));
+  for (const r of content.redirects) {
+    const page = content.index.pages[r.page];
+    const file = path.join(OUT, r.from);
+    if (fs.existsSync(file)) throw new Error(`redirect "${r.from}" would overwrite a built file`);
+    writeFile(file, redirectPage(content, siteUrl, `${page.slug ? `${page.slug}/` : ''}${r.anchor ? `#${r.anchor}` : ''}`));
+  }
   writeFile(path.join(OUT, 'sitemap.xml'), sitemap(content, siteUrl));
   writeFile(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}${BASE_PATH}/sitemap.xml\n`);
   console.log(`Built ${count} pages (${content.site.locales.map((l) => l.code).join(', ')}) into ${path.relative(ROOT, OUT)}/ in ${Date.now() - started} ms`);

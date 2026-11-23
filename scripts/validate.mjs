@@ -161,6 +161,9 @@ export function checkReferences(content) {
   checkTree('news.json', content.news);
   checkTree('ministries.json', content.ministries);
 
+  content.redirects.forEach((r) => ref(`redirects.json ${r.from}`, 'page', r.page, index.pages));
+  for (const from of duplicates(content.redirects.map((r) => r.from))) err('redirects.json', `duplicate "${from}"`);
+
   content.services.upcoming.forEach((s) => ref(`services.json upcoming ${s.id}`, 'service type', s.serviceType, index.serviceTypes));
   content.events.events.forEach((e) => ref(`events.json ${e.id}`, 'ministry', e.ministry, index.ministries));
   content.news.items.forEach((n) => ref(`news.json ${n.id}`, 'gallery', n.gallery, index.galleries));
