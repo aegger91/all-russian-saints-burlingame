@@ -35,7 +35,7 @@ Requires Node 20 or later.
 npm ci
 npm run dev     # http://localhost:4321, rebuilds on change
 npm run build   # validate content and write the static site to dist/
-npm test        # build + link check in both languages + translation status
+npm test        # build + link check in both languages + cross check + translation status
 ```
 
 **Deploy:** upload `dist/` to any static host or web server.
@@ -49,6 +49,8 @@ There is no server-side code. The PayPal buttons post directly to PayPal, and th
 **Old URLs keep working.** Every page of the old site (`/ourparish.html`, `/donate.html` and so on) gets a small forwarding page that opens the new page in the visitor's language. The list is in `content/redirects.json`, and the mapping is the table below. A server that supports real redirects can turn the same list into 301s.
 
 **Legacy files.** Large PDFs (older schedules, choir scores, newsletters, the school calendar) are linked at their current addresses, `https://www.allrussiansaintsburlingame.org/files/...`, instead of being copied into this repo. If the new site replaces the old one on the same domain, keep the old `/files/` folder online, or move the files and update `content/documents.json`.
+
+Every cross on the site is one shared SVG symbol, the Russian Orthodox eight-pointed cross: `CROSS_PATH` in `src/components/_primitives.mjs`, used through `cross()`. `npm run check-crosses` fails if a page uses the ☦ text glyph or if any cross in the pages or in `public/` SVGs has its footrest the wrong way round (its left end must be higher).
 
 ## Translation (optional)
 

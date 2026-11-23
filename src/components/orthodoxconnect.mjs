@@ -13,7 +13,7 @@
  *   "coming soon" label is shown instead of a link.
  */
 import { html, cx } from '../lib/html.mjs';
-import { sectionHead, eyebrow, icon, actions } from './_primitives.mjs';
+import { sectionHead, eyebrow, icon, cross, actions } from './_primitives.mjs';
 
 export const feedMeta = {
   type: 'orthodoxconnect-feed',
@@ -87,7 +87,7 @@ export function renderCta(p, ctx) {
   const cfg = ctx.site.integrations?.orthodoxconnect || {};
   if (!cfg.enabled) return '';
   return html`<div class="oc-cta">
-    <div class="oc-cta__mark" aria-hidden="true">${icon('cross', 'oc-cta__cross')}</div>
+    <div class="oc-cta__mark" aria-hidden="true">${cross('oc-cta__cross')}</div>
     <div class="oc-cta__text">
       ${eyebrow(ctx.l(p.eyebrow))}
       <h2 class="oc-cta__title">${ctx.l(p.title)}</h2>
