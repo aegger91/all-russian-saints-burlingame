@@ -1,0 +1,51 @@
+{
+  "$schema": "../../schemas/orthodoxconnect-feed.schema.json",
+  "version": 1,
+  "isSample": true,
+  "source": "SAMPLE DATA — placeholder items to demonstrate the OrthodoxConnect feed contract. Not real parish events. Replace by setting ORTHODOXCONNECT_FEED_URL or editing site.integrations.orthodoxconnect.",
+  "parishId": "sample-parish",
+  "generatedAt": "2026-11-23T00:00:00Z",
+  "items": [
+    {
+      "id": "sample-event-1",
+      "kind": "event",
+      "status": "open",
+      "title": { "en": "Sample event: parish workday", "ru": "Образец события: день труда на приходе" },
+      "summary": {
+        "en": "Placeholder event card showing date, place, capacity and an RSVP button.",
+        "ru": "Карточка-образец: дата, место, число мест и кнопка записи."
+      },
+      "startsAt": "2027-01-16T10:00:00-08:00",
+      "endsAt": "2027-01-16T14:00:00-08:00",
+      "location": { "en": "Church Hall (sample)", "ru": "Церковный зал (образец)" },
+      "slots": { "needed": 20, "filled": 8 },
+      "url": null
+    },
+    {
+      "id": "sample-volunteer-1",
+      "kind": "volunteer",
+      "status": "open",
+      "title": { "en": "Sample volunteer opportunity: coffee hour hosts", "ru": "Образец: помощники для кофейного часа" },
+      "summary": {
+        "en": "Placeholder volunteer card. Real sign-ups will come from the OrthodoxConnect app.",
+        "ru": "Карточка-образец. Настоящая запись помощников будет вестись в приложении OrthodoxConnect."
+      },
+      "startsAt": "2027-01-24T11:30:00-08:00",
+      "location": { "en": "Church Hall (sample)", "ru": "Церковный зал (образец)" },
+      "slots": { "needed": 4, "filled": 1 },
+      "url": null
+    },
+    {
+      "id": "sample-need-1",
+      "kind": "need",
+      "status": "open",
+      "title": { "en": "Sample need: supplies for a parish luncheon", "ru": "Образец нужды: продукты для приходской трапезы" },
+      "summary": {
+        "en": "Placeholder need card with a progress bar for pledged items.",
+        "ru": "Карточка-образец с индикатором собранного."
+      },
+      "quantity": { "needed": 10, "fulfilled": 6, "unit": { "en": "items", "ru": "шт." } },
+      "url": null
+    }
+  ]
+}

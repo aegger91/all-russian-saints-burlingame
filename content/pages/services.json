@@ -1,0 +1,279 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "services",
+  "slug": "services",
+  "order": 10,
+  "title": {
+    "en": "Schedule of Services",
+    "ru": "Расписание богослужений"
+  },
+  "seo": {
+    "description": {
+      "en": "Upcoming Vigil and Divine Liturgy times at the Church of All Russian Saints, Burlingame, monthly schedules in English and Russian, livestream and service texts.",
+      "ru": "Расписание всенощных бдений и литургий в храме Всех Святых в Бурлингейме, расписание на месяц на английском и русском, трансляции и тексты служб."
+    }
+  },
+  "subnav": true,
+  "sections": [
+    {
+      "id": "services-header",
+      "type": "page-header",
+      "eyebrow": {
+        "en": "Services",
+        "ru": "Богослужения"
+      },
+      "title": {
+        "en": "Schedule of Services",
+        "ru": "Расписание богослужений"
+      },
+      "accent": "Расписание Богослужений",
+      "lede": {
+        "en": "Our Services are primarily in Slavonic. English language translations of all services are available.",
+        "ru": "Богослужения совершаются преимущественно на церковнославянском языке. Для всех служб доступны переводы на английский язык."
+      },
+      "image": {
+        "src": "/assets/img/iconostas.jpg",
+        "alt": {
+          "en": "The iconostasis of the Church of All Russian Saints",
+          "ru": "Иконостас храма Всех Святых"
+        },
+        "position": "50% 40%"
+      }
+    },
+    {
+      "id": "upcoming",
+      "type": "split",
+      "navLabel": {
+        "en": "Upcoming",
+        "ru": "Ближайшие службы"
+      },
+      "ratio": "7:5",
+      "columns": [
+        {
+          "id": "service-list",
+          "type": "service-times",
+          "eyebrow": {
+            "en": "Upcoming services",
+            "ru": "Ближайшие богослужения"
+          },
+          "title": {
+            "en": "November and December 2026",
+            "ru": "Ноябрь и декабрь 2026 года"
+          },
+          "intro": {
+            "en": "See the monthly schedules for details.",
+            "ru": "Подробности — в расписании на месяц."
+          },
+          "variant": "panel",
+          "showNotices": true,
+          "showSeason": true,
+          "showStanding": true
+        },
+        {
+          "id": "schedules",
+          "type": "stack",
+          "blocks": [
+            {
+              "id": "monthly-schedules",
+              "type": "document-list",
+              "eyebrow": {
+                "en": "Monthly schedules",
+                "ru": "Расписание на месяц"
+              },
+              "title": {
+                "en": "Download the schedule",
+                "ru": "Скачать расписание"
+              },
+              "group": "schedule"
+            },
+            {
+              "id": "livestream",
+              "type": "rich-text",
+              "navLabel": {
+                "en": "Livestream",
+                "ru": "Трансляция"
+              },
+              "eyebrow": {
+                "en": "Livestream",
+                "ru": "Трансляция"
+              },
+              "title": {
+                "en": "Watch services online",
+                "ru": "Богослужения онлайн"
+              },
+              "body": {
+                "en": "Services and parish events are posted on the Church of All Russian Saints YouTube channel.",
+                "ru": "Богослужения и события прихода публикуются на YouTube-канале нашего храма."
+              },
+              "actions": [
+                {
+                  "label": {
+                    "en": "Open the YouTube channel",
+                    "ru": "Открыть YouTube-канал"
+                  },
+                  "style": "primary",
+                  "href": "https://www.youtube.com/@churchofallrussiansaints-b2874"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "service-texts",
+      "type": "stack",
+      "background": "alt",
+      "navLabel": {
+        "en": "Service texts",
+        "ru": "Тексты служб"
+      },
+      "eyebrow": {
+        "en": "Following the services",
+        "ru": "Как следить за службой"
+      },
+      "title": {
+        "en": "Service texts in English and Russian",
+        "ru": "Тексты богослужений на английском и русском"
+      },
+      "blocks": [
+        {
+          "type": "card-grid",
+          "columns": 3,
+          "cards": [
+            {
+              "id": "weekly-texts",
+              "title": {
+                "en": "Weekly service texts",
+                "ru": "Еженедельные тексты служб"
+              },
+              "text": {
+                "en": "Priest Dimitri Jakimowicz of St. Nicholas Orthodox Church in Stratford, Connecticut, emails weekly church service texts in both Russian and English. Contact him at [frdimitrij@gmail.com](mailto:frdimitrij@gmail.com) to request being added to his distribution list. You can download the translation into your smartphone and follow the service in English while standing in Church.",
+                "ru": "Священник Димитрий Якимович из Никольской православной церкви в Стратфорде (штат Коннектикут) еженедельно рассылает по электронной почте тексты богослужений на русском и английском языках. Чтобы попасть в список рассылки, напишите ему по адресу [frdimitrij@gmail.com](mailto:frdimitrij@gmail.com). Перевод можно загрузить в смартфон и следить за службой на английском языке прямо в храме."
+              }
+            },
+            {
+              "id": "liturgical-texts",
+              "title": {
+                "en": "Liturgical texts",
+                "ru": "Богослужебные тексты"
+              },
+              "text": {
+                "en": "For Liturgical Texts in English and Slavonic from Holy Mother of God Russian Orthodox Church in Austin, Texas: [orthodoxaustin.org/liturgical-texts](https://orthodoxaustin.org/liturgical-texts/)",
+                "ru": "Богослужебные тексты на английском и церковнославянском языках от русской православной церкви Пресвятой Богородицы в Остине (штат Техас): [orthodoxaustin.org/liturgical-texts](https://orthodoxaustin.org/liturgical-texts/)"
+              }
+            },
+            {
+              "id": "sunday-gospels",
+              "title": {
+                "en": "Sunday Gospels",
+                "ru": "Воскресные Евангельские чтения"
+              },
+              "text": {
+                "en": "**Archpriest Serge Kotar:** [weekly email](https://www.allrussiansaintsburlingame.org/files/Weekly-email---Father-Serge---July-30-2024.pdf) discussing upcoming Sunday Gospel reading. To subscribe, email [frsergekotar@yahoo.com](mailto:frsergekotar@yahoo.com).\n\n**Andrei Roudenko:** [weekly email](https://www.allrussiansaintsburlingame.org/files/Weekly-email---Andrei-Roudenko---March-3-2026.pdf) with introduction to upcoming weekend church services and with Lives of Saints. To subscribe, email [avrouden@gmail.com](mailto:avrouden@gmail.com).",
+                "ru": "**Протоиерей Сергий Котар:** [еженедельная рассылка](https://www.allrussiansaintsburlingame.org/files/Weekly-email---Father-Serge---July-30-2024.pdf) с беседой о предстоящем воскресном Евангельском чтении. Подписаться можно по адресу [frsergekotar@yahoo.com](mailto:frsergekotar@yahoo.com).\n\n**Андрей Руденко:** [еженедельная рассылка](https://www.allrussiansaintsburlingame.org/files/Weekly-email---Andrei-Roudenko---March-3-2026.pdf) с введением в предстоящие воскресные богослужения и житиями святых. Подписаться можно по адресу [avrouden@gmail.com](mailto:avrouden@gmail.com)."
+              }
+            }
+          ]
+        },
+        {
+          "type": "card-grid",
+          "columns": 2,
+          "cards": [
+            {
+              "id": "confession",
+              "title": {
+                "en": "Confession",
+                "ru": "Исповедь"
+              },
+              "text": {
+                "en": "**Genuine Repentance and Confession heals and makes the immortal soul holy.** This is the correct way to prepare for Holy Communion.\n\n[A Guide to Confession](http://orthodoxinfo.com/praxis/guide-to-confession.aspx)",
+                "ru": "**Искреннее покаяние и исповедь исцеляют и освящают бессмертную душу.** Это правильный путь подготовки к Святому Причастию.\n\n[Руководство к исповеди (на английском языке)](http://orthodoxinfo.com/praxis/guide-to-confession.aspx)"
+              }
+            },
+            {
+              "id": "daily-gospel",
+              "title": {
+                "en": "Daily Gospel with commentary (in Russian)",
+                "ru": "Евангелие дня с толкованием"
+              },
+              "text": {
+                "en": "Евангелие дня 2025 с толкованием. Чтимые святые. [Listen here](https://www.youtube.com/c/%D0%94%D1%83%D1%85%D0%9F%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%B8%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%B8%D0%B5).\n\n*Daily Gospel reading with Commentary — sorry, only in Russian.*",
+                "ru": "Евангелие дня 2025 с толкованием. Чтимые святые. [Нажимайте здесь](https://www.youtube.com/c/%D0%94%D1%83%D1%85%D0%9F%D1%80%D0%BE%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%B8%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%B8%D0%B5), чтобы прослушать."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prayers",
+      "type": "stack",
+      "navLabel": {
+        "en": "Prayers",
+        "ru": "Молитвы"
+      },
+      "eyebrow": {
+        "en": "Prayers for peace",
+        "ru": "Молитвы о мире"
+      },
+      "title": {
+        "en": "Prayers for peace",
+        "ru": "Молитвы о мире"
+      },
+      "intro": {
+        "en": "*We are overcome with grief over the tragic events in Ukraine, for many of us the land of our forefathers, and for some the land where our relatives live today. We pray to the All-Merciful Lord, and His Most-Holy Mother for speedy cessation of all hostilities, and for long-lasting peace.*",
+        "ru": "*Мы глубоко скорбим о трагических событиях на Украине — для многих из нас это земля наших предков, а для некоторых и земля, где сегодня живут наши родные. Молимся Всемилостивому Господу и Его Пречистой Матери о скорейшем прекращении всякой вражды и о прочном мире.*"
+      },
+      "blocks": [
+        {
+          "type": "split",
+          "ratio": "1:1",
+          "columns": [
+            {
+              "id": "prayer-to-the-lord",
+              "type": "prayer",
+              "title": {
+                "en": "Prayer to the Lord",
+                "ru": "Молитва ко Господу"
+              },
+              "text": "Владыко Человѣколюбче, Царю вѣковъ и Подателю благихъ, разрушившiй вражды средостѣнiя и мир подавшiй роду человѣческому, даруй и нынѣ миръ рабомъ Твоимъ, вкорени нихъ страхъ Твой и другъ къ другу любовь утверди: угаси всяку распрю, отыми вся разногласiя и соблазны. Яко Ты еси миръ нашъ и Тебе славу возсылаемъ, Отцу и Сыну и Святому Духу, нынѣ и присно и во вѣки вѣковъ. Аминь.",
+              "textLang": "cu",
+              "translation": {
+                "en": "O Lord, Lover of mankind, King of the ages and Giver of good things: having destroyed the divisions of enmity and granted peace unto the human race, grant even now peace unto Thy servants, planting within them the fear of Thee and establishing them in love for one another. Quench all strife, and remove all dissensions and temptations; for Thou art our peace and to Thee do we offer up glory, to the Father and to the Son and to the Holy Spirit, now and ever and unto the ages of ages, Amen."
+              },
+              "ru_locked": true
+            },
+            {
+              "id": "prayer-to-the-mother-of-god",
+              "type": "prayer",
+              "title": {
+                "en": "Prayer to the Mother of God",
+                "ru": "Молитва к Божией Матери"
+              },
+              "text": "О, многострадальная Мати Божiя, Превысшая всѣхъ дщерей земли, по чистотѣ Своей и по множеству страданiй, Тобою на земли перенесенныхъ, прiими многоболезненныя воздыханiя наша и сохрани насъ подъ кровомъ Твоея милости. Инаго бо прибѣжища теплаго предстательста развѣ Тебѣ не вѣмы, но яко дерзновенiе имущая къ Иже изъ Тебѣ рожденному, помози и спаси ны молитвами Своими, да непреткновенно достигнемъ Царствiя Небеснаго, идеже со всѣми святыми будемъ воспѣвати въ Троицѣ единому Богу нынѣ и присно и во вѣки вѣков. Аминь.",
+              "textLang": "cu",
+              "translation": {
+                "en": "O much sorrowing Mother of God, more highly exalted than all other of the daughters of the earth, according to thy purity and the multitude of thy suffering endured by thee on earth: Hearken to our sighs and soften the hearts of evil men, and protect us under the shelter of thy mercy. For we know no other refuge and ardent intercessor apart from thee, but as thou hast great boldness before the One Who was born of thee, help and save us by thy prayers, that without offense we may attain the Heavenly Kingdom where, with all the saints, we will sing the thrice-holy hymn to One God Almighty in the Trinity, always now and ever and unto the ages of ages. Amen."
+              },
+              "ru_locked": true
+            }
+          ]
+        },
+        {
+          "type": "rich-text",
+          "actions": [
+            {
+              "label": {
+                "en": "Print the prayers (PDF)",
+                "ru": "Распечатать молитвы (PDF)"
+              },
+              "style": "secondary",
+              "document": "prayers-pdf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

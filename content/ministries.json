@@ -1,0 +1,106 @@
+{
+  "$schema": "../schemas/ministries.schema.json",
+  "ministries": [
+    {
+      "id": "clergy",
+      "title": {
+        "en": "Clergy",
+        "ru": "Духовенство"
+      },
+      "text": {
+        "en": "Mitred Archpriest Stefan Pavlenko, Rector, with Matushka Tatiana, Father Deacon Alexei Baranoff and the Parish Council.",
+        "ru": "Настоятель — митрофорный протоиерей Стефан Павленко, матушка Татьяна, отец диакон Алексий Баранов и приходской совет."
+      },
+      "image": {
+        "src": "/assets/img/img-4688.jpg",
+        "alt": {
+          "en": "Father Stefan with Matushka Tatiana",
+          "ru": "Отец Стефан с матушкой Татьяной"
+        }
+      },
+      "link": {
+        "page": "clergy",
+        "label": {
+          "en": "Clergy and Parish Council",
+          "ru": "Духовенство и приходской совет"
+        }
+      }
+    },
+    {
+      "id": "choir",
+      "title": {
+        "en": "Choir",
+        "ru": "Хор"
+      },
+      "text": {
+        "en": "The all-volunteer parish choir sings at Vigil, Liturgy and Holy-day services and presents two concerts a year.",
+        "ru": "Приходской хор, в котором поют добровольцы, участвует во всенощных бдениях, литургиях и праздничных службах и дважды в год даёт концерты."
+      },
+      "image": {
+        "src": "/assets/img/choir-concert-16.jpg",
+        "alt": {
+          "en": "The parish choir in concert",
+          "ru": "Концерт приходского хора"
+        }
+      },
+      "link": {
+        "page": "choir",
+        "label": {
+          "en": "About the choir",
+          "ru": "О хоре"
+        }
+      }
+    },
+    {
+      "id": "sisterhood",
+      "title": {
+        "en": "Sisterhood",
+        "ru": "Сестричество"
+      },
+      "text": {
+        "en": "A very active, hardworking, and friendly sisterhood: lunches, coffee hours and the monthly pelmeni making group.",
+        "ru": "Очень активное, трудолюбивое и дружное сестричество: трапезы, кофейные часы и ежемесячная лепка пельменей."
+      },
+      "image": {
+        "src": "/assets/img/img-5612.jpg",
+        "alt": {
+          "en": "The Sisterhood",
+          "ru": "Сестричество"
+        }
+      },
+      "link": {
+        "page": "sisterhood",
+        "label": {
+          "en": "About the sisterhood",
+          "ru": "О сестричестве"
+        }
+      }
+    },
+    {
+      "id": "school",
+      "title": {
+        "en": "Russian School",
+        "ru": "Русская школа"
+      },
+      "text": {
+        "en": "Established at the same time as the church in 1952. Registration for 2026-27 is open.",
+        "ru": "Основана одновременно с храмом в 1952 году. Открыта запись на 2026–27 учебный год."
+      },
+      "image": {
+        "src": "/assets/img/akt-03-crop.jpg",
+        "alt": {
+          "en": "Russian School students",
+          "ru": "Ученики русской школы"
+        },
+        "position": "50% 40%"
+      },
+      "link": {
+        "page": "school",
+        "label": {
+          "en": "About the school",
+          "ru": "О школе"
+        }
+      }
+    }
+  ]
+}

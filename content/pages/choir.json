@@ -1,0 +1,504 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "choir",
+  "slug": "choir",
+  "order": 50,
+  "title": {
+    "en": "The Parish Choir",
+    "ru": "Приходской хор"
+  },
+  "seo": {
+    "description": {
+      "en": "The parish choir of the Church of All Russian Saints, Burlingame: history, conductor, call for singers, concert videos, workshops and the sheet-music library.",
+      "ru": "Приходской хор храма Всех Святых в Бурлингейме: история, регент, приглашение певчим, видео концертов, семинары и нотная библиотека."
+    }
+  },
+  "subnav": true,
+  "sections": [
+    {
+      "id": "choir-header",
+      "type": "page-header",
+      "eyebrow": {
+        "en": "Since 1952",
+        "ru": "С 1952 года"
+      },
+      "title": {
+        "en": "The Parish Choir",
+        "ru": "Приходской хор"
+      },
+      "accent": "Церковный Хор",
+      "lede": {
+        "en": "Volunteer singers who read and sing at the All-Night Vigil, the Divine Liturgy and the services of the great feasts.",
+        "ru": "Певчие-добровольцы, которые читают и поют за всенощным бдением, Божественной литургией и праздничными богослужениями."
+      },
+      "image": {
+        "src": "/assets/img/choir-concert-05.jpg",
+        "alt": {
+          "en": "The parish choir in concert",
+          "ru": "Приходской хор на концерте"
+        },
+        "position": "50% 40%"
+      }
+    },
+    {
+      "id": "history",
+      "type": "rich-text",
+      "navLabel": {
+        "en": "History",
+        "ru": "История"
+      },
+      "ru_locked": true,
+      "eyebrow": {
+        "en": "Choir History",
+        "ru": "История хора"
+      },
+      "title": {
+        "en": "Choir History",
+        "ru": "История Хора"
+      },
+      "accent": "История Хора",
+      "body": {
+        "en": "The ***history of the Choir of the Russian Orthodox Church of All Russian Saints*** dates back to 1952, when a Brotherhood in honor of All Russian Saints was established and became the permanent Bay Area summer residence for the Church’s New York-based Hierarch. Then, as now, the choir consisted of volunteer vocalists who read and sang at services.\n\nAs the Brotherhood transitioned to a parish of the Russian Orthodox Church Outside of Russia and moved to their current location at Burlingame’s eucalyptus tree-lined El Camino Real, the now-parish choir continued their expansion and development, including use of many of the liturgical selections that were sung at the Holy Virgin - Joy of all Who Sorrow - Cathedral in San Francisco. During the period between 1952-2001, eleven choir directors led All-Night Vigil, Liturgy and special Holy-day parish services.\n\nIn June 2001, Andrei Roudenko was appointed choir director, a post that he holds to this day. Under his direction, the choir expanded their “repertoire” to include works by contemporary composers, including Sergey Riabchenko, nun Julianna (Denisova), Kirill Kovaldzhi, Metropolitan Jonathan (Yeletskih) and others. In parallel, the choir added works composed by Rachmaninoff, Chesnokov, Lyadov, Ippolitov-Ivanov, Archimandrite Matfey (Mormyl) and others. Today, the choir seeks to live up to the world-renowned reputation that prerevolutionary Russian church choirs established.\n\nThe current members of the choir work hard in weekly choir rehearses, present two concerts per year – one in the October-November time frame, and one during Great Lent, and most important, continue to sing at Vigil, Liturgy and special Holy-day services. Video recordings are available at [Video Materials/Choir Concerts](/choir/#concerts) and [Video Materials/Workshops](/choir/#workshops)\n\nMembers of the original Brotherhood and early-era parish choir were largely World War II-era émigrés. Today, choir members are a combination of “second wave” émigré’s children and grandchildren, more recently “third wave” émigrés and their children, and non-Russians who have converted to Orthodoxy, all of whom are critically-important components of the future of our parish and choir.\n\nThe choir of the Church of All Russian Saints is a close-knit family, united in their purpose and respectful of the tradition that was shaped by their forerunners.\n\nIn November 2004, the Choir made its concert debut in Burlingame and subsequently released a CD recording of their concert, the first of several. Since then, the Choir has presented formal, off-site concerts in 2006, 2008, 2010 and 2011.\n\nRecently, the Choir has established a ***Choral Presentations Series***, consisting of recitals, workshops and lectures. To acquaint parishioners and area friends with the prayers that will be sung during services, the Choir now presents two recitals per year; one in the Fall, consisting of a variety of selections, and the other during Great Lent, featuring prayers that are sung during Great Lent and Passion Week. Video recordings are available at [Video Materials/Choir Concerts](/choir/#concerts) and [Video Materials/Workshops](/choir/#workshops).",
+        "ru": "История Хора Русской Православной Церкви Всех Святых в Земле Российской Просиявших началась в 1952 году, когда было основано Братство в честь Всех Русских Святых, которое стало постоянной летней резиденцией Залива для Нью-Йоркского Иерарха Церкви. Тогда, как и сейчас, хор состоял из певчих-добровольцев, которые читали и пели на богослужениях.\n\nКогда Братство перешло в приход Русской Православной Церкви заграницей и переехало на свое нынешнее место на Эль-Камино-Реаль, приходской хор продолжил свое расширение и развитие, включая использование многих обработок, которые пели в соборе Святой Богородицы - Радости всех скорбящих в Сан-Франциско. В период с 1952 по 2001 год одиннадцать директоров хора руководили пением на Воскресных и праздничных службах.\n\nВ июне 2001 года Андрей Руденко был назначен директором хора, и этот пост он занимает по сей день. Под его руководством хор расширил свой «репертуар», включив произведения современных композиторов Сергей Рябченко, монахини Юлианны (Денисовой), Кирилла Ковальджи, митрополита Иоанна (Елецких) и других. Параллельно добавлены были сочиненные Рахманинова, Чеснокова, Лядова, Ипполита-Иванова, архимандрита Матфеа (Мормылем) и других. Хор стремится к звучанию дореволюционных русских церковных хоров.\n\nНынешние участники хора усердно работают на еженедельных репетициях, представляют два концерта в год - один в период с октября по ноябрь, один во время Великого поста, и, что самое важное, продолжают петь на Воскресных (субботних Бдениях и Литургиях) и праздничных службах. Видеозаписи последних концертов доступны на [Видеоматериалах / Концертах хора](/choir/#concerts).\n\nУчастники хора оригинального Братства и позже приходского хора ранней эпохи были в основном эмигрантами после Второй мировой войны. Сегодня участники хора представляют собой комбинацию детей и внуков «второй волны», эмигрантов и их детей, а недавно «третьей волны», и нерусских, которые обратились в православие, и все они являются критически важными компонентами будущего нашего прихода и хора.\n\nХор Церкви Всех Святых в Земле Российской - это сплоченная семья, объединенная в своих целях и уважающая традиции, которые были сформированы их предшественниками.\n\nВ ноябре 2004 года хор дебютировал в Burlingame, а затем выпустил запись их концерта на CD, первую из нескольких. С тех пор хор выступил с концертами за пределами прихода в 2006, 2008, 2010 и 2011 годах.\n\nНедавно хор организовал Серию Хоровых Выступлений, состоящую из концертов, семинаров и лекций. Чтобы познакомить прихожан и друзей района с молитвами, которые будут петься на богослужениях, хор теперь представляет два концерта в год; один осенью, а другой во время Великого поста, с молитвами, которые поются во время Великого поста и Страстной недели. Видеозаписи последних концертов доступны на [Видеоматериалах / Концертах хора](/choir/#concerts)."
+      },
+      "media": {
+        "src": "/assets/img/choir-concert-16.jpg",
+        "alt": {
+          "en": "The parish choir in concert",
+          "ru": "Приходской хор на концерте"
+        }
+      },
+      "mediaPosition": "end"
+    },
+    {
+      "id": "conductor",
+      "type": "person-profile",
+      "navLabel": {
+        "en": "Conductor",
+        "ru": "Регент"
+      },
+      "background": "cream",
+      "person": "irina-shachneva",
+      "group": "choir",
+      "eyebrow": {
+        "en": "Conductor",
+        "ru": "Регент хора"
+      },
+      "body": {
+        "en": "**Irina Shachneva** is the Conductor of the Choir of the Church of All Russian Saints in Burlingame, California.",
+        "ru": "**Ирина Шахнева** — регент хора храма Всех Святых в Земле Российской Просиявших в Бурлингейме (Калифорния)."
+      },
+      "more": {
+        "title": {
+          "en": "Andrei Roudenko, Conductor 2001 to 2022",
+          "ru": "Андрей Руденко, регент хора с 2001 по 2022 год"
+        },
+        "body": {
+          "en": "**ANDREI ROUDENKO MOVED TO NEW JERSEY IN SEPTEMBER 2022. OUR NEW CHOIR DIRECTOR IS IRINA SHACHNEVA.**\n\nAndrei Roudenko is the twelfth Conductor of the Choir of the Church of All Russian Saints in Burlingame, California.\n\nPrior to his appointment in June 2001, he was founder and Music Director of the Russian Chamber Chorus in Boston; he was a long-time performing member of Boston Symphony Orchestra’s Tanglewood Festival Chorus and Boston’s Handel and Haydn Society.\n\nRoudenko was guest conductor of the Karelsky Academic Chorus in Russia in 1991, and in 1992, conducted members of his Russian Chamber Chorus and Voskreseniye Choir in a joint performance and recording of Rachmaninoff’s ***All-Night Vigil*** at Mosfilm in Moscow.\n\nHe made his Boston Symphony Hall conducting debut in 1995 in a concert of Russian liturgical and folk music that featured baritone Dmitri Hvorostovsky.\n\nIn 1996, Roudenko collaborated with the Boston Philharmonic Orchestra in a performance of Shostakovich’s 13th symphony, featuring baritone Sergei Leiferkus and the men of the Russian Chamber Chorus.\n\nRoudenko served as language and style consultant to many Boston-area choruses in their exploration of Russian vocal music and made his concert solo debut in Gretchaninov’s *Sugubaya Ekteniya* with Boston’s Chorus pro Musica. He began singing in church services at the age of seven, singing with his father, Vladimir Pavlovich.\n\nSince coming to Burlingame, Roudenko has prepared numerous adaptations of classical church selections specifically for the All Russian Saints parish choir, and established a ***Choral Presentations Series*** at the parish, consisting of recitals, workshops and lectures. He sings in Sergei Riabchenko’s ***Diakonia*** male choir in San Francisco and frequently joins in singing with the Holy Virgin - Joy of all Who Sorrow - Cathedral choir on major Holy-days.\n\nRoudenko is grateful for the rich choral tradition that was created and nurtured by his eleven predecessor parish choir directors, and to the dedicated singers who share his love for the choral music of the Russian Orthodox Church.",
+          "ru": "**В СЕНТЯБРЕ 2022 ГОДА АНДРЕЙ РУДЕНКО ПЕРЕЕХАЛ В НЬЮ-ДЖЕРСИ. НАШ НОВЫЙ РЕГЕНТ — ИРИНА ШАХНЕВА.**\n\nАндрей Руденко — двенадцатый регент хора храма Всех Святых в Земле Российской Просиявших в Бурлингейме (Калифорния).\n\nДо своего назначения в июне 2001 года он был основателем и художественным руководителем Русского камерного хора в Бостоне, а также много лет пел в Танглвудском фестивальном хоре Бостонского симфонического оркестра и в бостонском Обществе Генделя и Гайдна.\n\nВ 1991 году Андрей Руденко был приглашённым дирижёром Карельского академического хора в России, а в 1992 году дирижировал совместным исполнением и записью «Всенощного бдения» Рахманинова участниками своего Русского камерного хора и хора «Воскресение» на «Мосфильме» в Москве.\n\nВ 1995 году он дебютировал как дирижёр в Бостонском симфоническом зале в концерте русской духовной и народной музыки с участием баритона Дмитрия Хворостовского.\n\nВ 1996 году Андрей Руденко вместе с Бостонским филармоническим оркестром исполнил Тринадцатую симфонию Шостаковича с участием баритона Сергея Лейферкуса и мужской группы Русского камерного хора.\n\nОн консультировал многие хоры Бостона по языку и стилю исполнения русской вокальной музыки и дебютировал как солист в «Сугубой ектении» Гречанинова с бостонским хором Chorus pro Musica. Петь за богослужением он начал в семь лет вместе со своим отцом, Владимиром Павловичем.\n\nС приезда в Бурлингейм Андрей Руденко подготовил для приходского хора многочисленные переложения классических церковных песнопений и основал при приходе цикл хоровых программ — концертов, семинаров и лекций. Он поёт в мужском хоре «Диакония» Сергея Рябченко в Сан-Франциско и часто участвует в пении хора собора Божией Матери «Всех скорбящих Радость» в великие праздники.\n\nАндрей Руденко благодарен за богатую хоровую традицию, созданную и взращённую одиннадцатью регентами прихода до него, и преданным певчим, разделяющим его любовь к хоровой музыке Русской Православной Церкви."
+        }
+      }
+    },
+    {
+      "id": "singers",
+      "type": "split",
+      "navLabel": {
+        "en": "Join the choir",
+        "ru": "Певчим"
+      },
+      "ratio": "1:1",
+      "columns": [
+        {
+          "id": "call-for-singers",
+          "type": "rich-text",
+          "ru_locked": true,
+          "eyebrow": {
+            "en": "Join us",
+            "ru": "Присоединяйтесь"
+          },
+          "title": {
+            "en": "Call for Singers",
+            "ru": "Призыв для Певцов"
+          },
+          "accent": "Призыв для Певцов",
+          "body": {
+            "en": "The Choir of the Church of All Russian Saints in Burlingame, California, draws its membership from parishioners and area friends of the parish.\n\nWe welcome potential members who:\n\n- have an “ear for music” (in Russian, “слух”), which is the ability to hear and match pitch,\n- elementary musical education, (e.g., basic familiarity with musical notation),\n- ability (or willingness to learn) to read Cyrillic (Russian) text,\n- willingness to attend weekly rehearsals, typically on Wednesday evenings, 7:15 – 9:45 PM,\n- willingness to participate in Saturday evening Vigil, Sunday morning Liturgy, and major Holy-day parish services, to the maximum extent that your personal and professional obligations allow.\n\nWe do not hold formal auditions. If you have the ability to match pitch, and the willingness to participate, we’re happy to welcome you aboard.\n\nIn a very real sense, “membership” in our choir is mostly based on the extent of your willingness to participate and contribute at rehearsals and services; the more, the better!\n\nUse the link [Contact Information](/choir/#conductor) to contact the choir conductor for more details.\n\nPlease feel free to browse our [Video Materials/Choir Concerts](/choir/#concerts) page.",
+            "ru": "Хор Церкви Всех Святых в Земле Российской Просиявших в Бурлингейм, штат Калифорния, включает прихожан и местных друзей прихода.\n\nМы приветствуем потенциальных участников, которые:\n\n- имеют «музыкальный слух»\n- имеют основное музыкальное образование (например, основное понятие музыкальной нотацией),\n- способны (или желают выучиться) читать церковнославянский текст,\n- желают посещать еженедельные репетиции, как правило, по вечерам в среду, с 7:15 до 9:45 вечера,\n- желают участвовать в Бдениях в субботу вечером, на Воскресных литургиях и в праздничных службах, в той степени, в которой это позволяют их частные и профессиональные обязательства.\n\nМы не проводим официальные прослушивания. Если у вас есть основные способности, мы будем рады приветствовать вас.\n\nВ прямом смысле слова «участие» в нашем хоре в главным образом зависит от степени вашей готовности участвовать в репетициях и службах; чем больше, тем лучше!\n\nИспользуйте ссылку [Контактная Информация](/choir/#conductor), чтобы связаться с дирижерским хором для получения более подробной информации."
+          },
+          "actions": [
+            {
+              "label": {
+                "en": "Email the conductor",
+                "ru": "Написать регенту"
+              },
+              "style": "primary",
+              "email": "Irina_Shachneva@yahoo.com"
+            }
+          ]
+        },
+        {
+          "id": "members",
+          "type": "rich-text",
+          "ru_locked": true,
+          "eyebrow": {
+            "en": "The singers",
+            "ru": "Певчие"
+          },
+          "title": {
+            "en": "Choir Members",
+            "ru": "Члены Xора"
+          },
+          "accent": "Члены Хора",
+          "body": {
+            "en": "The all-volunteer ***Choir of the Church of All Russian Saints*** draws its members from within the parish. The ensemble ranges from students to retirees, from trained vocalists to those with developing vocal skills. All work together in weekly rehearsals to master the musical aspects of the prayers that are sung during our services.\n\nPast and present choir members from all walks of life have dedicated themselves to fulfilling their role as responsorial leaders of the congregation in All-Night Vigil, Liturgy, Great Lent, Passion Week, Easter and other Holy-day services.\n\nIn addition to their contribution to our parish services, many members of the Choir have participated in a variety of regional church services and concerts, including those at/with the Holy Virgin - Joy of all Who Sorrow - Cathedral choir, the San Francisco Christ the Savior Church ***Diakonia*** Male Chorus, Bay Choral Guild, the Slavyanka Russian Chorus and others.\n\nThanks to the efforts of its founders and veterans, a warm, friendly family of singers, bolstered by many new members, continues the tradition of participating in rehearsals and services - for some, the high points of their week.\n\nIn November 2004, the Choir made its concert debut in Burlingame and subsequently released a CD recording of their concert, the first of several. Since then, the Choir has presented formal, off-site concerts in 2006, 2008, 2010 and 2011.\n\nRecently, the Choir has established a ***Choral Presentations Series***, consisting of recitals, workshops and lectures. To acquaint parishioners and area friends with the prayers that will be sung during services, the Choir now presents two recitals per year; one in the Fall, consisting of a variety of selections, and the other during Great Lent, featuring prayers that are sung during Great Lent and Passion Week.\n\nVideo recordings are available at [Video Materials/Choir Concerts](/choir/#concerts) and [Video Materials/Workshops](/choir/#workshops).",
+            "ru": "***Хор Церкви Всех Святых в Земле Российской Просиявших*** состоит из певчих добровольцев-прихожан храма. Ансамбль включает в себя певчих от студентов до пенсионеров, от подготовленных вокалистов до тех, кто развивает свои вокальные навыки. Все вместе еженедельно репетируют, чтобы освоить музыкальные аспекты молитв, которые поются на наших службах.\n\nПрошлые и настоящие участники хора, люди разных профессий, посвящают себя важнейшей задаче ведения общественной молитвы на приходских службах Всенощного Бдения, Литургии, Великого поста, Страстной недели, Пасхи и других праздничных службах.\n\nВ дополнение ко вкладу в наши приходские службы, многие члены хора принимают участие в различных региональных церковных службах и концертах, в том числе изредка в составе Соборного хора Святой Богородицы - Всех Скорбящих Радость в Сан-Франциско, мужского хора храма Христа Спасителя - Диакония, Хоровой Гильдии Залива, Русского Хора Славянка и других.\n\nБлагодаря усилиям основателей и ветеранов, теплая, дружная семья певчих, укрепляемая многими новыми участниками, продолжает традицию участия в репетициях и службах, что для некоторых является кульминационными моментами недели.\n\nВ ноябре 2004 года хор дал первый свой концерт в Бурлингейме, а затем выпустил запись концерта на CD, первую из серии последующих. С тех пор хор выступил концертами на разных сценах в 2006, 2008, 2010 и 2011\n\nгодах.\n\nНедавно хор организовал *Серию Хоровых Представлений* - концертов, семинаров и лекций. Для того, чтобы познакомить прихожан с молитвами, которые поются за богослужениями, хор теперь представляет два концерта в год; один осенью, состоящий из разных песнопений, а другой - во время Великого поста, на котором поются молитвы Великого Поста и Страстной Недели.\n\nВидеозаписи последних концертов доступны на [Видеоматериалах /Концертах Xора](/choir/#concerts)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "concerts",
+      "type": "video-list",
+      "navLabel": {
+        "en": "Concerts",
+        "ru": "Концерты"
+      },
+      "background": "alt",
+      "eyebrow": {
+        "en": "Video materials",
+        "ru": "Видеоматериалы"
+      },
+      "title": {
+        "en": "Parish Choir Concerts",
+        "ru": "Концерты приходского хора"
+      },
+      "intro": {
+        "en": "Professionally filmed concerts of the Burlingame Church Choir.",
+        "ru": "Профессиональные видеозаписи концертов хора нашего храма."
+      },
+      "layout": "grid",
+      "videos": [
+        {
+          "id": "concert-2022-04-03",
+          "youtubeId": "LhEBisvfTTg",
+          "date": "2022-04-03",
+          "heading": {
+            "en": "Lenten choral recital",
+            "ru": "Великопостный концерт"
+          },
+          "description": {
+            "en": "***On Sunday, April 3, 2022***, the Parish Choir of the Church of All Russian Saints in Burlingame, California, presented its annual “Lenten” choral recital, featuring works heard at Great Lent and Passion Week services.",
+            "ru": "***3-го апреля 2022 г.*** приходской хор Церкви Всех Святых в Земле Российских Просиявших в Бурлингейм представил концерт, который включил песнопения поемыя на службах Великого Поста и Страстной Недели."
+          }
+        },
+        {
+          "id": "concert-2021-12-19",
+          "youtubeId": "HvSQIs0TD-U",
+          "date": "2021-12-19",
+          "heading": {
+            "en": "Masterpieces of the Moscow School",
+            "ru": "Шедевры Московской школы"
+          },
+          "description": {
+            "en": "***On Sunday, December 19, 2021***, the Parish Choir of the Church of All Russian Saints in Burlingame presented a concert of *Masterpieces of the Moscow School*. Our program featured some of the most famous and beloved works by some of the most famous composers who were teachers and students at the Synodal School in Moscow in the early 1900s. Although not originally planned, the conclusion of our concert included a brief service of the blessing of newly re-gilded crosses on the four lesser domes (cupola) of our church. NOTE: the rendition of Rachmaninoff’s “Bless the Lord, O my Soul …” that we presented in our concert is the version that we use in our services. It is abridged to coincide with the amount of time that is required to cense our church prior to the Great Litany of our Vespers service.\n\n[Description in Russian (PDF)](https://www.allrussiansaintsburlingame.org/files/2021-Concert-Description-RUS.pdf) · [Concert handout (PDF)](https://www.allrussiansaintsburlingame.org/files/Choir/CONCERT-21-DEC-19-Program-Handout.pdf)",
+            "ru": "***В воскресенье, 19 декабря 2021 года***, приходской хор храма Всех Святых в Бурлингейме представил концерт «Шедевры Московской школы». В программу вошли самые известные и любимые произведения прославленных композиторов — преподавателей и выпускников Синодального училища в Москве начала 1900-х годов. Хотя это и не было запланировано заранее, концерт завершился кратким чином освящения заново позолоченных крестов на четырёх малых главах нашего храма. ПРИМЕЧАНИЕ: прозвучавшее в концерте переложение «Благослови, душе моя, Господа» Рахманинова — то самое, которое мы поём за богослужением. Оно сокращено так, чтобы совпадать со временем каждения храма перед великой ектенией на вечерне.\n\n[Описание концерта на русском языке (PDF)](https://www.allrussiansaintsburlingame.org/files/2021-Concert-Description-RUS.pdf) · [Программа концерта (PDF)](https://www.allrussiansaintsburlingame.org/files/Choir/CONCERT-21-DEC-19-Program-Handout.pdf)"
+          }
+        },
+        {
+          "id": "concert-2019-11-17",
+          "youtubeId": "I5YotZPQuIE",
+          "date": "2019-11-17",
+          "heading": {
+            "en": "Sacred works by contemporary composers",
+            "ru": "Духовные произведения современных композиторов"
+          },
+          "description": {
+            "en": "***On Sunday, November 17, 2019***, the Parish Choir of the Church of All Russian Saints in Burlingame presented a concert of Sacred works by contemporary composers. The concert was dedicated to the memory of recently reposed long-time Parish Council member Aleksey Parshootto, and choir family members James Wiant and Eugenie Roudenko.",
+            "ru": "***17-го ноября 2019 г.*** приходской хор Церкви Всех Святых в Земле Российских Просиявших в Бурлингейм представил концерт который включил произведения современных композиторов. Концерт был посвящен памяти недавно покойных члена Приходского Совета Алексея Паршутто, и членов семьи хора Джеймса Виант и Евгении Руденко."
+          }
+        },
+        {
+          "id": "concert-2019-03-24",
+          "youtubeId": "bNE0X3D509M",
+          "date": "2019-03-24",
+          "heading": {
+            "en": "Lenten choral recital",
+            "ru": "Великопостный концерт"
+          },
+          "description": {
+            "en": "***On Sunday, March 24, 2019***, the Parish Choir of the Church of All Russian Saints in Burlingame, California, presented its annual “Lenten” choral recital, featuring works heard at Great Lent and Passion Week services. The concert was dedicated to the memory of long-time choirmaster Vladimir Pavlovich Roudenko, who peacefully departed this world on February 8, 2019, after a 7-decade career of conducting youth and adult choirs on three continents.",
+            "ru": "***В воскресенье, 24 марта 2019 года***, приходской хор храма Всех Святых в Бурлингейме (Калифорния) представил ежегодный великопостный концерт из песнопений, звучащих на службах Великого поста и Страстной седмицы. Концерт был посвящён памяти многолетнего регента Владимира Павловича Руденко, мирно отошедшего ко Господу 8 февраля 2019 года после семи десятилетий руководства детскими и взрослыми хорами на трёх континентах."
+          }
+        },
+        {
+          "id": "concert-2018-11-04",
+          "youtubeId": "KyNkckM_E2w",
+          "date": "2018-11-04",
+          "heading": {
+            "en": "Works glorifying the Queen of Heaven",
+            "ru": "Песнопения в честь Царицы Небесной"
+          },
+          "description": {
+            "en": "***Sunday, November 4, 2018***. On the day when the Church commemorates the Kazan Icon of the Mother of God (October 22/November 4, 2018), the parish choir of the Church of All Russian Saints presented a concert of works glorifying the Queen of Heaven, dedicated to the memory of reposed benefactor Nikolai Vasilyevich Misersky, in Burlingame, California.",
+            "ru": "***Воскресенье, 4 ноября 2018 года***. В день празднования Казанской иконы Божией Матери (22 октября / 4 ноября 2018 года) приходской хор храма Всех Святых в Бурлингейме представил концерт песнопений, прославляющих Царицу Небесную, посвящённый памяти почившего благотворителя Николая Васильевича Мисерского."
+          }
+        },
+        {
+          "id": "concert-2018-03-18",
+          "youtubeId": "u8PfGs6ij4s",
+          "date": "2018-03-18",
+          "heading": {
+            "en": "Lenten choral recital",
+            "ru": "Великопостный концерт"
+          },
+          "description": {
+            "en": "***On Sunday, March 18, 2018***, the Parish Choir of the Church of All Russian Saints in Burlingame, California, presented its annual “Lenten” choral recital, featuring works heard at Great Lent and Passion Week services. The concert was dedicated to the memory of Metropolitan Laurus, who reposed ten years ago on March 16, 2008. Before the first selection, all who were present chanted “Eternal Memory” for +Metropolitan Laurus, Prince Vladimir Galitzine (+ February 22, 2018) and Dmitri Hvorostovsky (+ November 22, 2017). Several concert selections are familiar sacred works performed by Hvorostovsky.",
+            "ru": "***В воскресенье, 18 марта 2018 года***, приходской хор храма Всех Святых в Бурлингейме (Калифорния) представил ежегодный великопостный концерт из песнопений, звучащих на службах Великого поста и Страстной седмицы. Концерт был посвящён памяти митрополита Лавра, почившего десять лет назад, 16 марта 2008 года. Перед первым песнопением все присутствующие пропели «Вечную память» +митрополиту Лавру, князю Владимиру Голицыну (+22 февраля 2018 г.) и Дмитрию Хворостовскому (+22 ноября 2017 г.). Несколько песнопений программы — известные духовные произведения из репертуара Хворостовского."
+          }
+        },
+        {
+          "id": "concert-2017-10-29",
+          "youtubeId": "yDDFO1RWdKs",
+          "date": "2017-10-29",
+          "heading": {
+            "en": "Concert of sacred music",
+            "ru": "Концерт духовной музыки"
+          },
+          "description": {
+            "en": "***On Sunday October 29, 2017***, the choir of the Church of All Russian Saints in Burlingame, CA, performed a concert of sacred music which was dedicated to the memory of the reposed choir member Konstantin Senchukov. The program included such hymns as Ave Maria (Optina Hermitage chant), Polyeleos at matins (Kastalsky), It is truly meet (Tchaikovsky), and more.",
+            "ru": "***В воскресенье, 29 октября 2017 года***, хор храма Всех Святых в Бурлингейме исполнил концерт духовной музыки, посвящённый памяти почившего певчего хора Константина Сенчукова. В программу вошли такие песнопения, как «Богородице Дево, радуйся» (напев Оптиной пустыни), полиелей на утрене (Кастальский), «Достойно есть» (Чайковский) и другие."
+          }
+        },
+        {
+          "id": "concert-2017-03-19",
+          "youtubeId": "K39j1HOcBK0",
+          "date": "2017-03-19",
+          "heading": {
+            "en": "Selections from Great Lent and Passion Week",
+            "ru": "Песнопения Великого поста и Страстной седмицы"
+          },
+          "description": {
+            "en": "***Sunday, March 19, 2017***. On the Sunday of the Cross, March 19, 2017, the parish choir of the Church of all Russian Saints in Burlingame, CA, performed selections heard at Divine Services during Great Lent and Passion Week. (Does not include Vechanya pamat’)",
+            "ru": "***Воскресенье, 19 марта 2017 года***. В Неделю Крестопоклонную, 19 марта 2017 года, приходской хор храма Всех Святых в Бурлингейме исполнил песнопения, звучащие за богослужениями Великого поста и Страстной седмицы. (Без «Вечной памяти».)"
+          }
+        },
+        {
+          "id": "concert-2016-11-13",
+          "youtubeId": "-vvBOVfdEcA",
+          "date": "2016-11-13",
+          "heading": {
+            "en": "Recital of sacred selections",
+            "ru": "Концерт духовных песнопений"
+          },
+          "description": {
+            "en": "***On Sunday, November 13, 2016***, the parish choir of the Church of all Russian Saints in Burlingame, CA, performed a variety of sacred selections in a recital that was dedicated to the memory of the reposed, long-time member of our choir, Annuska Markevich.",
+            "ru": "***В воскресенье, 13 ноября 2016 года***, приходской хор храма Всех Святых в Бурлингейме исполнил разнообразные духовные песнопения в концерте, посвящённом памяти почившей многолетней певчей нашего хора Аннушки Маркевич."
+          }
+        },
+        {
+          "id": "concert-2016-03-27",
+          "youtubeId": "iP5IWERCvmA",
+          "date": "2016-03-27",
+          "heading": {
+            "en": "Selections from Great Lent and Passion Week",
+            "ru": "Песнопения Великого поста и Страстной седмицы"
+          },
+          "description": {
+            "en": "***Sunday, March 27, 2016***. Selections from Great Lent and Passion Week performed by the parish choir of the Church of all Russian Saints.",
+            "ru": "***Воскресенье, 27 марта 2016 года***. Песнопения Великого поста и Страстной седмицы в исполнении приходского хора храма Всех Святых."
+          }
+        },
+        {
+          "id": "concert-2015-10-15",
+          "youtubeId": "khDEKzraEAc",
+          "date": "2015-10-15",
+          "heading": {
+            "en": "Selections from the All-night Vigil",
+            "ru": "Песнопения Всенощного бдения"
+          },
+          "description": {
+            "en": "***On Sunday, October 15, 2015***, the parish choir of the Church of all Russian Saints performed a recital of selections from the All-night Vigil.",
+            "ru": "***В воскресенье, 15 октября 2015 года***, приходской хор храма Всех Святых исполнил концерт из песнопений Всенощного бдения."
+          },
+          "needsReview": "Source says \"Sunday, October 15, 2015\" but October 15, 2015 was a Thursday. Confirm the date."
+        },
+        {
+          "id": "concert-2014-03-16",
+          "youtubeId": "5NeJVLlgExQ",
+          "date": "2014-03-16",
+          "heading": {
+            "en": "Works of Great Lent and Passion Week (excerpts)",
+            "ru": "Песнопения Великого поста и Страстной седмицы (фрагменты)"
+          },
+          "description": {
+            "en": "***Sunday, March 16, 2014***. Excerpts from a concert of works sung during Great Lent and Passion Week, performed by the parish choir of the Church of all Russian Saints.",
+            "ru": "***Воскресенье, 16 марта 2014 года***. Фрагменты концерта песнопений Великого поста и Страстной седмицы в исполнении приходского хора храма Всех Святых."
+          }
+        },
+        {
+          "id": "concert-2008-06-22",
+          "youtubeId": "wGwvgGzCT_8",
+          "date": "2008-06-22",
+          "heading": {
+            "en": "In memory of Metropolitan Laurus",
+            "ru": "Памяти митрополита Лавра"
+          },
+          "description": {
+            "en": "***Sunday, June 22, 2008***. Full-length, two-part concert of sacred works, dedicated to the memory of Metropolitan Laurus, who reposed on March 16, 2008, on the day when the Church celebrated the Triumph of Orthodoxy. The video recording includes interviews and illustrations associated with the works that were sung.",
+            "ru": "***Воскресенье, 22 июня 2008 года***. Полный концерт духовных произведений в двух отделениях, посвящённый памяти митрополита Лавра, почившего 16 марта 2008 года, в день праздника Торжества Православия. Видеозапись включает интервью и иллюстрации к исполненным произведениям."
+          }
+        }
+      ]
+    },
+    {
+      "id": "workshops",
+      "type": "split",
+      "navLabel": {
+        "en": "Workshops",
+        "ru": "Семинары"
+      },
+      "ratio": "1:1",
+      "columns": [
+        {
+          "type": "video-list",
+          "eyebrow": {
+            "en": "Video materials",
+            "ru": "Видеоматериалы"
+          },
+          "title": {
+            "en": "Workshop Materials",
+            "ru": "Материалы семинаров"
+          },
+          "videos": [
+            {
+              "id": "workshop-music-grammar",
+              "youtubeId": "JDLIdPm6jwg",
+              "heading": {
+                "en": "Basic Music Grammar and Theory",
+                "ru": "Основы нотной грамоты и теории музыки"
+              },
+              "description": {
+                "en": "PowerPoint presentation",
+                "ru": "Презентация PowerPoint"
+              }
+            },
+            {
+              "id": "workshop-structure-of-services",
+              "youtubeId": "InxUD5luh38",
+              "heading": {
+                "en": "Structure of Common Services (and Our Books)",
+                "ru": "Строй основных богослужений (и наши книги)"
+              },
+              "description": {
+                "en": "PowerPoint presentation",
+                "ru": "Презентация PowerPoint"
+              }
+            },
+            {
+              "id": "workshop-choral-performance",
+              "youtubeId": "mFqY7rPwjgc",
+              "heading": {
+                "en": "Elements of Choral Performance",
+                "ru": "Элементы хорового исполнения"
+              },
+              "description": {
+                "en": "PowerPoint presentation",
+                "ru": "Презентация PowerPoint"
+              }
+            },
+            {
+              "id": "workshop-church-notation",
+              "heading": {
+                "en": "Church Music Notation",
+                "ru": "Церковная нотация"
+              },
+              "description": {
+                "en": "PowerPoint presentation",
+                "ru": "Презентация PowerPoint"
+              },
+              "status": {
+                "en": "Coming in the future",
+                "ru": "Готовится"
+              }
+            },
+            {
+              "id": "workshop-eight-tones",
+              "heading": {
+                "en": "The 8-Tone System, Осмогласие",
+                "ru": "Осмогласие"
+              },
+              "description": {
+                "en": "PowerPoint presentation",
+                "ru": "Презентация PowerPoint"
+              },
+              "status": {
+                "en": "Coming in the future",
+                "ru": "Готовится"
+              }
+            }
+          ]
+        },
+        {
+          "id": "other-links",
+          "type": "video-list",
+          "eyebrow": {
+            "en": "Video materials",
+            "ru": "Видеоматериалы"
+          },
+          "title": {
+            "en": "Other Links",
+            "ru": "Другие ссылки"
+          },
+          "videos": [
+            {
+              "id": "roudenko-presentation",
+              "youtubeId": "17fcqaZK5_Q",
+              "heading": {
+                "en": "Vladimir Pavlovich Roudenko: Musical Life and Legacy",
+                "ru": "Владимир Павлович Руденко: музыкальная жизнь и наследие"
+              },
+              "description": {
+                "en": "Presented at the Russian Orthodox Church Musicians Conference in Boston, Massachusetts, October 2019.",
+                "ru": "Доклад на конференции музыкантов Русской Православной Церкви в Бостоне (штат Массачусетс), октябрь 2019 года."
+              }
+            },
+            {
+              "id": "pokayaniya",
+              "heading": "Покаяния отверзи ми двери",
+              "description": {
+                "en": "Music by A. Vedel. Performed by the Choir of the Moscow church \"Joy of All Who Sorrow\". Conductor: Nikolai Matveyev.\n\n[Listen (MP3)](https://www.allrussiansaintsburlingame.org/files/Choir/Pokayanie-Vedela-Grigirieva-Matveeva.mp3)",
+                "ru": "Музыка А. Веделя. Исполняет Хор Московского храма «Всех Скорбящих Радость». Дирижер: Николай Матвеев.\n\n[Слушать (MP3)](https://www.allrussiansaintsburlingame.org/files/Choir/Pokayanie-Vedela-Grigirieva-Matveeva.mp3)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "library",
+      "type": "document-list",
+      "navLabel": {
+        "en": "Music library",
+        "ru": "Нотная библиотека"
+      },
+      "background": "cream",
+      "ru_locked": true,
+      "eyebrow": {
+        "en": "Sheet music",
+        "ru": "Ноты"
+      },
+      "title": {
+        "en": "Music Library",
+        "ru": "Музыкальная библиотека"
+      },
+      "accent": "Сообщение о Доступе к Музыкальной Библиотеке",
+      "intro": {
+        "en": "In our music library, many of the more-elaborate selections that are attributed to specific composers are actually adaptations of the composers’ work, adapted to the vocal needs of our choir. Most typically, SAA voice splits are re-written as SSA. Likewise, TTBB voice splits are often re-written as T, B1, Br, B2. Hence, the composers’ notes are unchanged, but potentially assigned to different voice part. As such, some of the sheet music in this library may not be a 100% presentation of the composer's work.",
+        "ru": "В нашей музыкальной библиотеке многие более сложные обработки, которые приписываются конкретным композиторам, на самом деле являются адаптацией работы композиторов, адаптированные к вокальным потребностям нашего хора. Чаще всего голосовые разделения СAA переписываются как ССA. Аналогично, голосовые разделения TTББ часто переписываются как T, Б1, Бр, Б2. Следовательно, ноты композиторов остаются неизменными, но могут быть назначены другой голосовой партии. Таким образом, некоторые ноты в этой библиотеке могут не являться 100% представлением произведений композитора."
+      },
+      "group": "sheet-music",
+      "groupBy": "category",
+      "columns": 2
+    }
+  ]
+}

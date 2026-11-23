@@ -1,0 +1,136 @@
+{
+  "$schema": "../schemas/links.schema.json",
+  "groups": [
+    {
+      "id": "rocor",
+      "title": {
+        "en": "Church websites",
+        "ru": "Церковные сайты"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Holy Virgin Cathedral Joy of All Who Sorrow",
+            "ru": "Собор Пресвятой Богородицы «Всех скорбящих Радость»"
+          },
+          "href": "http://sfsobor.com/",
+          "description": {
+            "en": "San Francisco",
+            "ru": "Сан-Франциско"
+          }
+        },
+        {
+          "label": {
+            "en": "Holy Virgin Cathedral Bookstore",
+            "ru": "Книжная лавка собора"
+          },
+          "href": "https://www.hvcbookstore.com/"
+        },
+        {
+          "label": {
+            "en": "Western American Diocese (ROCOR)",
+            "ru": "Западно-Американская епархия РПЦЗ"
+          },
+          "href": "https://wadiocese.org/"
+        },
+        {
+          "label": {
+            "en": "The Russian Orthodox Church Outside of Russia (ROCOR Synod)",
+            "ru": "Русская Православная Церковь Заграницей (Синод)"
+          },
+          "href": "https://www.synod.com/"
+        },
+        {
+          "label": {
+            "en": "Holy Trinity Monastery, Jordanville, New York",
+            "ru": "Свято-Троицкий монастырь, Джорданвилль"
+          },
+          "href": "https://www.jordanville.org/"
+        },
+        {
+          "label": {
+            "en": "Holy Trinity Orthodox Seminary",
+            "ru": "Свято-Троицкая духовная семинария"
+          },
+          "href": "https://hts.edu/"
+        },
+        {
+          "label": {
+            "en": "Patriarchia.ru",
+            "ru": "Patriarchia.ru"
+          },
+          "href": "http://www.patriarchia.ru/",
+          "description": {
+            "en": "Russian Orthodox Church (Moscow Patriarchate)",
+            "ru": "Русская Православная Церковь (Московский Патриархат)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": {
+        "en": "Reading, media and charity",
+        "ru": "Чтение, медиа и благотворительность"
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Church of All Russian Saints YouTube Channel",
+            "ru": "YouTube-канал нашего храма"
+          },
+          "href": "https://www.youtube.com/@churchofallrussiansaints-b2874/videos"
+        },
+        {
+          "label": {
+            "en": "Holy Trinity Publications, Jordanville, N.Y.",
+            "ru": "Издательство Holy Trinity Publications, Джорданвилль"
+          },
+          "href": "https://www.holytrinitypublications.com/"
+        },
+        {
+          "label": {
+            "en": "Saint John Benevolent Fund",
+            "ru": "Благотворительный фонд святителя Иоанна"
+          },
+          "href": "http://www.stjohnbenevolentfund.org/"
+        },
+        {
+          "label": {
+            "en": "Fund for Assistance ROCOR",
+            "ru": "Фонд помощи РПЦЗ"
+          },
+          "href": "https://www.fundforassistance.org/"
+        },
+        {
+          "label": {
+            "en": "Ancient Faith Ministries",
+            "ru": "Ancient Faith Ministries"
+          },
+          "href": "https://www.ancientfaith.com/"
+        },
+        {
+          "label": {
+            "en": "Pravoslavie.ru in Russian",
+            "ru": "Pravoslavie.ru"
+          },
+          "href": "https://pravoslavie.ru/"
+        },
+        {
+          "label": {
+            "en": "Orthodox Christianity (Pravoslavie.ru in English)",
+            "ru": "OrthoChristian.com (Pravoslavie.ru на английском)"
+          },
+          "href": "http://orthochristian.com/"
+        },
+        {
+          "label": {
+            "en": "Orthodox Christian Booklets (Bishop Alexander Mileant)",
+            "ru": "Миссионерские листки (епископ Александр Милеант)"
+          },
+          "href": "https://www.fatheralexander.org/"
+        }
+      ]
+    }
+  ]
+}

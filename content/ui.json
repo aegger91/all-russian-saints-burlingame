@@ -1,0 +1,62 @@
+{
+  "$schema": "../schemas/ui.schema.json",
+  "strings": {
+    "nav.home": { "en": "Home", "ru": "Главная" },
+    "a11y.skip": { "en": "Skip to main content", "ru": "Перейти к содержанию" },
+    "a11y.mainNav": { "en": "Main navigation", "ru": "Основное меню" },
+    "a11y.menu": { "en": "Menu", "ru": "Меню" },
+    "a11y.language": { "en": "Language", "ru": "Язык" },
+    "a11y.breadcrumbs": { "en": "Breadcrumb", "ru": "Навигационная цепочка" },
+    "a11y.onThisPage": { "en": "On this page", "ru": "На этой странице" },
+    "a11y.opensNewWindow": { "en": "(opens in a new window)", "ru": "(откроется в новом окне)" },
+    "lang.en": { "en": "In English", "ru": "На английском языке" },
+    "lang.ru": { "en": "In Russian", "ru": "На русском языке" },
+    "common.learnMore": { "en": "Learn more", "ru": "Подробнее" },
+    "services.fullSchedule": { "en": "Full schedule", "ru": "Полное расписание" },
+    "services.allPast": {
+      "en": "The services listed here have passed. Please see the monthly schedule for upcoming services.",
+      "ru": "Указанные богослужения уже прошли. Ближайшие службы смотрите в расписании на месяц."
+    },
+    "events.tbd": { "en": "TBD", "ru": "Позже" },
+    "events.dateTbd": { "en": "Date to be announced", "ru": "Дата будет объявлена" },
+    "events.none": {
+      "en": "There are no upcoming events at the moment.",
+      "ru": "Предстоящих мероприятий пока нет."
+    },
+    "news.readMore": { "en": "Read more", "ru": "Читать далее" },
+    "documents.volume": { "en": "Volume {n}", "ru": "Том {n}" },
+    "gallery.open": { "en": "Open photo {n} of {total}", "ru": "Открыть фото {n} из {total}" },
+    "gallery.viewer": { "en": "Photo viewer", "ru": "Просмотр фотографий" },
+    "gallery.close": { "en": "Close", "ru": "Закрыть" },
+    "gallery.prev": { "en": "Previous photo", "ru": "Предыдущее фото" },
+    "gallery.next": { "en": "Next photo", "ru": "Следующее фото" },
+    "video.watch": { "en": "Watch the video", "ru": "Смотреть видео" },
+    "video.playsFromYoutube": { "en": "Plays from YouTube", "ru": "Воспроизводится с YouTube" },
+    "contact.address": { "en": "Address", "ru": "Адрес" },
+    "contact.phone": { "en": "Telephone", "ru": "Телефон" },
+    "contact.email": { "en": "Email", "ru": "Эл. почта" },
+    "contact.directions": { "en": "Get directions", "ru": "Как добраться" },
+    "contact.tour": { "en": "360° virtual tour", "ru": "Виртуальный тур 360°" },
+    "contact.mapTitle": {
+      "en": "Map: Church of All Russian Saints, 744 El Camino Real, Burlingame",
+      "ru": "Карта: Церковь Всех Святых, 744 El Camino Real, Бурлингейм"
+    },
+    "footer.visit": { "en": "Visit", "ru": "Адрес" },
+    "footer.mapDirections": { "en": "Map and directions", "ru": "Карта и как добраться" },
+    "oc.sampleBadge": { "en": "Sample", "ru": "Образец" },
+    "oc.sampleNotice": {
+      "en": "Sample data for layout only — not real parish events. Live items will appear here once the parish is connected to OrthodoxConnect.",
+      "ru": "Демонстрационные данные для макета — это не настоящие события прихода. Реальные записи появятся здесь после подключения прихода к OrthodoxConnect."
+    },
+    "oc.kind.event": { "en": "Event", "ru": "Событие" },
+    "oc.kind.volunteer": { "en": "Volunteer", "ru": "Помощь" },
+    "oc.kind.need": { "en": "Need", "ru": "Нужда" },
+    "oc.cta.event": { "en": "RSVP", "ru": "Записаться" },
+    "oc.cta.volunteer": { "en": "Sign up to help", "ru": "Предложить помощь" },
+    "oc.cta.need": { "en": "Pledge an item", "ru": "Пожертвовать" },
+    "oc.slots": { "en": "{filled} of {needed} volunteers", "ru": "{filled} из {needed} помощников" },
+    "oc.quantity": { "en": "{filled} of {needed} {unit} pledged", "ru": "Собрано {filled} из {needed} {unit}" },
+    "oc.join": { "en": "Join on OrthodoxConnect", "ru": "Присоединиться в OrthodoxConnect" },
+    "oc.comingSoon": { "en": "Coming soon", "ru": "Скоро" }
+  }
+}
