@@ -315,6 +315,23 @@
   box-shadow: var(--shadow-sm);
 }
 
+.card__icon {
+  display: inline-grid;
+  place-items: center;
+  align-self: flex-start;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface-highlight);
+  border: 1px solid var(--border-strong);
+  color: var(--brand);
+}
+
+.card__icon-svg {
+  width: 30px;
+  height: 30px;
+}
+
 .card > .actions,
 .card__body > .actions {
   margin-top: auto;

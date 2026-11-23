@@ -1450,7 +1450,7 @@
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_-]{11}$"
               },
-"embed": {
+              "embed": {
                 "type": "boolean",
                 "default": true,
                 "description": "false when the video owner has disabled embedding: the thumbnail then opens the video on YouTube instead of playing it in the page."
@@ -1535,7 +1535,7 @@
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_-]{11}$"
               },
-"embed": {
+              "embed": {
                 "type": "boolean",
                 "default": true,
                 "description": "false when the video owner has disabled embedding: the thumbnail then opens the video on YouTube instead of playing it in the page."
@@ -2073,6 +2073,10 @@
               "id": {
                 "$ref": "common.schema.json#/$defs/id"
               },
+              "icon": {
+                "$ref": "common.schema.json#/$defs/iconName",
+                "description": "Pictogram shown above the card title (e.g. candle, gospel, chalice)."
+              },
               "eyebrow": {
                 "$ref": "common.schema.json#/$defs/text"
               },
@@ -2182,6 +2186,10 @@
             "properties": {
               "id": {
                 "$ref": "common.schema.json#/$defs/id"
+              },
+              "icon": {
+                "$ref": "common.schema.json#/$defs/iconName",
+                "description": "Pictogram shown above the card title (e.g. candle, gospel, chalice)."
               },
               "eyebrow": {
                 "$ref": "common.schema.json#/$defs/text"

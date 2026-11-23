@@ -44,7 +44,7 @@ export function render(p, ctx) {
     ${p.showMap !== false && c.mapEmbedUrl
       ? html`<div class="contact-map__map"><iframe src="${c.mapEmbedUrl}" title="${ctx.t('contact.mapTitle')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>`
       : p.showMap === true
-        ? html`<div class="contact-map__map contact-map__map--slot" role="img" aria-label="${ctx.t('contact.mapTitle')}"><span class="contact-map__pin">${icon('pin', 'contact-map__pin-icon')}</span><span class="contact-map__slot-text">${addressLines(ctx).join(', ')}</span></div>`
+        ? html`<div class="contact-map__map contact-map__map--slot" role="img" aria-label="${ctx.t('contact.mapTitle')}"><span class="contact-map__pin">${icon('church', 'contact-map__pin-icon')}</span><span class="contact-map__slot-text">${addressLines(ctx).join(', ')}</span></div>`
         : ''}
   </div>`;
 }

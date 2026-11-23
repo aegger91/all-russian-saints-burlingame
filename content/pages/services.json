@@ -24,7 +24,7 @@
       "accent": "Расписание богослужений",
       "image": {
         "src": "/assets/img/sample-interior.jpg",
-        "alt": { "en": "Sample photo", "ru": "Образец фотографии" },
+        "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" },
         "position": "50% 50%"
       }
     },
@@ -117,6 +117,7 @@
       "cards": [
         {
           "id": "weekly-texts",
+          "icon": "gospel",
           "title": { "en": "Weekly service texts", "ru": "Тексты служб на неделю" },
           "text": {
             "en": "Sample card with text and a link.",
@@ -129,6 +130,7 @@
         },
         {
           "id": "confession",
+          "icon": "candle",
           "title": { "en": "Confession", "ru": "Исповедь" },
           "text": {
             "en": "Sample card: when and how confession is heard in the parish.",
@@ -137,6 +139,7 @@
         },
         {
           "id": "sacraments",
+          "icon": "chalice",
           "title": { "en": "Baptisms and weddings", "ru": "Крещение и венчание" },
           "text": {
             "en": "Sample card: please contact the rector to arrange a sacrament.",

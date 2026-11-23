@@ -29,7 +29,7 @@ export const ctaMeta = {
   dataSources: ['site.json → integrations.orthodoxconnect']
 };
 
-const KIND_ICON = { event: 'calendar', volunteer: 'users', need: 'heart' };
+const KIND_ICON = { event: 'calendar', volunteer: 'bell', need: 'candle' };
 
 function when(item, ctx) {
   if (!item.startsAt) return '';

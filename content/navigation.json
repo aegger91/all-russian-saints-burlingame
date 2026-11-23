@@ -109,7 +109,7 @@
         "label": { "en": "Give", "ru": "Пожертвовать" },
         "page": "give",
         "style": "accent",
-        "icon": "heart"
+        "icon": "candle"
       }
     ]
   },

@@ -62,6 +62,8 @@ There is no server-side code. The PayPal buttons post directly to PayPal, and vi
 
 Every cross on the site is one shared SVG symbol, the Russian Orthodox eight-pointed cross: `CROSS_PATH` in `src/components/_primitives.mjs`, used through `cross()`. `npm run check-crosses` fails if a page uses the ☦ text glyph or if any cross in the pages or in `public/` SVGs has its footrest the wrong way round (its left end must be higher).
 
+Pictograms are Orthodox only (church, candle, chalice, censer, bell, Gospel, prayer rope, icon frame, cross), drawn in the same 1.5px line style as the utility icons (menu, arrows, mail, phone, pin, calendar, social). A card can show one via `"icon"`; the full list is the `iconName` enum in `schemas/common.schema.json`.
+
 `node scripts/check-links.mjs --external` also requests every external link. The placeholder `example.com/.net/.org` links are skipped.
 
 ## Translation (optional)

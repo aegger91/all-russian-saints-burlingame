@@ -277,7 +277,7 @@
       }
     },
     "iconName": {
-      "description": "Icon from the built-in SVG sprite (ICON_SPRITE in src/components/_primitives.mjs). Add a <symbol id=\"i-NAME\"> there to extend the list.",
+      "description": "Icon from the built-in SVG sprite (SPRITE in src/components/_primitives.mjs). Utility icons (arrows, mail, phone, pin, calendar, social...) plus Orthodox pictograms: cross, church, candle, chalice, censer, bell, gospel, prayer-rope, icon-frame. Add a <symbol id=\"i-NAME\"> there to extend the list.",
       "enum": [
         "cross",
         "arch",
@@ -295,9 +295,15 @@
         "facebook",
         "menu",
         "close",
-        "heart",
-        "users",
-        "calendar"
+        "calendar",
+        "church",
+        "candle",
+        "chalice",
+        "censer",
+        "bell",
+        "gospel",
+        "prayer-rope",
+        "icon-frame"
       ]
     },
     "image": {
