@@ -1,11 +1,16 @@
 // Small building blocks shared by all components.
 import { html, raw, attrs, cx } from '../lib/html.mjs';
 
+// The Russian Orthodox eight-pointed cross, the one drawing used for every
+// cross on the site. Titulus, main crossbar and a footrest whose LEFT end
+// (viewer's left: Christ's right hand, toward the penitent thief) is higher.
+// Bars are 4 units on a 24 x 40 grid, so at 12 x 20 px each bar is 2 px.
+export const CROSS_VIEWBOX = '0 0 24 40';
+export const CROSS_PATH = 'M10 0h4v40h-4zM6 4h12v4H6zM0 12h24v4H0zM4 22l16 8v4L4 26z';
+
 // Inline SVG sprite, emitted once per page by the layout.
-// The Russian Orthodox cross: the slanted footrest is higher on the
-// viewer's left (the right hand of Christ, toward the penitent thief).
 export const SPRITE = raw(`<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false"><defs>
-<symbol id="i-cross" viewBox="0 0 24 36"><g fill="currentColor"><rect x="10.7" y="0" width="2.6" height="36"/><rect x="7.2" y="5" width="9.6" height="2.2"/><rect x="2" y="11.2" width="20" height="2.6"/><rect x="5.6" y="25.2" width="12.8" height="2.2" transform="rotate(24 12 26.3)"/></g></symbol>
+<symbol id="i-cross" viewBox="${CROSS_VIEWBOX}"><path d="${CROSS_PATH}" fill="currentColor"/></symbol>
 <symbol id="i-arch" viewBox="0 0 120 28"><path d="M1 27V19C1 13 23 12.3 43 8.6 51.5 7 57 4.2 60 1 63 4.2 68.5 7 77 8.6 97 12.3 119 13 119 19V27" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -28,6 +33,7 @@ export const SPRITE = raw(`<svg width="0" height="0" class="sprite" aria-hidden=
 
 export const icon = (name, className = 'icon') => html`<svg class="${className}" aria-hidden="true" focusable="false"><use href="#i-${name}"></use></svg>`;
 
+// Every cross on the page goes through this (no ☦ text glyphs: fonts draw them inconsistently).
 export const cross = (className = 'cross') => icon('cross', className);
 
 export function eyebrow(text) {

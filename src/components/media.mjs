@@ -10,7 +10,7 @@
  * the player (privacy-enhanced youtube-nocookie.com) loads only after a click.
  */
 import { html, cx } from '../lib/html.mjs';
-import { sectionHead, icon, image } from './_primitives.mjs';
+import { sectionHead, icon, cross, image } from './_primitives.mjs';
 
 export const galleryMeta = {
   type: 'gallery',
@@ -49,6 +49,7 @@ export function videoFacade(v, ctx) {
   const title = ctx.l(v.title) || ctx.t('video.watch');
   const inline = v.embed !== false;
   return html`<div class="video"${inline ? html` data-youtube="${v.youtubeId}"` : ''}>
+    ${cross('video__mark')}
     <img class="video__thumb" src="https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
     <a class="video__link" href="${url}" target="_blank" rel="noopener">
       <span class="video__play">${icon('play', 'video__play-icon')}</span>

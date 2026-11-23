@@ -49,7 +49,7 @@ Requires Node 20 or later.
 npm ci
 npm run dev     # http://localhost:4321, rebuilds on change
 npm run build   # validate content and write the static site to dist/
-npm test        # build + link check in both languages + translation status
+npm test        # build + link check in both languages + cross check + translation status
 ```
 
 **Deploy:** upload `dist/` to any static host or web server.
@@ -59,6 +59,8 @@ npm test        # build + link check in both languages + translation status
 - Serve `404.html` for unknown paths.
 
 There is no server-side code. The PayPal buttons post directly to PayPal, and videos and maps are standard YouTube and Google Maps embeds.
+
+Every cross on the site is one shared SVG symbol, the Russian Orthodox eight-pointed cross: `CROSS_PATH` in `src/components/_primitives.mjs`, used through `cross()`. `npm run check-crosses` fails if a page uses the ☦ text glyph or if any cross in the pages or in `public/` SVGs has its footrest the wrong way round (its left end must be higher).
 
 `node scripts/check-links.mjs --external` also requests every external link. The placeholder `example.com/.net/.org` links are skipped.
 

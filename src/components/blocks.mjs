@@ -14,7 +14,7 @@
  * image      — image (Image), frame ("plain" | "arch")
  */
 import { html, cx } from '../lib/html.mjs';
-import { sectionHead, eyebrow, accent, actions, image, icon, figure } from './_primitives.mjs';
+import { sectionHead, eyebrow, accent, actions, image, icon, cross, figure } from './_primitives.mjs';
 import { more } from './rich-text.mjs';
 
 export const metas = {
@@ -110,16 +110,12 @@ export function renderQuote(p, ctx) {
       ${sectionHead({ eyebrow: p.eyebrow, title: p.title, accent: p.accent }, ctx, { align: p.image ? 'start' : 'center' })}
       <blockquote class="quote-block__quote">
         <div class="quote-block__text">${ctx.md(p.text)}</div>
-        ${p.cite ? html`<footer class="quote-block__cite">${cross()}<cite>${ctx.l(p.cite)}</cite></footer>` : ''}
+        ${p.cite ? html`<footer class="quote-block__cite">${cross('quote-block__cross')}<cite>${ctx.l(p.cite)}</cite></footer>` : ''}
       </blockquote>
       ${more(p, ctx)}
       ${actions(p.actions, ctx)}
     </div>
   </div>`;
-}
-
-function cross() {
-  return icon('cross', 'quote-block__cross');
 }
 
 export function renderNotice(p, ctx) {

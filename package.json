@@ -14,9 +14,10 @@
     "validate": "node scripts/validate.mjs",
     "check-links": "node scripts/check-links.mjs",
     "check-links:external": "node scripts/check-links.mjs --external",
+    "check-crosses": "node scripts/check-crosses.mjs",
     "translate": "node scripts/translate.mjs",
     "translate:check": "node scripts/translate.mjs --check",
-    "test": "npm run build && npm run check-links && npm run translate:check"
+    "test": "npm run build && npm run check-links && npm run check-crosses && npm run translate:check"
   },
   "dependencies": {
     "ajv": "^8.17.1",
