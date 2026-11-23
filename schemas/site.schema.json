@@ -18,7 +18,7 @@
     "shortName": { "$ref": "common.schema.json#/$defs/text" },
     "location": {
       "$ref": "common.schema.json#/$defs/text",
-      "description": "City line shown under the name, e.g. \"Burlingame, California\"."
+      "description": "City line shown under the name, e.g. \"Anytown, California\"."
     },
     "jurisdiction": {
       "type": "object",

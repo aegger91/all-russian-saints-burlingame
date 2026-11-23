@@ -2,7 +2,7 @@
   "name": "orthodox-parish-site-template",
   "version": "1.0.0",
   "private": true,
-  "description": "Master template for Orthodox parish websites: schema-driven JSON content, bilingual (EN/RU) static output, reusable themed components. Reference parish: Church of All Russian Saints, Burlingame (ROCOR).",
+  "description": "Master template for Orthodox parish websites: schema-driven JSON content, bilingual (EN/RU) static output, reusable themed components. Blank version with generic sample content (St. Example Orthodox Church).",
   "type": "module",
   "engines": {
     "node": ">=20"
