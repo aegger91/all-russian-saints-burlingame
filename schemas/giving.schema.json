@@ -2,106 +2,88 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "giving.schema.json",
   "title": "Giving",
-  "description": "content/giving.json: online giving (PayPal Payments Standard buttons) and membership dues.",
+  "description": "content/giving.json: the donation form and membership dues.",
   "type": "object",
   "properties": {
     "$schema": {
       "type": "string"
     },
-    "provider": {
-      "enum": [
-        "paypal"
-      ],
-      "description": "Only PayPal Payments Standard is implemented. A builder can add providers in src/components/giving.mjs."
+    "$comment": {
+      "type": "string"
     },
-    "paypal": {
-      "type": "object",
-      "properties": {
-        "action": {
-          "$ref": "common.schema.json#/$defs/url"
-        },
-        "cmd": {
-          "enum": [
-            "_donations",
-            "_xclick"
-          ]
-        },
-        "business": {
-          "$ref": "common.schema.json#/$defs/email",
-          "description": "PayPal account that receives payments."
-        },
-        "itemName": {
-          "type": "string"
-        },
-        "currency": {
-          "type": "string",
-          "pattern": "^[A-Z]{3}$"
-        },
-        "noNote": {
-          "enum": [
-            "0",
-            "1"
-          ]
-        }
-      },
-      "required": [
-        "action",
-        "cmd",
-        "business",
-        "currency"
-      ],
-      "additionalProperties": false
+    "provider": {
+      "type": "string",
+      "description": "Payment provider name, e.g. \"stripe\". Connect it in ParishSite.handlers.donate."
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "Where the form posts. Empty: sample mode."
     },
     "note": {
-      "$ref": "common.schema.json#/$defs/markdown"
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "amounts": {
+      "type": "object",
+      "properties": {
+        "once": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "monthly": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      },
+      "additionalProperties": false
     },
     "funds": {
       "type": "array",
       "items": {
         "type": "object",
-        "allOf": [
-          {
-            "$ref": "common.schema.json#/$defs/editorial"
-          }
-        ],
         "properties": {
+          "needsReview": {
+            "type": "string",
+            "description": "Note for editors. Never shown on the site."
+          },
           "id": {
             "$ref": "common.schema.json#/$defs/id"
-          },
-          "itemNumber": {
-            "type": "string",
-            "description": "PayPal item_number, used by the treasurer to tell funds apart."
-          },
-          "eyebrow": {
-            "$ref": "common.schema.json#/$defs/text"
           },
           "title": {
             "$ref": "common.schema.json#/$defs/text"
           },
           "description": {
-            "$ref": "common.schema.json#/$defs/markdown"
-          },
-          "button": {
             "$ref": "common.schema.json#/$defs/text"
           }
         },
         "required": [
           "id",
-          "title",
-          "button"
+          "title"
         ],
-        "unevaluatedProperties": false
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[a-z]{2,3}_locked$": {
+            "type": "boolean",
+            "description": "Marks the translations in this object as approved by a person."
+          }
+        }
       },
-      "minItems": 1
+      "description": "What a gift can go to."
     },
     "dues": {
       "type": "object",
-      "allOf": [
-        {
-          "$ref": "common.schema.json#/$defs/editorial"
-        }
-      ],
       "properties": {
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
         "rates": {
           "type": "array",
           "items": {
@@ -110,34 +92,30 @@
               "id": {
                 "$ref": "common.schema.json#/$defs/id"
               },
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
               "amount": {
                 "type": "number",
                 "minimum": 0
               },
-              "label": {
+              "note": {
                 "$ref": "common.schema.json#/$defs/text"
               }
             },
             "required": [
               "id",
-              "amount",
-              "label"
+              "label",
+              "amount"
             ],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "rates"
-      ],
-      "unevaluatedProperties": false
-    },
-    "needsReview": {
-      "type": "string"
+      "additionalProperties": false
     }
   },
   "required": [
-    "provider",
     "funds"
   ],
   "additionalProperties": false

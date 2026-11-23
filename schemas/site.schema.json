@@ -1,60 +1,174 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "site.schema.json",
-  "title": "Site settings",
-  "description": "content/site.json: one per parish. Identity, locales, contact details, logo, default SEO, theme and integrations.",
+  "title": "Site",
+  "description": "content/site.json: parish details, languages and the optional features.",
   "type": "object",
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
+    "$comment": {
+      "type": "string"
+    },
     "id": {
       "$ref": "common.schema.json#/$defs/id",
-      "description": "Parish/site id. Use the same id as the parish record in OrthodoxConnect when there is one."
+      "description": "Short parish id."
     },
     "url": {
-      "$ref": "common.schema.json#/$defs/url",
-      "description": "Production origin, used for canonical, hreflang and sitemap URLs. Override at build time with SITE_URL."
+      "$ref": "common.schema.json#/$defs/url"
     },
-    "name": { "$ref": "common.schema.json#/$defs/text", "description": "Full parish name." },
-    "shortName": { "$ref": "common.schema.json#/$defs/text" },
+    "name": {
+      "$ref": "common.schema.json#/$defs/text",
+      "description": "Parish name."
+    },
     "location": {
       "$ref": "common.schema.json#/$defs/text",
-      "description": "City line shown under the name, e.g. \"Anytown, California\"."
+      "description": "Town and state, shown under the name."
+    },
+    "accent": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "lang": {
+          "$ref": "common.schema.json#/$defs/localeCode"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "description": "The name in Church Slavonic or another language, shown as a second line."
     },
     "jurisdiction": {
       "type": "object",
       "properties": {
-        "name": { "$ref": "common.schema.json#/$defs/text" },
-        "url": { "$ref": "common.schema.json#/$defs/url" }
+        "name": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "url": {
+          "$ref": "common.schema.json#/$defs/url"
+        }
       },
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "additionalProperties": false
     },
     "timezone": {
       "type": "string",
-      "description": "IANA time zone used to hide past services and events, e.g. \"America/Los_Angeles\"."
+      "description": "IANA time zone, e.g. \"America/Los_Angeles\"."
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO currency code for prices."
     },
     "locales": {
-      "description": "Languages the site is published in. Every page is built once per locale at /<code>/<slug>/. Order controls the language switch.",
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
         "properties": {
-          "code": { "$ref": "common.schema.json#/$defs/localeCode" },
-          "label": { "type": "string", "description": "Short switch label, e.g. \"ENG\", \"RUS\"." },
+          "code": {
+            "$ref": "common.schema.json#/$defs/localeCode"
+          },
+          "label": {
+            "type": "string",
+            "description": "Short label for the switcher, e.g. \"EN\"."
+          },
           "name": {
             "type": "string",
-            "description": "Language name in that language, e.g. \"Русский\"."
+            "description": "Name in that language."
           },
-          "ogLocale": { "type": "string", "pattern": "^[a-z]{2}_[A-Z]{2}$" }
+          "ogLocale": {
+            "type": "string"
+          },
+          "dir": {
+            "enum": [
+              "ltr",
+              "rtl"
+            ]
+          },
+          "weekStart": {
+            "enum": [
+              0,
+              1
+            ],
+            "description": "0 Sunday, 1 Monday."
+          }
         },
-        "required": ["code", "label", "name"],
+        "required": [
+          "code",
+          "label",
+          "name"
+        ],
         "additionalProperties": false
-      }
+      },
+      "description": "Site languages. The first is the default."
     },
     "sourceLocale": {
-      "$ref": "common.schema.json#/$defs/localeCode",
-      "description": "Locale every other locale falls back to and translates from. Must be one of `locales`."
+      "$ref": "common.schema.json#/$defs/localeCode"
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "livestream": {
+          "type": "boolean",
+          "description": "Livestream page, live badge and sermons.",
+          "default": false
+        },
+        "store": {
+          "type": "boolean",
+          "description": "Parish store, product pages and cart.",
+          "default": false
+        },
+        "serviceRequests": {
+          "type": "boolean",
+          "description": "Request a Service page.",
+          "default": false
+        },
+        "commemorations": {
+          "type": "boolean",
+          "description": "Commemoration notes and candles.",
+          "default": false
+        },
+        "getInvolved": {
+          "type": "boolean",
+          "description": "Events, volunteering and needs from OrthodoxConnect.",
+          "default": false
+        },
+        "newsletter": {
+          "type": "boolean",
+          "description": "Newsletter sign-up in the footer (OrthodoxConnect).",
+          "default": false
+        }
+      },
+      "additionalProperties": false,
+      "description": "Switch optional parts of the site on or off."
+    },
+    "calendar": {
+      "type": "object",
+      "properties": {
+        "style": {
+          "enum": [
+            "julian",
+            "revised-julian",
+            "gregorian"
+          ],
+          "description": "Church calendar for feasts."
+        },
+        "showOldStyle": {
+          "type": "boolean",
+          "description": "Show the Old Style date (Julian only).",
+          "default": true
+        }
+      },
+      "required": [
+        "style"
+      ],
+      "additionalProperties": false
     },
     "contact": {
       "type": "object",
@@ -62,34 +176,47 @@
         "address": {
           "type": "object",
           "properties": {
-            "street": { "type": "string" },
-            "city": { "type": "string" },
-            "region": { "type": "string" },
-            "postalCode": { "type": "string" },
-            "country": { "type": "string", "pattern": "^[A-Z]{2}$" }
+            "street": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
           },
-          "required": ["street", "city"],
+          "required": [
+            "street",
+            "city"
+          ],
           "additionalProperties": false
         },
-        "geo": {
-          "type": "object",
-          "properties": {
-            "lat": { "type": "number" },
-            "lng": { "type": "number" }
-          },
-          "required": ["lat", "lng"],
-          "additionalProperties": false
+        "phone": {
+          "$ref": "common.schema.json#/$defs/phone"
         },
-        "phone": { "$ref": "common.schema.json#/$defs/phone" },
-        "email": { "$ref": "common.schema.json#/$defs/email" },
+        "email": {
+          "$ref": "common.schema.json#/$defs/email"
+        },
+        "directionsUrl": {
+          "$ref": "common.schema.json#/$defs/url"
+        },
         "mapEmbedUrl": {
-          "$ref": "common.schema.json#/$defs/url",
-          "description": "Google Maps embed URL for the contact-map section."
+          "$ref": "common.schema.json#/$defs/url"
         },
-        "directionsUrl": { "$ref": "common.schema.json#/$defs/url" },
-        "virtualTourUrl": { "$ref": "common.schema.json#/$defs/url" }
+        "officeHours": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
       },
-      "required": ["address"],
+      "required": [
+        "address"
+      ],
       "additionalProperties": false
     },
     "social": {
@@ -97,116 +224,166 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": { "$ref": "common.schema.json#/$defs/id" },
-          "label": { "$ref": "common.schema.json#/$defs/text" },
-          "url": { "$ref": "common.schema.json#/$defs/url" },
-          "icon": { "$ref": "common.schema.json#/$defs/iconName" }
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "url": {
+            "$ref": "common.schema.json#/$defs/url"
+          },
+          "icon": {
+            "$ref": "common.schema.json#/$defs/iconName"
+          }
         },
-        "required": ["id", "label", "url"],
+        "required": [
+          "id",
+          "label",
+          "url"
+        ],
         "additionalProperties": false
       }
     },
-    "livestreamUrl": { "$ref": "common.schema.json#/$defs/url" },
-    "logo": {
-      "description": "Logo. `src` + `alt` is all a new site needs: the header, footer, favicon and structured-data logo all fall back to it. The other fields are optional variants (e.g. a reversed footer logo for the navy footer, PNG favicons).",
+    "livestream": {
       "type": "object",
       "properties": {
-        "src": {
-          "$ref": "common.schema.json#/$defs/path",
-          "description": "Main logo (SVG or PNG; a horizontal lockup works best). Width and height are read from the file."
+        "embedUrl": {
+          "type": "string",
+          "description": "Player URL, loaded only when someone presses play."
         },
-        "alt": { "$ref": "common.schema.json#/$defs/text" },
-        "header": {
-          "$ref": "#/$defs/logoImage",
-          "description": "Header variant (defaults to src)."
+        "watchUrl": {
+          "$ref": "common.schema.json#/$defs/url"
         },
-        "footer": {
-          "$ref": "#/$defs/logoImage",
-          "description": "Variant for the navy footer, e.g. reversed colors. Without it, src is shown on a light tile."
+        "leadMinutes": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Show \"Live now\" this many minutes before a streamed service."
         },
-        "square": {
-          "$ref": "common.schema.json#/$defs/path",
-          "description": "Square image (512px) for structured data (defaults to faviconPng, favicon, then src)."
+        "statusUrl": {
+          "type": "string"
+        },
+        "poster": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/link"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "orthodoxConnect": {
+      "type": "object",
+      "properties": {
+        "parishId": {
+          "type": "string",
+          "description": "Parish id on OrthodoxConnect."
+        },
+        "appUrl": {
+          "$ref": "common.schema.json#/$defs/url"
+        },
+        "sampleFeed": {
+          "type": "string",
+          "description": "Sample feed file under content/."
+        },
+        "newsletterListId": {
+          "type": "string"
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "join": {
+              "type": "string",
+              "description": "URL template. {appUrl}, {parishId} and {id} are filled in."
+            },
+            "createEvent": {
+              "type": "string",
+              "description": "URL template. {appUrl}, {parishId} and {id} are filled in."
+            },
+            "postNeed": {
+              "type": "string",
+              "description": "URL template. {appUrl}, {parishId} and {id} are filled in."
+            },
+            "item": {
+              "type": "string",
+              "description": "URL template. {appUrl}, {parishId} and {id} are filled in."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "parishId",
+        "appUrl"
+      ],
+      "additionalProperties": false
+    },
+    "forms": {
+      "type": "object",
+      "properties": {
+        "contactEndpoint": {
+          "type": "string",
+          "description": "Where the contact form posts. Empty: sample mode."
+        }
+      },
+      "additionalProperties": false
+    },
+    "logo": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/path"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/url"
+            }
+          ],
+          "description": "Logo file. Any shape works; the header sizes it by height."
         },
         "favicon": {
-          "$ref": "common.schema.json#/$defs/path",
-          "description": "Favicon (SVG recommended; defaults to src)."
+          "$ref": "common.schema.json#/$defs/path"
         },
-        "faviconPng": { "$ref": "common.schema.json#/$defs/path" },
-        "appleTouchIcon": { "$ref": "common.schema.json#/$defs/path" }
+        "icon": {
+          "$ref": "common.schema.json#/$defs/path"
+        }
       },
-      "required": ["src", "alt"],
+      "required": [
+        "image"
+      ],
       "additionalProperties": false
     },
     "seo": {
       "type": "object",
       "properties": {
-        "siteName": { "$ref": "common.schema.json#/$defs/localized" },
-        "title": { "$ref": "common.schema.json#/$defs/text", "description": "Home page <title>." },
+        "siteName": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
         "description": {
-          "$ref": "common.schema.json#/$defs/text",
-          "description": "Default meta description."
+          "$ref": "common.schema.json#/$defs/text"
         },
         "image": {
-          "$ref": "common.schema.json#/$defs/path",
-          "description": "Default Open Graph image (1200×630 recommended)."
-        }
-      },
-      "required": ["siteName", "description"],
-      "additionalProperties": false
-    },
-    "theme": {
-      "type": "object",
-      "properties": {
-        "tokens": {
-          "type": "string",
-          "description": "Path to the design tokens file (colors, fonts, sizes), relative to the repo root. Default: theme/tokens.json."
-        },
-        "themeColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
-      },
-      "additionalProperties": false
-    },
-    "integrations": {
-      "type": "object",
-      "properties": {
-        "orthodoxconnect": {
-          "type": "object",
-          "description": "OrthodoxConnect app integration. The feed contract is schemas/orthodoxconnect-feed.schema.json.",
-          "properties": {
-            "enabled": { "type": "boolean" },
-            "parishId": { "type": "string", "description": "Parish id in OrthodoxConnect." },
-            "joinUrl": {
-              "anyOf": [
-                { "$ref": "common.schema.json#/$defs/url" },
-                { "type": "string", "maxLength": 0 }
-              ],
-              "description": "\"Join on OrthodoxConnect\" link. Leave empty until the parish has a real invite URL: the button then links to the feed section instead."
-            },
-            "sampleFeed": {
-              "type": "string",
-              "description": "Feed JSON used when no live feed is configured, relative to content/."
-            }
-          },
-          "required": ["enabled"],
-          "additionalProperties": false
+          "$ref": "common.schema.json#/$defs/path"
         }
       },
       "additionalProperties": false
     }
   },
-  "required": ["id", "url", "name", "timezone", "locales", "sourceLocale", "contact", "logo", "seo"],
-  "additionalProperties": false,
-  "$defs": {
-    "logoImage": {
-      "type": "object",
-      "properties": {
-        "src": { "$ref": "common.schema.json#/$defs/path" },
-        "alt": { "$ref": "common.schema.json#/$defs/text" },
-        "width": { "type": "integer" },
-        "height": { "type": "integer" }
-      },
-      "required": ["src", "alt"],
-      "additionalProperties": false
-    }
-  }
+  "required": [
+    "id",
+    "name",
+    "locales",
+    "sourceLocale",
+    "features",
+    "contact",
+    "logo"
+  ],
+  "additionalProperties": false
 }

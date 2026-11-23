@@ -12,12 +12,14 @@
     "dev": "node scripts/serve.mjs --watch",
     "serve": "node scripts/serve.mjs",
     "validate": "node scripts/validate.mjs",
+    "schemas": "node scripts/schemas.mjs",
     "check-links": "node scripts/check-links.mjs",
     "check-links:external": "node scripts/check-links.mjs --external",
     "check-crosses": "node scripts/check-crosses.mjs",
+    "check-copy": "node scripts/check-copy.mjs",
     "translate": "node scripts/translate.mjs",
     "translate:check": "node scripts/translate.mjs --check",
-    "test": "npm run build && npm run check-links && npm run check-crosses && npm run translate:check"
+    "test": "npm run build && npm run check-links && npm run check-crosses && npm run check-copy && npm run translate:check"
   },
   "dependencies": {
     "ajv": "^8.17.1",

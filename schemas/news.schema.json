@@ -2,84 +2,79 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "news.schema.json",
   "title": "News",
-  "description": "content/news.json: parish news and photo reports, newest first.",
+  "description": "content/news.json: news items, newest first.",
   "type": "object",
   "properties": {
     "$schema": {
       "type": "string"
     },
+    "$comment": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/text"
+          }
+        },
+        "required": [
+          "id",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    },
     "items": {
       "type": "array",
       "items": {
         "type": "object",
-        "allOf": [
-          {
-            "$ref": "common.schema.json#/$defs/editorial"
-          }
-        ],
         "properties": {
+          "needsReview": {
+            "type": "string",
+            "description": "Note for editors. Never shown on the site."
+          },
           "id": {
             "$ref": "common.schema.json#/$defs/id"
           },
           "date": {
             "$ref": "common.schema.json#/$defs/date"
           },
-          "dateLabel": {
-            "$ref": "common.schema.json#/$defs/text",
-            "description": "Replaces the formatted date (e.g. \"Summer 2026\")."
+          "category": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "Category id."
           },
           "featured": {
-            "type": "boolean",
-            "description": "Shown on the home page."
+            "type": "boolean"
           },
           "title": {
             "$ref": "common.schema.json#/$defs/text"
           },
-          "accent": {
-            "type": "string"
-          },
           "summary": {
-            "$ref": "common.schema.json#/$defs/markdown"
+            "$ref": "common.schema.json#/$defs/text"
           },
           "body": {
             "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "bodyLang": {
+            "$ref": "common.schema.json#/$defs/localeCode"
           },
           "image": {
             "$ref": "common.schema.json#/$defs/image"
           },
           "gallery": {
             "$ref": "common.schema.json#/$defs/id",
-            "description": "galleries id shown below the story."
+            "description": "Album id from galleries.json."
           },
           "videos": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "youtubeId": {
-                  "type": "string",
-                  "pattern": "^[A-Za-z0-9_-]{11}$"
-                },
-                "embed": {
-                  "type": "boolean",
-                  "default": true,
-                  "description": "false when the video owner has disabled embedding (opens on YouTube instead)."
-                },
-                "title": {
-                  "$ref": "common.schema.json#/$defs/text"
-                }
-              },
-              "required": [
-                "youtubeId",
-                "title"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "figures": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/image"
+              "type": "object"
             }
           },
           "links": {
@@ -91,28 +86,16 @@
         },
         "required": [
           "id",
+          "date",
           "title"
         ],
-        "unevaluatedProperties": false,
-        "anyOf": [
-          {
-            "required": [
-              "date"
-            ]
-          },
-          {
-            "required": [
-              "dateLabel"
-            ]
-          },
-          {
-            "not": {
-              "required": [
-                "featured"
-              ]
-            }
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[a-z]{2,3}_locked$": {
+            "type": "boolean",
+            "description": "Marks the translations in this object as approved by a person."
           }
-        ]
+        }
       }
     }
   },

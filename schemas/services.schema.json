@@ -2,10 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "services.schema.json",
   "title": "Services",
-  "description": "content/services.json: service types, the current liturgical season, standing notices and the dated list of upcoming services. Past dates are hidden automatically (in the browser, using site.timezone), so an editor only needs to add new dates.",
+  "description": "content/services.json: the weekly pattern, the current season and the dated schedule.",
   "type": "object",
   "properties": {
     "$schema": {
+      "type": "string"
+    },
+    "$comment": {
       "type": "string"
     },
     "serviceTypes": {
@@ -18,6 +21,14 @@
           },
           "name": {
             "$ref": "common.schema.json#/$defs/text"
+          },
+          "durationMinutes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "streamed": {
+            "type": "boolean",
+            "description": "Streamed by default."
           }
         },
         "required": [
@@ -27,82 +38,105 @@
         "additionalProperties": false
       }
     },
-    "season": {
-      "anyOf": [
-        {
-          "type": "object",
-          "description": "Highlighted season (e.g. Nativity Fast). Hidden automatically after `end`.",
-          "allOf": [
-            {
-              "$ref": "common.schema.json#/$defs/editorial"
-            }
-          ],
-          "properties": {
-            "id": {
-              "$ref": "common.schema.json#/$defs/id"
-            },
-            "title": {
-              "$ref": "common.schema.json#/$defs/text"
-            },
-            "accent": {
-              "type": "string",
-              "description": "Church Slavonic/Russian accent line shown in the Slavonic font."
-            },
-            "text": {
-              "$ref": "common.schema.json#/$defs/text"
-            },
-            "start": {
-              "$ref": "common.schema.json#/$defs/date"
-            },
-            "end": {
-              "$ref": "common.schema.json#/$defs/date"
-            }
-          },
-          "required": [
-            "id",
-            "title"
-          ],
-          "unevaluatedProperties": false
+    "standing": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
         },
-        {
-          "type": "null"
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/text"
+              }
+            },
+            "required": [
+              "label",
+              "text"
+            ],
+            "additionalProperties": false
+          }
         }
-      ]
+      },
+      "additionalProperties": false,
+      "description": "The usual week, for the \"Every week\" list."
+    },
+    "season": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "start": {
+          "$ref": "common.schema.json#/$defs/date"
+        },
+        "end": {
+          "$ref": "common.schema.json#/$defs/date"
+        }
+      },
+      "required": [
+        "title",
+        "start",
+        "end"
+      ],
+      "additionalProperties": false
     },
     "notices": {
       "type": "array",
       "items": {
         "type": "object",
-        "allOf": [
-          {
-            "$ref": "common.schema.json#/$defs/editorial"
-          }
-        ],
         "properties": {
+          "needsReview": {
+            "type": "string",
+            "description": "Note for editors. Never shown on the site."
+          },
           "id": {
             "$ref": "common.schema.json#/$defs/id"
           },
           "text": {
             "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "published": {
+            "type": "boolean",
+            "default": true
           }
         },
         "required": [
-          "id",
           "text"
         ],
-        "unevaluatedProperties": false
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[a-z]{2,3}_locked$": {
+            "type": "boolean",
+            "description": "Marks the translations in this object as approved by a person."
+          }
+        }
       }
     },
     "upcoming": {
       "type": "array",
       "items": {
         "type": "object",
-        "allOf": [
-          {
-            "$ref": "common.schema.json#/$defs/editorial"
-          }
-        ],
         "properties": {
+          "needsReview": {
+            "type": "string",
+            "description": "Note for editors. Never shown on the site."
+          },
           "id": {
             "$ref": "common.schema.json#/$defs/id"
           },
@@ -113,89 +147,37 @@
             "$ref": "common.schema.json#/$defs/time"
           },
           "serviceType": {
-            "$ref": "common.schema.json#/$defs/id",
-            "description": "serviceTypes id. Use `title` instead for one-off services."
+            "$ref": "common.schema.json#/$defs/id"
           },
           "title": {
             "$ref": "common.schema.json#/$defs/text",
-            "description": "Overrides the service type name."
+            "description": "Name, if not the service type name."
           },
           "note": {
             "$ref": "common.schema.json#/$defs/text",
-            "description": "Feast or remark shown under the service."
+            "description": "Feast or occasion."
           },
-          "noService": {
-            "type": "boolean",
-            "description": "Marks a date with no services (title explains why)."
+          "streamed": {
+            "type": "boolean"
+          },
+          "location": {
+            "$ref": "common.schema.json#/$defs/text"
           }
         },
         "required": [
           "id",
-          "date"
+          "date",
+          "serviceType"
         ],
-        "unevaluatedProperties": false,
-        "anyOf": [
-          {
-            "required": [
-              "serviceType"
-            ]
-          },
-          {
-            "required": [
-              "title"
-            ]
-          }
-        ]
-      },
-      "description": "Dated services in chronological order."
-    },
-    "standing": {
-      "type": "object",
-      "description": "Regular weekly schedule.",
-      "allOf": [
-        {
-          "$ref": "common.schema.json#/$defs/editorial"
-        }
-      ],
-      "properties": {
-        "published": {
-          "type": "boolean",
-          "description": "Show the regular weekly schedule. Keep false until the times are confirmed."
-        },
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "allOf": [
-              {
-                "$ref": "common.schema.json#/$defs/editorial"
-              }
-            ],
-            "properties": {
-              "id": {
-                "$ref": "common.schema.json#/$defs/id"
-              },
-              "label": {
-                "$ref": "common.schema.json#/$defs/text"
-              },
-              "text": {
-                "$ref": "common.schema.json#/$defs/text"
-              }
-            },
-            "required": [
-              "id",
-              "label",
-              "text"
-            ],
-            "unevaluatedProperties": false
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[a-z]{2,3}_locked$": {
+            "type": "boolean",
+            "description": "Marks the translations in this object as approved by a person."
           }
         }
       },
-      "required": [
-        "published",
-        "items"
-      ],
-      "unevaluatedProperties": false
+      "description": "Dated services, in date order. Past ones hide on their own."
     }
   },
   "required": [

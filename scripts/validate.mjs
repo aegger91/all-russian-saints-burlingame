@@ -81,7 +81,7 @@ function duplicates(list) {
 
 export function checkReferences(content) {
   const errors = [];
-  const { site, index, pages } = content;
+  const { site, index, allPages } = content;
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
   const codes = site.locales.map((l) => l.code);
 
@@ -89,23 +89,26 @@ export function checkReferences(content) {
 
   const collections = {
     'people.json': content.people.people,
-    'events.json': content.events.events,
     'news.json': content.news.items,
+    'news.json categories': content.news.categories || [],
     'galleries.json': content.galleries.galleries,
-    'ministries.json': content.ministries.ministries,
     'documents.json': content.documents.documents,
     'giving.json funds': content.giving.funds,
     'services.json upcoming': content.services.upcoming,
     'services.json serviceTypes': content.services.serviceTypes,
     'links.json': content.links.groups,
-    pages
+    'sermons.json': content.sermons?.sermons || [],
+    'store.json products': content.store?.products || [],
+    'store.json categories': content.store?.categories || [],
+    'requests.json': content.requests?.services || [],
+    pages: allPages
   };
   for (const [name, list] of Object.entries(collections)) {
     for (const id of duplicates(list.map((x) => x.id))) err(name, `duplicate id "${id}"`);
   }
-  for (const slug of duplicates(pages.map((p) => p.slug))) err('pages', `duplicate slug "${slug}"`);
-  if (!index.pages.home) err('pages', 'a page with id "home" is required');
-  for (const problem of content.layoutProblems || []) err('layout.json', problem);
+  for (const p of duplicates(allPages.map((p) => p.path))) err('pages', `two pages have the URL path "/${p}/"`);
+  if (!index.allPages.home) err('pages', 'a page with id "home" is required');
+  for (const problem of content.pageTreeProblems || []) err('pages', problem);
 
   const ref = (where, kind, id, table) => {
     if (id !== undefined && !table[id]) err(where, `unknown ${kind} "${id}"`);
@@ -113,10 +116,11 @@ export function checkReferences(content) {
   const people = index.people;
   const groupsInUse = new Set(content.people.people.flatMap((p) => p.roles.map((r) => r.group)));
 
+  // Links may point at a page whose feature is off; the build drops them.
   const checkTree = (file, data) => {
     walk(data, (node, trail) => {
       const where = `${file} ${trail.join('.')}`.trim();
-      if (typeof node.page === 'string') ref(where, 'page', node.page, index.pages);
+      if (typeof node.page === 'string') ref(where, 'page', node.page, index.allPages);
       if (typeof node.document === 'string') ref(where, 'document', node.document, index.documents);
       if (!node.type) return;
       switch (node.type) {
@@ -129,28 +133,35 @@ export function checkReferences(content) {
           break;
         case 'gallery':
           ref(where, 'gallery', node.gallery, index.galleries);
+          (node.galleries || []).forEach((g) => ref(where, 'gallery', g, index.galleries));
           break;
         case 'link-list':
           node.groups.forEach((g) => ref(where, 'link group', g, index.linkGroups));
           break;
-        case 'give-block':
+        case 'donate-form':
           (node.funds || []).forEach((f) => ref(where, 'fund', f, index.funds));
           break;
         case 'document-list':
           ref(where, 'document group', node.group, index.documentGroups);
           (node.documents || []).forEach((d) => ref(where, 'document', d, index.documents));
           break;
-        case 'card-grid':
-          if (node.source === 'ministries') (node.ids || []).forEach((m) => ref(where, 'ministry', m, index.ministries));
+        case 'news-list':
+          ref(where, 'news category', node.category, index.newsCategories);
           break;
-        case 'event-list':
-          ref(where, 'ministry', node.ministry, index.ministries);
+        case 'store':
+          (node.categories || []).forEach((c) => ref(where, 'store category', c, index.productCategories));
+          break;
+        case 'request-services':
+          (node.services || []).forEach((r) => ref(where, 'service', r, index.requests));
+          break;
+        case 'card-grid':
+          ref(where, 'page', node.parent, index.allPages);
           break;
       }
     });
   };
 
-  for (const page of pages) {
+  for (const page of allPages.filter((p) => !p.generated)) {
     checkTree(`pages/${page.id}.json`, page.sections);
     const ids = [];
     walk(page.sections, (node) => node.type && node.id && ids.push(node.id));
@@ -158,16 +169,30 @@ export function checkReferences(content) {
   }
   checkTree('navigation.json', content.navigation);
   checkTree('people.json', content.people);
-  checkTree('events.json', content.events);
   checkTree('news.json', content.news);
-  checkTree('ministries.json', content.ministries);
+  checkTree('requests.json', content.requests || {});
 
-  content.redirects.forEach((r) => ref(`redirects.json ${r.from}`, 'page', r.page, index.pages));
+  content.redirects.forEach((r) => ref(`redirects.json ${r.from}`, 'page', r.page, index.allPages));
   for (const from of duplicates(content.redirects.map((r) => r.from))) err('redirects.json', `duplicate "${from}"`);
 
   content.services.upcoming.forEach((s) => ref(`services.json upcoming ${s.id}`, 'service type', s.serviceType, index.serviceTypes));
-  content.events.events.forEach((e) => ref(`events.json ${e.id}`, 'ministry', e.ministry, index.ministries));
-  content.news.items.forEach((n) => ref(`news.json ${n.id}`, 'gallery', n.gallery, index.galleries));
+  content.news.items.forEach((n) => {
+    ref(`news.json ${n.id}`, 'gallery', n.gallery, index.galleries);
+    ref(`news.json ${n.id}`, 'category', n.category, index.newsCategories);
+  });
+  (content.sermons?.sermons || []).forEach((x) => {
+    ref(`sermons.json ${x.id}`, 'person', x.speaker, people);
+    ref(`sermons.json ${x.id}`, 'series', x.series, index.sermonSeries);
+  });
+  (content.store?.products || []).forEach((x) => ref(`store.json ${x.id}`, 'category', x.category, index.productCategories));
+  if (content.orthodoxconnect) {
+    const cats = Object.fromEntries((content.orthodoxconnect.categories || []).map((c) => [c.id, c]));
+    content.orthodoxconnect.items.forEach((x) => ref(`OrthodoxConnect feed ${x.id}`, 'category', x.category, cats));
+  }
+  if (content.zapiski) {
+    const types = content.zapiski.types.map((t) => t.id);
+    content.zapiski.commemorations.forEach((c) => (c.for || []).forEach((t) => types.includes(t) || err(`zapiski.json ${c.id}`, `unknown note type "${t}"`)));
+  }
   content.documents.documents.forEach((d) => {
     ref(`documents.json ${d.id}`, 'group', d.group, index.documentGroups);
     const group = index.documentGroups[d.group];
