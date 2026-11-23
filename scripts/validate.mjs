@@ -105,6 +105,7 @@ export function checkReferences(content) {
   }
   for (const slug of duplicates(pages.map((p) => p.slug))) err('pages', `duplicate slug "${slug}"`);
   if (!index.pages.home) err('pages', 'a page with id "home" is required');
+  for (const problem of content.layoutProblems || []) err('layout.json', problem);
 
   const ref = (where, kind, id, table) => {
     if (id !== undefined && !table[id]) err(where, `unknown ${kind} "${id}"`);

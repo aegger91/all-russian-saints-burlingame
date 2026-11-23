@@ -19,6 +19,14 @@ It does not depend on any framework, CMS or hosting vendor.
 | `src/components/` | One render function per section type, listed in `registry.mjs`. |
 | `scripts/` | `validate`, `check-links`, `translate` and the dev server. |
 
+## Customizing
+
+| What | Where |
+|---|---|
+| Colors and fonts | `theme/tokens.json`. Colors live in `color`/`semantic`, font stacks in `font`, and the web-font files in `fontFaces` (or `fontImports` for hosted fonts). Point `site.theme.tokens` at another tokens file to switch themes. |
+| Logo | `site.logo.src` (plus `alt`) is the only required field. Header, footer, favicon and structured data all fall back to it. |
+| Sections per page | `content/layout.json`. Use `order` to set the section order and `disabled` to switch sections off, without editing the page files. |
+
 ## Build and run
 
 Requires Node 20 or later.

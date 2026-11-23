@@ -8,16 +8,46 @@
     "$schema": { "type": "string" },
     "meta": {
       "type": "object",
-      "properties": { "name": { "type": "string" }, "description": { "type": "string" } },
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "fonts": {
+          "type": "string",
+          "description": "Where the fonts come from and their licenses."
+        }
+      },
       "additionalProperties": false
     },
-    "color": { "$ref": "#/$defs/group", "description": "Raw palette. Referenced by semantic tokens; components should use semantic tokens." },
+    "color": {
+      "$ref": "#/$defs/group",
+      "description": "Raw palette. Referenced by semantic tokens; components should use semantic tokens."
+    },
     "semantic": {
       "$ref": "#/$defs/group",
       "description": "Roles used by components (brand, accent, surface, text, border...).",
-      "required": ["brand", "brand-strong", "accent", "accent-strong", "surface", "surface-alt", "surface-raised", "surface-inverse", "text", "text-soft", "text-inverse", "heading", "border", "border-strong", "focus"]
+      "required": [
+        "brand",
+        "brand-strong",
+        "accent",
+        "accent-strong",
+        "surface",
+        "surface-alt",
+        "surface-raised",
+        "surface-inverse",
+        "text",
+        "text-soft",
+        "text-inverse",
+        "heading",
+        "border",
+        "border-strong",
+        "focus"
+      ]
     },
-    "font": { "$ref": "#/$defs/group", "required": ["serif", "sans", "slavonic"], "description": "Font stacks. `slavonic` is used only for Russian / Church Slavonic accents." },
+    "font": {
+      "$ref": "#/$defs/group",
+      "required": ["serif", "sans", "slavonic"],
+      "description": "Font stacks. `slavonic` is used only for Russian / Church Slavonic accents."
+    },
     "font-weight": { "$ref": "#/$defs/group" },
     "font-size": { "$ref": "#/$defs/group" },
     "line-height": { "$ref": "#/$defs/group" },
@@ -27,9 +57,47 @@
     "shadow": { "$ref": "#/$defs/group" },
     "layout": {
       "$ref": "#/$defs/group",
-      "required": ["container", "gutter", "header-height", "header-height-compact", "logo-height", "logo-height-compact", "logo-height-mobile"]
+      "required": [
+        "container",
+        "gutter",
+        "header-height",
+        "header-height-compact",
+        "logo-height",
+        "logo-height-compact",
+        "logo-height-mobile"
+      ]
     },
-    "motion": { "$ref": "#/$defs/group" }
+    "motion": { "$ref": "#/$defs/group" },
+    "fontImports": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "Hosted font stylesheets to @import, e.g. \"https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap\". Use either this or fontFaces."
+    },
+    "fontFaces": {
+      "type": "array",
+      "description": "Self-hosted font files (put them in public/assets/fonts/). Each entry becomes an @font-face rule; `preload: true` adds a <link rel=preload> for fonts used above the fold. The families are then referenced from the `font` group.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "family": { "type": "string" },
+          "src": { "$ref": "common.schema.json#/$defs/path" },
+          "format": { "enum": ["woff2", "woff", "truetype", "opentype"], "default": "woff2" },
+          "style": { "enum": ["normal", "italic"], "default": "normal" },
+          "weight": {
+            "type": ["string", "integer"],
+            "description": "400, or a range for variable fonts: \"200 900\"."
+          },
+          "display": {
+            "enum": ["swap", "fallback", "optional", "block", "auto"],
+            "default": "swap"
+          },
+          "unicodeRange": { "type": "string" },
+          "preload": { "type": "boolean" }
+        },
+        "required": ["family", "src"],
+        "additionalProperties": false
+      }
+    }
   },
   "required": ["color", "semantic", "font", "font-size", "space", "radius", "layout"],
   "additionalProperties": false,

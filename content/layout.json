@@ -1,0 +1,57 @@
+{
+  "$schema": "../schemas/layout.schema.json",
+  "$comment": "Turn sections on and off (disabled) and change their order (order) per page, without editing the page files. Ids are the section ids in content/pages/<page>.json.",
+  "pages": {
+    "home": {
+      "order": [
+        "hero",
+        "welcome",
+        "rector-message",
+        "community",
+        "events-news",
+        "get-involved",
+        "join-orthodoxconnect"
+      ],
+      "disabled": []
+    },
+    "services": {
+      "order": ["services-header", "upcoming", "service-texts", "prayers"],
+      "disabled": []
+    },
+    "parish": {
+      "order": ["parish-header", "about", "history", "membership", "stewardship", "bylaws"],
+      "disabled": []
+    },
+    "history": { "order": ["history-header", "history-excerpt", "history-russian"], "disabled": [] },
+    "clergy": {
+      "order": ["clergy-header", "rector", "biography", "deacon-matushka", "council"],
+      "disabled": []
+    },
+    "choir": {
+      "order": [
+        "choir-header",
+        "history",
+        "conductor",
+        "singers",
+        "concerts",
+        "workshops",
+        "library"
+      ],
+      "disabled": []
+    },
+    "sisterhood": { "order": ["sisterhood-header", "about", "events"], "disabled": [] },
+    "school": {
+      "order": ["school-header", "registration", "about", "goals", "teachers", "akt"],
+      "disabled": []
+    },
+    "newsletter": { "order": ["newsletter-header", "current", "archive"], "disabled": [] },
+    "orthodoxy": { "order": ["orthodoxy-header", "text"], "disabled": [] },
+    "give": {
+      "order": ["give-header", "give", "dues-stewardship", "your-gifts-at-work"],
+      "disabled": []
+    },
+    "contact": { "order": ["contact-header", "visit", "contacts", "links"], "disabled": [] },
+    "news": { "order": ["news-header", "news"], "disabled": [] },
+    "not-found": { "order": ["not-found-header", "not-found-links"], "disabled": [] }
+  }
+}

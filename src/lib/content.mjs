@@ -23,6 +23,41 @@ export function readJson(file) {
 
 const byId = (list = []) => Object.fromEntries(list.map((item) => [item.id, item]));
 
+const childBlocks = (s) => [s.columns, s.blocks].filter(Array.isArray).flat();
+
+// content/layout.json: per-page section switches and order, so a builder (or
+// an editor) can turn sections on and off and reorder them without touching
+// the page files. Unknown ids are collected for the validator.
+function applyLayout(pages, layout) {
+  const problems = [];
+  for (const [pageId, cfg] of Object.entries(layout?.pages || {})) {
+    const page = pages.find((p) => p.id === pageId);
+    if (!page) {
+      problems.push(`unknown page "${pageId}"`);
+      continue;
+    }
+    if (cfg.order) {
+      const rank = new Map(cfg.order.map((id, i) => [id, i]));
+      for (const id of cfg.order) if (!page.sections.some((s) => s.id === id)) problems.push(`${pageId}: order lists unknown section "${id}"`);
+      page.sections = page.sections
+        .map((s, i) => ({ s, i, r: rank.has(s.id) ? rank.get(s.id) : cfg.order.length + i }))
+        .sort((a, b) => a.r - b.r)
+        .map(({ s }) => s);
+    }
+    const disabled = new Set(cfg.disabled || []);
+    const visit = (list) => list.forEach((s) => {
+      if (s.id && disabled.has(s.id)) {
+        s.hidden = true;
+        disabled.delete(s.id);
+      }
+      visit(childBlocks(s));
+    });
+    visit(page.sections);
+    for (const id of disabled) problems.push(`${pageId}: disabled lists unknown section "${id}"`);
+  }
+  return problems;
+}
+
 export function loadContent({ feedOverride } = {}) {
   const f = (name) => readJson(path.join(CONTENT_DIR, name));
   const site = f('site.json');
@@ -49,6 +84,8 @@ export function loadContent({ feedOverride } = {}) {
     redirects: fs.existsSync(path.join(CONTENT_DIR, 'redirects.json')) ? f('redirects.json').redirects : [],
     pages
   };
+  const layoutFile = path.join(CONTENT_DIR, 'layout.json');
+  content.layoutProblems = fs.existsSync(layoutFile) ? applyLayout(pages, f('layout.json')) : [];
 
   const oc = site.integrations?.orthodoxconnect;
   if (oc?.enabled) {

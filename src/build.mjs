@@ -17,11 +17,11 @@ import crypto from 'node:crypto';
 import { loadContent, readJson, themeFile, ROOT, PUBLIC_DIR } from './lib/content.mjs';
 import { createContext } from './lib/context.mjs';
 import { renderPage } from './components/layout.mjs';
-import { tokensToCss } from './lib/tokens.mjs';
+import { tokensToCss, fontsToCss, preloadFonts } from './lib/tokens.mjs';
 
 const OUT = path.resolve(ROOT, process.env.OUT_DIR || 'dist');
 const BASE_PATH = (process.env.BASE_PATH || '').replace(/\/$/, '');
-const STYLE_ORDER = ['fonts.css', 'base.css', 'layout.css', 'components.css', 'sections.css', 'utilities.css'];
+const STYLE_ORDER = ['base.css', 'layout.css', 'components.css', 'sections.css', 'utilities.css'];
 
 async function loadFeed() {
   const url = process.env.ORTHODOXCONNECT_FEED_URL;
@@ -54,7 +54,7 @@ function buildAssets(site) {
   const file = themeFile(site);
   const tokens = readJson(file);
   const styles = STYLE_ORDER.map((name) => fs.readFileSync(path.join(ROOT, 'src/styles', name), 'utf8'));
-  const css = [`/* Generated from ${path.relative(ROOT, file)} */\n${tokensToCss(tokens)}`, ...styles]
+  const css = [`/* Generated from ${path.relative(ROOT, file)} */\n${fontsToCss(tokens)}\n\n${tokensToCss(tokens)}`, ...styles]
     .join('\n\n')
     .replace(/url\((["']?)\/(?!\/)/g, `url($1${BASE_PATH}/`);
   const js = fs.readFileSync(path.join(ROOT, 'src/client/site.js'), 'utf8');
@@ -63,7 +63,8 @@ function buildAssets(site) {
   writeFile(path.join(OUT, 'assets/tokens.css'), tokensToCss(tokens));
   return {
     cssHref: `${BASE_PATH}/assets/site.css?v=${hash(css)}`,
-    jsHref: `${BASE_PATH}/assets/site.js?v=${hash(js)}`
+    jsHref: `${BASE_PATH}/assets/site.js?v=${hash(js)}`,
+    preloadFonts: preloadFonts(tokens)
   };
 }
 

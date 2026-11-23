@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "layout.schema.json",
+  "title": "Page layout",
+  "description": "content/layout.json: per-page section switches and order. `order` lists top-level section ids in the order they should appear (sections not listed keep their file order after the listed ones). `disabled` lists section or block ids that are not rendered. Menus and links that point at a disabled section are reported by the link checker.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "$comment": { "type": "string" },
+    "pages": {
+      "type": "object",
+      "propertyNames": { "$ref": "common.schema.json#/$defs/id" },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "order": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" }, "uniqueItems": true },
+          "disabled": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/id" }, "uniqueItems": true }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["pages"],
+  "additionalProperties": false
+}

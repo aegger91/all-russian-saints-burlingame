@@ -545,6 +545,12 @@ a.topbar__item:hover {
   justify-self: start;
 }
 
+.site-footer__logo-link--tile {
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+}
+
 .site-footer__logo {
   display: block;
   width: min(430px, 100%);

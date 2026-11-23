@@ -72,11 +72,11 @@ function topbar(ctx) {
 
 function header(ctx) {
   const nav = ctx.content.navigation.header;
-  const logo = ctx.site.logo;
+  const logo = ctx.logo.header;
   return html`<header class="site-header" data-header>
     <div class="container site-header__inner">
       <a class="brand" href="${ctx.pagePath('home')}">
-        <img class="brand__logo" src="${ctx.asset(logo.header.src)}" alt="${ctx.l(logo.header.alt)}" width="${logo.header.width}" height="${logo.header.height}">
+        <img class="brand__logo" src="${ctx.asset(logo.src)}" alt="${ctx.l(logo.alt)}" width="${logo.width}" height="${logo.height}">
       </a>
       <nav class="nav" id="site-nav" aria-label="${ctx.t('a11y.mainNav')}" data-nav>
         <ul class="nav__list">${nav.items.map((i) => navItem(i, ctx))}</ul>
@@ -114,13 +114,13 @@ function pageNav(ctx) {
 
 function footer(ctx) {
   const f = ctx.content.navigation.footer;
-  const logo = ctx.site.logo;
+  const logo = ctx.logo.footer;
   const c = ctx.site.contact;
   const year = new Date().getFullYear();
   return html`<footer class="site-footer">
     <div class="container">
       <div class="site-footer__brand">
-        <a href="${ctx.pagePath('home')}" class="site-footer__logo-link"><img class="site-footer__logo" src="${ctx.asset(logo.footer.src)}" alt="${ctx.l(logo.footer.alt)}" width="${logo.footer.width}" height="${logo.footer.height}" loading="lazy"></a>
+        <a href="${ctx.pagePath('home')}" class="${cx('site-footer__logo-link', ctx.logo.footerTile && 'site-footer__logo-link--tile')}"><img class="site-footer__logo" src="${ctx.asset(logo.src)}" alt="${ctx.l(logo.alt)}" width="${logo.width}" height="${logo.height}" loading="lazy"></a>
         <div class="site-footer__intro">
           <p class="site-footer__about">${ctx.l(f.about)}</p>
           <p class="site-footer__slavonic" lang="ru">${ctx.site.name.ru}</p>
@@ -164,7 +164,7 @@ function jsonLd(ctx) {
     name: ctx.l(s.name),
     alternateName: s.name.ru && ctx.locale !== 'ru' ? s.name.ru : s.name.en,
     url: ctx.absoluteUrl(ctx.pagePath('home')),
-    logo: ctx.absoluteUrl(ctx.asset(s.logo.square)),
+    logo: ctx.absoluteUrl(ctx.asset(ctx.logo.square)),
     telephone: s.contact.phone?.e164,
     email: s.contact.email,
     address: { '@type': 'PostalAddress', streetAddress: a.street, addressLocality: a.city, addressRegion: a.region, postalCode: a.postalCode, addressCountry: a.country },
@@ -175,7 +175,8 @@ function jsonLd(ctx) {
   return raw(`<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`);
 }
 
-function head(ctx, { cssHref, jsHref }) {
+function head(ctx, assets) {
+  const { cssHref, jsHref } = assets;
   const { site, page } = ctx;
   const seo = page.seo || {};
   const siteName = ctx.l(site.seo.siteName);
@@ -185,7 +186,7 @@ function head(ctx, { cssHref, jsHref }) {
   const urls = pageUrls(ctx);
   const canonical = ctx.absoluteUrl(urls[ctx.locale]);
   const ogImage = ctx.absoluteUrl(ctx.asset(seo.image || site.seo.image));
-  const fontsPreload = site.theme?.preloadFonts || [];
+  const fontsPreload = assets.preloadFonts || [];
   return html`<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -202,10 +203,8 @@ ${ctx.localeCodes.map((code) => html`<link rel="alternate" hreflang="${code}" hr
 <meta property="og:locale" content="${ctx.localeInfo.ogLocale}">
 ${ctx.site.locales.filter((l) => l.code !== ctx.locale).map((l) => html`<meta property="og:locale:alternate" content="${l.ogLocale}">\n`)}<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="${site.theme?.themeColor || '#174372'}">
-<link rel="icon" href="${ctx.asset(site.logo.favicon)}" type="image/svg+xml">
-<link rel="icon" href="${ctx.asset(site.logo.faviconPng)}" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="${ctx.asset(site.logo.appleTouchIcon)}">
-${fontsPreload.map((f) => html`<link rel="preload" href="${ctx.asset(f)}" as="font" type="font/woff2" crossorigin>\n`)}<link rel="stylesheet" href="${cssHref}">
+<link rel="icon" href="${ctx.asset(ctx.logo.favicon)}"${/\.svg$/i.test(ctx.logo.favicon) ? html` type="image/svg+xml"` : ''}>
+${ctx.logo.faviconPng ? html`<link rel="icon" href="${ctx.asset(ctx.logo.faviconPng)}" type="image/png" sizes="32x32">\n` : ''}${ctx.logo.appleTouchIcon ? html`<link rel="apple-touch-icon" href="${ctx.asset(ctx.logo.appleTouchIcon)}">\n` : ''}${fontsPreload.map((f) => html`<link rel="preload" href="${ctx.asset(f)}" as="font" type="font/woff2" crossorigin>\n`)}<link rel="stylesheet" href="${cssHref}">
 <script src="${jsHref}" defer></script>
 ${jsonLd(ctx)}
 </head>`;

@@ -6,14 +6,8 @@
     "en": "Church of All Russian Saints",
     "ru": "Церковь Всех Святых в Земле Российской Просиявших"
   },
-  "shortName": {
-    "en": "All Russian Saints, Burlingame",
-    "ru": "Церковь Всех Святых, Бурлингейм"
-  },
-  "location": {
-    "en": "Burlingame, California",
-    "ru": "Бурлингейм, Калифорния"
-  },
+  "shortName": { "en": "All Russian Saints, Burlingame", "ru": "Церковь Всех Святых, Бурлингейм" },
+  "location": { "en": "Burlingame, California", "ru": "Бурлингейм, Калифорния" },
   "jurisdiction": {
     "name": {
       "en": "Western American Diocese of the Russian Orthodox Church Outside Russia (ROCOR)",
@@ -58,14 +52,10 @@
   ],
   "livestreamUrl": "https://www.youtube.com/@churchofallrussiansaints-b2874",
   "logo": {
-    "header": {
-      "src": "/logo/ars-lockup-horizontal-color.svg",
-      "alt": {
-        "en": "Church of All Russian Saints, Burlingame, California — home",
-        "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния — на главную"
-      },
-      "width": 1118,
-      "height": 380
+    "src": "/logo/ars-lockup-horizontal-color.svg",
+    "alt": {
+      "en": "Church of All Russian Saints, Burlingame, California — home",
+      "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния — на главную"
     },
     "footer": {
       "src": "/logo/ars-lockup-horizontal-oncolor-navy.svg",
@@ -96,14 +86,7 @@
     },
     "image": "/assets/img/newlogo-4.jpg"
   },
-  "theme": {
-    "tokens": "theme/tokens.json",
-    "themeColor": "#174372",
-    "preloadFonts": [
-      "/assets/fonts/cormorant-garamond-latin-600-normal.woff2",
-      "/assets/fonts/source-sans-3-latin-wght-normal.woff2"
-    ]
-  },
+  "theme": { "tokens": "theme/tokens.json", "themeColor": "#174372" },
   "integrations": {
     "orthodoxconnect": {
       "enabled": true,

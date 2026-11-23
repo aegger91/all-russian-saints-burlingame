@@ -75,6 +75,22 @@ export function createContext({ content, locale, page, basePath = '', siteUrl })
   ctx.formatTime = (hhmm) => formatTime(hhmm, locale);
   ctx.imageSize = (src) => imageSize(PUBLIC_DIR, src);
 
+  // site.logo.src is the one required logo field; every other variant falls
+  // back to it. Without a dedicated footer logo the main one is shown on a
+  // light tile so it stays legible on the navy footer.
+  const logo = site.logo;
+  const sized = (img) => ({ ...img, ...(img.width && img.height ? {} : ctx.imageSize(img.src)) });
+  const main = sized({ src: logo.src, alt: logo.alt });
+  ctx.logo = {
+    header: logo.header ? sized(logo.header) : main,
+    footer: logo.footer ? sized(logo.footer) : main,
+    footerTile: !logo.footer,
+    favicon: logo.favicon || logo.src,
+    faviconPng: logo.faviconPng,
+    appleTouchIcon: logo.appleTouchIcon,
+    square: logo.square || logo.faviconPng || logo.favicon || logo.src
+  };
+
   const marked = new Marked({
     gfm: true,
     breaks: false,
