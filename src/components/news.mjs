@@ -1,22 +1,24 @@
 /**
  * news-list — items from content/news.json.
  *
- * Props: eyebrow, title, intro, variant ("cards" | "full"), limit,
- *        featuredOnly (bool), actions
+ * Props: eyebrow, title, intro, limit, featuredOnly (bool), category (only
+ *        one category), filters (category buttons from news.categories),
+ *        articles (true on the News page: full articles instead of cards), actions
  * Cards link to the full article on the news page (#item-id).
  */
-import { html, cx } from '../lib/html.mjs';
+import { html } from '../lib/html.mjs';
 import { sectionHead, actions, image, figure, icon, accent } from './_primitives.mjs';
 import { galleryGrid, videoFacade } from './media.mjs';
 
 export const meta = {
   type: 'news-list',
   title: 'News list',
-  description: 'News cards (image, date, title, summary) or full articles with galleries, videos and links.',
+  description: 'News cards or full articles, with category filters, galleries, videos and links.',
   dataSources: ['news.json', 'galleries.json']
 };
 
 const dateText = (item, ctx) => (item.dateLabel ? ctx.l(item.dateLabel) : item.date ? ctx.formatDate(item.date, 'long') : '');
+const newsPage = (ctx) => ctx.content.pages.find((p) => p.sections.some((s) => s.type === 'news-list' && s.articles));
 
 function cardImage(item, ctx) {
   if (item.image) return item.image;
@@ -24,27 +26,32 @@ function cardImage(item, ctx) {
   return null;
 }
 
-function card(item, ctx) {
+const categoryLabel = (item, ctx) => {
+  const c = ctx.content.index.newsCategories?.[item.category];
+  return c ? html`<span class="news-cat">${ctx.l(c.label)}</span>` : '';
+};
+
+function card(item, ctx, page) {
   const img = cardImage(item, ctx);
   const date = dateText(item, ctx);
-  return html`<article class="card news-card">
-    <a class="news-card__link" href="${ctx.pagePath('news', { anchor: item.id })}">
-      ${img ? html`<div class="news-card__media">${image({ ...img, alt: '' }, ctx, { sizes: '(min-width: 900px) 33vw, 100vw' })}</div>` : ''}
+  const url = page ? ctx.pagePath(page.id, { anchor: item.id }) : null;
+  const inner = html`${img ? html`<div class="news-card__media">${image({ ...img, alt: '' }, ctx, { sizes: '(min-width: 900px) 33vw, 100vw' })}</div>` : ''}
       <div class="news-card__body">
-        ${date ? html`<p class="news-card__date">${date}</p>` : ''}
+        <p class="news-card__date">${categoryLabel(item, ctx)}${date ? html`<span>${date}</span>` : ''}</p>
         <h3 class="news-card__title">${ctx.l(item.title)}</h3>
         ${item.summary ? html`<p class="news-card__summary">${ctx.l(item.summary)}</p>` : ''}
-        <span class="text-link">${ctx.t('news.readMore')}${icon('arrow', 'text-link__icon')}</span>
-      </div>
-    </a>
+        ${url ? html`<span class="text-link">${ctx.t('news.readMore')}${icon('arrow', 'text-link__icon')}</span>` : ''}
+      </div>`;
+  return html`<article class="card news-card" data-filter-item data-category="${item.category || ''}">
+    ${url ? html`<a class="news-card__link" href="${url}">${inner}</a>` : inner}
   </article>`;
 }
 
 function article(item, ctx) {
   const date = dateText(item, ctx);
-  return html`<article class="news-article" id="${item.id}">
+  return html`<article class="news-article" id="${item.id}" data-filter-item data-category="${item.category || ''}">
     <header class="news-article__head">
-      ${date ? html`<p class="news-article__date">${date}</p>` : ''}
+      <p class="news-article__date">${categoryLabel(item, ctx)}${date ? html`<span>${date}</span>` : ''}</p>
       <h2 class="news-article__title">${ctx.l(item.title)}</h2>
       ${accent(item.accent, ctx, 'news-article__accent accent')}
     </header>
@@ -53,6 +60,7 @@ function article(item, ctx) {
       ${item.links?.length
         ? html`<ul class="link-rows">${item.links.map((l) => {
             const url = ctx.href(l);
+            if (!url) return '';
             const ext = ctx.isExternal(url);
             return html`<li><a class="link-row" href="${url}"${ext ? html` target="_blank" rel="noopener"` : ''}><span>${ctx.l(l.label)}</span>${icon(ext ? 'external' : 'arrow', 'link-row__icon')}</a></li>`;
           })}</ul>`
@@ -65,16 +73,31 @@ function article(item, ctx) {
   </article>`;
 }
 
+function filterBar(items, ctx) {
+  const cats = (ctx.content.news.categories || []).filter((c) => items.some((i) => i.category === c.id));
+  if (cats.length < 2) return '';
+  return html`<div class="filter-bar" role="group" aria-label="${ctx.t('filter.label')}" data-filter-bar hidden>
+    <button class="chip" type="button" data-filter="" aria-pressed="true">${ctx.t('filter.all')}</button>
+    ${cats.map((c) => html`<button class="chip" type="button" data-filter="${c.id}" aria-pressed="false">${ctx.l(c.label)}</button>`)}
+  </div>`;
+}
+
 export function render(p, ctx) {
-  let items = [...ctx.content.news.items];
+  let items = ctx.content.news.items.filter((i) => i.published !== false);
   if (p.featuredOnly) items = items.filter((i) => i.featured);
+  if (p.category) items = items.filter((i) => i.category === p.category);
   if (p.limit) items = items.slice(0, p.limit);
-  if (p.variant === 'full') {
-    return html`<div class="news-full">${sectionHead(p, ctx)}${items.map((i) => article(i, ctx))}</div>`;
+  if (!items.length) return '';
+  const filters = p.filters ? filterBar(items, ctx) : '';
+  if (p.articles) {
+    return html`<div class="news-full" data-filter-root>${sectionHead(p, ctx)}${filters}${items.map((i) => article(i, ctx))}<p class="filter-empty" data-filter-empty hidden>${ctx.t('filter.none')}</p></div>`;
   }
-  return html`<div class="news-list">
+  const page = newsPage(ctx);
+  return html`<div class="news-list" data-filter-root>
     ${sectionHead(p, ctx)}
-    <div class="${cx('card-grid', `card-grid--${p.columns || 3}`)}">${items.map((i) => card(i, ctx))}</div>
+    ${filters}
+    <div class="card-grid card-grid--3">${items.map((i) => card(i, ctx, page))}</div>
+    <p class="filter-empty" data-filter-empty hidden>${ctx.t('filter.none')}</p>
     ${actions(p.actions, ctx, { className: 'section-actions' })}
   </div>`;
 }

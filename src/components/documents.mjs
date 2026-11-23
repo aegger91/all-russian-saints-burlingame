@@ -54,7 +54,7 @@ function fail(id) {
 export function render(p, ctx) {
   let docs = selectDocs(p, ctx);
   if (p.limit) docs = docs.slice(0, p.limit);
-  const cols = p.columns || 1;
+  const cols = p.groupBy === 'year' || p.groupBy === 'volume' ? 3 : 1;
   let body;
   if (p.groupBy === 'year' || p.groupBy === 'volume') {
     const key = p.groupBy;

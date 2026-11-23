@@ -1,170 +1,276 @@
-// Page shell: <head> (SEO, Open Graph, hreflang, JSON-LD), utility bar,
-// header with navigation and language switch, on-page sub-navigation,
-// footer. Data: site.json, navigation.json, ui.json.
+// Page shell: <head> (SEO, Open Graph, hreflang, JSON-LD), sticky header with
+// the page-tree menu, language switcher, cart and Donate button, the mobile
+// drawer and the footer.
+// Data: site.json, navigation.json, ui.json, the page tree (content/pages).
 import { html, raw, attrs, cx } from '../lib/html.mjs';
-import { SPRITE, icon, cross, phoneHref } from './_primitives.mjs';
+import { SPRITE, icon, cross, phoneHref, accentLang } from './_primitives.mjs';
 import { renderSection } from './registry.mjs';
 import { addressLines } from './contact.mjs';
+import { clientData } from './client-data.mjs';
+import { featureEnabled } from '../lib/content.mjs';
 
 function pageUrls(ctx) {
   return Object.fromEntries(ctx.localeCodes.map((code) => [code, ctx.pagePath(ctx.page.id, { locale: code })]));
 }
 
-function langSwitch(ctx, className) {
-  const urls = pageUrls(ctx);
-  return html`<div class="${cx('lang-switch', className)}" role="group" aria-label="${ctx.t('a11y.language')}">
-    ${ctx.site.locales.map(
-      (l) => html`<a${attrs({
-        class: 'lang-switch__link',
-        href: urls[l.code],
-        hreflang: l.code,
-        lang: l.code,
-        'aria-current': l.code === ctx.locale ? 'true' : null,
-        'data-lang': l.code,
-        title: l.name
-      })}>${l.label}</a>`
-    )}
-  </div>`;
+// ---------------------------------------------------------------- brand
+
+// One brand treatment: the parish's logo image (any shape: a round seal, an
+// icon in a kiot, a square badge) at a fixed height beside the parish name.
+// Without logo.image the name stands alone with the eight-pointed cross.
+export function brand(ctx, { place = 'header' } = {}) {
+  const logo = ctx.site.logo || {};
+  const name = ctx.l(ctx.site.name);
+  const tagline = ctx.l(ctx.site.location);
+  return html`<a class="${cx('brand', `brand--${place}`, !logo.image && 'brand--text')}" href="${ctx.pagePath('home')}">
+    ${logo.image
+      ? html`<span class="brand__mark"><img src="${ctx.asset(logo.image)}" alt="" width="${ctx.logo.width}" height="${ctx.logo.height}"${place === 'footer' ? html` loading="lazy"` : ''}></span>`
+      : html`<span class="brand__mark brand__mark--cross">${cross('brand__cross')}</span>`}
+    <span class="brand__text">
+      <span class="brand__name">${name}</span>
+      ${tagline ? html`<span class="brand__tagline">${tagline}</span>` : ''}
+    </span>
+  </a>`;
 }
 
-function isCurrent(item, ctx) {
-  if (item.page === ctx.page.id && !item.anchor) return true;
-  return (item.children || []).some((c) => c.page === ctx.page.id);
+// ---------------------------------------------------------------- languages
+
+// One language: no switcher. Two or three: a segmented control. Four or
+// more: a compact menu (the drawer always lists every language by name).
+function langSwitch(ctx, place) {
+  const locales = ctx.site.locales;
+  if (locales.length < 2) return '';
+  const urls = pageUrls(ctx);
+  const link = (l, className, text) =>
+    html`<a${attrs({ class: className, href: urls[l.code], hreflang: l.code, lang: l.code, dir: l.dir === 'rtl' ? 'rtl' : null, 'aria-current': l.code === ctx.locale ? 'true' : null, 'data-lang': l.code, title: text === l.name ? null : l.name })}>${text}</a>`;
+  if (place === 'drawer') {
+    return html`<div class="lang-list" role="group" aria-label="${ctx.t('a11y.language')}">
+      ${locales.map((l) => link(l, 'lang-list__link lang-switch__link', l.name))}
+    </div>`;
+  }
+  if (locales.length <= 3) {
+    return html`<div class="${cx('lang-switch', `lang-switch--${place}`)}" role="group" aria-label="${ctx.t('a11y.language')}">
+      ${locales.map((l) => link(l, 'lang-switch__link', l.label))}
+    </div>`;
+  }
+  return html`<details class="${cx('lang-menu', `lang-menu--${place}`)}" data-lang-menu>
+    <summary class="lang-menu__button" aria-label="${ctx.t('a11y.language')}: ${ctx.localeInfo.name}">${icon('globe', 'lang-menu__icon')}<span>${ctx.localeInfo.label}</span>${icon('chevron', 'lang-menu__chevron')}</summary>
+    <div class="lang-menu__list">${locales.map((l) => link(l, 'lang-menu__link lang-switch__link', l.name))}</div>
+  </details>`;
+}
+
+// ---------------------------------------------------------------- menu
+
+// The menu is the page tree: every page with nav.show !== false, in `order`,
+// children under their parent. navigation.header.extra adds plain links.
+export function navTree(ctx) {
+  const shown = (p) => p.nav?.show !== false && p.id !== 'not-found';
+  const pages = ctx.content.pages.filter(shown);
+  // nav.overview names the parent page itself as the first item of its
+  // dropdown (e.g. "Schedule" under "Services").
+  const node = (p) => {
+    const children = pages.filter((c) => c.parent === p.id).map(node);
+    const overview = children.length && p.nav?.overview ? [{ id: `${p.id}-overview`, page: p.id, label: ctx.l(p.nav.overview), live: false, overview: true, children: [] }] : [];
+    return {
+      id: p.id,
+      page: p.id,
+      label: ctx.pageTitle(p, { short: true }),
+      live: p.requires === 'livestream',
+      children: [...overview, ...children]
+    };
+  };
+  const top = pages.filter((p) => !p.parent).map(node);
+  const extra = (ctx.content.navigation.header?.extra || []).map((l) => ({ id: l.id, href: ctx.href(l), label: ctx.l(l.label), external: ctx.isExternal(ctx.href(l)), children: [] }));
+  return [...top, ...extra];
+}
+
+const isCurrentPage = (item, ctx) => item.page === ctx.page.id && (item.overview || !item.children.some((c) => c.overview));
+const inBranch = (item, ctx) => item.page === ctx.page.id || ctx.page.ancestors?.includes(item.page) || item.children.some((c) => inBranch(c, ctx));
+const itemHref = (item, ctx) => item.href || ctx.pagePath(item.page);
+
+function liveDot(item) {
+  return item.live ? html`<span class="live-dot" data-live-indicator hidden><span class="visually-hidden"> (live)</span></span>` : '';
+}
+
+function subList(items, ctx, depth) {
+  return html`<ul class="${cx('nav__dropdown-list', depth > 1 && 'nav__dropdown-list--nested')}">
+    ${items.map(
+      (c) => html`<li><a${attrs({ class: 'nav__sublink', href: itemHref(c, ctx), 'aria-current': isCurrentPage(c, ctx) ? 'page' : null })}>${c.label}${liveDot(c)}</a>
+        ${c.children.length ? subList(c.children, ctx, depth + 1) : ''}</li>`
+    )}
+  </ul>`;
 }
 
 function navItem(item, ctx) {
-  const current = isCurrent(item, ctx);
-  if (item.children?.length) {
-    return html`<li class="${cx('nav__item', 'nav__item--parent', current && 'is-current')}">
-      <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-controls="nav-${item.id}">
-        <span>${ctx.l(item.label)}</span>${icon('chevron', 'nav__chevron')}
-      </button>
-      <ul class="nav__dropdown" id="nav-${item.id}">
-        ${item.children.map(
-          (c) => html`<li><a${attrs({ class: 'nav__sublink', href: ctx.href(c), 'aria-current': c.page === ctx.page.id && !c.anchor ? 'page' : null })}>${ctx.l(c.label)}</a></li>`
-        )}
-      </ul>
-    </li>`;
-  }
-  return html`<li class="${cx('nav__item', current && 'is-current')}"><a${attrs({ class: 'nav__link', href: ctx.href(item), 'aria-current': current ? 'page' : null })}>${ctx.l(item.label)}</a></li>`;
+  const current = inBranch(item, ctx);
+  const link = html`<a${attrs({ class: 'nav__link', href: itemHref(item, ctx), 'aria-current': isCurrentPage(item, ctx) ? 'page' : null, target: item.external ? '_blank' : null, rel: item.external ? 'noopener' : null })}>${item.label}${liveDot(item)}</a>`;
+  if (!item.children.length) return html`<li class="${cx('nav__item', current && 'is-current')}">${link}</li>`;
+  return html`<li class="${cx('nav__item', 'nav__item--parent', current && 'is-current')}">
+    ${link}<button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-${item.id}"><span class="visually-hidden">${ctx.t('a11y.submenu', { name: item.label })}</span>${icon('chevron', 'nav__chevron')}</button>
+    <div class="nav__dropdown" id="nav-${item.id}">${subList(item.children, ctx, 1)}</div>
+  </li>`;
 }
 
-function topbar(ctx) {
-  const tb = ctx.content.navigation.topbar;
-  if (!tb || tb.enabled === false) return '';
-  const c = ctx.site.contact;
-  return html`<div class="topbar">
-    <div class="container topbar__inner">
-      <p class="topbar__info">
-        ${tb.showAddress ? html`<span class="topbar__item">${icon('pin', 'topbar__icon')}${addressLines(ctx).join(', ')}</span>` : ''}
-        ${tb.showPhone && c.phone ? html`<a class="topbar__item" href="${phoneHref(c.phone)}">${icon('phone', 'topbar__icon')}${c.phone.display}</a>` : ''}
-      </p>
-      <ul class="topbar__links">
-        ${tb.links.map((l) => {
-          const url = ctx.href(l);
-          const ext = ctx.isExternal(url);
-          return html`<li><a class="topbar__item" href="${url}"${ext ? html` target="_blank" rel="noopener"` : ''}>${l.icon ? icon(l.icon, 'topbar__icon') : ''}<span>${ctx.l(l.label)}</span></a></li>`;
-        })}
-      </ul>
-    </div>
-  </div>`;
+function drawerItems(items, ctx, depth = 0) {
+  return html`<ul class="${cx('drawer-nav', depth && 'drawer-nav--sub')}">
+    ${items.map((item) => {
+      const link = html`<a${attrs({ class: 'drawer-nav__link', href: itemHref(item, ctx), 'aria-current': isCurrentPage(item, ctx) ? 'page' : null })}>${item.label}${liveDot(item)}</a>`;
+      if (!item.children.length) return html`<li class="drawer-nav__item">${link}</li>`;
+      const open = inBranch(item, ctx);
+      return html`<li class="drawer-nav__item drawer-nav__item--parent">
+        <div class="drawer-nav__row">${link}<button class="drawer-nav__toggle" type="button" aria-expanded="${open ? 'true' : 'false'}" aria-controls="drawer-${item.id}"><span class="visually-hidden">${ctx.t('a11y.submenu', { name: item.label })}</span>${icon('chevron', 'drawer-nav__chevron')}</button></div>
+        <div class="drawer-nav__children" id="drawer-${item.id}"${open ? '' : html` hidden`}>${drawerItems(item.children, ctx, depth + 1)}</div>
+      </li>`;
+    })}
+  </ul>`;
 }
 
-function header(ctx) {
-  const nav = ctx.content.navigation.header;
-  const logo = ctx.logo.header;
+// The Donate button: navigation.header.button ({ page, label }).
+function headerActions(ctx, className) {
+  const b = ctx.content.navigation.header?.button;
+  const url = b && ctx.href(b);
+  if (!url) return '';
+  const label = ctx.l(b.label) || ctx.pageTitle(ctx.content.index.pages[b.page] || { title: '' }, { short: true });
+  return html`<a class="${cx('btn', 'btn--accent', className)}" href="${url}"${ctx.page.id === b.page ? html` aria-current="page"` : ''}>${icon('candle', 'btn__icon')}<span>${label}</span></a>`;
+}
+
+// Cart icon with a live item count (site.js keeps it in sync with the cart
+// in localStorage). Shown while the store is on.
+function cartLink(ctx) {
+  if (!featureEnabled(ctx.site, 'store')) return '';
+  const page = ctx.content.pages.find((p) => p.requires === 'cart');
+  if (!page) return '';
+  return html`<a class="cart-link" href="${ctx.pagePath(page.id)}" data-cart-link>${icon('cart', 'cart-link__icon')}<span class="cart-link__count" data-cart-count hidden>0</span><span class="visually-hidden">${ctx.t('cart.title')}</span></a>`;
+}
+
+function header(ctx, tree) {
   return html`<header class="site-header" data-header>
     <div class="container site-header__inner">
-      <a class="brand" href="${ctx.pagePath('home')}">
-        <img class="brand__logo" src="${ctx.asset(logo.src)}" alt="${ctx.l(logo.alt)}" width="${logo.width}" height="${logo.height}">
-      </a>
-      <nav class="nav" id="site-nav" aria-label="${ctx.t('a11y.mainNav')}" data-nav>
-        <ul class="nav__list">${nav.items.map((i) => navItem(i, ctx))}</ul>
-        <div class="nav__mobile-extra">
-          ${nav.actions.map((a) => html`<a class="btn btn--${a.style || 'primary'} btn--block" href="${ctx.href(a)}">${ctx.l(a.label)}</a>`)}
-          ${langSwitch(ctx, 'lang-switch--mobile')}
-        </div>
+      ${brand(ctx)}
+      <nav class="site-nav" id="site-nav" aria-label="${ctx.t('a11y.mainNav')}" data-nav>
+        <ul class="nav__list">${tree.filter((i) => i.page !== 'home').map((i) => navItem(i, ctx))}
+          <li class="nav__item nav__item--parent nav__item--more" data-nav-more hidden>
+            <button class="nav__link nav__more" type="button" aria-expanded="false" aria-controls="nav-more">${ctx.t('a11y.more')}${icon('chevron', 'nav__chevron')}</button>
+            <div class="nav__dropdown nav__dropdown--more" id="nav-more"><ul class="nav__dropdown-list" data-nav-more-list></ul></div>
+          </li>
+        </ul>
       </nav>
       <div class="site-header__tools">
-        ${langSwitch(ctx, 'lang-switch--header')}
-        ${nav.actions.map((a) => html`<a class="btn btn--${a.style || 'primary'} site-header__action" href="${ctx.href(a)}">${a.icon ? icon(a.icon, 'btn__icon') : ''}<span>${ctx.l(a.label)}</span></a>`)}
-        <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" data-burger>
-          ${icon('menu', 'burger__open')}${icon('close', 'burger__close')}<span class="visually-hidden">${ctx.t('a11y.menu')}</span>
+        ${langSwitch(ctx, 'header')}
+        ${cartLink(ctx)}
+        ${headerActions(ctx, 'site-header__action')}
+        <button class="burger" type="button" aria-expanded="false" aria-controls="site-drawer" aria-haspopup="dialog" data-burger>
+          ${icon('menu', 'burger__icon')}<span class="burger__label">${ctx.t('a11y.menu')}</span>
         </button>
       </div>
     </div>
   </header>`;
 }
 
-function pageNav(ctx) {
-  if (!ctx.page.subnav) return '';
-  const items = [];
-  const collect = (s) => {
-    if (s.hidden || (s.locales && !s.locales.includes(ctx.locale))) return;
-    if (s.navLabel && s.id) items.push({ id: s.id, label: ctx.l(s.navLabel) });
-    if (Array.isArray(s.columns)) s.columns.forEach(collect);
-    if (Array.isArray(s.blocks)) s.blocks.forEach(collect);
-  };
-  ctx.page.sections.forEach(collect);
-  if (items.length < 2) return '';
-  return html`<nav class="page-nav" aria-label="${ctx.t('a11y.onThisPage')}" data-page-nav>
-    <div class="container"><ul class="page-nav__list">${items.map((i) => html`<li><a class="page-nav__link" href="#${i.id}">${i.label}</a></li>`)}</ul></div>
-  </nav>`;
+function drawer(ctx, tree) {
+  const c = ctx.site.contact;
+  return html`<div class="drawer" id="site-drawer" data-drawer hidden>
+    <div class="drawer__backdrop" data-drawer-close></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title" tabindex="-1">
+      <div class="drawer__head">
+        <p class="drawer__title" id="drawer-title">${cross('drawer__cross')}<span>${ctx.t('a11y.menu')}</span></p>
+        <button class="drawer__close" type="button" data-drawer-close>${icon('close', 'drawer__close-icon')}<span class="visually-hidden">${ctx.t('a11y.closeMenu')}</span></button>
+      </div>
+      <nav class="drawer__nav" aria-label="${ctx.t('a11y.mainNav')}">${drawerItems(tree, ctx)}</nav>
+      <div class="drawer__actions">${headerActions(ctx, 'btn--block')}</div>
+      ${langSwitch(ctx, 'drawer')}
+      <div class="drawer__contact">
+        <p class="drawer__address">${icon('pin', 'drawer__icon')}<span>${addressLines(ctx).join(', ')}</span></p>
+        ${c.phone ? html`<p><a href="${phoneHref(c.phone)}">${icon('phone', 'drawer__icon')}<span>${c.phone.display}</span></a></p>` : ''}
+        ${c.directionsUrl ? html`<p><a href="${c.directionsUrl}" target="_blank" rel="noopener">${icon('arrow', 'drawer__icon')}<span>${ctx.t('contact.directions')}</span></a></p>` : ''}
+      </div>
+    </div>
+  </div>`;
 }
 
-function footer(ctx) {
+// ---------------------------------------------------------------- footer
+
+// Shown only when features.newsletter is on (the OrthodoxConnect newsletter).
+// The submit handler is a placeholder in site.js.
+function newsletter(ctx) {
+  if (!featureEnabled(ctx.site, 'newsletter')) return '';
+  return html`<div class="site-footer__newsletter">
+    <h2 class="site-footer__title">${ctx.t('newsletter.title')}</h2>
+    <p class="site-footer__newsletter-text">${ctx.t('newsletter.text')}</p>
+    <form class="newsletter" data-form="newsletter" data-list="${ctx.site.orthodoxConnect?.newsletterListId || ''}" novalidate>
+      <label class="visually-hidden" for="newsletter-email">${ctx.t('form.email')}</label>
+      <input class="newsletter__input" id="newsletter-email" name="email" type="email" autocomplete="email" required placeholder="${ctx.t('newsletter.placeholder')}">
+      <button class="btn btn--accent newsletter__button" type="submit">${ctx.t('newsletter.subscribe')}</button>
+      <p class="form-status newsletter__status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </div>`;
+}
+
+function footer(ctx, tree) {
   const f = ctx.content.navigation.footer;
-  const logo = ctx.logo.footer;
   const c = ctx.site.contact;
   const year = new Date().getFullYear();
+  const accentName = ctx.site.accent?.name;
+  const flat = (items) => items.flatMap((i) => [i, ...flat(i.children)]);
+  const pageLinks = (f.pages === 'top' ? tree : flat(tree)).filter((i) => !i.external && !i.overview);
   return html`<footer class="site-footer">
     <div class="container">
       <div class="site-footer__brand">
-        <a href="${ctx.pagePath('home')}" class="${cx('site-footer__logo-link', ctx.logo.footerTile && 'site-footer__logo-link--tile')}"><img class="site-footer__logo" src="${ctx.asset(logo.src)}" alt="${ctx.l(logo.alt)}" width="${logo.width}" height="${logo.height}" loading="lazy"></a>
+        ${brand(ctx, { place: 'footer' })}
         <div class="site-footer__intro">
           <p class="site-footer__about">${ctx.l(f.about)}</p>
-          <p class="site-footer__slavonic" lang="ru">${ctx.site.name.ru}</p>
+          ${accentName && accentName !== ctx.l(ctx.site.name) ? html`<p class="site-footer__slavonic accent" lang="${accentLang(ctx)}">${accentName}</p>` : ''}
         </div>
       </div>
-      <div class="site-footer__top">
+      <div class="${cx('site-footer__top', featureEnabled(ctx.site, 'newsletter') && 'site-footer__top--newsletter')}">
         <div class="site-footer__visit">
           <h2 class="site-footer__title">${ctx.t('footer.visit')}</h2>
           <address class="site-footer__address">${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}${l}`)}</address>
           <ul class="site-footer__contact">
-            ${c.phone ? html`<li><a href="${phoneHref(c.phone)}">${icon('phone', 'site-footer__icon')}${c.phone.display}</a></li>` : ''}
-            ${c.email ? html`<li><a href="mailto:${c.email}">${icon('mail', 'site-footer__icon')}${c.email}</a></li>` : ''}
-            <li><a href="${ctx.pagePath('contact', { anchor: 'visit' })}">${icon('pin', 'site-footer__icon')}${ctx.t('footer.mapDirections')}</a></li>
+            ${c.phone ? html`<li><a href="${phoneHref(c.phone)}">${icon('phone', 'site-footer__icon')}<span>${c.phone.display}</span></a></li>` : ''}
+            ${c.email ? html`<li><a href="mailto:${c.email}">${icon('mail', 'site-footer__icon')}<span>${c.email}</span></a></li>` : ''}
+            ${c.directionsUrl ? html`<li><a href="${c.directionsUrl}" target="_blank" rel="noopener">${icon('pin', 'site-footer__icon')}<span>${ctx.t('contact.directions')}</span></a></li>` : ''}
           </ul>
         </div>
-        ${f.columns.map(
-          (col) => html`<div class="site-footer__col">
-            <h2 class="site-footer__title">${ctx.l(col.title)}</h2>
-            <ul class="site-footer__links">${col.links.map((l) => {
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">${ctx.t('footer.pages')}</h2>
+          <ul class="site-footer__links site-footer__links--pages">${pageLinks.map((i) => html`<li><a href="${itemHref(i, ctx)}">${i.label}</a></li>`)}</ul>
+        </div>
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">${ctx.t('footer.connect')}</h2>
+          <ul class="site-footer__links">
+            ${(f.connect || []).map((l) => {
               const url = ctx.href(l);
+              if (!url) return '';
               const ext = ctx.isExternal(url);
-              return html`<li><a href="${url}"${ext ? html` target="_blank" rel="noopener"` : ''}>${l.icon ? icon(l.icon, 'site-footer__icon') : ''}${ctx.l(l.label)}</a></li>`;
-            })}</ul>
-          </div>`
-        )}
+              return html`<li><a href="${url}"${ext ? html` target="_blank" rel="noopener"` : ''}>${l.icon ? icon(l.icon, 'site-footer__icon') : ''}<span>${ctx.l(l.label)}</span></a></li>`;
+            })}
+            ${ctx.site.social.map((s) => html`<li><a href="${s.url}" target="_blank" rel="noopener">${icon(s.icon, 'site-footer__icon')}<span>${ctx.l(s.label)}</span></a></li>`)}
+          </ul>
+        </div>
+        ${newsletter(ctx)}
       </div>
       <div class="site-footer__bottom">
         <p>${cross('site-footer__cross')}<span>© ${year} ${ctx.l(ctx.site.name)}. ${ctx.l(f.legal)}</span></p>
-        ${langSwitch(ctx, 'lang-switch--footer')}
+        ${langSwitch(ctx, 'footer')}
       </div>
     </div>
   </footer>`;
 }
 
+// ---------------------------------------------------------------- head
+
 function jsonLd(ctx) {
   const s = ctx.site;
   const a = s.contact.address;
+  const otherNames = ctx.localeCodes.filter((c) => c !== ctx.locale).map((c) => s.name[c]).filter((n) => n && n !== ctx.l(s.name));
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Church',
     name: ctx.l(s.name),
-    alternateName: s.name.ru && ctx.locale !== 'ru' ? s.name.ru : s.name.en,
+    alternateName: otherNames.length ? otherNames : undefined,
     url: ctx.absoluteUrl(ctx.pagePath('home')),
-    logo: ctx.absoluteUrl(ctx.asset(ctx.logo.square)),
+    logo: ctx.logo.icon ? ctx.absoluteUrl(ctx.asset(ctx.logo.icon)) : undefined,
     telephone: s.contact.phone?.e164,
     email: s.contact.email,
     address: { '@type': 'PostalAddress', streetAddress: a.street, addressLocality: a.city, addressRegion: a.region, postalCode: a.postalCode, addressCountry: a.country },
@@ -202,9 +308,10 @@ ${ctx.localeCodes.map((code) => html`<link rel="alternate" hreflang="${code}" hr
 <meta property="og:image" content="${ogImage}">
 <meta property="og:locale" content="${ctx.localeInfo.ogLocale}">
 ${ctx.site.locales.filter((l) => l.code !== ctx.locale).map((l) => html`<meta property="og:locale:alternate" content="${l.ogLocale}">\n`)}<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="${site.theme?.themeColor || '#174372'}">
+<meta name="theme-color" content="${assets.themeColor}">
 <link rel="icon" href="${ctx.asset(ctx.logo.favicon)}"${/\.svg$/i.test(ctx.logo.favicon) ? html` type="image/svg+xml"` : ''}>
-${ctx.logo.faviconPng ? html`<link rel="icon" href="${ctx.asset(ctx.logo.faviconPng)}" type="image/png" sizes="32x32">\n` : ''}${ctx.logo.appleTouchIcon ? html`<link rel="apple-touch-icon" href="${ctx.asset(ctx.logo.appleTouchIcon)}">\n` : ''}${fontsPreload.map((f) => html`<link rel="preload" href="${ctx.asset(f)}" as="font" type="font/woff2" crossorigin>\n`)}<link rel="stylesheet" href="${cssHref}">
+${ctx.logo.icon ? html`<link rel="apple-touch-icon" href="${ctx.asset(ctx.logo.icon)}">\n` : ''}${fontsPreload.map((f) => html`<link rel="preload" href="${ctx.asset(f)}" as="font" type="font/woff2" crossorigin>\n`)}<link rel="stylesheet" href="${cssHref}">
+<script>document.documentElement.classList.add('js')</script>
 <script src="${jsHref}" defer></script>
 ${jsonLd(ctx)}
 </head>`;
@@ -212,26 +319,27 @@ ${jsonLd(ctx)}
 
 export function renderPage(ctx, assets) {
   const { page } = ctx;
+  const tree = navTree(ctx);
   return `<!doctype html>
-<html lang="${ctx.locale}" data-page="${page.id}" data-timezone="${ctx.site.timezone}">
+<html lang="${ctx.locale}" dir="${ctx.dir}" data-page="${page.id}" data-timezone="${ctx.site.timezone}" data-currency="${ctx.currency}">
 ${head(ctx, assets)}
 <body class="page-${page.id}">
 ${html`<a class="skip-link" href="#main">${ctx.t('a11y.skip')}</a>
 ${SPRITE}
-${topbar(ctx)}
-${header(ctx)}
+${header(ctx, tree)}
 <main id="main" tabindex="-1">
-${page.sections.slice(0, 1).map((s) => renderSection(s, ctx))}
-${pageNav(ctx)}
-${page.sections.slice(1).map((s) => renderSection(s, ctx))}
+${page.sections.map((s) => renderSection(s, ctx))}
 </main>
-${footer(ctx)}
+${footer(ctx, tree)}
+${drawer(ctx, tree)}
 <div class="lightbox" data-lightbox-root hidden role="dialog" aria-modal="true" aria-label="${ctx.t('gallery.viewer')}">
   <button class="lightbox__btn lightbox__close" type="button" data-lb-close aria-label="${ctx.t('gallery.close')}">${icon('close')}</button>
   <button class="lightbox__btn lightbox__prev" type="button" data-lb-prev aria-label="${ctx.t('gallery.prev')}">${icon('chevron')}</button>
   <figure class="lightbox__figure"><img alt="" data-lb-img><figcaption data-lb-caption></figcaption></figure>
   <button class="lightbox__btn lightbox__next" type="button" data-lb-next aria-label="${ctx.t('gallery.next')}">${icon('chevron')}</button>
-</div>`.toString()}
+  <p class="lightbox__count" data-lb-count aria-live="polite"></p>
+</div>
+${clientData(ctx)}`.toString()}
 </body>
 </html>
 `;

@@ -5,6 +5,7 @@ import { esc, raw } from './html.mjs';
 import { pickLocale, formatDate, formatTime, interpolate } from './i18n.mjs';
 import { imageSize } from './images.mjs';
 import { PUBLIC_DIR } from './content.mjs';
+import { feastsOn, churchDate, toIso } from './calendar.mjs';
 
 const ASSET_PREFIXES = ['/assets/', '/logo/'];
 
@@ -36,12 +37,22 @@ export function createContext({ content, locale, page, basePath = '', siteUrl })
 
   ctx.asset = (p) => (!p || /^(https?:|mailto:|tel:|data:)/.test(p) ? p : `${basePath}${p.startsWith('/') ? p : `/${p}`}`);
 
+  ctx.dir = ctx.localeInfo?.dir === 'rtl' ? 'rtl' : 'ltr';
+  ctx.pageOn = (pageId) => !!content.index.pages[pageId];
+
+  // Links to a page that is switched off (enabled: false, or a feature it
+  // requires is off) resolve to null and are left out by every component.
   ctx.pagePath = (pageId, { anchor, locale: loc = locale } = {}) => {
     const target = content.index.pages[pageId];
-    if (!target) throw new Error(`Unknown page id "${pageId}" (from page "${page?.id}")`);
-    const slug = target.slug ? `${target.slug}/` : '';
+    if (!target) {
+      if (content.index.allPages?.[pageId]) return null;
+      throw new Error(`Unknown page id "${pageId}" (from page "${page?.id}")`);
+    }
+    const slug = target.path ? `${target.path}/` : '';
     return `${basePath}/${loc}/${slug}${anchor ? `#${anchor}` : ''}`;
   };
+
+  ctx.pageTitle = (p, { short = false } = {}) => ctx.l((short && p.nav?.label) || p.title);
 
   // Root-relative links written by editors ("/services/#upcoming") are
   // made locale-aware; assets and already-prefixed paths are left alone.
@@ -73,22 +84,31 @@ export function createContext({ content, locale, page, basePath = '', siteUrl })
 
   ctx.formatDate = (iso, style) => formatDate(iso, locale, style);
   ctx.formatTime = (hhmm) => formatTime(hhmm, locale);
+  ctx.currency = site.currency || 'USD';
+  ctx.money = (amount) =>
+    new Intl.NumberFormat(locale, { style: 'currency', currency: ctx.currency, minimumFractionDigits: Number.isInteger(amount) ? 0 : 2, maximumFractionDigits: 2 }).format(amount);
+
+  const cal = site.calendar || {};
+  ctx.calendarStyle = cal.style || 'gregorian';
+  ctx.feastsOn = (iso) => feastsOn(iso, ctx.calendarStyle, content.calendar);
+  // "November 10" for a civil date, on the Julian calendar (Old Style), when
+  // the parish keeps the Julian calendar and shows both dates.
+  ctx.oldStyleDate = (iso) => {
+    if (ctx.calendarStyle !== 'julian' || cal.showOldStyle === false) return '';
+    const j = churchDate(iso, 'julian');
+    return ctx.t('calendar.oldStyle', { date: formatDate(toIso(j.y, j.m, j.d), locale, 'dayMonth') });
+  };
   ctx.imageSize = (src) => imageSize(PUBLIC_DIR, src);
 
-  // site.logo.src is the one required logo field; every other variant falls
-  // back to it. Without a dedicated footer logo the main one is shown on a
-  // light tile so it stays legible on the navy footer.
-  const logo = site.logo;
-  const sized = (img) => ({ ...img, ...(img.width && img.height ? {} : ctx.imageSize(img.src)) });
-  const main = sized({ src: logo.src, alt: logo.alt });
+  // site.logo: image (optional, any shape), favicon (SVG or PNG) and icon
+  // (a square PNG for phones' home screens and search results).
+  const logo = site.logo || {};
+  const size = logo.image ? ctx.imageSize(logo.image) || { width: 96, height: 96 } : null;
   ctx.logo = {
-    header: logo.header ? sized(logo.header) : main,
-    footer: logo.footer ? sized(logo.footer) : main,
-    footerTile: !logo.footer,
-    favicon: logo.favicon || logo.src,
-    faviconPng: logo.faviconPng,
-    appleTouchIcon: logo.appleTouchIcon,
-    square: logo.square || logo.faviconPng || logo.favicon || logo.src
+    width: size?.width,
+    height: size?.height,
+    favicon: logo.favicon || logo.image || logo.icon,
+    icon: logo.icon || logo.image || logo.favicon
   };
 
   const marked = new Marked({

@@ -30,6 +30,9 @@ const DATE_STYLES = {
   // Saturday, November 28, 2026
   full: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
   monthYear: { year: 'numeric', month: 'long' },
+  dayMonth: { month: 'long', day: 'numeric' },
+  weekdayDay: { weekday: 'short', day: 'numeric' },
+  short: { weekday: 'short', month: 'short', day: 'numeric' },
   monthShort: { month: 'short' },
   day: { day: 'numeric' },
   weekdayShort: { weekday: 'short' }
@@ -45,16 +48,12 @@ export function formatDate(iso, locale, style = 'long') {
   return style === 'day' ? out : capitalize(out);
 }
 
-// "18:00" -> "6:00 pm" (en) / "18:00" (ru and most other locales)
+// "18:00" -> "6:00 pm" (en), "18:00" (ru), in each locale's own clock style.
 export function formatTime(hhmm, locale) {
   if (!hhmm) return '';
   const [h, m] = hhmm.split(':').map(Number);
-  if (locale === 'en') {
-    const suffix = h >= 12 ? 'pm' : 'am';
-    const hour = h % 12 === 0 ? 12 : h % 12;
-    return `${hour}:${String(m).padStart(2, '0')} ${suffix}`;
-  }
-  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+  const out = new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' }).format(new Date(Date.UTC(2000, 0, 1, h, m)));
+  return out.replace(/[\s\u202f]?([AP])M$/, (_, x) => `\u00a0${x.toLowerCase()}m`).replace(/\u202f/g, '\u00a0');
 }
 
 export function interpolate(template, vars = {}) {

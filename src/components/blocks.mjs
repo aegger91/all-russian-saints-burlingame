@@ -1,58 +1,61 @@
 /**
  * General-purpose content blocks.
  *
- * cta-band   — eyebrow, title, accent, text, actions, tone ("navy" | "cream" | "gold")
- * card-grid  — eyebrow, title, intro, columns, cards[] | source ("ministries"),
- *              card: { id, eyebrow, title, accent, text (markdown), image, link, actions }
- * link-list  — eyebrow, title, intro, groups (ids in links.json), columns
+ * cta-band   — eyebrow, title, accent, text, actions
+ * card-grid  — eyebrow, title, intro, cards[] | source ("children": the
+ *              subpages of this page, or of `parent`), card: { id, eyebrow, title,
+ *              accent, text (markdown), image, icon, link, actions }
+ * timeline   — eyebrow, title, intro, items: [{ year, title, text (markdown), image }]
+ * link-list  — eyebrow, title, intro, groups (ids in links.json)
  * quote      — eyebrow, title, text (markdown), cite, image, more
- * notice     — tone ("info" | "season" | "alert"), title, text (markdown), actions
+ * notice     — title, text (markdown), actions
  * prayer     — eyebrow, title, text (liturgical original, line breaks kept),
  *              textLang (default "cu", Church Slavonic), translation (localized), cite, actions
  * fact-list  — eyebrow, title, intro, facts: [{ label, value (markdown) }], actions
- * stack      — eyebrow, title, intro, blocks[] (any block types, rendered in order), gap
- * image      — image (Image), frame ("plain" | "arch")
  */
 import { html, cx } from '../lib/html.mjs';
 import { sectionHead, eyebrow, accent, actions, image, icon, cross, figure } from './_primitives.mjs';
 import { more } from './rich-text.mjs';
 
 export const metas = {
-  'cta-band': { type: 'cta-band', title: 'Call to action band', description: 'Short message with one or two buttons on a coloured band.' },
-  'card-grid': { type: 'card-grid', title: 'Card grid', description: 'Grid of linked cards (ministries, page teasers) with optional image.', dataSources: ['ministries.json'] },
+  'cta-band': { type: 'cta-band', title: 'Call to action band', description: 'Short message with one or two buttons on the navy band.', tone: 'navy' },
+  'card-grid': { type: 'card-grid', title: 'Card grid', description: 'Grid of linked cards (page teasers, subpages) with optional image or pictogram.' },
+  timeline: { type: 'timeline', title: 'Timeline', description: 'Parish history as dated milestones, with optional photographs.' },
   'link-list': { type: 'link-list', title: 'Link list', description: 'Grouped external links with short descriptions.', dataSources: ['links.json'] },
   quote: { type: 'quote', title: 'Quote / message', description: 'Pastoral message or quotation with attribution and optional portrait.' },
   notice: { type: 'notice', title: 'Notice', description: 'Highlighted announcement (season, alert or information).' },
   prayer: { type: 'prayer', title: 'Prayer', description: 'Liturgical text set with preserved line breaks.' },
   'fact-list': { type: 'fact-list', title: 'Fact list', description: 'Label/value list ("at a glance").' },
-  stack: { type: 'stack', title: 'Stack', description: 'Several blocks one after another in one column or section.' },
-  image: { type: 'image', title: 'Image', description: 'A single photograph with optional caption and arch frame.' }
+
 };
 
 export function renderCta(p, ctx) {
-  return html`<div class="${cx('cta-band', `cta-band--${p.tone || 'navy'}`)}">
+  return html`<div class="cta-band">
     <div class="cta-band__text">
       ${eyebrow(ctx.l(p.eyebrow))}
       <h2 class="cta-band__title">${ctx.l(p.title)}</h2>
       ${accent(p.accent, ctx, 'cta-band__accent accent')}
       ${p.text ? html`<div class="cta-band__body">${ctx.md(p.text)}</div>` : ''}
     </div>
-    ${actions(p.actions, ctx, { className: 'cta-band__actions' })}
+    ${actions(p.actions, ctx, { className: 'cta-band__actions', onDark: true })}
   </div>`;
 }
 
 function cardsFrom(p, ctx) {
-  if (p.source === 'ministries') {
-    return ctx.content.ministries.ministries.filter((m) => !p.ids || p.ids.includes(m.id));
+  if (p.source === 'children') {
+    const parent = p.parent || ctx.page.id;
+    return ctx.content.pages
+      .filter((x) => x.parent === parent && !x.generated && x.nav?.show !== false)
+      .map((x) => ({ id: `card-${x.id}`, title: x.title, text: x.summary || x.seo?.description, image: x.cardImage, icon: x.nav?.icon, link: { page: x.id } }));
   }
-  return p.cards;
+  return (p.cards || []).filter((c) => !c.link || ctx.href(c.link));
 }
 
 export function renderCards(p, ctx) {
   const cards = cardsFrom(p, ctx);
   return html`<div class="card-grid-block">
     ${sectionHead(p, ctx)}
-    <div class="${cx('card-grid', `card-grid--${p.columns || 3}`)}">
+    <div class="${cx('card-grid', `card-grid--${Math.min(cards.length, cards.length === 4 ? 4 : 3)}`)}">
       ${cards.map((c) => {
         const url = ctx.href(c.link);
         const body = html`
@@ -83,7 +86,7 @@ export function renderLinks(p, ctx) {
   });
   return html`<div class="link-list">
     ${sectionHead(p, ctx)}
-    <div class="${cx('link-groups', `link-groups--${p.columns || groups.length}`)}">
+    <div class="${cx('link-groups', `link-groups--${Math.min(groups.length, 3)}`)}">
       ${groups.map(
         (g) => html`<section class="link-group">
           ${g.title ? html`<h3 class="link-group__title">${ctx.l(g.title)}</h3>` : ''}
@@ -120,7 +123,7 @@ export function renderQuote(p, ctx) {
 }
 
 export function renderNotice(p, ctx) {
-  return html`<div class="${cx('notice', `notice--${p.tone || 'info'}`, 'notice--block')}">
+  return html`<div class="notice notice--block">
     ${p.title ? html`<p class="notice__title">${ctx.l(p.title)}</p>` : ''}
     ${p.text ? html`<div class="notice__text prose prose--small">${ctx.md(p.text)}</div>` : ''}
     ${actions(p.actions, ctx, { size: 'sm' })}
@@ -144,16 +147,7 @@ export function renderPrayer(p, ctx) {
   </div>`;
 }
 
-export function renderStack(p, ctx, { renderBlock }) {
-  return html`<div class="${cx('stack', p.gap && `stack--${p.gap}`)}">
-    ${sectionHead(p, ctx)}
-    ${p.blocks.map((b) => renderBlock(b, ctx))}
-  </div>`;
-}
 
-export function renderImage(p, ctx) {
-  return figure(p.image, ctx, { frame: p.frame || 'plain', className: 'image-block' });
-}
 
 export function renderFacts(p, ctx) {
   return html`<div class="fact-list">
@@ -162,5 +156,25 @@ export function renderFacts(p, ctx) {
       ${p.facts.map((f) => html`<div class="facts__row"><dt>${ctx.l(f.label)}</dt><dd>${ctx.md(f.value, { inline: true })}</dd></div>`)}
     </dl>
     ${actions(p.actions, ctx)}
+  </div>`;
+}
+
+export function renderTimeline(p, ctx) {
+  return html`<div class="timeline-block">
+    ${sectionHead(p, ctx)}
+    <ol class="timeline">
+      ${p.items.map(
+        (item) => html`<li class="${cx('timeline__item', item.image && 'timeline__item--media')}">
+          <p class="timeline__year"><span>${ctx.l(item.year)}</span></p>
+          <span class="timeline__mark" aria-hidden="true">${cross('timeline__cross')}</span>
+          <div class="timeline__body">
+            <h3 class="timeline__title">${ctx.l(item.title)}</h3>
+            ${item.text ? html`<div class="timeline__text prose prose--small">${ctx.md(item.text)}</div>` : ''}
+            ${item.image ? figure(item.image, ctx, { className: 'timeline__figure' }) : ''}
+          </div>
+        </li>`
+      )}
+    </ol>
+    ${actions(p.actions, ctx, { className: 'section-actions' })}
   </div>`;
 }

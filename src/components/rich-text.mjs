@@ -3,11 +3,11 @@
  *
  * Props: eyebrow, title, accent, body (markdown; localized object, or a plain
  *        string with bodyLang for text that exists in one language only),
- *        bodyLang, media (Image), mediaPosition ("start" | "end" | "below"),
- *        mediaFrame ("arch" | "plain"), notice (markdown text, or { title, text }),
+ *        bodyLang, media (Image, shown beside the text in an arch frame),
+ *        notice (markdown text, or { title, text }),
  *        actions, more ({ title, body } collapsible extra text)
  */
-import { html, cx } from '../lib/html.mjs';
+import { html } from '../lib/html.mjs';
 import { sectionHead, actions, figure } from './_primitives.mjs';
 
 export const meta = {
@@ -42,11 +42,8 @@ export function render(p, ctx) {
     ${actions(p.actions, ctx, { className: 'rich-text__actions' })}
   </div>`;
   if (!p.media) return html`<div class="rich-text">${body}</div>`;
-  if (p.mediaPosition === 'below') {
-    return html`<div class="rich-text rich-text--media-below">${body}<div class="rich-text__media">${figure(p.media, ctx, { frame: p.mediaFrame || 'arch' })}</div></div>`;
-  }
-  return html`<div class="${cx('rich-text', 'rich-text--media', `rich-text--media-${p.mediaPosition || 'end'}`)}">
+  return html`<div class="rich-text rich-text--media rich-text--media-end">
     ${body}
-    <div class="rich-text__media">${figure(p.media, ctx, { frame: p.mediaFrame || 'arch' })}</div>
+    <div class="rich-text__media">${figure(p.media, ctx, { frame: 'arch' })}</div>
   </div>`;
 }

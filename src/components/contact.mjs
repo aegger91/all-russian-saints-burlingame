@@ -8,6 +8,7 @@
  */
 import { html } from '../lib/html.mjs';
 import { sectionHead, actions, icon, phoneHref } from './_primitives.mjs';
+import { phoneField } from './store.mjs';
 
 export const meta = {
   type: 'contact-map',
@@ -15,6 +16,38 @@ export const meta = {
   description: 'Parish address, phone, email and social links beside an embedded map.',
   dataSources: ['site.json']
 };
+
+export const formMeta = {
+  type: 'contact-form',
+  title: 'Contact form',
+  description: 'Message form (name, email, phone, topic, message) for the parish office. Placeholder handler until a form service is connected.',
+  dataSources: ['site.json forms.contact']
+};
+
+// contact-form props: eyebrow, title, intro, topics ([{ id, label }]).
+// Sends to ParishSite.handlers.contact, or POSTs to site.forms.contactEndpoint.
+export function renderForm(p, ctx) {
+  const endpoint = ctx.site.forms?.contactEndpoint || '';
+  return html`<div class="contact-form">
+    ${sectionHead(p, ctx)}
+    <form class="card form-card" data-form="contact" data-endpoint="${endpoint}" novalidate>
+      <div class="form-grid">
+        <div class="field"><label class="field__label" for="cf-name">${ctx.t('form.name')}</label><input class="field__input" id="cf-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label class="field__label" for="cf-email">${ctx.t('form.email')}</label><input class="field__input" id="cf-email" name="email" type="email" autocomplete="email" required></div>
+        ${phoneField('cf-phone', ctx)}
+        ${p.topics?.length
+          ? html`<div class="field"><label class="field__label" for="cf-topic">${ctx.t('form.topic')}</label><select class="field__input" id="cf-topic" name="topic">${p.topics.map((t) => html`<option value="${t.id}">${ctx.l(t.label)}</option>`)}</select></div>`
+          : ''}
+        <div class="field field--full"><label class="field__label" for="cf-message">${ctx.t('form.message')}</label><textarea class="field__input" id="cf-message" name="message" rows="5" required></textarea></div>
+      </div>
+      <div class="form-card__foot">
+        <p class="form-note">${ctx.t('form.privacy')}</p>
+        <button class="btn btn--primary" type="submit">${icon('mail', 'btn__icon')}<span>${ctx.t('form.send')}</span></button>
+      </div>
+      <p class="form-status" role="status" aria-live="polite" data-form-status hidden></p>
+    </form>
+  </div>`;
+}
 
 export function addressLines(ctx) {
   const a = ctx.site.contact.address;

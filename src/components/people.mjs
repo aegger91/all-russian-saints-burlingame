@@ -8,11 +8,12 @@
  * person-profile props: person (id), group (role group), body (markdown),
  *   quote, media (Image override), more ({ title, body }), actions
  * people-list props: eyebrow, title, intro, group (role group),
- *   people ([{ person, group }] explicit order), variant ("directory" | "cards"),
- *   showEmail (default true), showPhone (default true), columns (1 | 2 | 3)
+ *   people ([{ person, group }] explicit order),
+ *   showEmail (default true), showPhone (default true). People with photos
+ *   show as portrait cards (clergy), the rest as a directory (council).
  */
-import { html, cx } from '../lib/html.mjs';
-import { sectionHead, eyebrow, figure, icon, actions, phoneHref } from './_primitives.mjs';
+import { html } from '../lib/html.mjs';
+import { sectionHead, eyebrow, figure, image, icon, actions, phoneHref } from './_primitives.mjs';
 import { more } from './rich-text.mjs';
 
 export const profileMeta = {
@@ -70,7 +71,10 @@ export function renderProfile(p, ctx) {
 
 function entries(p, ctx) {
   if (p.people) return p.people.map((e) => resolveRole(e.person, e.group || p.group, ctx));
+  // Someone already featured in a profile on this page is not listed twice.
+  const profiled = new Set((ctx.page.sections || []).filter((s) => s.type === 'person-profile' && s.enabled !== false).map((s) => s.person));
   return ctx.content.people.people
+    .filter((person) => !profiled.has(person.id))
     .filter((person) => (person.roles || []).some((r) => r.group === p.group))
     .map((person) => resolveRole(person.id, p.group, ctx))
     .sort((a, b) => (a.role.order ?? 99) - (b.role.order ?? 99));
@@ -79,17 +83,21 @@ function entries(p, ctx) {
 export function renderList(p, ctx) {
   const list = entries(p, ctx);
   const opts = { showEmail: p.showEmail !== false, showPhone: p.showPhone !== false };
-  if (p.variant === 'cards') {
+  // People with photos get portrait cards; everyone else a compact directory.
+  if (list.some((r) => r.person?.photo)) {
     return html`<div class="people-list">
       ${sectionHead(p, ctx)}
-      <div class="${cx('card-grid', `card-grid--${p.columns || 2}`)}">
+      <div class="card-grid card-grid--3">
         ${list.map(
           (r) => html`<article class="card person-card">
+            ${r.person.photo ? html`<div class="person-card__media">${image(r.person.photo, ctx, { className: 'person-card__img', sizes: '(min-width: 900px) 30vw, 100vw' })}</div>` : ''}
+            <div class="person-card__body">
             ${eyebrow(r.title)}
             <h3 class="card__title">${r.name}</h3>
             ${r.note ? html`<div class="card__text prose prose--small">${ctx.md(r.note)}</div>` : ''}
             ${contactLines(r, ctx, opts)}
-            ${r.role.link ? html`<p class="card__link"><a class="text-link" href="${ctx.href(r.role.link)}">${ctx.l(r.role.link.label)}${icon('arrow', 'text-link__icon')}</a></p>` : ''}
+            ${r.role.link && ctx.href(r.role.link) ? html`<p class="card__link"><a class="text-link" href="${ctx.href(r.role.link)}">${ctx.l(r.role.link.label)}${icon('arrow', 'text-link__icon')}</a></p>` : ''}
+            </div>
           </article>`
         )}
       </div>
@@ -97,7 +105,7 @@ export function renderList(p, ctx) {
   }
   return html`<div class="people-list">
     ${sectionHead(p, ctx)}
-    <ul class="${cx('directory', `directory--${p.columns || 2}`)}">
+    <ul class="directory directory--2">
       ${list.map(
         (r) => html`<li class="directory__item">
           <div class="directory__who">
