@@ -2,6 +2,34 @@
   "$schema": "../schemas/news.schema.json",
   "items": [
     {
+      "id": "sample-nativity-schedule",
+      "date": "2026-11-20",
+      "category": "announcements",
+      "featured": true,
+      "title": {
+        "en": "Sample news: Nativity services",
+        "ru": "Образец новости: службы на Рождество"
+      },
+      "summary": {
+        "en": "Vigil on January 6 at 6 pm and Liturgy on January 7 at 9:30 am.",
+        "ru": "Всенощное бдение 6 января в 18:00 и литургия 7 января в 9:30."
+      },
+      "body": {
+        "en": "Sample announcement. The full schedule is on the Services page, and both services are streamed.",
+        "ru": "Образец объявления. Полное расписание на странице «Богослужения», обе службы транслируются."
+      },
+      "image": {
+        "src": "/assets/img/sample-news-2.jpg",
+        "alt": { "en": "Sample image: a chalice", "ru": "Образец изображения: чаша" }
+      },
+      "links": [
+        {
+          "label": { "en": "See the schedule", "ru": "Расписание" },
+          "page": "services"
+        }
+      ]
+    },
+    {
       "id": "sample-feast-day",
       "date": "2026-11-01",
       "featured": true,
@@ -13,10 +41,7 @@
         "en": "A featured news item with a photo, text and a gallery.",
         "ru": "Избранная новость с фотографией, текстом и галереей."
       },
-      "body": {
-        "en": "This is sample news text. Each item in `content/news.json` has a date, a title, a summary for the home page and a full text in Markdown.\n\nAdd **photos** with a gallery id, and links to pages, documents or other websites.",
-        "ru": "Это образец текста новости. У каждой записи в `content/news.json` есть дата, заголовок, краткое описание для главной страницы и полный текст в формате Markdown.\n\nДобавьте **фотографии** через идентификатор галереи, а также ссылки на страницы, документы или другие сайты."
-      },
+      "body": { "en": "Sample text. One or two lines.", "ru": "Образец текста. Одна-две строки." },
       "image": {
         "src": "/assets/img/sample-news-1.jpg",
         "alt": {
@@ -24,7 +49,8 @@
           "ru": "Образец изображения: православный храм"
         }
       },
-      "gallery": "parish-life"
+      "gallery": "parish-life",
+      "category": "parish"
     },
     {
       "id": "sample-newsletter",
@@ -51,7 +77,8 @@
           "label": { "en": "Read the newsletter (PDF)", "ru": "Читать бюллетень (PDF)" },
           "document": "newsletter-sample"
         }
-      ]
+      ],
+      "category": "announcements"
     },
     {
       "id": "sample-volunteers",
@@ -68,9 +95,24 @@
       "links": [
         {
           "label": { "en": "Contact the parish", "ru": "Связаться с приходом" },
-          "page": "contact"
+          "page": "volunteer"
         }
-      ]
+      ],
+      "category": "outreach"
+    }
+  ],
+  "categories": [
+    {
+      "id": "parish",
+      "label": { "en": "Parish life", "ru": "Жизнь прихода" }
+    },
+    {
+      "id": "announcements",
+      "label": { "en": "Announcements", "ru": "Объявления" }
+    },
+    {
+      "id": "outreach",
+      "label": { "en": "Outreach", "ru": "Милосердие" }
     }
   ]
 }

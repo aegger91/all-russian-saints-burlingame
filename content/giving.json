@@ -1,51 +1,45 @@
 {
   "$schema": "../schemas/giving.schema.json",
-  "provider": "paypal",
-  "paypal": {
-    "action": "https://www.paypal.com/cgi-bin/webscr",
-    "cmd": "_donations",
-    "business": "donations@example.org",
-    "itemName": "St. Example Orthodox Church",
-    "currency": "USD",
-    "noNote": "0"
-  },
+  "$comment": "The donation form is not tied to one payment company. Connect it in site.js with ParishSite.handlers.donate, or set endpoint to a server that starts the payment.",
+  "provider": "stripe",
+  "endpoint": "",
   "note": {
-    "en": "Sample giving buttons: set giving.paypal.business to the parish PayPal account before going live.",
-    "ru": "Образец кнопок пожертвований: перед публикацией укажите счёт прихода в PayPal в giving.paypal.business."
+    "en": "Sample form. No payment is taken until the parish connects its payment provider.",
+    "ru": "Образец формы. Оплата не проводится, пока приход не подключит платежную систему."
   },
+  "amounts": { "once": [25, 50, 100, 250], "monthly": [10, 25, 50, 100] },
   "funds": [
     {
       "id": "general",
-      "itemNumber": "General Donation",
-      "eyebrow": { "en": "Donation", "ru": "Пожертвование" },
-      "title": { "en": "General Donation", "ru": "Пожертвование на храм" },
+      "title": { "en": "Where it is most needed", "ru": "На нужды храма" },
       "description": {
         "en": "Support the life and services of the parish.",
         "ru": "Поддержите жизнь и богослужения прихода."
-      },
-      "button": { "en": "Donate with PayPal", "ru": "Пожертвовать через PayPal" }
-    },
-    {
-      "id": "dues",
-      "itemNumber": "Membership Dues",
-      "eyebrow": { "en": "Membership", "ru": "Членство" },
-      "title": { "en": "Membership Dues", "ru": "Членские взносы" },
-      "description": {
-        "en": "Pay your parish membership dues.",
-        "ru": "Оплатите членские взносы прихода."
-      },
-      "button": { "en": "Pay dues with PayPal", "ru": "Оплатить взносы через PayPal" }
+      }
     },
     {
       "id": "building",
-      "itemNumber": "Building Fund",
-      "eyebrow": { "en": "Building fund", "ru": "Строительный фонд" },
-      "title": { "en": "Building Fund", "ru": "Строительный фонд" },
+      "title": { "en": "Building fund", "ru": "Строительный фонд" },
       "description": {
         "en": "Help care for the church building and grounds.",
         "ru": "Помогите в заботе о здании храма и территории."
-      },
-      "button": { "en": "Give to the Building Fund", "ru": "Внести в строительный фонд" }
+      }
+    },
+    {
+      "id": "charity",
+      "title": { "en": "Help for those in need", "ru": "Помощь нуждающимся" },
+      "description": {
+        "en": "Food, rent and medical help for families in need.",
+        "ru": "Продукты, аренда и лечение для нуждающихся семей."
+      }
+    },
+    {
+      "id": "dues",
+      "title": { "en": "Membership dues", "ru": "Членские взносы" },
+      "description": {
+        "en": "Your monthly dues as a parish member.",
+        "ru": "Ежемесячные взносы члена прихода."
+      }
     }
   ],
   "dues": {
@@ -69,6 +63,5 @@
         }
       }
     ]
-  },
-  "needsReview": "Sample content from the blank template. Replace it with your parish information."
+  }
 }

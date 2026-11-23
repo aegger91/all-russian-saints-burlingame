@@ -1,195 +1,32 @@
 {
   "$schema": "../schemas/navigation.schema.json",
-  "topbar": {
-    "enabled": true,
-    "showAddress": true,
-    "showPhone": true,
-    "links": [
-      {
-        "id": "livestream",
-        "label": { "en": "Livestream", "ru": "Трансляция" },
-        "href": "https://www.example.org/",
-        "icon": "youtube"
-      },
-      {
-        "id": "facebook",
-        "label": { "en": "Facebook", "ru": "Facebook" },
-        "href": "https://www.example.org/",
-        "icon": "facebook"
-      }
-    ]
-  },
   "header": {
-    "items": [
-      {
-        "id": "about",
-        "label": { "en": "About", "ru": "О приходе" },
-        "page": "about",
-        "children": [
-          {
-            "id": "about-parish",
-            "label": { "en": "Our Parish", "ru": "Наш приход" },
-            "page": "about"
-          },
-          {
-            "id": "about-history",
-            "label": { "en": "History", "ru": "История" },
-            "page": "about",
-            "anchor": "history"
-          },
-          {
-            "id": "about-clergy",
-            "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" },
-            "page": "clergy"
-          },
-          {
-            "id": "about-membership",
-            "label": { "en": "Membership", "ru": "Членство" },
-            "page": "about",
-            "anchor": "membership"
-          },
-          {
-            "id": "about-faith",
-            "label": { "en": "The Orthodox Faith", "ru": "О Православии" },
-            "page": "about",
-            "anchor": "faith"
-          }
-        ]
-      },
-      {
-        "id": "services",
-        "label": { "en": "Services", "ru": "Богослужения" },
-        "page": "services"
-      },
-      {
-        "id": "ministries",
-        "label": { "en": "Ministries", "ru": "Служения" },
-        "page": "ministries",
-        "children": [
-          {
-            "id": "ministries-choir",
-            "label": { "en": "Choir", "ru": "Хор" },
-            "page": "ministries",
-            "anchor": "choir"
-          },
-          {
-            "id": "ministries-sisterhood",
-            "label": { "en": "Sisterhood", "ru": "Сестричество" },
-            "page": "ministries",
-            "anchor": "sisterhood"
-          },
-          {
-            "id": "ministries-school",
-            "label": { "en": "Church School", "ru": "Церковная школа" },
-            "page": "ministries",
-            "anchor": "school"
-          },
-          {
-            "id": "ministries-hall",
-            "label": { "en": "Parish Hall", "ru": "Приходской зал" },
-            "page": "ministries",
-            "anchor": "hall"
-          }
-        ]
-      },
-      {
-        "id": "news",
-        "label": { "en": "News", "ru": "Новости" },
-        "page": "news"
-      },
-      {
-        "id": "contact",
-        "label": { "en": "Contact", "ru": "Контакты" },
-        "page": "contact"
-      }
-    ],
-    "actions": [
-      {
-        "id": "give",
-        "label": { "en": "Give", "ru": "Пожертвовать" },
-        "page": "give",
-        "style": "accent",
-        "icon": "candle"
-      }
-    ]
+    "button": {
+      "page": "donate",
+      "label": { "en": "Donate", "ru": "Пожертвовать" }
+    }
   },
   "footer": {
     "about": {
-      "en": "A sample parish of the Orthodox Church, used to preview the parish website template. Replace this text in content/navigation.json.",
-      "ru": "Образец прихода Православной Церкви для предварительного просмотра шаблона сайта. Замените этот текст в content/navigation.json."
+      "en": "Sample text. One line about the parish.",
+      "ru": "Образец текста. Одна строка о приходе."
     },
-    "columns": [
+    "pages": "top",
+    "connect": [
       {
-        "id": "parish",
-        "title": { "en": "Parish", "ru": "Приход" },
-        "links": [
-          {
-            "label": { "en": "Services", "ru": "Богослужения" },
-            "page": "services"
-          },
-          {
-            "label": { "en": "Our Parish", "ru": "О приходе" },
-            "page": "about"
-          },
-          {
-            "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" },
-            "page": "clergy"
-          },
-          {
-            "label": { "en": "Give", "ru": "Пожертвовать" },
-            "page": "give"
-          }
-        ]
+        "label": { "en": "Livestream", "ru": "Трансляция" },
+        "page": "livestream",
+        "icon": "live"
       },
       {
-        "id": "ministries",
-        "title": { "en": "Ministries", "ru": "Служения" },
-        "links": [
-          {
-            "label": { "en": "Choir", "ru": "Хор" },
-            "page": "ministries",
-            "anchor": "choir"
-          },
-          {
-            "label": { "en": "Sisterhood", "ru": "Сестричество" },
-            "page": "ministries",
-            "anchor": "sisterhood"
-          },
-          {
-            "label": { "en": "Church School", "ru": "Церковная школа" },
-            "page": "ministries",
-            "anchor": "school"
-          },
-          {
-            "label": { "en": "News & Photos", "ru": "Новости и фотографии" },
-            "page": "news"
-          }
-        ]
-      },
-      {
-        "id": "connect",
-        "title": { "en": "Connect", "ru": "Мы на связи" },
-        "links": [
-          {
-            "label": { "en": "Livestream", "ru": "Трансляции" },
-            "href": "https://www.example.org/",
-            "icon": "youtube"
-          },
-          {
-            "label": { "en": "Facebook", "ru": "Facebook" },
-            "href": "https://www.example.org/",
-            "icon": "facebook"
-          },
-          {
-            "label": { "en": "Contact the parish", "ru": "Связаться с приходом" },
-            "page": "contact"
-          }
-        ]
+        "label": { "en": "Join us on OrthodoxConnect", "ru": "Мы в OrthodoxConnect" },
+        "href": "https://app.orthodoxconnect.example/join/sample-parish",
+        "icon": "church"
       }
     ],
     "legal": {
-      "en": "Sample parish · Orthodox parish website template.",
-      "ru": "Образец прихода · шаблон сайта православного прихода."
+      "en": "Sample content for the parish website template.",
+      "ru": "Образец содержания для шаблона сайта прихода."
     }
   }
 }

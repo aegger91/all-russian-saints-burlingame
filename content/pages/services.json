@@ -2,192 +2,57 @@
   "$schema": "../../schemas/page.schema.json",
   "id": "services",
   "slug": "services",
-  "order": 10,
-  "title": { "en": "Services", "ru": "Богослужения" },
-  "subnav": true,
+  "order": 20,
+  "title": { "en": "Services & Schedule", "ru": "Богослужения и расписание" },
+  "nav": {
+    "label": { "en": "Services", "ru": "Богослужения" },
+    "overview": { "en": "Schedule", "ru": "Расписание" },
+    "icon": "censer"
+  },
   "seo": {
     "description": {
-      "en": "Sample schedule of services.",
-      "ru": "Образец расписания богослужений."
+      "en": "Sample service schedule by week and by month.",
+      "ru": "Образец расписания богослужений по неделям и по месяцам."
     }
   },
   "sections": [
     {
-      "id": "services-header",
+      "id": "header",
       "type": "page-header",
       "eyebrow": { "en": "Services", "ru": "Богослужения" },
-      "title": { "en": "Schedule of Services", "ru": "Расписание богослужений" },
-      "lede": {
-        "en": "Sample schedule. Services are listed from content/services.json and past dates hide automatically.",
-        "ru": "Образец расписания. Службы берутся из content/services.json, прошедшие даты скрываются автоматически."
+      "title": { "en": "Services & Schedule", "ru": "Богослужения и расписание" },
+      "lede": { "en": "Sample schedule.", "ru": "Образец расписания." }
+    },
+    {
+      "id": "schedule",
+      "type": "schedule",
+      "showSeason": true,
+      "showNotices": true,
+      "showLegend": true
+    },
+    {
+      "id": "standing",
+      "type": "service-times",
+      "title": { "en": "Every week", "ru": "Каждую неделю" },
+      "showStanding": true,
+      "limit": 0
+    },
+    {
+      "id": "requests",
+      "type": "cta-band",
+      "title": { "en": "Prayer requests", "ru": "Требы и записки" },
+      "text": {
+        "en": "Ask for a moleben or panikhida, or send names to be remembered at the Liturgy.",
+        "ru": "Закажите молебен или панихиду или подайте имена для поминовения за литургией."
       },
-      "accent": "Расписание богослужений",
-      "image": {
-        "src": "/assets/img/sample-interior.jpg",
-        "alt": { "en": "Sample image: an iconostasis", "ru": "Образец изображения: иконостас" },
-        "position": "50% 50%"
-      }
-    },
-    {
-      "id": "upcoming",
-      "type": "split",
-      "navLabel": { "en": "Upcoming", "ru": "Ближайшие службы" },
-      "ratio": "7:5",
-      "columns": [
+      "actions": [
         {
-          "id": "service-list",
-          "type": "service-times",
-          "eyebrow": { "en": "Upcoming services", "ru": "Ближайшие богослужения" },
-          "title": { "en": "This month", "ru": "В этом месяце" },
-          "variant": "panel",
-          "limit": 12,
-          "showNotices": true,
-          "showSeason": true,
-          "showStanding": true
+          "label": { "en": "Request a service", "ru": "Заказать требу" },
+          "page": "request-service"
         },
         {
-          "id": "schedules",
-          "type": "stack",
-          "blocks": [
-            {
-              "id": "monthly-schedules",
-              "type": "document-list",
-              "eyebrow": { "en": "Monthly schedules", "ru": "Расписание на месяц" },
-              "title": { "en": "Download the schedule", "ru": "Скачать расписание" },
-              "group": "schedule"
-            },
-            {
-              "id": "livestream",
-              "type": "rich-text",
-              "navLabel": { "en": "Livestream", "ru": "Трансляция" },
-              "eyebrow": { "en": "Livestream", "ru": "Трансляция" },
-              "title": { "en": "Watch services online", "ru": "Богослужения онлайн" },
-              "body": {
-                "en": "Link your parish YouTube channel in content/site.json (livestreamUrl).",
-                "ru": "Укажите канал YouTube вашего прихода в content/site.json (livestreamUrl)."
-              },
-              "actions": [
-                {
-                  "label": { "en": "Open the channel", "ru": "Открыть канал" },
-                  "style": "primary",
-                  "href": "https://www.example.org/"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "recordings",
-      "type": "video-list",
-      "background": "alt",
-      "navLabel": { "en": "Recordings", "ru": "Записи" },
-      "eyebrow": { "en": "Recordings", "ru": "Записи" },
-      "title": { "en": "Recent recordings", "ru": "Недавние записи" },
-      "layout": "grid",
-      "videos": [
-        {
-          "id": "recording-1",
-          "heading": { "en": "Sample recording", "ru": "Образец записи" },
-          "description": {
-            "en": "Add a YouTube video id to show a player here.",
-            "ru": "Укажите идентификатор видео YouTube, чтобы здесь появился плеер."
-          },
-          "status": { "en": "Recording coming soon", "ru": "Запись скоро появится" }
-        },
-        {
-          "id": "recording-2",
-          "heading": { "en": "Sample recording", "ru": "Образец записи" },
-          "description": {
-            "en": "Videos load only when a visitor clicks play.",
-            "ru": "Видео загружается только после нажатия кнопки воспроизведения."
-          },
-          "status": { "en": "Recording coming soon", "ru": "Запись скоро появится" }
-        }
-      ]
-    },
-    {
-      "id": "service-texts",
-      "type": "card-grid",
-      "navLabel": { "en": "Service texts", "ru": "Тексты служб" },
-      "eyebrow": { "en": "Following the services", "ru": "Как следить за службой" },
-      "title": { "en": "Service texts", "ru": "Тексты богослужений" },
-      "columns": 3,
-      "cards": [
-        {
-          "id": "weekly-texts",
-          "icon": "gospel",
-          "title": { "en": "Weekly service texts", "ru": "Тексты служб на неделю" },
-          "text": {
-            "en": "Sample card with text and a link.",
-            "ru": "Образец карточки с текстом и ссылкой."
-          },
-          "link": {
-            "href": "https://www.example.org/",
-            "label": { "en": "Open", "ru": "Открыть" }
-          }
-        },
-        {
-          "id": "confession",
-          "icon": "candle",
-          "title": { "en": "Confession", "ru": "Исповедь" },
-          "text": {
-            "en": "Sample card: when and how confession is heard in the parish.",
-            "ru": "Образец карточки: когда и как в приходе совершается исповедь."
-          }
-        },
-        {
-          "id": "sacraments",
-          "icon": "chalice",
-          "title": { "en": "Baptisms and weddings", "ru": "Крещение и венчание" },
-          "text": {
-            "en": "Sample card: please contact the rector to arrange a sacrament.",
-            "ru": "Образец карточки: о совершении таинства договоритесь с настоятелем."
-          },
-          "link": {
-            "page": "contact",
-            "label": { "en": "Contact the rector", "ru": "Связаться с настоятелем" }
-          }
-        }
-      ]
-    },
-    {
-      "id": "prayers",
-      "type": "split",
-      "navLabel": { "en": "Prayers", "ru": "Молитвы" },
-      "ratio": "1:1",
-      "columns": [
-        {
-          "id": "heavenly-king",
-          "type": "prayer",
-          "eyebrow": { "en": "Prayer", "ru": "Молитва" },
-          "title": { "en": "Prayer to the Holy Spirit", "ru": "Молитва Святому Духу" },
-          "textLang": "cu",
-          "text": "Царю Небесный, Утешителю, Душе истины, Иже везде сый и вся исполняяй, Сокровище благих и жизни Подателю, прииди и вселися в ны, и очисти ны от всякия скверны, и спаси, Блаже, души наша.",
-          "translation": {
-            "en": "O Heavenly King, Comforter, Spirit of Truth, who art everywhere present and fillest all things, Treasury of blessings and Giver of life: come and abide in us, cleanse us from every impurity, and save our souls, O Good One."
-          },
-          "ru_locked": true
-        },
-        {
-          "id": "trisagion",
-          "type": "prayer",
-          "eyebrow": { "en": "Prayer", "ru": "Молитва" },
-          "title": { "en": "Trisagion", "ru": "Трисвятое" },
-          "textLang": "cu",
-          "text": "Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.\nСвятый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.\nСвятый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.",
-          "translation": {
-            "en": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (Thrice)"
-          },
-          "actions": [
-            {
-              "label": { "en": "Print the prayers (PDF)", "ru": "Распечатать молитвы (PDF)" },
-              "style": "secondary",
-              "document": "prayers-pdf"
-            }
-          ],
-          "ru_locked": true
+          "label": { "en": "Commemoration notes", "ru": "Записки" },
+          "page": "zapiski"
         }
       ]
     }
