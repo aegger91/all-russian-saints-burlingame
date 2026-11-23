@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "news.schema.json",
+  "title": "News",
+  "description": "content/news.json: parish news and photo reports, newest first.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/editorial"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "date": {
+            "$ref": "common.schema.json#/$defs/date"
+          },
+          "dateLabel": {
+            "$ref": "common.schema.json#/$defs/text",
+            "description": "Replaces the formatted date (e.g. \"Summer 2026\")."
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "Shown on the home page."
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "accent": {
+            "type": "string"
+          },
+          "summary": {
+            "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "body": {
+            "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "image": {
+            "$ref": "common.schema.json#/$defs/image"
+          },
+          "gallery": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "galleries id shown below the story."
+          },
+          "videos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "youtubeId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{11}$"
+                },
+                "embed": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "false when the video owner has disabled embedding (opens on YouTube instead)."
+                },
+                "title": {
+                  "$ref": "common.schema.json#/$defs/text"
+                }
+              },
+              "required": [
+                "youtubeId",
+                "title"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "figures": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/image"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/link"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ],
+        "unevaluatedProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "date"
+            ]
+          },
+          {
+            "required": [
+              "dateLabel"
+            ]
+          },
+          {
+            "not": {
+              "required": [
+                "featured"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "items"
+  ],
+  "additionalProperties": false
+}

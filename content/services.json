@@ -1,0 +1,99 @@
+{
+  "$schema": "../schemas/services.schema.json",
+  "serviceTypes": [
+    { "id": "vigil", "name": { "en": "Vigil Service", "ru": "Всенощное бдение" } },
+    { "id": "liturgy", "name": { "en": "Divine Liturgy", "ru": "Божественная литургия" } },
+    { "id": "moleben", "name": { "en": "Moleben", "ru": "Молебен" } }
+  ],
+  "season": {
+    "id": "nativity-fast-2026",
+    "title": { "en": "Nativity Fast", "ru": "Рождественский пост" },
+    "accent": "Рождественский Пост",
+    "text": {
+      "en": "Saturday, November 28, 2026 through Wednesday, January 6, 2027",
+      "ru": "С субботы, 28 ноября 2026 г., по среду, 6 января 2027 г."
+    },
+    "start": "2026-11-28",
+    "end": "2027-01-06"
+  },
+  "notices": [
+    {
+      "id": "check-daily",
+      "text": {
+        "en": "Check this section daily for any schedule changes or cancellations.",
+        "ru": "Пожалуйста, проверяйте этот раздел ежедневно: в расписании возможны изменения и отмены."
+      }
+    }
+  ],
+  "upcoming": [
+    {
+      "id": "2026-11-26-thanksgiving",
+      "date": "2026-11-26",
+      "noService": true,
+      "title": { "en": "Thanksgiving: No Services", "ru": "День благодарения: богослужений нет" }
+    },
+    {
+      "id": "2026-11-28-vigil",
+      "date": "2026-11-28",
+      "time": "18:00",
+      "serviceType": "vigil",
+      "note": { "en": "Beginning of Nativity Fast", "ru": "Начало Рождественского поста" }
+    },
+    { "id": "2026-11-29-liturgy", "date": "2026-11-29", "time": "09:00", "serviceType": "liturgy" },
+    { "id": "2026-12-03-vigil", "date": "2026-12-03", "time": "18:00", "serviceType": "vigil" },
+    {
+      "id": "2026-12-04-liturgy",
+      "date": "2026-12-04",
+      "time": "09:00",
+      "serviceType": "liturgy",
+      "note": {
+        "en": "Feast Day: The Entry of the Most Holy Theotokos into the Temple",
+        "ru": "Праздник Введения во храм Пресвятой Богородицы"
+      },
+      "needsReview": "The original site lists this Liturgy as \"Friday, December 3\". Friday is December 4, 2026, the date of the feast; confirm with the parish."
+    },
+    { "id": "2026-12-05-vigil", "date": "2026-12-05", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2026-12-06-liturgy", "date": "2026-12-06", "time": "09:00", "serviceType": "liturgy" },
+    { "id": "2026-12-18-vigil", "date": "2026-12-18", "time": "18:00", "serviceType": "vigil" },
+    {
+      "id": "2026-12-19-liturgy",
+      "date": "2026-12-19",
+      "time": "09:00",
+      "serviceType": "liturgy",
+      "note": {
+        "en": "Feast Day: St. Nicholas the Wonderworker, Archbishop of Myra",
+        "ru": "Праздник святителя Николая Чудотворца, архиепископа Мир Ликийских"
+      }
+    },
+    { "id": "2026-12-19-vigil", "date": "2026-12-19", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2026-12-20-liturgy", "date": "2026-12-20", "time": "09:00", "serviceType": "liturgy" },
+    { "id": "2026-12-26-vigil", "date": "2026-12-26", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2026-12-27-liturgy", "date": "2026-12-27", "time": "09:00", "serviceType": "liturgy" },
+    {
+      "id": "2026-12-31-moleben",
+      "date": "2026-12-31",
+      "time": "18:00",
+      "serviceType": "moleben",
+      "note": {
+        "en": "Thanksgiving Prayer Service, End of Legal Year",
+        "ru": "Благодарственный молебен на окончание гражданского года"
+      }
+    }
+  ],
+  "standing": {
+    "published": false,
+    "needsReview": "Our Parish page says Liturgy is at 9:30am on Sundays, but every Sunday in the current Upcoming Services list says 9:00am. Hidden until the parish confirms.",
+    "items": [
+      {
+        "id": "vigil",
+        "label": { "en": "Vigil Service", "ru": "Всенощное бдение" },
+        "text": { "en": "6:00pm Saturday; 7:00pm weekday Feastdays", "ru": "6:00 вечера в субботу; 7:00 вечера по будням" }
+      },
+      {
+        "id": "liturgy",
+        "label": { "en": "Liturgy", "ru": "Литургия" },
+        "text": { "en": "9:30am Sunday; 9:00am Saturday and weekday Feastdays", "ru": "9:30 утра в воскресенье; 9:00 утра в субботу и в праздничные дни" }
+      }
+    ]
+  }
+}

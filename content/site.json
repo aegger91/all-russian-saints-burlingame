@@ -1,0 +1,98 @@
+{
+  "$schema": "../schemas/site.schema.json",
+  "id": "all-russian-saints-burlingame",
+  "url": "https://www.allrussiansaintsburlingame.org",
+  "name": {
+    "en": "Church of All Russian Saints",
+    "ru": "Церковь Всех Святых в Земле Российской Просиявших"
+  },
+  "shortName": { "en": "All Russian Saints, Burlingame", "ru": "Церковь Всех Святых, Бурлингейм" },
+  "location": { "en": "Burlingame, California", "ru": "Бурлингейм, Калифорния" },
+  "jurisdiction": {
+    "name": {
+      "en": "Western American Diocese of the Russian Orthodox Church Outside Russia (ROCOR)",
+      "ru": "Западно-Американская епархия Русской Православной Церкви Заграницей (РПЦЗ)"
+    },
+    "url": "https://wadiocese.org/"
+  },
+  "timezone": "America/Los_Angeles",
+  "locales": [
+    { "code": "en", "label": "ENG", "name": "English", "ogLocale": "en_US" },
+    { "code": "ru", "label": "RUS", "name": "Русский", "ogLocale": "ru_RU" }
+  ],
+  "sourceLocale": "en",
+  "contact": {
+    "address": {
+      "street": "744 El Camino Real",
+      "city": "Burlingame",
+      "region": "CA",
+      "postalCode": "94010",
+      "country": "US"
+    },
+    "geo": { "lat": 37.579794, "lng": -122.357822 },
+    "phone": { "display": "(650) 430-9805", "e164": "+16504309805" },
+    "email": "stefanvpavlenko@netscape.net",
+    "mapEmbedUrl": "https://www.google.com/maps?q=37.579794,-122.357822&z=15&output=embed",
+    "directionsUrl": "https://www.google.com/maps?q=37.579794,-122.357822",
+    "virtualTourUrl": "https://orthodox360.com/tours/rocor-burlingame/"
+  },
+  "social": [
+    {
+      "id": "youtube",
+      "label": { "en": "YouTube", "ru": "YouTube" },
+      "url": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+      "icon": "youtube"
+    },
+    {
+      "id": "facebook",
+      "label": { "en": "Facebook", "ru": "Facebook" },
+      "url": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/",
+      "icon": "facebook"
+    }
+  ],
+  "livestreamUrl": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+  "logo": {
+    "src": "/logo/ars-lockup-horizontal-color.svg",
+    "alt": {
+      "en": "Church of All Russian Saints, Burlingame, California — home",
+      "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния — на главную"
+    },
+    "footer": {
+      "src": "/logo/ars-lockup-horizontal-oncolor-navy.svg",
+      "alt": {
+        "en": "Church of All Russian Saints, Burlingame, California",
+        "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния"
+      },
+      "width": 1118,
+      "height": 380
+    },
+    "square": "/logo/ars-favicon-512.png",
+    "favicon": "/logo/ars-favicon-small.svg",
+    "faviconPng": "/logo/ars-favicon-32.png",
+    "appleTouchIcon": "/logo/ars-favicon-180.png"
+  },
+  "seo": {
+    "siteName": {
+      "en": "Church of All Russian Saints, Burlingame",
+      "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм"
+    },
+    "title": {
+      "en": "Church of All Russian Saints · Russian Orthodox Church in Burlingame, California",
+      "ru": "Церковь Всех Святых в Земле Российской Просиявших · Русская православная церковь в Бурлингейме"
+    },
+    "description": {
+      "en": "Russian Orthodox parish of the Western American Diocese (ROCOR) at 744 El Camino Real, Burlingame, California. Service schedule, livestream, parish life, choir, sisterhood and Russian school.",
+      "ru": "Православный приход Западно-Американской епархии РПЦЗ: 744 El Camino Real, Бурлингейм, Калифорния. Расписание богослужений, трансляции, жизнь прихода, хор, сестричество и русская школа."
+    },
+    "image": "/assets/img/newlogo-4.jpg"
+  },
+  "theme": { "tokens": "theme/tokens.json", "themeColor": "#174372" },
+  "integrations": {
+    "orthodoxconnect": {
+      "enabled": true,
+      "sampleFeed": "integrations/orthodoxconnect.sample.json",
+      "joinUrl": "",
+      "parishId": ""
+    }
+  }
+}

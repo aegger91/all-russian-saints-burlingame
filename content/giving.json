@@ -1,0 +1,115 @@
+{
+  "$schema": "../schemas/giving.schema.json",
+  "provider": "paypal",
+  "paypal": {
+    "action": "https://www.paypal.com/cgi-bin/webscr",
+    "cmd": "_donations",
+    "business": "coarstreasurer@gmail.com",
+    "itemName": "All Russian Saints",
+    "currency": "USD",
+    "noNote": "0"
+  },
+  "note": {
+    "en": "Payments go to the parish PayPal account and open in a new window.",
+    "ru": "Платежи поступают на счёт прихода в PayPal; страница оплаты откроется в новом окне."
+  },
+  "funds": [
+    {
+      "id": "general",
+      "itemNumber": "General Donation",
+      "eyebrow": {
+        "en": "Donation",
+        "ru": "Пожертвование"
+      },
+      "title": {
+        "en": "General Donation",
+        "ru": "Пожертвование на храм"
+      },
+      "description": {
+        "en": "Please click on this button to make a Donation to the Church.",
+        "ru": "Нажмите эту кнопку, чтобы сделать пожертвование на храм."
+      },
+      "button": {
+        "en": "Donate with PayPal",
+        "ru": "Пожертвовать через PayPal"
+      }
+    },
+    {
+      "id": "dues",
+      "itemNumber": "Membership Dues",
+      "eyebrow": {
+        "en": "Membership",
+        "ru": "Членство"
+      },
+      "title": {
+        "en": "Membership Dues",
+        "ru": "Членские взносы"
+      },
+      "description": {
+        "en": "Please click on this button to pay your Parish Membership Dues.",
+        "ru": "Нажмите эту кнопку, чтобы оплатить членские взносы прихода."
+      },
+      "button": {
+        "en": "Pay dues with PayPal",
+        "ru": "Оплатить взносы через PayPal"
+      }
+    },
+    {
+      "id": "stewardship",
+      "itemNumber": "Stewardship Fund",
+      "eyebrow": {
+        "en": "Stewardship",
+        "ru": "Попечительство"
+      },
+      "title": {
+        "en": "Stewardship Fund",
+        "ru": "Фонд попечительства"
+      },
+      "description": {
+        "en": "Please click on this button to donate to the Stewardship Fund.",
+        "ru": "Нажмите эту кнопку, чтобы сделать взнос в фонд попечительства."
+      },
+      "button": {
+        "en": "Give to the Stewardship Fund",
+        "ru": "Внести в фонд попечительства"
+      }
+    }
+  ],
+  "dues": {
+    "rates": [
+      {
+        "id": "employed",
+        "amount": 20,
+        "label": {
+          "en": "per month if employed",
+          "ru": "в месяц для работающих"
+        }
+      },
+      {
+        "id": "retired",
+        "amount": 10,
+        "label": {
+          "en": "per month if retired",
+          "ru": "в месяц для пенсионеров"
+        }
+      },
+      {
+        "id": "family-employed",
+        "amount": 30,
+        "label": {
+          "en": "family, per month if employed",
+          "ru": "семья, в месяц для работающих"
+        }
+      },
+      {
+        "id": "family-retired",
+        "amount": 15,
+        "label": {
+          "en": "family, if both are retired",
+          "ru": "семья, если оба супруга на пенсии"
+        }
+      }
+    ]
+  },
+  "needsReview": "The original PayPal buttons also sent an IPN notify_url and a \"custom\" field from the old platform; these were omitted. Treasurer to confirm."
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "../schemas/navigation.schema.json",
+  "topbar": {
+    "enabled": true,
+    "showAddress": true,
+    "showPhone": true,
+    "links": [
+      {
+        "id": "livestream",
+        "label": { "en": "Livestream", "ru": "Трансляция" },
+        "href": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+        "icon": "youtube"
+      },
+      {
+        "id": "facebook",
+        "label": { "en": "Facebook", "ru": "Facebook" },
+        "href": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/",
+        "icon": "facebook"
+      }
+    ]
+  },
+  "header": {
+    "items": [
+      {
+        "id": "parish",
+        "label": { "en": "Our Parish", "ru": "Наш приход" },
+        "page": "parish",
+        "children": [
+          { "id": "parish-about", "label": { "en": "Our Parish", "ru": "О приходе" }, "page": "parish" },
+          { "id": "parish-history", "label": { "en": "Parish History", "ru": "История прихода" }, "page": "history" },
+          { "id": "parish-clergy", "label": { "en": "Clergy & Parish Council", "ru": "Духовенство и приходской совет" }, "page": "clergy" },
+          { "id": "parish-membership", "label": { "en": "Parish Membership", "ru": "Членство в приходе" }, "page": "parish", "anchor": "membership" },
+          { "id": "parish-stewardship", "label": { "en": "Stewardship", "ru": "Попечительство" }, "page": "parish", "anchor": "stewardship" },
+          { "id": "parish-bylaws", "label": { "en": "Parish By-Laws", "ru": "Устав прихода" }, "page": "parish", "anchor": "bylaws" },
+          { "id": "parish-orthodoxy", "label": { "en": "About Orthodoxy", "ru": "О Православии" }, "page": "orthodoxy" }
+        ]
+      },
+      { "id": "services", "label": { "en": "Services", "ru": "Богослужения" }, "page": "services" },
+      {
+        "id": "community",
+        "label": { "en": "Community", "ru": "Община" },
+        "children": [
+          { "id": "community-choir", "label": { "en": "Choir", "ru": "Хор" }, "page": "choir" },
+          { "id": "community-sisterhood", "label": { "en": "Sisterhood", "ru": "Сестричество" }, "page": "sisterhood" },
+          { "id": "community-school", "label": { "en": "Russian School", "ru": "Русская школа" }, "page": "school" },
+          { "id": "community-news", "label": { "en": "Parish News & Photos", "ru": "Новости и фотографии" }, "page": "news" }
+        ]
+      },
+      { "id": "newsletter", "label": { "en": "Newsletter", "ru": "Бюллетень" }, "page": "newsletter" },
+      { "id": "contact", "label": { "en": "Contact", "ru": "Контакты" }, "page": "contact" }
+    ],
+    "actions": [
+      { "id": "give", "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give", "style": "accent", "icon": "candle" }
+    ]
+  },
+  "footer": {
+    "about": {
+      "en": "A parish of the Western American Diocese of the Russian Orthodox Church Outside Russia (ROCOR), serving Burlingame and the San Francisco Peninsula since 1952.",
+      "ru": "Приход Западно-Американской епархии Русской Православной Церкви Заграницей (РПЦЗ) в Бурлингейме с 1952 года."
+    },
+    "columns": [
+      {
+        "id": "parish",
+        "title": { "en": "Parish", "ru": "Приход" },
+        "links": [
+          { "label": { "en": "Services", "ru": "Богослужения" }, "page": "services" },
+          { "label": { "en": "Our Parish", "ru": "О приходе" }, "page": "parish" },
+          { "label": { "en": "Parish History", "ru": "История прихода" }, "page": "history" },
+          { "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" }, "page": "clergy" },
+          { "label": { "en": "About Orthodoxy", "ru": "О Православии" }, "page": "orthodoxy" },
+          { "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give" }
+        ]
+      },
+      {
+        "id": "community",
+        "title": { "en": "Community", "ru": "Община" },
+        "links": [
+          { "label": { "en": "Choir", "ru": "Хор" }, "page": "choir" },
+          { "label": { "en": "Sisterhood", "ru": "Сестричество" }, "page": "sisterhood" },
+          { "label": { "en": "Russian School", "ru": "Русская школа" }, "page": "school" },
+          { "label": { "en": "Newsletter", "ru": "Бюллетень" }, "page": "newsletter" },
+          { "label": { "en": "News & Photos", "ru": "Новости и фотографии" }, "page": "news" }
+        ]
+      },
+      {
+        "id": "connect",
+        "title": { "en": "Connect", "ru": "Мы на связи" },
+        "links": [
+          { "label": { "en": "Livestream on YouTube", "ru": "Трансляции на YouTube" }, "href": "https://www.youtube.com/@churchofallrussiansaints-b2874", "icon": "youtube" },
+          { "label": { "en": "Facebook", "ru": "Facebook" }, "href": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/", "icon": "facebook" },
+          { "label": { "en": "Subscribe to the newsletter", "ru": "Подписка на бюллетень" }, "page": "newsletter", "anchor": "subscribe" },
+          { "label": { "en": "Contact the parish", "ru": "Связаться с приходом" }, "page": "contact" }
+        ]
+      }
+    ],
+    "legal": {
+      "en": "Russian Orthodox Church Outside Russia.",
+      "ru": "Русская Православная Церковь Заграницей."
+    }
+  }
+}

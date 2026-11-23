@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "news",
+  "slug": "news",
+  "order": 120,
+  "title": {
+    "en": "News & Photos",
+    "ru": "Новости и фотографии"
+  },
+  "sections": [
+    {
+      "id": "news-header",
+      "type": "page-header",
+      "eyebrow": {
+        "en": "News",
+        "ru": "Новости"
+      },
+      "title": {
+        "en": "Parish news and photos",
+        "ru": "Новости и фотографии прихода"
+      },
+      "image": {
+        "src": "/assets/img/img-24-1600x900-crop.jpg",
+        "alt": {
+          "en": "Parishioners at the Church of All Russian Saints",
+          "ru": "Прихожане храма Всех Святых"
+        },
+        "position": "50% 40%"
+      }
+    },
+    {
+      "id": "news",
+      "type": "news-list",
+      "variant": "full"
+    }
+  ]
+}

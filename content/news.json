@@ -1,0 +1,423 @@
+{
+  "$schema": "../schemas/news.schema.json",
+  "items": [
+    {
+      "id": "st-hermans-west-2026",
+      "date": "2026-12-22",
+      "dateLabel": {
+        "en": "December 22–26, 2026",
+        "ru": "22–26 декабря 2026 г."
+      },
+      "featured": false,
+      "title": {
+        "en": "St. Herman’s West 2026 Youth Conference",
+        "ru": "Молодёжная конференция St. Herman’s West 2026"
+      },
+      "summary": {
+        "en": "St. Herman’s West 2026 will be held in San Francisco from December 22-26, 2026.",
+        "ru": "Конференция St. Herman’s West 2026 пройдёт в Сан-Франциско 22–26 декабря 2026 года."
+      },
+      "body": {
+        "en": "St. Herman’s West 2026 will be held in San Francisco from December 22-26, 2026.\n\nConference activities will take place at the Old Holy Virgin Cathedral in San Francisco, Sts. Peter and Paul Church in Santa Rosa, and Best Western Corte Madera.\n\nThe conference is for ages 15-21, and the registration fees are $300/person (additional members of the same family receive a $50 discount).",
+        "ru": "Конференция St. Herman’s West 2026 пройдёт в Сан-Франциско 22–26 декабря 2026 года.\n\nМероприятия конференции состоятся в Старом соборе Пресвятой Богородицы в Сан-Франциско, в церкви Святых апостолов Петра и Павла в Санта-Розе и в гостинице Best Western в Корте-Мадере.\n\nКонференция предназначена для молодёжи от 15 до 21 года. Регистрационный взнос — $300 с человека (для других членов той же семьи скидка $50)."
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Conference schedule (wadyouth.wordpress.com)",
+            "ru": "Расписание конференции (wadyouth.wordpress.com)"
+          },
+          "href": "https://wadyouth.wordpress.com/"
+        },
+        {
+          "label": {
+            "en": "Apply to attend",
+            "ru": "Подать заявку на участие"
+          },
+          "href": "https://forms.gle/monvTUYBEtcjKyCYA"
+        }
+      ]
+    },
+    {
+      "id": "stewardship-news-oct-2026",
+      "date": "2026-10-01",
+      "dateLabel": {
+        "en": "October 2026",
+        "ru": "Октябрь 2026 г."
+      },
+      "title": {
+        "en": "Stewardship Projects News: October 2026 Issue Posted",
+        "ru": "Вестник проектов попечительства: опубликован выпуск за октябрь 2026 г."
+      },
+      "summary": {
+        "en": "Projects completed this year, projects in process and projects in the planning stages.",
+        "ru": "Проекты, завершённые в этом году, проекты в работе и проекты на стадии планирования."
+      },
+      "body": {
+        "en": "The Stewardship Projects News is intended to spotlight projects which have been completed during the year, projects which are in process, and projects which are currently in the planning stages. Future issues will be published as needed.",
+        "ru": "Вестник проектов попечительства рассказывает о проектах, завершённых за год, о проектах, которые сейчас выполняются, и о тех, что находятся на стадии планирования. Следующие выпуски будут публиковаться по мере необходимости."
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Read or print the October 2026 issue (Issue 4)",
+            "ru": "Читать или распечатать выпуск за октябрь 2026 г. (выпуск 4)"
+          },
+          "document": "stewardship-news-4"
+        },
+        {
+          "label": {
+            "en": "Earlier issues on Our Parish",
+            "ru": "Предыдущие выпуски — на странице «О приходе»"
+          },
+          "page": "parish",
+          "anchor": "stewardship"
+        }
+      ],
+      "gallery": "stewardship-projects"
+    },
+    {
+      "id": "picnic-2026",
+      "date": "2026-08-09",
+      "dateLabel": {
+        "en": "Sunday, August 9, 2026",
+        "ru": "Воскресенье, 9 августа 2026 г."
+      },
+      "featured": false,
+      "title": {
+        "en": "Burlingame Church Picnic",
+        "ru": "Приходской пикник"
+      },
+      "summary": {
+        "en": "Photographs from the parish picnic.",
+        "ru": "Фотографии с приходского пикника."
+      },
+      "gallery": "picnic-2026"
+    },
+    {
+      "id": "feast-day-2026",
+      "date": "2026-06-14",
+      "dateLabel": {
+        "en": "Sunday, June 14, 2026",
+        "ru": "Воскресенье, 14 июня 2026 г."
+      },
+      "featured": true,
+      "title": {
+        "en": "Church of All Russian Saints Altar Feast Day",
+        "ru": "Престольный праздник храма Всех Святых в Земле Российской Просиявших"
+      },
+      "accent": "Престольный Праздник",
+      "summary": {
+        "en": "The unveiling and blessing of the Tsar-Martyr Nicholas II Monument. Videos and photos.",
+        "ru": "Открытие и освящение памятника Царю-мученику Николаю II. Видео и фотографии."
+      },
+      "body": {
+        "en": "**The unveiling and blessing of the Tsar-Martyr Nicholas II Monument.**",
+        "ru": "**Открытие и освящение памятника Царю-мученику Николаю II.**"
+      },
+      "image": {
+        "src": "/assets/img/church-of-all-russian-saints-august-2023-fix-1.jpg",
+        "alt": {
+          "en": "The Church of All Russian Saints",
+          "ru": "Храм Всех Святых в Земле Российской Просиявших"
+        }
+      },
+      "links": [
+        {
+          "label": {
+            "en": "Full version video of the Feast Day",
+            "ru": "Полная видеозапись праздника"
+          },
+          "href": "https://www.youtube.com/watch?v=n4xA9O2Byso"
+        },
+        {
+          "label": {
+            "en": "Abridged version video of the Feast Day",
+            "ru": "Сокращённая видеозапись праздника"
+          },
+          "href": "https://www.youtube.com/watch?v=EhK-W5xt18M"
+        },
+        {
+          "label": {
+            "en": "Photos of the Feast Day",
+            "ru": "Фотографии праздника"
+          },
+          "href": "https://elenproni.vigbo.gallery/gallery/nikolay-2/"
+        }
+      ]
+    },
+    {
+      "id": "anniversary-45",
+      "date": "2026-02-01",
+      "dateLabel": {
+        "en": "February 1, 2026",
+        "ru": "1 февраля 2026 г."
+      },
+      "featured": true,
+      "title": {
+        "en": "45th Anniversary Celebration as Rector",
+        "ru": "Празднование 45-летия настоятельства"
+      },
+      "summary": {
+        "en": "Father Stefan and Matushka Tatiana celebrated 45 years since he became Rector of the parish.",
+        "ru": "Отец Стефан и матушка Татьяна отметили 45 лет со дня назначения отца Стефана настоятелем прихода."
+      },
+      "image": {
+        "src": "/assets/img/img-643-1600x900-crop.jpg",
+        "alt": {
+          "en": "45th Anniversary Celebration as Rector",
+          "ru": "Празднование 45-летия настоятельства"
+        }
+      },
+      "body": {
+        "en": "On Sunday, February 1, 2026, Archpriest Stefan Pavlenko and Matushka Tatiana celebrated the 45th Anniversary of becoming Rector of the Church of All Russian Saints in Burlingame, California. “I may not have been an outstanding priest, but I was granted Outstanding Parishioners,” said Father Stefan as his first toast. With help from dedicated ladies in the Sisterhood, Matushka Tatiana prepared a lavish lunch for all parishioners and guests in the Church Hall. The line for food extended out the door.\n\nSeated at the Head Table were Father Deacon Alexei Baranoff, Father Stefan, Matushka and long-time friend John Crosby. All the tables and chairs filled up quickly.\n\nAfter the meal and many heart-felt toasts, Starosta Andrei Fedorov picked up his guitar and accompanied singers from the Church Choir and Russian School. Even little girls knew the words to favorite Russian songs.\n\n**Message from Otets Stefan:** \"Matushka Tatiana and I are deeply thankful to our whole parish for these 45 years and Tatiana expressed it in the banquet (lunch) she lovingly prepared for the Parish on Sunday.\"\n\n*The actual date for the 45th Anniversary is February 15th, the Feast Day of the Meeting of the Lord. Remember to congratulate and thank Otets Stefan and Matushka Tatiana on this great milestone.*",
+        "ru": "В воскресенье, 1 февраля 2026 года, протоиерей Стефан Павленко и матушка Татьяна отметили 45-летие служения отца Стефана настоятелем храма Всех Святых в Земле Российской Просиявших в Бурлингейме. «Может быть, я и не был выдающимся священником, но Господь даровал мне выдающихся прихожан», — сказал отец Стефан, произнося первый тост. С помощью преданных сестёр сестричества матушка Татьяна приготовила для всех прихожан и гостей щедрую трапезу в церковном зале. Очередь за угощением тянулась до самых дверей.\n\nЗа главным столом сидели отец диакон Алексий Баранов, отец Стефан, матушка и давний друг семьи Джон Кросби. Все столы и стулья быстро заполнились.\n\nПосле трапезы и множества сердечных тостов староста Андрей Федоров взял гитару и аккомпанировал певчим церковного хора и ученикам русской школы. Даже маленькие девочки знали слова любимых русских песен.\n\n**Слово отца Стефана:** «Мы с матушкой Татьяной глубоко благодарны всему нашему приходу за эти 45 лет, и Татьяна выразила эту благодарность в трапезе, которую с любовью приготовила для прихода в воскресенье».\n\n*Сама годовщина приходится на 15 февраля, праздник Сретения Господня. Не забудьте поздравить отца Стефана и матушку Татьяну и поблагодарить их в связи с этой знаменательной датой.*"
+      },
+      "videos": [
+        {
+          "youtubeId": "ub75UiHJssE",
+          "title": {
+            "en": "Anniversary video 1",
+            "ru": "Видео с праздника, часть 1"
+          }
+        },
+        {
+          "youtubeId": "wXbAx0AbZWA",
+          "title": {
+            "en": "Anniversary video 2",
+            "ru": "Видео с праздника, часть 2"
+          }
+        },
+        {
+          "youtubeId": "yHEVFQfmBKM",
+          "title": {
+            "en": "Anniversary video 3",
+            "ru": "Видео с праздника, часть 3"
+          }
+        }
+      ],
+      "gallery": "anniversary-45"
+    },
+    {
+      "id": "fort-ross-2025",
+      "date": "2025-10-04",
+      "dateLabel": {
+        "en": "Saturday, October 4, 2025",
+        "ru": "Суббота, 4 октября 2025 г."
+      },
+      "featured": true,
+      "title": {
+        "en": "100th Anniversary Celebration of Services at Fort Ross",
+        "ru": "Празднование 100-летия богослужений в Форт-Россе"
+      },
+      "summary": {
+        "en": "Hundreds of Orthodox faithful celebrated 100 years of Divine Liturgies at the Historic Chapel of Fort Ross.",
+        "ru": "Сотни православных верующих отметили 100-летие совершения Божественной литургии в исторической часовне Форт-Росса."
+      },
+      "image": {
+        "src": "/assets/img/img-614-1600x1200-crop.jpg",
+        "alt": {
+          "en": "Fort Ross celebration",
+          "ru": "Празднование в Форт-Россе"
+        }
+      },
+      "body": {
+        "en": "On Saturday, October 4, 2025, hundreds of Orthodox Faithful from churches in California and beyond celebrated 100 years of Divine Liturgies served at the Historic Chapel of Fort Ross.\n\nMetropolitan Nicholas of ROCOR, Metropolitan Tikhon of OCA, and Metropolitan Maximilian of Irkutsk (MP) led the prayers which were said at an altar in tents and at the historic cemetery reached by a steep cliffside path. Members of St. George Pathfinders led the procession.\n\nThe day ended with an outdoor banquet where celebration organizer Robin Joy-Wellman was invited to join the hierarchal table. Singing Russian songs, under the direction of Snezhana Wilson, were children from San Francisco and Burlingame Russian Schools.\n\n*Photos Courtesy of Irene Bogoslovsky, Aleksey Kovalenko, Pavel Denisov, Katya Able, and Liza Sinkevich-Mistuloff.*",
+        "ru": "В субботу, 4 октября 2025 года, сотни православных верующих из храмов Калифорнии и других мест отметили 100-летие совершения Божественной литургии в исторической часовне Форт-Росса.\n\nМолитвы возглавили митрополит Николай (РПЦЗ), митрополит Тихон (ПЦА) и митрополит Иркутский Максимилиан (МП). Богослужение совершалось у престола в шатрах и на историческом кладбище, к которому ведёт крутая тропа по склону утёса. Крестный ход возглавили члены Организации российских юных разведчиков (St. George Pathfinders).\n\nДень завершился праздничной трапезой под открытым небом, на которую организатор торжеств Робин Джой-Уэллман была приглашена за архиерейский стол. Русские песни под руководством Снежаны Уилсон исполнили дети из русских школ Сан-Франциско и Бурлингейма.\n\n*Фотографии предоставлены Ириной Богословской, Алексеем Коваленко, Павлом Денисовым, Катей Эйбл и Лизой Синкевич-Мистулофф.*"
+      },
+      "gallery": "fort-ross-2025"
+    },
+    {
+      "id": "metropolitan-maximilian",
+      "date": "2025-10-01",
+      "dateLabel": {
+        "en": "Wednesday, October 1, 2025",
+        "ru": "Среда, 1 октября 2025 г."
+      },
+      "title": {
+        "en": "Welcome Reception for His Eminence Metropolitan Maximilian of Irkutsk",
+        "ru": "Встреча Высокопреосвященнейшего Максимилиана, митрополита Иркутского"
+      },
+      "summary": {
+        "en": "Metropolitan Maximilian will officiate the Divine Liturgy on Sunday, October 12 in our Church, as well as Vigil on Saturday evening.",
+        "ru": "Митрополит Максимилиан возглавит Божественную литургию в нашем храме в воскресенье, 12 октября, а также всенощное бдение накануне вечером."
+      },
+      "image": {
+        "src": "/assets/img/metr-maximilian-1.jpg",
+        "alt": {
+          "en": "Archpriest Stefan Pavlenko welcomes His Eminence Metropolitan Maximilian of Irkutsk",
+          "ru": "Протоиерей Стефан Павленко приветствует митрополита Иркутского Максимилиана"
+        }
+      },
+      "body": {
+        "en": "**Metropolitan Maximilian will officiate the Divine Liturgy on Sunday, October 12 in our Church, as well as Vigil on Saturday evening.**",
+        "ru": "**Митрополит Максимилиан возглавит Божественную литургию в нашем храме в воскресенье, 12 октября, а также всенощное бдение накануне, в субботу вечером.**"
+      },
+      "figures": [
+        {
+          "src": "/assets/img/metr-maximilian-1.jpg",
+          "alt": {
+            "en": "Archpriest Stefan Pavlenko welcomes His Eminence Metropolitan Maximilian of Irkutsk",
+            "ru": "Протоиерей Стефан Павленко приветствует митрополита Иркутского Максимилиана"
+          },
+          "caption": {
+            "en": "Archpriest Stefan Pavlenko welcomes His Eminence Metropolitan Maximilian of Irkutsk. Behind them is Robin Joy Wellman, organizer of the 100th Anniversary of Church Services at the Fort Ross Chapel.",
+            "ru": "Протоиерей Стефан Павленко приветствует Высокопреосвященнейшего Максимилиана, митрополита Иркутского. За ними — Робин Джой Уэллман, организатор празднования 100-летия богослужений в часовне Форт-Росса."
+          }
+        },
+        {
+          "src": "/assets/img/metr-maximilian-4.jpg",
+          "alt": {
+            "en": "Robin gifts Metropolitan Maximilian a copy of the epitrachelion of St. Innocent",
+            "ru": "Робин дарит митрополиту Максимилиану копию епитрахили святителя Иннокентия"
+          },
+          "caption": {
+            "en": "Robin gifted Metropolitan Maximilian with the exact copy of the epitrachelion which was worn by St. Innocent.",
+            "ru": "Робин подарила митрополиту Максимилиану точную копию епитрахили, которую носил святитель Иннокентий."
+          }
+        },
+        {
+          "src": "/assets/img/metr-maximilian-8.jpg",
+          "alt": {
+            "en": "Metropolitan Maximilian presents Matushka Tatiana Pavlenko with gifts from Siberia",
+            "ru": "Митрополит Максимилиан вручает матушке Татьяне Павленко подарки из Сибири"
+          },
+          "caption": {
+            "en": "Metropolitan Maximilian presents Matushka Tatiana Pavlenko with jars of jam & nuts from Siberia. In the foreground are members of the Burlingame Church Choir.",
+            "ru": "Митрополит Максимилиан вручает матушке Татьяне Павленко баночки варенья и орехи из Сибири. На переднем плане — певчие хора нашего храма."
+          }
+        }
+      ]
+    },
+    {
+      "id": "st-john-film",
+      "title": {
+        "en": "An Excellent New Film about Saint John of Shanghai and San Francisco",
+        "ru": "Прекрасный новый фильм о святителе Иоанне Шанхайском и Сан-Францисском"
+      },
+      "summary": {
+        "en": "By the famous Arcady Mamontov Studio (only in Russian), 1 hour and 8 minutes long.",
+        "ru": "Студия Аркадия Мамонтова (на русском языке), 1 час 8 минут."
+      },
+      "image": {
+        "src": "/assets/img/st-john-video.jpg",
+        "alt": {
+          "en": "Saint John of Shanghai and San Francisco",
+          "ru": "Святитель Иоанн Шанхайский и Сан-Францисский"
+        }
+      },
+      "body": {
+        "en": "By famous Arcady Mamontov Studio (only in Russian). 1 hour and 8 minutes long.",
+        "ru": "Фильм известной студии Аркадия Мамонтова (только на русском языке). Продолжительность — 1 час 8 минут."
+      },
+      "needsReview": "The YouTube video linked on the old site (dM9LLU9_p_c) is no longer available, so the player was removed. Ask the parish for a current link to the film."
+    },
+    {
+      "id": "gilding",
+      "title": {
+        "en": "Our Kiots and Choir Loft Crosses have been gilded with 24K Gold Leaf!",
+        "ru": "Киоты и кресты на клиросе покрыты сусальным золотом 24 карата!"
+      },
+      "summary": {
+        "en": "Kiots and choir loft crosses gilded with 24K gold leaf.",
+        "ru": "Киоты и кресты на клиросе покрыты сусальным золотом 24 карата."
+      },
+      "gallery": "gilding"
+    },
+    {
+      "id": "ordination-50th",
+      "date": "2023-10-01",
+      "dateLabel": {
+        "en": "October 1, 2023",
+        "ru": "1 октября 2023 г."
+      },
+      "title": {
+        "en": "Father Stefan's 50th Anniversary of his Ordination",
+        "ru": "50-летие священнического служения отца Стефана"
+      },
+      "summary": {
+        "en": "Metropolitan Nicholas celebrated the Hierarchical Divine Liturgy and congratulated Father Stefan on 50 years of pastoral ministry.",
+        "ru": "Митрополит Николай совершил архиерейскую Божественную литургию и поздравил отца Стефана с 50-летием пастырского служения."
+      },
+      "image": {
+        "src": "/assets/img/50th-church-35.jpg",
+        "alt": {
+          "en": "Hierarchical Divine Liturgy on October 1, 2023",
+          "ru": "Архиерейская литургия 1 октября 2023 г."
+        }
+      },
+      "body": {
+        "en": "His Eminence Metropolitan Nicholas of Eastern America and New York, First Hierarch of the Russian Orthodox Church Outside of Russia, celebrated the Hierarchical Divine Liturgy.\n\nConcelebrating with the Metropolitan were His Eminence Archbishop Kyrill of San Francisco and Western America, His Grace Bishop Theodosius of Seattle and His Grace Bishop James of Sonora, Archimandrite Roman (Krassovsky), Chief of the Russian Ecclesiastical Mission in Jerusalem, Archpriests Stefan Pavlenko, Andrei Sommer, Alexei Kotar, Peter Perekrestov, and Hieromonk Peter Karakozoff.\n\nAt the end of the service, Metropolitan Nicholas, addressing the parish with a primatial sermon, congratulated Father Stefan on the 50th anniversary of his pastoral ministry, handing him a Synodal decree awarding him the **right to serve Divine Liturgy with the Royal Doors open until the exclamation \"Holy to the Holies\"** and a blessed letter, whose content you can [read here](/assets/docs/to-archpriest-stefan-and-tatyana-olegovna-pavlenko.pdf).\n\nAlong with Father Stefan, Matushka Tatiana also celebrated 50 years since becoming a Matushka and both were awarded a Synodal Gramota.\n\n**Many Years to Father Stefan and Matushka Tatiana!**",
+        "ru": "Высокопреосвященнейший Николай, митрополит Восточно-Американский и Нью-Йоркский, Первоиерарх Русской Православной Церкви Заграницей, совершил архиерейскую Божественную литургию.\n\nМитрополиту сослужили Высокопреосвященнейший Кирилл, архиепископ Сан-Францисский и Западно-Американский, Преосвященный Феодосий, епископ Сиэтлийский, Преосвященный Иаков, епископ Сонорский, архимандрит Роман (Красовский), начальник Русской Духовной Миссии в Иерусалиме, протоиереи Стефан Павленко, Андрей Соммер, Алексий Котар, Петр Перекрестов и иеромонах Петр (Каракозов).\n\nПо окончании богослужения митрополит Николай обратился к приходу с первосвятительским словом, поздравил отца Стефана с 50-летием пастырского служения и вручил ему указ Синода о награждении **правом служения Божественной литургии с отверстыми Царскими вратами до «Святая святым»**, а также благословенную грамоту, текст которой можно [прочитать здесь](/assets/docs/to-archpriest-stefan-and-tatyana-olegovna-pavlenko.pdf).\n\nВместе с отцом Стефаном 50-летие служения матушкой отметила и матушка Татьяна; оба были награждены Синодальными грамотами.\n\n**Многая лета отцу Стефану и матушке Татьяне!**"
+      }
+    },
+    {
+      "id": "deacon-ordination",
+      "date": "2022-04-07",
+      "dateLabel": {
+        "en": "April 7, 2022",
+        "ru": "7 апреля 2022 г."
+      },
+      "title": {
+        "en": "Ordination of Father Deacon Alexei Baranoff",
+        "ru": "Хиротония отца диакона Алексия Баранова"
+      },
+      "summary": {
+        "en": "Annunciation Feast Day.",
+        "ru": "Праздник Благовещения Пресвятой Богородицы."
+      },
+      "body": {
+        "en": "*Annunciation Feast Day*",
+        "ru": "*Праздник Благовещения Пресвятой Богородицы*"
+      },
+      "gallery": "deacon-ordination"
+    },
+    {
+      "id": "cupola-blessing",
+      "date": "2021-12-28",
+      "dateLabel": {
+        "en": "December 28, 2021",
+        "ru": "28 декабря 2021 г."
+      },
+      "title": {
+        "en": "Archpriest Stefan Blessing the Main Cupola",
+        "ru": "Протоиерей Стефан освящает главный купол"
+      },
+      "summary": {
+        "en": "Photographs and video of the blessing.",
+        "ru": "Фотографии и видео освящения."
+      },
+      "videos": [
+        {
+          "youtubeId": "YEwtD_GWduU",
+          "title": {
+            "en": "Blessing the main cupola",
+            "ru": "Освящение главного купола"
+          }
+        }
+      ],
+      "gallery": "cupola-blessing"
+    },
+    {
+      "id": "more-photos",
+      "title": {
+        "en": "More parish photos",
+        "ru": "Другие фотографии прихода"
+      },
+      "summary": {
+        "en": "Photographs from the life of the parish.",
+        "ru": "Фотографии из жизни прихода."
+      },
+      "videos": [
+        {
+          "youtubeId": "YrQ-eNDvOxc",
+          "title": {
+            "en": "Parish video",
+            "ru": "Видео прихода"
+          }
+        }
+      ],
+      "gallery": "more-photos"
+    }
+  ]
+}

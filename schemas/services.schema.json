@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "services.schema.json",
+  "title": "Services",
+  "description": "content/services.json: service types, the current liturgical season, standing notices and the dated list of upcoming services. Past dates are hidden automatically (in the browser, using site.timezone), so an editor only needs to add new dates.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "serviceTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "name": {
+            "$ref": "common.schema.json#/$defs/text"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "season": {
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Highlighted season (e.g. Nativity Fast). Hidden automatically after `end`.",
+          "allOf": [
+            {
+              "$ref": "common.schema.json#/$defs/editorial"
+            }
+          ],
+          "properties": {
+            "id": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "title": {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            "accent": {
+              "type": "string",
+              "description": "Church Slavonic/Russian accent line shown in the Slavonic font."
+            },
+            "text": {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            "start": {
+              "$ref": "common.schema.json#/$defs/date"
+            },
+            "end": {
+              "$ref": "common.schema.json#/$defs/date"
+            }
+          },
+          "required": [
+            "id",
+            "title"
+          ],
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "notices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/editorial"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "text": {
+            "$ref": "common.schema.json#/$defs/markdown"
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ],
+        "unevaluatedProperties": false
+      }
+    },
+    "upcoming": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/editorial"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "date": {
+            "$ref": "common.schema.json#/$defs/date"
+          },
+          "time": {
+            "$ref": "common.schema.json#/$defs/time"
+          },
+          "serviceType": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "serviceTypes id. Use `title` instead for one-off services."
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/text",
+            "description": "Overrides the service type name."
+          },
+          "note": {
+            "$ref": "common.schema.json#/$defs/text",
+            "description": "Feast or remark shown under the service."
+          },
+          "noService": {
+            "type": "boolean",
+            "description": "Marks a date with no services (title explains why)."
+          }
+        },
+        "required": [
+          "id",
+          "date"
+        ],
+        "unevaluatedProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "serviceType"
+            ]
+          },
+          {
+            "required": [
+              "title"
+            ]
+          }
+        ]
+      },
+      "description": "Dated services in chronological order."
+    },
+    "standing": {
+      "type": "object",
+      "description": "Regular weekly schedule.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/editorial"
+        }
+      ],
+      "properties": {
+        "published": {
+          "type": "boolean",
+          "description": "Show the regular weekly schedule. Keep false until the times are confirmed."
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/editorial"
+              }
+            ],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/text"
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "text"
+            ],
+            "unevaluatedProperties": false
+          }
+        }
+      },
+      "required": [
+        "published",
+        "items"
+      ],
+      "unevaluatedProperties": false
+    }
+  },
+  "required": [
+    "serviceTypes",
+    "upcoming"
+  ],
+  "additionalProperties": false
+}

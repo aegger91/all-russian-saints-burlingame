@@ -1,0 +1,152 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "clergy",
+  "slug": "clergy",
+  "order": 40,
+  "title": {
+    "en": "Clergy and Parish Council",
+    "ru": "Духовенство и приходской совет"
+  },
+  "subnav": true,
+  "sections": [
+    {
+      "id": "clergy-header",
+      "type": "page-header",
+      "eyebrow": {
+        "en": "Clergy",
+        "ru": "Духовенство"
+      },
+      "title": {
+        "en": "Clergy and Parish Council",
+        "ru": "Духовенство и приходской совет"
+      },
+      "image": {
+        "src": "/assets/img/50th-church-35.jpg",
+        "alt": {
+          "en": "Hierarchical Divine Liturgy at the Church of All Russian Saints",
+          "ru": "Архиерейская литургия в храме Всех Святых"
+        },
+        "position": "50% 40%"
+      }
+    },
+    {
+      "id": "rector",
+      "type": "person-profile",
+      "navLabel": {
+        "en": "Rector",
+        "ru": "Настоятель"
+      },
+      "person": "stefan-pavlenko",
+      "group": "clergy",
+      "body": {
+        "en": "On Sunday, February 1, 2026, Archpriest Stefan Pavlenko and Matushka Tatiana celebrated the 45th Anniversary of becoming Rector of the Church of All Russian Saints in Burlingame, California.",
+        "ru": "В воскресенье, 1 февраля 2026 года, протоиерей Стефан Павленко и матушка Татьяна отметили 45-летие служения отца Стефана настоятелем храма Всех Святых в Земле Российской Просиявших в Бурлингейме."
+      },
+      "quote": {
+        "text": {
+          "en": "“I may not have been an outstanding priest, but I was granted Outstanding Parishioners,” said Father Stefan as his first toast.",
+          "ru": "«Может быть, я и не был выдающимся священником, но Господь даровал мне выдающихся прихожан», — сказал отец Стефан, произнося первый тост."
+        }
+      },
+      "actions": [
+        {
+          "label": {
+            "en": "Read the biography",
+            "ru": "Читать биографию"
+          },
+          "style": "link",
+          "anchor": "biography"
+        }
+      ]
+    },
+    {
+      "id": "biography",
+      "type": "rich-text",
+      "navLabel": {
+        "en": "Biography",
+        "ru": "Биография"
+      },
+      "background": "alt",
+      "width": "narrow",
+      "ru_locked": true,
+      "eyebrow": {
+        "en": "Biography",
+        "ru": "Биография"
+      },
+      "title": {
+        "en": "Brief Biography of Archpriest Stefan Pavlenko",
+        "ru": "Краткая Биография Протоиерея Стефана Павленко"
+      },
+      "accent": "Краткая Биография Протоиерея Стефана Павленко",
+      "intro": {
+        "en": "Excerpted from Church of All Russian Saints Newsletter, Volume 1, Number 5 September/October 2013.",
+        "ru": "Выдержка из бюллетеня Храма Всероссийских Святых, том 1, номер 5, Сентябрь/Октябрь 2013"
+      },
+      "body": {
+        "en": "![Father Stefan and Matushka Tatiana](/assets/img/pavlenkos.jpg)\n\nForty years ago, on September 30, 1973, Bishop Laurus of Manhattan (and the future Metropolitan of the Russian Orthodox Church Outside Russia) ordained a young 26-year-old seminary graduate to serve in his hometown church of Vineland, New Jersey. That newly-ordained priest was Father Stefan Pavlenko. Born in Braunau, Austria, raised in New Jersey, and educated at the Holy Trinity Seminary in Jordanville, New York, how did the young priest end up at the Church of All Russian Saints in Burlingame, California?\n\nFrom an early age, young Stefan loved the Church thanks to his deeply religious parents. His father, Vladimir Stepanovich, was the son of an Orthodox priest and planned to become a priest himself. But when the Russian Revolution began and the seminary switched classes from theology to military preparedness, he joined the White Army and served under General Wrangel. Eventually, he settled in Sofia, Bulgaria where he became secretary to Archbishop Seraphim Sobolev and a psalmist at St. Nicholas Orthodox Church.\n\nHis future wife, Maria Dimitrievna Schatiloff, was born in Petrograd, Russia and grew up in Belgrade, Serbia. They met in Belgrade. After marrying and surviving World War II, the young couple came to the United States in 1949 with their children, Stefan, Pavel, and Maria. (Olga was born in America.) They settled in Vineland, New Jersey and became active in their local Orthodox Church. From age nine onward, Stefan was sent every summer to an informal church camp at Holy Trinity Monastery in Jordanville, New York. All the 7 to 15-year-old boys attended services, helped with chores, and learned about Orthodoxy. Already in high school, young Stefan told his guidance counselor he wanted to be a priest. The counselor laughed.\n\nAfter graduating from Vineland Senior High School in 1966, Stefan enrolled in the five-year program at the Holy Trinity Seminary. During his last two summers of schooling, he traveled to San Francisco with a group of students, helping Archimandrite Kiprian (Pyjov) complete the icons on the walls and ceilings of the Holy Virgin Joy of All Who Sorrow Russian Orthodox Cathedral in San Francisco.\n\n\"It was terrifying to stand on scaffolding higher than the second balcony,\" says Father Stefan, \"but eventually I got used to it. My task was to paint the ornamental art designs around the icons.\"\n\nMeanwhile, his future wife, Tatiana Vorobey had been visiting the monastery yearly with the St. George Pathfinders scouting group, ORUR. Born in Morocco and raised in Boston, Tanya and Stefan had never met. Then in 1970, parents in the Boston area organized a youth pilgrimage to the monastery. Reluctantly, nineteen-year-old Tania agreed to go one more time. But as soon as the seminarian and the college student saw one another, they fell in love. Stefan proposed after three months. Within a year, Tania left Emmanuel College to get married. She was twenty years old.\n\nOnce Stefan received his Bachelor of Theology degree from Holy Trinity Seminary, he suggested to his bride that they return to San Francisco and help Father Kiprian finish the iconography in the Cathedral on Geary Street.\n\n\"We had no money, no jobs, no place to stay,” recalls Father Stefan. \"And yet, Tania was willing to relocate to California.\"\n\nWhen the newlyweds rang the doorbell at Saint Tikhon Zadonsk Church, where Father Kiprian was living, the iconographer was surprised to see them since neither was scheduled to work. Nevertheless, he made a few phone calls and found a room for them at the home of Misha Bogoslovsky's mother. Misha was a soldier in Vietnam and his room was vacant. And so, Stefan worked at the Cathedral while Tania found a job first in the credit department at Macy's, then as a teller at the Bank of America.\n\nShortly afterward, Bishop Anthony of San Francisco offered to ordain Stefan to become a deacon at the Cathedral. Stefan was reluctant to accept because he had promised the priest in his hometown church he would return and serve with him.\n\nIn God's Providence, that's exactly what happened. The health of the New Jersey priest started deteriorating and he requested help from Father Stefan. The Pavlenkos returned to the East Coast to fulfill their promise. Bishop Laurus ordained Father Stefan to the priesthood on September 30, 1973 to serve at the Holy Trinity Church in Vineland.\n\nFour years passed. The priest died. Father Stefan could have remained in Vineland but his heart was in San Francisco. He accepted the position of rector at the Sixth Avenue Church in San Francisco. (The building is now the residence of Archbishop Kyrill.) He remained there until he was reassigned to the Burlingame Church in 1981.\n\n\"The reposed Vadim Vladimirovich Krassovsky was the one who suggested my name to Bishop Anthony when the church was looking for a new rector,\" says Father Stefan. \"Right from the start, I had the highest respect for Vadim Vladimirovich and the major role he played in the growth and development of the Church of All Russian Saints.\"\n\nIn the new location, Matushka Tania raised three children, Alexei, Xenia, and Olga and worked as a teaching assistant for special education in the Burlingame School District. She also perfected her culinary skills, catering many private events, and sewed beautiful vestments for Father Stefan and other clergymen. \"My biggest honor and accomplishment was sewing the vestments for Bishop Saint John when he was glorified in 1994,\" she says. Today, she enjoys being a babushka to Roman, age 5, Melania, age 4, Stefan, 7 months, and Elena, 4 months.\n\nDuring Father Stefan's early years with the Burlingame Church, parishioners were primarily Russian immigrants from China, Australia, and South America who had left Russia after the Bolshevik Revolution. In the United States, they were determined to build churches and start organizations similar to the ones they had left behind. The 1990s brought a new wave of immigrants to the Church - Russians who moved to the U.S. to work in Silicon Valley. The two immigrations have now blended. For many, the Church is not only a path to salvation but a tiny corner of a country left behind.\n\nFather Stefan has received many accolades over the years. After being elevated to archpriest, he was presented with a mitre in 2012. He is third by rank in the Western America Diocese after Archbishop Kyrill and Bishop Theodosy. And at the Feast Day of All Russian Saints this year, he was elevated to a higher rank in the Order of Saint Anne for performing many duties during the California visit of the Grand Duchess Maria Vladimirovna Romanova.\n\nFather Stefan likes to wish his parishioners \"heavenly and earthly blessings\". Judging by his life story, he, himself, has been richly blessed.",
+        "ru": "![Отец Стефан и матушка Татьяна](/assets/img/pavlenkos.jpg)\n\nСорок лет назад, 30 сентября 1973 года, епископ Манхэттенский Лавр (и будущий Митрополит Русской Православной Церкви заграницей) посвятил молодого 26-летнего выпускника семинарии для служения в церкви своего родного города Винеланд, штат Нью-Джерси. Этим рукоположенным священником был отец Стефан Павленко. Родившийся в Браунау, Австрия, выросший в Нью-Джерси и получивший образование в Свято-Троицкой семинарии в Джорданвилле, штат Нью-Йорк, как молодой священник оказался в Церкви Всероссийских Святых в Берлингеме, Калифорния?\n\nС раннего возраста молодой Стефан любил Церковь благодаря своим глубоко религиозным родителям. Его отец, Владимир Степанович, был сыном православного священника и планировал сам стать священником. Но когда началась русская революция и семинария переключила занятия с богословия на военную готовность, он вступил в Белую армию и служил под командованием генерала Врангеля. В конце концов он поселился в Софии, Болгария, где он стал секретарем архиепископа Серафима Соболева и псалмопевца в Никольской православной церкви.\n\nЕго будущая жена Мария Димитриевна Шатилова родилась в Петрограде, Россия, и выросла в Белграде, Сербия. Они встретились в Белграде. Выйдя замуж и пережив Второй мировой войны, молодая пара приехала в Соединенные Штаты в 1949 году со своими детьми, Стефаном, Павлом и Марией. (Ольга родилась в Америке.) Они поселились в Вайнленде, штат Нью-Джерси, и стали активными членами своей местной православной церкви. С девяти лет Стефана отправляли каждое лето в неформальный церковный лагерь в Свято-Троицком монастыре в Джорданвилле, Нью-Йорк. Все мальчики в возрасте от 7 до 15 лет посещали службы, помогали по хозяйству и узнали о православии. Уже в старшей школе молодой Стефан сказал своему советнику, что хочет стать священником. Консультант рассмеялся.\n\nПосле окончания старшей средней школы Vineland в 1966 году Стефан поступил на пятилетнюю программу в Свято-Троицкую семинарию. Во время двух последних лет учебы он отправился в Сан-Франциско с группой учеников, помогая архимандриту Киприану (Пыжову) завершить иконы на стенах и потолках Пресвятой Богородицы Всех скорбящих Всероссийского православного собора в Сан-Франциско.\n\n«Страшно было стоять на лесах выше второго балкона, - говорит отец Стефан, - но в конце концов я к этому привык. Моя задача заключалась в том, чтобы рисовать орнаменты вокруг икон».\n\nТем временем его будущая жена Татьяна Воробей ежегодно посещала монастырь с разведывательной группой георгиевских следопытов ORUR. Таня и Стефан родились в Марокко и выросли в Бостоне, никогда не встречались. Затем в 1970 году родители в районе Бостона организовали молодежное паломничество в монастырь. Неохотно, девятнадцатилетняя Таня согласилась пойти еще раз. Но как только семинарист и студент колледжа увидели друг друга, они влюбились друг в друга. Стефан предложил через три месяца. В течение года Таня покинула колледж Эммануила, чтобы выйти замуж. Ей было двадцать лет.\n\nПолучив степень бакалавра теологии в Свято-Троицкой семинарии, Стефан предложил своей невесте вернуться в Сан-Франциско и помочь отцу Киприану закончить иконографию в Соборе на Гири-стрит.\n\n«У нас не было ни денег, ни работы, ни места, чтобы остаться, - вспоминает отец Стефан, - и все же Таня была готова переехать в Калифорнию».\n\nКогда молодожены позвонили в дверь в церкви Святого Тихона Задонского, где жил отец Киприан, иконописец был удивлен, увидев их, поскольку ни один из них не должен был работать. Тем не менее он сделал несколько телефонных звонков и нашел для них комнату в доме матери Миши Богословского. Миша был солдатом во Вьетнаме, и его комната была свободна. Итак, Стефан работал в Кафедральном соборе, а Таня нашла работу сначала в кредитном отделе Macy's, а затем в качестве кассира в Bank of America.\n\nВскоре после этого епископ Сан-Франциско Антоний предложил рукоположить Стефана, чтобы стать дьяконом в соборе. Стефан неохотно соглашался, потому что он обещал священнику в церкви своего родного города, что он вернется и будет служить с ним.\n\nВ Божьем провидении, именно это и произошло. Здоровье священника в Нью-Джерси стало ухудшаться, и он попросил помощи у отца Стефана. Павленки вернулись на восточное побережье, чтобы выполнить свое обещание. 30 сентября 1973 года епископ Лавр посвятил отца Стефана в священство для служения в Свято-Троицкой церкви в Вайнленде.\n\nПрошло четыре года. Священник умер. Отец Стефан мог остаться в Вайнленде, но его сердце было в Сан-Франциско. Он принял должность ректора в церкви Шестой авеню в Сан-Франциско. (В настоящее время здание является резиденцией архиепископа Кирилла.) Он оставался там до тех пор, пока в 1981 году не был передан в церковь Берлингем.\n\n«Покойный Вадим Владимирович Красовский был тем, кто предложил мое имя епископу Антонию, когда церковь искала нового настоятеля», - говорит отец Стефан. «С самого начала я очень уважал Вадима Владимировича и большую роль, которую он сыграл в росте и развитии Церкви Всероссийских Святых».\n\nВ новом месте Матушка Таня воспитала троих детей, Алексея, Ксению и Ольгу, и работала ассистентом по специальному образованию в школьном округе Берлингем. Она также усовершенствовала свои кулинарные навыки, организовала множество частных мероприятий и сшила прекрасные одежды для отца Стефана и других священнослужителей. «Моя самая большая честь и достижение заключалась в том, чтобы шить обряды для епископа Святого Иоанна, когда он был прославлен в 1994 году», - говорит она. Сегодня ей нравится быть бабушкой для Романа, 5 лет, Мелании, 4 года, Стефана, 7 месяцев, и Елены, 4 месяца.\n\nВ первые годы существования отца Стефана в церкви Берлингем прихожане были в основном русскими иммигрантами из Китая, Австралии и Южной Америки, которые покинули Россию после большевистской революции. В Соединенных Штатах они были полны решимости строить церкви и создавать организации, подобные тем, которые они оставили позади. 1990-е годы привели в Церковь новую волну иммигрантов - русских, которые переехали в США, чтобы работать в Силиконовой долине. Две иммиграции теперь смешались. Для многих Церковь - это не только путь к спасению, но и крошечный уголок оставшейся позади страны.\n\nОтец Стефан получил много наград за эти годы. После возведения в протоиереи ему в 2012 году была вручена митра. Он является третьим по званию в епархии Западной Америки после архиепископа Кирилла и епископа Феодосия. А в День праздника Всех русских святых в этом году он был повышен до высшего звания в Ордене Святой Анны за выполнение многих обязанностей во время визита в Калифорнию Великой Княгини Марии Владимировны Романовой.\n\nОтец Стефан любит желать своим прихожанам «небесных и земных благословений». Судя по истории его жизни, он сам был обильно благословлен."
+      }
+    },
+    {
+      "id": "deacon-matushka",
+      "type": "split",
+      "navLabel": {
+        "en": "Deacon & Matushka",
+        "ru": "Диакон и матушка"
+      },
+      "ratio": "1:1",
+      "align": "center",
+      "columns": [
+        {
+          "type": "image",
+          "image": {
+            "src": "/assets/img/img-4688.jpg",
+            "alt": {
+              "en": "Father Stefan with Matushka Tatiana",
+              "ru": "Отец Стефан с матушкой Татьяной"
+            },
+            "caption": {
+              "en": "Father Stefan with Matushka Tatiana",
+              "ru": "Отец Стефан с матушкой Татьяной"
+            }
+          }
+        },
+        {
+          "type": "people-list",
+          "group": "clergy",
+          "variant": "cards",
+          "columns": 1,
+          "people": [
+            {
+              "person": "alexei-baranoff"
+            },
+            {
+              "person": "tatiana-pavlenko"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "council",
+      "type": "people-list",
+      "navLabel": {
+        "en": "Parish Council",
+        "ru": "Приходской совет"
+      },
+      "background": "cream",
+      "eyebrow": {
+        "en": "Parish Council",
+        "ru": "Приходской совет"
+      },
+      "title": {
+        "en": "Parish Council Members",
+        "ru": "Члены приходского совета"
+      },
+      "group": "council",
+      "variant": "directory",
+      "showEmail": false,
+      "columns": 2
+    }
+  ]
+}
