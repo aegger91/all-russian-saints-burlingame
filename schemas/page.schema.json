@@ -1450,6 +1450,11 @@
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_-]{11}$"
               },
+"embed": {
+                "type": "boolean",
+                "default": true,
+                "description": "false when the video owner has disabled embedding: the thumbnail then opens the video on YouTube instead of playing it in the page."
+              },
               "title": {
                 "$ref": "common.schema.json#/$defs/text",
                 "description": "Player label (defaults to \"Watch\")."
@@ -1529,6 +1534,11 @@
               "youtubeId": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_-]{11}$"
+              },
+"embed": {
+                "type": "boolean",
+                "default": true,
+                "description": "false when the video owner has disabled embedding: the thumbnail then opens the video on YouTube instead of playing it in the page."
               },
               "title": {
                 "$ref": "common.schema.json#/$defs/text",

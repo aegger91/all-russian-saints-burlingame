@@ -32,6 +32,7 @@
     "gallery.next": { "en": "Next photo", "ru": "Следующее фото" },
     "video.watch": { "en": "Watch the video", "ru": "Смотреть видео" },
     "video.playsFromYoutube": { "en": "Plays from YouTube", "ru": "Воспроизводится с YouTube" },
+    "video.opensOnYoutube": { "en": "Opens on YouTube", "ru": "Откроется на YouTube" },
     "contact.address": { "en": "Address", "ru": "Адрес" },
     "contact.phone": { "en": "Telephone", "ru": "Телефон" },
     "contact.email": { "en": "Email", "ru": "Эл. почта" },

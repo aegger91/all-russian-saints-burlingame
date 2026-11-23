@@ -60,6 +60,11 @@
                   "type": "string",
                   "pattern": "^[A-Za-z0-9_-]{11}$"
                 },
+                "embed": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "false when the video owner has disabled embedding (opens on YouTube instead)."
+                },
                 "title": {
                   "$ref": "common.schema.json#/$defs/text"
                 }

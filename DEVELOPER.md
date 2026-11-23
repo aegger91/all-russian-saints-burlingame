@@ -246,7 +246,7 @@ Every component lives in `src/components/` and its props are defined as `section
 | `event-list` | `event-list.mjs` | Events from `events.json` (past events hide). | `ministry`, `limit`, `variant` (`plain`, `panel`), `actions` |
 | `news-list` | `news.mjs` | News as cards linking to the news page, or as full articles. | `variant` (`cards`, `full`), `limit`, `columns`, `featuredOnly`, `actions` |
 | `gallery` | `media.mjs` | Photo grid with a keyboard-accessible lightbox. | `gallery*` (id), `limit`, `columns` |
-| `video-list` | `media.mjs` | YouTube videos as privacy-friendly facades (thumbnail; the player loads on click). | `videos*`, `layout` (`list`, `grid`) |
+| `video-list` | `media.mjs` | YouTube videos as privacy-friendly facades (thumbnail; the player loads on click). | `videos*` (`youtubeId`, `title`, `heading`, `date`, `description`, `embed: false` when the owner disabled embedding), `layout` (`list`, `grid`) |
 | `give-block` | `giving.mjs` | PayPal donation buttons for each fund in `giving.json`. | `funds` (ids, default all), `showNote` |
 | `dues-table` | `giving.mjs` | Membership dues rates. | `body`, `actions` |
 | `document-list` | `documents.mjs` | Files by group or ids, optionally grouped by year, volume or category, with type, size and language badges. | `group` or `documents[]`, `groupBy` (`year`, `volume`, `category`), `columns`, `limit`, `actions` |

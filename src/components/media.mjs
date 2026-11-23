@@ -4,7 +4,7 @@
  * gallery props: eyebrow, title, intro, gallery (id in galleries.json),
  *   limit, columns (2 | 3 | 4)
  * video-list props: eyebrow, title, intro, layout ("list" | "grid"),
- *   videos: [{ id, youtubeId, title, date, description, descriptionLang }]
+ *   videos: [{ id, youtubeId, embed, title, date, description, descriptionLang }]
  *
  * Videos render as a lightweight facade (YouTube thumbnail from i.ytimg.com);
  * the player (privacy-enhanced youtube-nocookie.com) loads only after a click.
@@ -44,11 +44,12 @@ export function renderGallery(p, ctx) {
 export function videoFacade(v, ctx) {
   const url = `https://www.youtube.com/watch?v=${v.youtubeId}`;
   const title = ctx.l(v.title) || ctx.t('video.watch');
-  return html`<div class="video" data-youtube="${v.youtubeId}">
+  const inline = v.embed !== false;
+  return html`<div class="video"${inline ? html` data-youtube="${v.youtubeId}"` : ''}>
     <img class="video__thumb" src="https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">
     <a class="video__link" href="${url}" target="_blank" rel="noopener">
       <span class="video__play">${icon('play', 'video__play-icon')}</span>
-      <span class="video__text"><span class="video__title">${title}</span><span class="video__meta">${icon('youtube', 'video__yt')}${ctx.t('video.playsFromYoutube')}</span></span>
+      <span class="video__text"><span class="video__title">${title}</span><span class="video__meta">${icon('youtube', 'video__yt')}${ctx.t(inline ? 'video.playsFromYoutube' : 'video.opensOnYoutube')}</span></span>
     </a>
   </div>`;
 }

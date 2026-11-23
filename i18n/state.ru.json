@@ -1247,6 +1247,7 @@
     "ui.json#strings.oc.slots": { "source": "c17efe229ebb6fed" },
     "ui.json#strings.services.allPast": { "source": "e80071fd5d9f32d8" },
     "ui.json#strings.services.fullSchedule": { "source": "260dc31d7c3c1c04" },
+    "ui.json#strings.video.opensOnYoutube": { "source": "bf4bede0d5486276" },
     "ui.json#strings.video.playsFromYoutube": { "source": "21b2e9fb1da5330f" },
     "ui.json#strings.video.watch": { "source": "ec7c20b5b09e5914" }
   }

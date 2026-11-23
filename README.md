@@ -140,6 +140,7 @@ Nothing was invented. Where the old site contradicts itself, the template keeps 
 **Missing material**
 
 - There are no biographies or photos for the deacon and the parish council; those cards show names and contacts only.
+- **Removed video:** the YouTube film about St. John of Shanghai linked from the news page is no longer available on YouTube. The news item keeps its photo and text; ask the parish for a current link.
 - The Russian spellings of some names and titles should be checked by the parish.
 
 **Changes made for the new site**

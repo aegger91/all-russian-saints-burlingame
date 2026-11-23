@@ -310,15 +310,7 @@
         "en": "By famous Arcady Mamontov Studio (only in Russian). 1 hour and 8 minutes long.",
         "ru": "Фильм известной студии Аркадия Мамонтова (только на русском языке). Продолжительность — 1 час 8 минут."
       },
-      "videos": [
-        {
-          "youtubeId": "dM9LLU9_p_c",
-          "title": {
-            "en": "Saint John of Shanghai and San Francisco (film)",
-            "ru": "Святитель Иоанн Шанхайский и Сан-Францисский (фильм)"
-          }
-        }
-      ]
+      "needsReview": "The YouTube video linked on the old site (dM9LLU9_p_c) is no longer available, so the player was removed. Ask the parish for a current link to the film."
     },
     {
       "id": "gilding",
