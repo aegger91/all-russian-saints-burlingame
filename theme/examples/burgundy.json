@@ -1,0 +1,119 @@
+{
+  "$schema": "../../schemas/tokens.schema.json",
+  "meta": {
+    "name": "Burgundy and stone (example theme)",
+    "description": "Example alternate theme: burgundy, warm stone and antique gold, with PT Serif and PT Sans. Select it with site.theme.tokens = \"theme/examples/burgundy.json\".",
+    "fonts": "PT Serif and PT Sans from Google Fonts (fontImports, latin + cyrillic); Ponomar stays self-hosted for Church Slavonic."
+  },
+  "color": {
+    "wine": "#7a2234",
+    "wine-deep": "#5a1525",
+    "wine-ink": "#3d0e19",
+    "rose": "#c98b95",
+    "linen": "#f8efe4",
+    "paper": "#fcf9f5",
+    "paper-alt": "#f2ebe2",
+    "gold": "#a8843f",
+    "gold-light": "#e2cfa5",
+    "gold-dark": "#75591f",
+    "ink": "#2a2023",
+    "ink-soft": "#4a3d40",
+    "muted": "#6e6164",
+    "line": "#e7dbd0",
+    "line-strong": "#d4c2b2",
+    "white": "#ffffff",
+    "success": "#2f6b4f",
+    "warning": "#8a5a12"
+  },
+  "semantic": {
+    "brand": "{color.wine}",
+    "brand-strong": "{color.wine-ink}",
+    "accent": "{color.gold}",
+    "accent-strong": "{color.gold-dark}",
+    "accent-soft": "{color.gold-light}",
+    "surface": "{color.paper}",
+    "surface-alt": "{color.paper-alt}",
+    "surface-highlight": "{color.linen}",
+    "surface-raised": "{color.white}",
+    "surface-inverse": "{color.wine-ink}",
+    "text": "{color.ink}",
+    "text-soft": "{color.ink-soft}",
+    "text-muted": "{color.muted}",
+    "text-inverse": "{color.linen}",
+    "heading": "{color.wine-ink}",
+    "link": "{color.wine}",
+    "link-hover": "{color.gold-dark}",
+    "border": "{color.line}",
+    "border-strong": "{color.line-strong}",
+    "focus": "{color.gold}"
+  },
+  "font": {
+    "serif": "\"PT Serif\", Georgia, \"Times New Roman\", serif",
+    "sans": "\"PT Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+    "slavonic": "\"Ponomar\", \"PT Serif\", Georgia, serif"
+  },
+  "font-weight": { "regular": "400", "medium": "400", "semibold": "700", "bold": "700" },
+  "font-size": {
+    "2xs": "0.75rem",
+    "xs": "0.8125rem",
+    "sm": "0.9375rem",
+    "base": "1.0625rem",
+    "md": "1.1875rem",
+    "lg": "1.375rem",
+    "xl": "1.625rem",
+    "2xl": "clamp(1.75rem, 1.35rem + 1.4vw, 2.25rem)",
+    "3xl": "clamp(2.125rem, 1.6rem + 2vw, 3rem)",
+    "4xl": "clamp(2.5rem, 1.75rem + 3vw, 3.875rem)",
+    "display": "clamp(2.875rem, 1.9rem + 4.2vw, 4.75rem)"
+  },
+  "line-height": { "tight": "1.1", "snug": "1.3", "normal": "1.55", "relaxed": "1.7" },
+  "letter-spacing": { "tight": "-0.01em", "normal": "0", "wide": "0.04em", "caps": "0.16em" },
+  "space": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "7": "2rem",
+    "8": "2.5rem",
+    "9": "3rem",
+    "10": "4rem",
+    "11": "5rem",
+    "12": "6rem",
+    "13": "8rem"
+  },
+  "radius": { "none": "0", "sm": "3px", "md": "6px", "lg": "10px", "pill": "999px" },
+  "shadow": {
+    "sm": "0 1px 2px rgba(11, 34, 64, 0.06)",
+    "md": "0 10px 30px -18px rgba(11, 34, 64, 0.35)",
+    "lg": "0 24px 60px -30px rgba(11, 34, 64, 0.45)"
+  },
+  "layout": {
+    "container": "1240px",
+    "container-narrow": "780px",
+    "container-wide": "1400px",
+    "gutter": "clamp(1.25rem, 0.6rem + 2.6vw, 2.5rem)",
+    "grid-gap": "clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem)",
+    "section-space": "clamp(4rem, 2.6rem + 5vw, 7rem)",
+    "section-space-tight": "clamp(2.75rem, 2rem + 3vw, 4.5rem)",
+    "header-height": "136px",
+    "header-height-compact": "84px",
+    "logo-height": "112px",
+    "logo-height-compact": "64px",
+    "logo-height-mobile": "66px"
+  },
+  "motion": { "fast": "150ms", "base": "240ms", "ease": "cubic-bezier(0.2, 0.7, 0.2, 1)" },
+  "fontImports": [
+    "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+  ],
+  "fontFaces": [
+    {
+      "family": "Ponomar",
+      "src": "/assets/fonts/ponomar-cyrillic-400-normal.woff2",
+      "style": "normal",
+      "weight": "400"
+    }
+  ]
+}
