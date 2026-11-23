@@ -180,8 +180,8 @@ function drawer(ctx, tree) {
       <div class="drawer__actions">${headerActions(ctx, 'btn--block')}</div>
       ${langSwitch(ctx, 'drawer')}
       <div class="drawer__contact">
-        <p class="drawer__address">${icon('pin', 'drawer__icon')}<span>${addressLines(ctx).join(', ')}</span></p>
-        ${c.phone ? html`<p><a href="${phoneHref(c.phone)}">${icon('phone', 'drawer__icon')}<span>${c.phone.display}</span></a></p>` : ''}
+        <p class="drawer__address">${icon('pin', 'drawer__icon')}<span><bdi>${addressLines(ctx).join(', ')}</bdi></span></p>
+        ${c.phone ? html`<p><a href="${phoneHref(c.phone)}">${icon('phone', 'drawer__icon')}<span><bdi dir="ltr">${c.phone.display}</bdi></span></a></p>` : ''}
         ${c.directionsUrl ? html`<p><a href="${c.directionsUrl}" target="_blank" rel="noopener">${icon('arrow', 'drawer__icon')}<span>${ctx.t('contact.directions')}</span></a></p>` : ''}
       </div>
     </div>
@@ -225,9 +225,9 @@ function footer(ctx, tree) {
       <div class="${cx('site-footer__top', featureEnabled(ctx.site, 'newsletter') && 'site-footer__top--newsletter')}">
         <div class="site-footer__visit">
           <h2 class="site-footer__title">${ctx.t('footer.visit')}</h2>
-          <address class="site-footer__address">${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}${l}`)}</address>
+          <address class="site-footer__address">${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}<bdi>${l}</bdi>`)}</address>
           <ul class="site-footer__contact">
-            ${c.phone ? html`<li><a href="${phoneHref(c.phone)}">${icon('phone', 'site-footer__icon')}<span>${c.phone.display}</span></a></li>` : ''}
+            ${c.phone ? html`<li><a href="${phoneHref(c.phone)}">${icon('phone', 'site-footer__icon')}<span><bdi dir="ltr">${c.phone.display}</bdi></span></a></li>` : ''}
             ${c.email ? html`<li><a href="mailto:${c.email}">${icon('mail', 'site-footer__icon')}<span>${c.email}</span></a></li>` : ''}
             ${c.directionsUrl ? html`<li><a href="${c.directionsUrl}" target="_blank" rel="noopener">${icon('pin', 'site-footer__icon')}<span>${ctx.t('contact.directions')}</span></a></li>` : ''}
           </ul>

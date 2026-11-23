@@ -1039,6 +1039,10 @@ body.is-locked {
   font-size: var(--font-size-sm);
 }
 
+.site-footer__bottom > :last-child:not(p) {
+  margin-inline-start: auto;
+}
+
 .site-footer__bottom p {
   display: inline-flex;
   align-items: center;

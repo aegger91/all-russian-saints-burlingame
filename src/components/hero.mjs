@@ -86,7 +86,7 @@ export function render(p, ctx) {
         ${accentUnlessSame(p.accent, ctx.l(p.title), ctx, 'hero__accent accent')}
         ${p.text ? html`<p class="hero__text">${ctx.l(p.text)}</p>` : ''}
         ${p.showAddress !== false
-          ? html`<p class="hero__address">${icon('pin', 'hero__address-icon')}<span>${addressLines(ctx).join(', ')}</span>${c.directionsUrl ? html`<a class="hero__directions" href="${c.directionsUrl}" target="_blank" rel="noopener">${ctx.t('contact.directions')}</a>` : ''}</p>`
+          ? html`<p class="hero__address">${icon('pin', 'hero__address-icon')}<span><bdi>${addressLines(ctx).join(', ')}</bdi></span>${c.directionsUrl ? html`<a class="hero__directions" href="${c.directionsUrl}" target="_blank" rel="noopener">${ctx.t('contact.directions')}</a>` : ''}</p>`
           : ''}
         ${actions((p.actions || []).slice(0, 2), ctx, { className: 'hero__actions', onDark: true })}
         ${shortcutUrl ? html`<a class="hero__shortcut" href="${shortcutUrl}">${icon(p.shortcut.icon || 'candle', 'hero__shortcut-icon')}<span>${ctx.l(p.shortcut.label)}</span>${icon('arrow', 'hero__shortcut-arrow')}</a>` : ''}
@@ -94,7 +94,7 @@ export function render(p, ctx) {
       <aside class="hero__panel" aria-label="${ctx.t('calendar.atAGlance')}">
         ${p.today !== false ? today(ctx) : ''}
         ${nextServices(p, ctx)}
-        ${c.phone ? html`<p class="hero__phone"><a href="${phoneHref(c.phone)}">${icon('phone', 'hero__phone-icon')}<span>${c.phone.display}</span></a></p>` : ''}
+        ${c.phone ? html`<p class="hero__phone"><a href="${phoneHref(c.phone)}">${icon('phone', 'hero__phone-icon')}<span><bdi dir="ltr">${c.phone.display}</bdi></span></a></p>` : ''}
       </aside>
     </div>
   </section>`;

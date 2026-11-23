@@ -64,8 +64,8 @@ export function render(p, ctx) {
     <div class="contact-map__info">
       ${sectionHead(p, ctx)}
       <ul class="contact-list">
-        <li>${icon('pin', 'contact-list__icon')}<span><span class="contact-list__label">${ctx.t('contact.address')}</span><address>${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}${l}`)}</address></span></li>
-        ${c.phone ? html`<li>${icon('phone', 'contact-list__icon')}<span><span class="contact-list__label">${ctx.t('contact.phone')}</span><a href="${phoneHref(c.phone)}">${c.phone.display}</a></span></li>` : ''}
+        <li>${icon('pin', 'contact-list__icon')}<span><span class="contact-list__label">${ctx.t('contact.address')}</span><address>${addressLines(ctx).map((l, i) => html`${i ? html`<br>` : ''}<bdi>${l}</bdi>`)}</address></span></li>
+        ${c.phone ? html`<li>${icon('phone', 'contact-list__icon')}<span><span class="contact-list__label">${ctx.t('contact.phone')}</span><a href="${phoneHref(c.phone)}"><bdi dir="ltr">${c.phone.display}</bdi></a></span></li>` : ''}
         ${c.email ? html`<li>${icon('mail', 'contact-list__icon')}<span><span class="contact-list__label">${ctx.t('contact.email')}</span><a href="mailto:${c.email}">${c.email}</a></span></li>` : ''}
       </ul>
       ${p.body ? html`<div class="prose prose--small">${ctx.md(p.body)}</div>` : ''}

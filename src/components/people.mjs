@@ -48,7 +48,7 @@ export function resolveRole(personId, group, ctx) {
 function contactLines(r, ctx, { showEmail = true, showPhone = true } = {}) {
   const lines = [];
   if (showEmail && r.email) lines.push(html`<li>${icon('mail', 'contact-lines__icon')}<a href="mailto:${r.email}">${r.email}</a></li>`);
-  if (showPhone && r.phone) lines.push(html`<li>${icon('phone', 'contact-lines__icon')}<a href="${phoneHref(r.phone)}">${r.phone.display}</a></li>`);
+  if (showPhone && r.phone) lines.push(html`<li>${icon('phone', 'contact-lines__icon')}<a href="${phoneHref(r.phone)}"><bdi dir="ltr">${r.phone.display}</bdi></a></li>`);
   return lines.length ? html`<ul class="contact-lines">${lines}</ul>` : '';
 }
 
@@ -114,7 +114,7 @@ export function renderList(p, ctx) {
             ${r.note ? html`<p class="directory__note">${ctx.md(r.note, { inline: true })}</p>` : ''}
             ${opts.showEmail && r.email ? html`<a class="directory__email" href="mailto:${r.email}">${r.email}</a>` : ''}
           </div>
-          ${opts.showPhone && r.phone ? html`<a class="directory__phone" href="${phoneHref(r.phone)}">${r.phone.display}</a>` : ''}
+          ${opts.showPhone && r.phone ? html`<a class="directory__phone" href="${phoneHref(r.phone)}"><bdi dir="ltr">${r.phone.display}</bdi></a>` : ''}
         </li>`
       )}
     </ul>
