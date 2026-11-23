@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "giving.schema.json",
+  "title": "Giving",
+  "description": "content/giving.json: online giving (PayPal Payments Standard buttons) and membership dues.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "provider": {
+      "enum": [
+        "paypal"
+      ],
+      "description": "Only PayPal Payments Standard is implemented. A builder can add providers in src/components/giving.mjs."
+    },
+    "paypal": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "common.schema.json#/$defs/url"
+        },
+        "cmd": {
+          "enum": [
+            "_donations",
+            "_xclick"
+          ]
+        },
+        "business": {
+          "$ref": "common.schema.json#/$defs/email",
+          "description": "PayPal account that receives payments."
+        },
+        "itemName": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "noNote": {
+          "enum": [
+            "0",
+            "1"
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "cmd",
+        "business",
+        "currency"
+      ],
+      "additionalProperties": false
+    },
+    "note": {
+      "$ref": "common.schema.json#/$defs/markdown"
+    },
+    "funds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/editorial"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "itemNumber": {
+            "type": "string",
+            "description": "PayPal item_number, used by the treasurer to tell funds apart."
+          },
+          "eyebrow": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "description": {
+            "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "button": {
+            "$ref": "common.schema.json#/$defs/text"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "button"
+        ],
+        "unevaluatedProperties": false
+      },
+      "minItems": 1
+    },
+    "dues": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/editorial"
+        }
+      ],
+      "properties": {
+        "rates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "amount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              }
+            },
+            "required": [
+              "id",
+              "amount",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "rates"
+      ],
+      "unevaluatedProperties": false
+    },
+    "needsReview": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "provider",
+    "funds"
+  ],
+  "additionalProperties": false
+}

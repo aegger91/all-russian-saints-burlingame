@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "navigation.schema.json",
+  "title": "Navigation",
+  "description": "content/navigation.json: top bar, main menu, header buttons and footer columns. Items reference pages by id, so renaming a slug never breaks a menu.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "topbar": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "showAddress": {
+          "type": "boolean"
+        },
+        "showPhone": {
+          "type": "boolean"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navLinkWithId"
+          }
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "additionalProperties": false
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navItem"
+          },
+          "minItems": 1
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/linkTarget"
+              }
+            ],
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "icon": {
+                "$ref": "common.schema.json#/$defs/iconName"
+              },
+              "page": true,
+              "anchor": true,
+              "href": true,
+              "document": true,
+              "email": true,
+              "phone": true,
+              "style": {
+                "enum": [
+                  "primary",
+                  "secondary",
+                  "accent",
+                  "light",
+                  "ghost"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "unevaluatedProperties": false
+          },
+          "description": "Buttons at the right of the header (e.g. Give). Hidden on small phones; repeated inside the mobile menu."
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "about": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/navLink"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "links"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "legal": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "columns"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "header",
+    "footer"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "navLink": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/linkTarget"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "icon": {
+          "$ref": "common.schema.json#/$defs/iconName"
+        },
+        "page": true,
+        "anchor": true,
+        "href": true,
+        "document": true,
+        "email": true,
+        "phone": true
+      },
+      "required": [
+        "label"
+      ],
+      "unevaluatedProperties": false
+    },
+    "navLinkWithId": {
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/linkTarget"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "icon": {
+          "$ref": "common.schema.json#/$defs/iconName"
+        },
+        "page": true,
+        "anchor": true,
+        "href": true,
+        "document": true,
+        "email": true,
+        "phone": true
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "unevaluatedProperties": false
+    },
+    "navItem": {
+      "type": "object",
+      "description": "Top-level menu item. Give it a link target, children (a dropdown), or both. When both are set the parent label opens the dropdown and the first child should repeat the parent link.",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "page": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "anchor": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "href": true,
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navLink"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "page"
+          ]
+        },
+        {
+          "required": [
+            "href"
+          ]
+        },
+        {
+          "required": [
+            "children"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

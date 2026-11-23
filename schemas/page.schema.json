@@ -1,0 +1,3585 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "page.schema.json",
+  "title": "Page",
+  "description": "content/pages/<id>.json: one page, built once per locale at /<locale>/<slug>/. A page is an ordered list of sections.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "common.schema.json#/$defs/id",
+      "description": "Stable page id used by menus and links. \"home\" and \"not-found\" are special."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^([a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*)?$",
+      "description": "URL path without locale or slashes (\"\" for the home page). Shared by all locales."
+    },
+    "order": {
+      "type": "integer",
+      "description": "Sort order in the sitemap and builder page list."
+    },
+    "title": {
+      "$ref": "common.schema.json#/$defs/text",
+      "description": "Page name for <title>, breadcrumbs and the builder."
+    },
+    "subnav": {
+      "type": "boolean",
+      "description": "Show sticky on-page navigation built from sections that have navLabel and id."
+    },
+    "sitemap": {
+      "type": "boolean",
+      "default": true
+    },
+    "noindex": {
+      "type": "boolean"
+    },
+    "seo": {
+      "$ref": "common.schema.json#/$defs/seo"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/section"
+      },
+      "minItems": 1
+    },
+    "needsReview": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "sections"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "more": {
+      "type": "object",
+      "description": "Collapsible extra text (<details>).",
+      "properties": {
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "bodyLang": {
+          "$ref": "common.schema.json#/$defs/localeCode"
+        }
+      },
+      "required": [
+        "title",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "sectionBase": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/editorial"
+        }
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "Anchor id (#id). Required when menus, page navigation or links point to the section."
+        },
+        "navLabel": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Label in the on-page navigation (pages with subnav: true)."
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "Keep in the data but do not render."
+        },
+        "locales": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/localeCode"
+          },
+          "description": "Render only in these locales."
+        },
+        "background": {
+          "enum": [
+            "default",
+            "alt",
+            "cream",
+            "navy"
+          ],
+          "default": "default"
+        },
+        "spacing": {
+          "enum": [
+            "default",
+            "tight",
+            "none"
+          ],
+          "default": "default"
+        },
+        "width": {
+          "enum": [
+            "default",
+            "narrow",
+            "wide"
+          ],
+          "default": "default"
+        },
+        "divider": {
+          "type": "boolean",
+          "description": "Thin ornamental rule above the section."
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "blockBase": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/editorial"
+        }
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "Anchor id (#id). Required when menus, page navigation or links point to the section."
+        },
+        "navLabel": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Label in the on-page navigation (pages with subnav: true)."
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "Keep in the data but do not render."
+        },
+        "locales": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/localeCode"
+          },
+          "description": "Render only in these locales."
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "section-hero": {
+      "title": "Hero",
+      "description": "Full-width photograph with parish name, accent line, text, buttons and an optional \"next services\" card. Use once, at the top of the home page.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        },
+        "nextServices": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          "required": [
+            "title"
+          ],
+          "additionalProperties": false,
+          "description": "Card listing the next N services from services.json."
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title",
+        "image"
+      ]
+    },
+    "block-hero": {
+      "title": "Hero",
+      "description": "Full-width photograph with parish name, accent line, text, buttons and an optional \"next services\" card. Use once, at the top of the home page.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        },
+        "nextServices": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            }
+          },
+          "required": [
+            "title"
+          ],
+          "additionalProperties": false,
+          "description": "Card listing the next N services from services.json."
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title",
+        "image"
+      ]
+    },
+    "section-page-header": {
+      "title": "Page header",
+      "description": "Breadcrumbs, eyebrow, H1, accent line and lede, with an optional arch-framed photograph. First section of every inner page.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "lede": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "breadcrumbs": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title"
+      ]
+    },
+    "block-page-header": {
+      "title": "Page header",
+      "description": "Breadcrumbs, eyebrow, H1, accent line and lede, with an optional arch-framed photograph. First section of every inner page.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "lede": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "breadcrumbs": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title"
+      ]
+    },
+    "section-rich-text": {
+      "title": "Rich text",
+      "description": "Heading and Markdown body, optionally beside or above a photograph, with a notice, collapsible extra text and buttons.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "bodyLang": {
+          "$ref": "common.schema.json#/$defs/localeCode",
+          "description": "Language of a plain-string body that exists in one language only."
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "mediaPosition": {
+          "enum": [
+            "start",
+            "end",
+            "below"
+          ],
+          "default": "end"
+        },
+        "mediaFrame": {
+          "enum": [
+            "arch",
+            "plain"
+          ],
+          "default": "arch"
+        },
+        "notice": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "$ref": "common.schema.json#/$defs/text"
+                },
+                "text": {
+                  "$ref": "common.schema.json#/$defs/markdown"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-rich-text": {
+      "title": "Rich text",
+      "description": "Heading and Markdown body, optionally beside or above a photograph, with a notice, collapsible extra text and buttons.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "bodyLang": {
+          "$ref": "common.schema.json#/$defs/localeCode",
+          "description": "Language of a plain-string body that exists in one language only."
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "mediaPosition": {
+          "enum": [
+            "start",
+            "end",
+            "below"
+          ],
+          "default": "end"
+        },
+        "mediaFrame": {
+          "enum": [
+            "arch",
+            "plain"
+          ],
+          "default": "arch"
+        },
+        "notice": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/text"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "$ref": "common.schema.json#/$defs/text"
+                },
+                "text": {
+                  "$ref": "common.schema.json#/$defs/markdown"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-split": {
+      "title": "Split",
+      "description": "Two blocks side by side; stacked on mobile.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "columns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "ratio": {
+          "enum": [
+            "1:1",
+            "3:2",
+            "2:3",
+            "7:5",
+            "5:7"
+          ],
+          "default": "1:1"
+        },
+        "align": {
+          "enum": [
+            "start",
+            "center"
+          ],
+          "default": "start"
+        },
+        "reverseOnMobile": {
+          "type": "boolean",
+          "description": "Show the second column first on mobile."
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "columns"
+      ]
+    },
+    "block-split": {
+      "title": "Split",
+      "description": "Two blocks side by side; stacked on mobile.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "columns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "ratio": {
+          "enum": [
+            "1:1",
+            "3:2",
+            "2:3",
+            "7:5",
+            "5:7"
+          ],
+          "default": "1:1"
+        },
+        "align": {
+          "enum": [
+            "start",
+            "center"
+          ],
+          "default": "start"
+        },
+        "reverseOnMobile": {
+          "type": "boolean",
+          "description": "Show the second column first on mobile."
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "columns"
+      ]
+    },
+    "section-stack": {
+      "title": "Stack",
+      "description": "Several blocks one after another, with an optional shared heading.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          },
+          "minItems": 1
+        },
+        "gap": {
+          "enum": [
+            "default",
+            "tight"
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "blocks"
+      ]
+    },
+    "block-stack": {
+      "title": "Stack",
+      "description": "Several blocks one after another, with an optional shared heading.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          },
+          "minItems": 1
+        },
+        "gap": {
+          "enum": [
+            "default",
+            "tight"
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "blocks"
+      ]
+    },
+    "section-service-times": {
+      "title": "Service times",
+      "description": "Upcoming services from services.json (past dates hide automatically), with the season banner, notices and the weekly schedule.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "variant": {
+          "enum": [
+            "panel",
+            "plain"
+          ],
+          "default": "panel"
+        },
+        "showSeason": {
+          "type": "boolean"
+        },
+        "showNotices": {
+          "type": "boolean"
+        },
+        "showStanding": {
+          "type": "boolean"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-service-times": {
+      "title": "Service times",
+      "description": "Upcoming services from services.json (past dates hide automatically), with the season banner, notices and the weekly schedule.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "variant": {
+          "enum": [
+            "panel",
+            "plain"
+          ],
+          "default": "panel"
+        },
+        "showSeason": {
+          "type": "boolean"
+        },
+        "showNotices": {
+          "type": "boolean"
+        },
+        "showStanding": {
+          "type": "boolean"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-person-profile": {
+      "title": "Person profile",
+      "description": "One person (people.json) with arch portrait, role, contacts, text, quote and optional collapsible biography.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "person": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "people.json id."
+        },
+        "group": {
+          "type": "string",
+          "description": "Role group used for the title and contact overrides."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "quote": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "$ref": "common.schema.json#/$defs/markdown"
+            },
+            "cite": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "person"
+      ]
+    },
+    "block-person-profile": {
+      "title": "Person profile",
+      "description": "One person (people.json) with arch portrait, role, contacts, text, quote and optional collapsible biography.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "person": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "people.json id."
+        },
+        "group": {
+          "type": "string",
+          "description": "Role group used for the title and contact overrides."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "quote": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "$ref": "common.schema.json#/$defs/markdown"
+            },
+            "cite": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "person"
+      ]
+    },
+    "section-people-list": {
+      "title": "People list",
+      "description": "People from people.json by role group or explicit list, as a contact directory or cards.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "group": {
+          "type": "string"
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "person": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "group": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "person"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "variant": {
+          "enum": [
+            "directory",
+            "cards"
+          ],
+          "default": "directory"
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "showEmail": {
+          "type": "boolean",
+          "default": true
+        },
+        "showPhone": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "unevaluatedProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "group"
+          ]
+        },
+        {
+          "required": [
+            "people"
+          ]
+        }
+      ]
+    },
+    "block-people-list": {
+      "title": "People list",
+      "description": "People from people.json by role group or explicit list, as a contact directory or cards.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "group": {
+          "type": "string"
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "person": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "group": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "person"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "variant": {
+          "enum": [
+            "directory",
+            "cards"
+          ],
+          "default": "directory"
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "showEmail": {
+          "type": "boolean",
+          "default": true
+        },
+        "showPhone": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "unevaluatedProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "group"
+          ]
+        },
+        {
+          "required": [
+            "people"
+          ]
+        }
+      ]
+    },
+    "section-event-list": {
+      "title": "Event list",
+      "description": "Parish events from events.json (past events hide automatically).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "ministry": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "Only events of this ministry."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "variant": {
+          "enum": [
+            "plain",
+            "panel"
+          ],
+          "default": "plain"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-event-list": {
+      "title": "Event list",
+      "description": "Parish events from events.json (past events hide automatically).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "ministry": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "Only events of this ministry."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "variant": {
+          "enum": [
+            "plain",
+            "panel"
+          ],
+          "default": "plain"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-news-list": {
+      "title": "News list",
+      "description": "News from news.json as cards (linking to the news page) or as full articles.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "variant": {
+          "enum": [
+            "cards",
+            "full"
+          ],
+          "default": "cards"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "featuredOnly": {
+          "type": "boolean"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-news-list": {
+      "title": "News list",
+      "description": "News from news.json as cards (linking to the news page) or as full articles.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "variant": {
+          "enum": [
+            "cards",
+            "full"
+          ],
+          "default": "cards"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "featuredOnly": {
+          "type": "boolean"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-gallery": {
+      "title": "Gallery",
+      "description": "Photo grid from galleries.json with a keyboard-accessible lightbox.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "gallery": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "galleries.json id."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "columns": {
+          "enum": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "gallery"
+      ]
+    },
+    "block-gallery": {
+      "title": "Gallery",
+      "description": "Photo grid from galleries.json with a keyboard-accessible lightbox.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "gallery": {
+          "$ref": "common.schema.json#/$defs/id",
+          "description": "galleries.json id."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "columns": {
+          "enum": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "gallery"
+      ]
+    },
+    "section-video-list": {
+      "title": "Video list",
+      "description": "YouTube videos as privacy-friendly facades (the player loads on click).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "layout": {
+          "enum": [
+            "list",
+            "grid"
+          ],
+          "default": "list"
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/editorial"
+              }
+            ],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "youtubeId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{11}$"
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/text",
+                "description": "Player label (defaults to \"Watch\")."
+              },
+              "heading": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "date": {
+                "$ref": "common.schema.json#/$defs/date"
+              },
+              "description": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              },
+              "descriptionLang": {
+                "$ref": "common.schema.json#/$defs/localeCode"
+              },
+              "status": {
+                "$ref": "common.schema.json#/$defs/text",
+                "description": "Shown instead of a player when there is no youtubeId (e.g. \"Recording coming soon\")."
+              }
+            },
+            "unevaluatedProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "videos"
+      ]
+    },
+    "block-video-list": {
+      "title": "Video list",
+      "description": "YouTube videos as privacy-friendly facades (the player loads on click).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "layout": {
+          "enum": [
+            "list",
+            "grid"
+          ],
+          "default": "list"
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/editorial"
+              }
+            ],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "youtubeId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{11}$"
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/text",
+                "description": "Player label (defaults to \"Watch\")."
+              },
+              "heading": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "date": {
+                "$ref": "common.schema.json#/$defs/date"
+              },
+              "description": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              },
+              "descriptionLang": {
+                "$ref": "common.schema.json#/$defs/localeCode"
+              },
+              "status": {
+                "$ref": "common.schema.json#/$defs/text",
+                "description": "Shown instead of a player when there is no youtubeId (e.g. \"Recording coming soon\")."
+              }
+            },
+            "unevaluatedProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "videos"
+      ]
+    },
+    "section-give-block": {
+      "title": "Give block",
+      "description": "PayPal giving buttons from giving.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "funds": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "description": "Fund ids to show (default: all)."
+        },
+        "showNote": {
+          "type": "boolean"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-give-block": {
+      "title": "Give block",
+      "description": "PayPal giving buttons from giving.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "funds": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "description": "Fund ids to show (default: all)."
+        },
+        "showNote": {
+          "type": "boolean"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-dues-table": {
+      "title": "Dues table",
+      "description": "Membership dues rates from giving.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-dues-table": {
+      "title": "Dues table",
+      "description": "Membership dues rates from giving.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-document-list": {
+      "title": "Document list",
+      "description": "Documents from documents.json, by group or explicit ids, optionally grouped by year, volume or category.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "group": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          }
+        },
+        "groupBy": {
+          "enum": [
+            "year",
+            "volume",
+            "category"
+          ]
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "group"
+          ]
+        },
+        {
+          "required": [
+            "documents"
+          ]
+        }
+      ]
+    },
+    "block-document-list": {
+      "title": "Document list",
+      "description": "Documents from documents.json, by group or explicit ids, optionally grouped by year, volume or category.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "group": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          }
+        },
+        "groupBy": {
+          "enum": [
+            "year",
+            "volume",
+            "category"
+          ]
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "group"
+          ]
+        },
+        {
+          "required": [
+            "documents"
+          ]
+        }
+      ]
+    },
+    "section-contact-map": {
+      "title": "Contact and map",
+      "description": "Address, phone, email, social links and an embedded map from site.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "showMap": {
+          "type": "boolean",
+          "default": true
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-contact-map": {
+      "title": "Contact and map",
+      "description": "Address, phone, email, social links and an embedded map from site.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "showMap": {
+          "type": "boolean",
+          "default": true
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-cta-band": {
+      "title": "Call to action band",
+      "description": "Short message with buttons on a coloured band.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "tone": {
+          "enum": [
+            "navy",
+            "cream",
+            "gold"
+          ],
+          "default": "navy"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title"
+      ]
+    },
+    "block-cta-band": {
+      "title": "Call to action band",
+      "description": "Short message with buttons on a coloured band.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "tone": {
+          "enum": [
+            "navy",
+            "cream",
+            "gold"
+          ],
+          "default": "navy"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "title"
+      ]
+    },
+    "section-card-grid": {
+      "title": "Card grid",
+      "description": "Cards with optional image and link, written inline or taken from ministries.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "default": 3
+        },
+        "source": {
+          "enum": [
+            "ministries"
+          ],
+          "description": "Take cards from ministries.json instead of `cards`."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "description": "With `source`, only these ids (in data order)."
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/editorial"
+              }
+            ],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "eyebrow": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "accent": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              },
+              "image": {
+                "$ref": "common.schema.json#/$defs/image"
+              },
+              "link": {
+                "$ref": "common.schema.json#/$defs/link",
+                "description": "Makes the whole card a link. Do not combine with actions."
+              },
+              "actions": {
+                "$ref": "common.schema.json#/$defs/actions"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "not": {
+              "required": [
+                "link",
+                "actions"
+              ]
+            },
+            "unevaluatedProperties": false
+          }
+        }
+      },
+      "unevaluatedProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "cards"
+          ]
+        },
+        {
+          "required": [
+            "source"
+          ]
+        }
+      ]
+    },
+    "block-card-grid": {
+      "title": "Card grid",
+      "description": "Cards with optional image and link, written inline or taken from ministries.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "default": 3
+        },
+        "source": {
+          "enum": [
+            "ministries"
+          ],
+          "description": "Take cards from ministries.json instead of `cards`."
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "description": "With `source`, only these ids (in data order)."
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "common.schema.json#/$defs/editorial"
+              }
+            ],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "eyebrow": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "accent": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              },
+              "image": {
+                "$ref": "common.schema.json#/$defs/image"
+              },
+              "link": {
+                "$ref": "common.schema.json#/$defs/link",
+                "description": "Makes the whole card a link. Do not combine with actions."
+              },
+              "actions": {
+                "$ref": "common.schema.json#/$defs/actions"
+              }
+            },
+            "required": [
+              "title"
+            ],
+            "not": {
+              "required": [
+                "link",
+                "actions"
+              ]
+            },
+            "unevaluatedProperties": false
+          }
+        }
+      },
+      "unevaluatedProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "cards"
+          ]
+        },
+        {
+          "required": [
+            "source"
+          ]
+        }
+      ]
+    },
+    "section-link-list": {
+      "title": "Link list",
+      "description": "Grouped external links from links.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "minItems": 1
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "groups"
+      ]
+    },
+    "block-link-list": {
+      "title": "Link list",
+      "description": "Grouped external links from links.json.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "minItems": 1
+        },
+        "columns": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "groups"
+      ]
+    },
+    "section-quote": {
+      "title": "Quote",
+      "description": "Pastoral message or quotation with attribution and optional portrait.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "cite": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "block-quote": {
+      "title": "Quote",
+      "description": "Pastoral message or quotation with attribution and optional portrait.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "cite": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "more": {
+          "$ref": "#/$defs/more"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "section-notice": {
+      "title": "Notice",
+      "description": "Highlighted announcement.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "tone": {
+          "enum": [
+            "info",
+            "season",
+            "alert"
+          ],
+          "default": "info"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "block-notice": {
+      "title": "Notice",
+      "description": "Highlighted announcement.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "tone": {
+          "enum": [
+            "info",
+            "season",
+            "alert"
+          ],
+          "default": "info"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "section-prayer": {
+      "title": "Prayer",
+      "description": "Liturgical text with preserved line breaks, plus an optional translation.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "text": {
+          "type": "string",
+          "description": "Original text; line breaks are kept."
+        },
+        "textLang": {
+          "$ref": "common.schema.json#/$defs/localeCode",
+          "default": "cu",
+          "description": "Language of `text` (default \"cu\", Church Slavonic)."
+        },
+        "translation": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Shown only in locales that have their own translation."
+        },
+        "cite": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "block-prayer": {
+      "title": "Prayer",
+      "description": "Liturgical text with preserved line breaks, plus an optional translation.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "headingLevel": {
+          "enum": [
+            2,
+            3,
+            4
+          ],
+          "description": "Heading level of the title (default 2; 3 inside splits and stacks)."
+        },
+        "text": {
+          "type": "string",
+          "description": "Original text; line breaks are kept."
+        },
+        "textLang": {
+          "$ref": "common.schema.json#/$defs/localeCode",
+          "default": "cu",
+          "description": "Language of `text` (default \"cu\", Church Slavonic)."
+        },
+        "translation": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Shown only in locales that have their own translation."
+        },
+        "cite": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "text"
+      ]
+    },
+    "section-fact-list": {
+      "title": "Fact list",
+      "description": "Label / value list (\"at a glance\").",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "value": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "facts"
+      ]
+    },
+    "block-fact-list": {
+      "title": "Fact list",
+      "description": "Label / value list (\"at a glance\").",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "value": {
+                "$ref": "common.schema.json#/$defs/markdown"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "facts"
+      ]
+    },
+    "section-image": {
+      "title": "Image",
+      "description": "A single photograph with optional caption.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "frame": {
+          "enum": [
+            "plain",
+            "arch"
+          ],
+          "default": "plain"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "image"
+      ]
+    },
+    "block-image": {
+      "title": "Image",
+      "description": "A single photograph with optional caption.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "image": {
+          "$ref": "common.schema.json#/$defs/image"
+        },
+        "frame": {
+          "enum": [
+            "plain",
+            "arch"
+          ],
+          "default": "plain"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "image"
+      ]
+    },
+    "section-orthodoxconnect-feed": {
+      "title": "OrthodoxConnect feed",
+      "description": "Events, volunteer opportunities and needs from the OrthodoxConnect feed (sample data until the API is connected; sample items are labeled).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "kinds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "event",
+              "volunteer",
+              "need"
+            ]
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-orthodoxconnect-feed": {
+      "title": "OrthodoxConnect feed",
+      "description": "Events, volunteer opportunities and needs from the OrthodoxConnect feed (sample data until the API is connected; sample items are labeled).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "intro": {
+          "$ref": "common.schema.json#/$defs/markdown",
+          "description": "Short paragraph under the title."
+        },
+        "kinds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "event",
+              "volunteer",
+              "need"
+            ]
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actions": {
+          "$ref": "common.schema.json#/$defs/actions"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section-orthodoxconnect-cta": {
+      "title": "Join on OrthodoxConnect",
+      "description": "Invitation to join the parish on OrthodoxConnect (site.integrations.orthodoxconnect.joinUrl).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/sectionBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "buttonLabel": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "block-orthodoxconnect-cta": {
+      "title": "Join on OrthodoxConnect",
+      "description": "Invitation to join the parish on OrthodoxConnect (site.integrations.orthodoxconnect.joinUrl).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/blockBase"
+        }
+      ],
+      "properties": {
+        "eyebrow": {
+          "$ref": "common.schema.json#/$defs/text",
+          "description": "Small capitals label above the title, with the cross ornament."
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Russian / Church Slavonic accent line shown in the Slavonic display font. Hidden when it repeats the title."
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/markdown"
+        },
+        "buttonLabel": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "section": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "hero",
+            "page-header",
+            "rich-text",
+            "split",
+            "stack",
+            "service-times",
+            "person-profile",
+            "people-list",
+            "event-list",
+            "news-list",
+            "gallery",
+            "video-list",
+            "give-block",
+            "dues-table",
+            "document-list",
+            "contact-map",
+            "cta-band",
+            "card-grid",
+            "link-list",
+            "quote",
+            "notice",
+            "prayer",
+            "fact-list",
+            "image",
+            "orthodoxconnect-feed",
+            "orthodoxconnect-cta"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "hero"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-hero"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "page-header"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-page-header"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "rich-text"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-rich-text"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "split"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-split"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "stack"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-stack"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "service-times"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-service-times"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "person-profile"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-person-profile"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "people-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-people-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "event-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-event-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "news-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-news-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "gallery"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-gallery"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "video-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-video-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "give-block"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-give-block"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "dues-table"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-dues-table"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "document-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-document-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "contact-map"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-contact-map"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cta-band"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-cta-band"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "card-grid"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-card-grid"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "link-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-link-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "quote"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-quote"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "notice"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-notice"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "prayer"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-prayer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "fact-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-fact-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "image"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-image"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "orthodoxconnect-feed"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-orthodoxconnect-feed"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "orthodoxconnect-cta"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/section-orthodoxconnect-cta"
+          }
+        }
+      ],
+      "description": "A page section. `type` selects the component; see DEVELOPER.md \"Component catalog\"."
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "hero",
+            "page-header",
+            "rich-text",
+            "split",
+            "stack",
+            "service-times",
+            "person-profile",
+            "people-list",
+            "event-list",
+            "news-list",
+            "gallery",
+            "video-list",
+            "give-block",
+            "dues-table",
+            "document-list",
+            "contact-map",
+            "cta-band",
+            "card-grid",
+            "link-list",
+            "quote",
+            "notice",
+            "prayer",
+            "fact-list",
+            "image",
+            "orthodoxconnect-feed",
+            "orthodoxconnect-cta"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "hero"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-hero"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "page-header"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-page-header"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "rich-text"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-rich-text"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "split"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-split"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "stack"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-stack"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "service-times"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-service-times"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "person-profile"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-person-profile"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "people-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-people-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "event-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-event-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "news-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-news-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "gallery"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-gallery"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "video-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-video-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "give-block"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-give-block"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "dues-table"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-dues-table"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "document-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-document-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "contact-map"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-contact-map"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cta-band"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-cta-band"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "card-grid"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-card-grid"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "link-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-link-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "quote"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-quote"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "notice"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-notice"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "prayer"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-prayer"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "fact-list"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-fact-list"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "image"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-image"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "orthodoxconnect-feed"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-orthodoxconnect-feed"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "orthodoxconnect-cta"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/$defs/block-orthodoxconnect-cta"
+          }
+        }
+      ],
+      "description": "A section rendered inside a split or stack (no background/spacing of its own)."
+    }
+  }
+}

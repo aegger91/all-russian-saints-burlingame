@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "orthodoxconnect-feed.schema.json",
+  "title": "OrthodoxConnect parish feed (v1)",
+  "description": "Data contract between the OrthodoxConnect app and the parish website: public events, volunteer opportunities and needs for one parish. The site renders it with the orthodoxconnect-feed section. Served by the API (set ORTHODOXCONNECT_FEED_URL at build time, or fetch it in the builder) or read from the bundled sample file. Text fields may be plain strings or localized objects ({\"en\": ..., \"ru\": ...}).",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1, "description": "Contract version. Breaking changes bump it." },
+    "isSample": { "type": "boolean", "description": "true for placeholder data. The site then labels the section and every card as \"Sample\". The live API must send false or omit it." },
+    "source": { "type": "string", "description": "Human-readable origin of the data." },
+    "parishId": { "type": "string", "description": "OrthodoxConnect parish id (matches site.integrations.orthodoxconnect.parishId)." },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/item" }
+    }
+  },
+  "required": ["version", "items"],
+  "additionalProperties": false,
+  "$defs": {
+    "item": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "description": "Stable id in OrthodoxConnect (rendered as data-oc-id)." },
+        "kind": { "enum": ["event", "volunteer", "need"] },
+        "status": { "enum": ["open", "full", "closed", "cancelled"], "default": "open", "description": "Only open and full items are shown." },
+        "title": { "$ref": "common.schema.json#/$defs/text" },
+        "summary": { "$ref": "common.schema.json#/$defs/text" },
+        "startsAt": { "type": "string", "format": "date-time", "description": "ISO 8601 with offset. Shown in site.timezone." },
+        "endsAt": { "type": "string", "format": "date-time" },
+        "location": { "$ref": "common.schema.json#/$defs/text" },
+        "slots": {
+          "description": "Sign-up capacity (events and volunteer opportunities).",
+          "type": "object",
+          "properties": { "needed": { "type": "integer", "minimum": 0 }, "filled": { "type": "integer", "minimum": 0 } },
+          "required": ["needed"],
+          "additionalProperties": false
+        },
+        "quantity": {
+          "description": "Pledged amount for needs.",
+          "type": "object",
+          "properties": {
+            "needed": { "type": "number", "minimum": 0 },
+            "fulfilled": { "type": "number", "minimum": 0 },
+            "unit": { "$ref": "common.schema.json#/$defs/text" }
+          },
+          "required": ["needed"],
+          "additionalProperties": false
+        },
+        "url": { "anyOf": [{ "$ref": "common.schema.json#/$defs/url" }, { "type": "null" }], "description": "Deep link into OrthodoxConnect for RSVP / sign-up / pledge. null shows a disabled button." },
+        "cta": { "$ref": "common.schema.json#/$defs/text", "description": "Button label override (defaults: RSVP, Sign up, I can help)." }
+      },
+      "required": ["id", "kind", "title"],
+      "additionalProperties": false
+    }
+  }
+}

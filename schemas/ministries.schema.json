@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ministries.schema.json",
+  "title": "Ministries",
+  "description": "content/ministries.json: parish ministries and groups, used by card-grid sections with \"source\": \"ministries\".",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "ministries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/editorial"
+          }
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "text": {
+            "$ref": "common.schema.json#/$defs/markdown"
+          },
+          "image": {
+            "$ref": "common.schema.json#/$defs/image"
+          },
+          "link": {
+            "$ref": "common.schema.json#/$defs/link"
+          }
+        },
+        "required": [
+          "id",
+          "title"
+        ],
+        "unevaluatedProperties": false
+      }
+    }
+  },
+  "required": [
+    "ministries"
+  ],
+  "additionalProperties": false
+}
