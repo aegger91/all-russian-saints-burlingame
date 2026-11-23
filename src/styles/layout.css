@@ -651,7 +651,11 @@ a.topbar__item:hover {
 
 @media (max-width: 420px) {
   .site-footer__top {
-    grid-template-columns: 1fr;
+    gap: var(--space-8) var(--space-5);
+  }
+
+  .site-footer__col:last-child {
+    grid-column: 1 / -1;
   }
 }
 
