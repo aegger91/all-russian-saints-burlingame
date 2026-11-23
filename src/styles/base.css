@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   background: var(--surface);
   color: var(--text);
-  font-family: var(--font-sans);
+  font-family: var(--font-role-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-regular);
@@ -65,7 +65,7 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-role-heading);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -164,7 +164,7 @@ hr {
 /* Russian accent lines: the Slavonic-style face is reserved for these. */
 .accent,
 .accent-inline {
-  font-family: var(--font-slavonic);
+  font-family: var(--font-role-ornament);
   font-weight: 400;
   color: var(--accent-strong);
   letter-spacing: 0.01em;
@@ -172,7 +172,7 @@ hr {
 }
 
 [lang="cu"] {
-  font-family: var(--font-slavonic);
+  font-family: var(--font-role-ornament);
 }
 
 /* ---------------------------------------------------------------- prose */
@@ -249,7 +249,7 @@ hr {
 .prose blockquote {
   border-left: 2px solid var(--accent);
   padding: 0.2em 0 0.2em 1.2em;
-  font-family: var(--font-serif);
+  font-family: var(--font-role-heading);
   font-size: var(--font-size-lg);
   color: var(--heading);
 }
