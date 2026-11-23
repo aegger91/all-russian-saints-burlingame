@@ -68,6 +68,7 @@ function resolveFile(sitePath) {
 
 const BUILT_ROOTS = new Set([...fs.readdirSync(OUT)]);
 function isBuiltPath(p) {
+  if (BASE_PATH && p !== BASE_PATH && !p.startsWith(`${BASE_PATH}/`)) return false;
   const first = p.slice(BASE_PATH.length).split(/[/?#]/)[1] || '';
   return first === '' || BUILT_ROOTS.has(first);
 }

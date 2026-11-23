@@ -11,7 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
-import { CONTENT_DIR, PUBLIC_DIR, SCHEMA_DIR, THEME_DIR, ROOT, listContentFiles, loadContent } from '../src/lib/content.mjs';
+import { CONTENT_DIR, PUBLIC_DIR, SCHEMA_DIR, ROOT, themeFile, listContentFiles, loadContent } from '../src/lib/content.mjs';
 
 export function createValidator() {
   const ajv = new Ajv2020({ allErrors: true, strict: false });
@@ -205,7 +205,7 @@ export function checkReferences(content) {
 
 export function validateAll() {
   const problems = [];
-  const files = [...listContentFiles(), path.join(THEME_DIR, 'tokens.json')];
+  const files = [...listContentFiles(), themeFile(JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, 'site.json'), 'utf8')))];
   for (const file of files) {
     let data;
     try {

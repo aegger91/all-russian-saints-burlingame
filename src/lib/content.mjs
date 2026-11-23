@@ -9,6 +9,12 @@ export const PUBLIC_DIR = path.resolve(ROOT, process.env.PUBLIC_DIR || 'public')
 export const SCHEMA_DIR = path.join(ROOT, 'schemas');
 export const THEME_DIR = path.join(ROOT, 'theme');
 
+// Tokens file for this site: site.theme.tokens (relative to the project root),
+// so every parish can carry its own theme.
+export function themeFile(site) {
+  return path.resolve(ROOT, site?.theme?.tokens || path.join(THEME_DIR, 'tokens.json'));
+}
+
 export function readJson(file) {
   const data = JSON.parse(fs.readFileSync(file, 'utf8'));
   delete data.$schema;

@@ -14,7 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { loadContent, readJson, ROOT, PUBLIC_DIR, THEME_DIR } from './lib/content.mjs';
+import { loadContent, readJson, themeFile, ROOT, PUBLIC_DIR } from './lib/content.mjs';
 import { createContext } from './lib/context.mjs';
 import { renderPage } from './components/layout.mjs';
 import { tokensToCss } from './lib/tokens.mjs';
@@ -50,10 +50,13 @@ function writeFile(file, data) {
   fs.writeFileSync(file, data);
 }
 
-function buildAssets() {
-  const tokens = readJson(path.join(THEME_DIR, 'tokens.json'));
+function buildAssets(site) {
+  const file = themeFile(site);
+  const tokens = readJson(file);
   const styles = STYLE_ORDER.map((name) => fs.readFileSync(path.join(ROOT, 'src/styles', name), 'utf8'));
-  const css = [`/* Generated from theme/tokens.json */\n${tokensToCss(tokens)}`, ...styles].join('\n\n');
+  const css = [`/* Generated from ${path.relative(ROOT, file)} */\n${tokensToCss(tokens)}`, ...styles]
+    .join('\n\n')
+    .replace(/url\((["']?)\/(?!\/)/g, `url($1${BASE_PATH}/`);
   const js = fs.readFileSync(path.join(ROOT, 'src/client/site.js'), 'utf8');
   writeFile(path.join(OUT, 'assets/site.css'), css);
   writeFile(path.join(OUT, 'assets/site.js'), js);
@@ -138,7 +141,7 @@ export async function build() {
 
   fs.rmSync(OUT, { recursive: true, force: true });
   fs.cpSync(PUBLIC_DIR, OUT, { recursive: true });
-  const assets = buildAssets();
+  const assets = buildAssets(content.site);
 
   let count = 0;
   for (const page of content.pages) {
