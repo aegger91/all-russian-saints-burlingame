@@ -3236,7 +3236,7 @@
           }
         }
       ],
-      "description": "A page section. `type` selects the component; see DEVELOPER.md \"Component catalog\"."
+      "description": "A page section. `type` selects the component; see src/components/registry.mjs."
     },
     "block": {
       "type": "object",

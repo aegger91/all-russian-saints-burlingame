@@ -121,7 +121,7 @@
       "properties": {
         "orthodoxconnect": {
           "type": "object",
-          "description": "OrthodoxConnect app integration. See DEVELOPER.md and schemas/orthodoxconnect-feed.schema.json.",
+          "description": "OrthodoxConnect app integration. The feed contract is schemas/orthodoxconnect-feed.schema.json.",
           "properties": {
             "enabled": { "type": "boolean" },
             "parishId": { "type": "string", "description": "Parish id in OrthodoxConnect." },

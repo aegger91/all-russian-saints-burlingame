@@ -11,7 +11,13 @@ How it is put together:
 
 It does not depend on any framework, CMS or hosting vendor.
 
-**→ Developers: start with [DEVELOPER.md](DEVELOPER.md)**, which covers the architecture, content model, component catalog, tokens, builder integration and the OrthodoxConnect contract.
+| Folder | Contents |
+|---|---|
+| `content/` | All site content as JSON. Every file names its schema in `$schema`. `pages/<id>.json` holds an ordered list of sections. |
+| `schemas/` | JSON Schema for every content type, the design tokens and the OrthodoxConnect feed contract. |
+| `theme/tokens.json` | Colors, type, spacing, radii and layout. Each value becomes a CSS variable (`color.navy` → `--color-navy`). |
+| `src/components/` | One render function per section type, listed in `registry.mjs`. |
+| `scripts/` | `validate`, `check-links`, `translate` and the dev server. |
 
 ## Build and run
 
@@ -57,7 +63,7 @@ npm run translate:check              # status report (no key needed)
 - With no key, the build still succeeds and untranslated text is shown in English.
 - The script never overwrites text a person wrote or edited, or anything marked `"ru_locked": true`.
 - When the English source of human-written Russian text changes, the script flags it for review instead of rewriting it.
-- See [DEVELOPER.md §8](DEVELOPER.md#8-machine-translation-script) for details.
+- The full rules are in the header comment of `scripts/translate.mjs`.
 
 ## Menu mapping (old site → new site)
 
