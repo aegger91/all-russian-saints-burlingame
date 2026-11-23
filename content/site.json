@@ -67,7 +67,7 @@
       "height": 380
     },
     "square": "/logo/ars-favicon-512.png",
-    "favicon": "/logo/ars-favicon.svg",
+    "favicon": "/logo/ars-favicon-small.svg",
     "faviconPng": "/logo/ars-favicon-32.png",
     "appleTouchIcon": "/logo/ars-favicon-180.png"
   },

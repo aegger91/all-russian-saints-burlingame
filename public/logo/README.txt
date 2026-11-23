@@ -11,6 +11,7 @@ ars-lockup-horizontal-*   mark + name, Burlingame, California, Russian line (col
 ars-lockup-stacked-*      same, stacked
 ars-icon-color / -navy    three domes and crosses only
 ars-favicon.svg / ars-favicon-512.png / -180.png   app/favicon tile
-ars-favicon-small.svg / ars-favicon-32.png / -16.png  heavier crosses for tiny sizes
+ars-favicon-small.svg / ars-favicon-32.png / -16.png  single eight-pointed cross for tiny sizes
+                          (pixel-aligned at 16 and 32 px; the site's browser-tab icon)
 PNGs are 2000px wide with transparent background unless noted.
 Rebuild: python3 src/build_logo.py ; sheet: python3 src/make_sheet.py --photo <photo>
