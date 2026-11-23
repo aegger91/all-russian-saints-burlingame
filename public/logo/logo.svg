@@ -4,12 +4,7 @@
     <path d="M18 150V78C18 50 40 34 58 24 66 19 71 13 74 6 77 13 82 19 90 24 108 34 130 50 130 78V150Z" fill="#fff9dc"/>
     <path d="M10 150H138" stroke-linecap="round"/>
   </g>
-  <g stroke="#b08d57" stroke-width="5" stroke-linecap="round">
-    <path d="M74 40V138"/>
-    <path d="M62 54H86"/>
-    <path d="M52 72H96"/>
-    <path d="M60 120L88 110"/>
-  </g>
+  <path transform="translate(45.2 38) scale(2.4)" d="M10.7 0H13.3V40H10.7ZM6 4.7H18V7.3H6ZM0 12.7H24V15.3H0ZM4 22.7L20 30.7V33.3L4 25.3Z" fill="#b08d57"/>
   <g font-family="Georgia, 'Times New Roman', serif">
     <text x="160" y="76" font-size="48" fill="#174372">St. Example</text>
     <text x="162" y="106" font-size="15" letter-spacing="4.2" fill="#b08d57">ORTHODOX CHURCH · ANYTOWN</text>
