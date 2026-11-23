@@ -2,53 +2,54 @@
   "$schema": "../schemas/events.schema.json",
   "events": [
     {
-      "id": "sisterhood-2026-12-06-coffee-hour",
+      "id": "sample-coffee-hour",
       "ministry": "sisterhood",
       "date": "2026-12-06",
+      "time": "11:30",
       "title": {
-        "en": "Coffee Hour prior to Choir Concert at 1pm inside church Nave",
-        "ru": "Кофейный час перед концертом хора в 13:00 в храме"
-      }
+        "en": "Coffee hour after the Liturgy (sample)",
+        "ru": "Кофейный час после литургии (образец)"
+      },
+      "location": { "en": "Parish hall", "ru": "Приходской зал" }
     },
     {
-      "id": "sisterhood-2026-12-13-luncheon",
-      "ministry": "sisterhood",
+      "id": "sample-choir-concert",
+      "ministry": "choir",
       "date": "2026-12-13",
+      "time": "14:00",
       "title": {
-        "en": "Luncheon (Fish Kotleti, Gingerbread decorating)",
-        "ru": "Обед (рыбные котлеты, украшение пряников)"
+        "en": "Nativity choir concert (sample)",
+        "ru": "Рождественский концерт хора (образец)"
+      },
+      "location": { "en": "Church", "ru": "Храм" },
+      "description": {
+        "en": "Sample event with a description and a link.",
+        "ru": "Образец мероприятия с описанием и ссылкой."
+      },
+      "link": {
+        "page": "ministries",
+        "anchor": "choir",
+        "label": { "en": "About the choir", "ru": "О хоре" }
       }
     },
     {
-      "id": "st-hermans-west-2026",
-      "date": "2026-12-22",
-      "endDate": "2026-12-26",
-      "title": { "en": "St. Herman’s West 2026 Youth Conference", "ru": "Молодёжная конференция St. Herman’s West 2026" },
-      "location": {
-        "en": "Old Holy Virgin Cathedral, San Francisco; Sts. Peter and Paul Church, Santa Rosa; Best Western Corte Madera",
-        "ru": "Старый собор Пресвятой Богородицы, Сан-Франциско; церковь Свв. Петра и Павла, Санта-Роза; Best Western, Корте-Мадера"
+      "id": "sample-yolka",
+      "ministry": "school",
+      "date": "2027-01-10",
+      "time": "12:30",
+      "title": {
+        "en": "Children’s Nativity party (sample)",
+        "ru": "Детская рождественская ёлка (образец)"
       },
-      "description": {
-        "en": "For ages 15-21. Registration is $300/person (additional members of the same family receive a $50 discount).",
-        "ru": "Для молодёжи 15–21 года. Регистрационный взнос — $300 с человека (для других членов той же семьи скидка $50)."
-      },
-      "link": { "page": "news", "anchor": "st-hermans-west-2026", "label": { "en": "Details and registration", "ru": "Подробности и регистрация" } }
+      "location": { "en": "Parish hall", "ru": "Приходской зал" }
     },
     {
-      "id": "sisterhood-2026-12-27-pirogi",
-      "ministry": "sisterhood",
-      "date": "2026-12-27",
-      "title": { "en": "Pirogi Luncheon", "ru": "Обед с пирогами" }
-    },
-    {
-      "id": "sisterhood-pelmeni",
-      "ministry": "sisterhood",
-      "title": { "en": "Pelmeni-making Sessions", "ru": "Лепка пельменей" },
-      "location": { "en": "Church Hall", "ru": "Церковный зал" },
-      "description": {
-        "en": "If you can help make pelmeni, come to the Church Hall anytime between 10 a.m. and 4 p.m. Both men and women volunteers are welcome. Call Luba Gauschieldt for more information [(650) 591-1605](tel:+16505911605).",
-        "ru": "Если вы можете помочь лепить пельмени, приходите в церковный зал в любое время с 10 утра до 4 часов дня. Мы рады помощникам — и мужчинам, и женщинам. Подробности по телефону у Любы Гаушильдт: [(650) 591-1605](tel:+16505911605)."
-      }
+      "id": "sample-retreat",
+      "date": "2027-02-20",
+      "endDate": "2027-02-21",
+      "title": { "en": "Lenten retreat (sample)", "ru": "Великопостная беседа (образец)" },
+      "location": { "en": "Parish hall", "ru": "Приходской зал" },
+      "description": { "en": "Sample two-day event.", "ru": "Образец двухдневного мероприятия." }
     }
   ]
 }

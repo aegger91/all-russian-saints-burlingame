@@ -1,0 +1,77 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "give",
+  "slug": "give",
+  "order": 100,
+  "title": { "en": "Give", "ru": "Пожертвования" },
+  "seo": {
+    "description": { "en": "Sample giving page.", "ru": "Образец страницы пожертвований." }
+  },
+  "sections": [
+    {
+      "id": "give-header",
+      "type": "page-header",
+      "eyebrow": { "en": "Give", "ru": "Пожертвования" },
+      "title": { "en": "Support our parish", "ru": "Поддержите наш приход" },
+      "lede": {
+        "en": "Sample giving page: PayPal buttons, dues and stewardship.",
+        "ru": "Образец страницы пожертвований: кнопки PayPal, взносы и попечительство."
+      },
+      "image": {
+        "src": "/assets/img/sample-gallery-2.jpg",
+        "alt": { "en": "Sample photo", "ru": "Образец фотографии" },
+        "position": "50% 50%"
+      }
+    },
+    { "id": "give", "type": "give-block", "showNote": true },
+    {
+      "id": "dues-stewardship",
+      "type": "split",
+      "background": "alt",
+      "ratio": "1:1",
+      "columns": [
+        {
+          "id": "dues",
+          "type": "dues-table",
+          "eyebrow": { "en": "Membership dues", "ru": "Членские взносы" },
+          "title": { "en": "Monthly membership dues", "ru": "Ежемесячные членские взносы" },
+          "body": {
+            "en": "Sample text about paying dues by PayPal or by check.",
+            "ru": "Образец текста об оплате взносов через PayPal или чеком."
+          },
+          "actions": [
+            {
+              "label": { "en": "How to become a member", "ru": "Как стать членом прихода" },
+              "style": "link",
+              "page": "about",
+              "anchor": "membership"
+            }
+          ]
+        },
+        {
+          "id": "stewardship",
+          "type": "stack",
+          "blocks": [
+            {
+              "type": "rich-text",
+              "eyebrow": { "en": "Stewardship", "ru": "Попечительство" },
+              "title": { "en": "Stewardship", "ru": "Попечительство" },
+              "body": {
+                "en": "Sample text about the annual stewardship program.",
+                "ru": "Образец текста о ежегодной программе попечительства."
+              }
+            },
+            { "type": "document-list", "documents": ["pledge-form"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "your-gifts-at-work",
+      "type": "gallery",
+      "eyebrow": { "en": "Recent projects", "ru": "Недавние проекты" },
+      "title": { "en": "Your gifts at work", "ru": "Ваши пожертвования в деле" },
+      "gallery": "projects"
+    }
+  ]
+}

@@ -39,8 +39,8 @@
     "contact.directions": { "en": "Get directions", "ru": "Как добраться" },
     "contact.tour": { "en": "360° virtual tour", "ru": "Виртуальный тур 360°" },
     "contact.mapTitle": {
-      "en": "Map: Church of All Russian Saints, 744 El Camino Real, Burlingame",
-      "ru": "Карта: Церковь Всех Святых, 744 El Camino Real, Бурлингейм"
+      "en": "Map showing the church location",
+      "ru": "Карта с расположением храма"
     },
     "footer.visit": { "en": "Visit", "ru": "Адрес" },
     "footer.mapDirections": { "en": "Map and directions", "ru": "Карта и как добраться" },
@@ -56,7 +56,10 @@
     "oc.cta.volunteer": { "en": "Sign up to help", "ru": "Предложить помощь" },
     "oc.cta.need": { "en": "Pledge an item", "ru": "Пожертвовать" },
     "oc.slots": { "en": "{filled} of {needed} volunteers", "ru": "{filled} из {needed} помощников" },
-    "oc.quantity": { "en": "{filled} of {needed} {unit} pledged", "ru": "Собрано {filled} из {needed} {unit}" },
+    "oc.quantity": {
+      "en": "{filled} of {needed} {unit} pledged",
+      "ru": "Собрано {filled} из {needed} {unit}"
+    },
     "oc.join": { "en": "Join on OrthodoxConnect", "ru": "Присоединиться в OrthodoxConnect" },
     "oc.comingSoon": { "en": "Coming soon", "ru": "Скоро" }
   }

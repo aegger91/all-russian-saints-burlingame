@@ -4,112 +4,71 @@
   "paypal": {
     "action": "https://www.paypal.com/cgi-bin/webscr",
     "cmd": "_donations",
-    "business": "coarstreasurer@gmail.com",
-    "itemName": "All Russian Saints",
+    "business": "donations@example.org",
+    "itemName": "St. Example Orthodox Church",
     "currency": "USD",
     "noNote": "0"
   },
   "note": {
-    "en": "Payments go to the parish PayPal account and open in a new window.",
-    "ru": "Платежи поступают на счёт прихода в PayPal; страница оплаты откроется в новом окне."
+    "en": "Sample giving buttons: set giving.paypal.business to the parish PayPal account before going live.",
+    "ru": "Образец кнопок пожертвований: перед публикацией укажите счёт прихода в PayPal в giving.paypal.business."
   },
   "funds": [
     {
       "id": "general",
       "itemNumber": "General Donation",
-      "eyebrow": {
-        "en": "Donation",
-        "ru": "Пожертвование"
-      },
-      "title": {
-        "en": "General Donation",
-        "ru": "Пожертвование на храм"
-      },
+      "eyebrow": { "en": "Donation", "ru": "Пожертвование" },
+      "title": { "en": "General Donation", "ru": "Пожертвование на храм" },
       "description": {
-        "en": "Please click on this button to make a Donation to the Church.",
-        "ru": "Нажмите эту кнопку, чтобы сделать пожертвование на храм."
+        "en": "Support the life and services of the parish.",
+        "ru": "Поддержите жизнь и богослужения прихода."
       },
-      "button": {
-        "en": "Donate with PayPal",
-        "ru": "Пожертвовать через PayPal"
-      }
+      "button": { "en": "Donate with PayPal", "ru": "Пожертвовать через PayPal" }
     },
     {
       "id": "dues",
       "itemNumber": "Membership Dues",
-      "eyebrow": {
-        "en": "Membership",
-        "ru": "Членство"
-      },
-      "title": {
-        "en": "Membership Dues",
-        "ru": "Членские взносы"
-      },
+      "eyebrow": { "en": "Membership", "ru": "Членство" },
+      "title": { "en": "Membership Dues", "ru": "Членские взносы" },
       "description": {
-        "en": "Please click on this button to pay your Parish Membership Dues.",
-        "ru": "Нажмите эту кнопку, чтобы оплатить членские взносы прихода."
+        "en": "Pay your parish membership dues.",
+        "ru": "Оплатите членские взносы прихода."
       },
-      "button": {
-        "en": "Pay dues with PayPal",
-        "ru": "Оплатить взносы через PayPal"
-      }
+      "button": { "en": "Pay dues with PayPal", "ru": "Оплатить взносы через PayPal" }
     },
     {
-      "id": "stewardship",
-      "itemNumber": "Stewardship Fund",
-      "eyebrow": {
-        "en": "Stewardship",
-        "ru": "Попечительство"
-      },
-      "title": {
-        "en": "Stewardship Fund",
-        "ru": "Фонд попечительства"
-      },
+      "id": "building",
+      "itemNumber": "Building Fund",
+      "eyebrow": { "en": "Building fund", "ru": "Строительный фонд" },
+      "title": { "en": "Building Fund", "ru": "Строительный фонд" },
       "description": {
-        "en": "Please click on this button to donate to the Stewardship Fund.",
-        "ru": "Нажмите эту кнопку, чтобы сделать взнос в фонд попечительства."
+        "en": "Help care for the church building and grounds.",
+        "ru": "Помогите в заботе о здании храма и территории."
       },
-      "button": {
-        "en": "Give to the Stewardship Fund",
-        "ru": "Внести в фонд попечительства"
-      }
+      "button": { "en": "Give to the Building Fund", "ru": "Внести в строительный фонд" }
     }
   ],
   "dues": {
     "rates": [
       {
-        "id": "employed",
-        "amount": 20,
-        "label": {
-          "en": "per month if employed",
-          "ru": "в месяц для работающих"
-        }
+        "id": "individual",
+        "amount": 25,
+        "label": { "en": "per month, individual (sample)", "ru": "в месяц, один человек (образец)" }
       },
       {
-        "id": "retired",
+        "id": "family",
+        "amount": 40,
+        "label": { "en": "per month, family (sample)", "ru": "в месяц, семья (образец)" }
+      },
+      {
+        "id": "student",
         "amount": 10,
         "label": {
-          "en": "per month if retired",
-          "ru": "в месяц для пенсионеров"
-        }
-      },
-      {
-        "id": "family-employed",
-        "amount": 30,
-        "label": {
-          "en": "family, per month if employed",
-          "ru": "семья, в месяц для работающих"
-        }
-      },
-      {
-        "id": "family-retired",
-        "amount": 15,
-        "label": {
-          "en": "family, if both are retired",
-          "ru": "семья, если оба супруга на пенсии"
+          "en": "per month, student or retired (sample)",
+          "ru": "в месяц, студенты и пенсионеры (образец)"
         }
       }
     ]
   },
-  "needsReview": "The original PayPal buttons also sent an IPN notify_url and a \"custom\" field from the old platform; these were omitted. Treasurer to confirm."
+  "needsReview": "Sample content from the blank template. Replace it with your parish information."
 }

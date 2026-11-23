@@ -3,103 +3,75 @@
   "ministries": [
     {
       "id": "clergy",
-      "title": {
-        "en": "Clergy",
-        "ru": "Духовенство"
-      },
+      "title": { "en": "Clergy", "ru": "Духовенство" },
       "text": {
-        "en": "Mitred Archpriest Stefan Pavlenko, Rector, with Matushka Tatiana, Father Deacon Alexei Baranoff and the Parish Council.",
-        "ru": "Настоятель — митрофорный протоиерей Стефан Павленко, матушка Татьяна, отец диакон Алексий Баранов и приходской совет."
+        "en": "Our rector, deacon and parish council serve the parish together.",
+        "ru": "Настоятель, диакон и приходской совет вместе служат приходу."
       },
       "image": {
-        "src": "/assets/img/img-4688.jpg",
+        "src": "/assets/img/sample-interior.jpg",
         "alt": {
-          "en": "Father Stefan with Matushka Tatiana",
-          "ru": "Отец Стефан с матушкой Татьяной"
+          "en": "Sample photo of the church interior",
+          "ru": "Образец фотографии интерьера храма"
         }
       },
       "link": {
         "page": "clergy",
-        "label": {
-          "en": "Clergy and Parish Council",
-          "ru": "Духовенство и приходской совет"
-        }
+        "label": { "en": "Clergy and council", "ru": "Духовенство и совет" }
       }
     },
     {
       "id": "choir",
-      "title": {
-        "en": "Choir",
-        "ru": "Хор"
-      },
+      "title": { "en": "Choir", "ru": "Хор" },
       "text": {
-        "en": "The all-volunteer parish choir sings at Vigil, Liturgy and Holy-day services and presents two concerts a year.",
-        "ru": "Приходской хор, в котором поют добровольцы, участвует во всенощных бдениях, литургиях и праздничных службах и дважды в год даёт концерты."
+        "en": "Volunteer singers lead the services on Saturdays, Sundays and feast days.",
+        "ru": "Певчие-добровольцы поют за богослужениями по субботам, воскресеньям и в праздники."
       },
       "image": {
-        "src": "/assets/img/choir-concert-16.jpg",
-        "alt": {
-          "en": "The parish choir in concert",
-          "ru": "Концерт приходского хора"
-        }
+        "src": "/assets/img/sample-choir.jpg",
+        "alt": { "en": "Sample photo of the choir", "ru": "Образец фотографии хора" }
       },
       "link": {
-        "page": "choir",
-        "label": {
-          "en": "About the choir",
-          "ru": "О хоре"
-        }
+        "page": "ministries",
+        "anchor": "choir",
+        "label": { "en": "About the choir", "ru": "О хоре" }
       }
     },
     {
       "id": "sisterhood",
-      "title": {
-        "en": "Sisterhood",
-        "ru": "Сестричество"
-      },
+      "title": { "en": "Sisterhood", "ru": "Сестричество" },
       "text": {
-        "en": "A very active, hardworking, and friendly sisterhood: lunches, coffee hours and the monthly pelmeni making group.",
-        "ru": "Очень активное, трудолюбивое и дружное сестричество: трапезы, кофейные часы и ежемесячная лепка пельменей."
+        "en": "Coffee hours, parish meals and care for the church.",
+        "ru": "Кофейные часы, приходские трапезы и забота о храме."
       },
       "image": {
-        "src": "/assets/img/img-5612.jpg",
-        "alt": {
-          "en": "The Sisterhood",
-          "ru": "Сестричество"
-        }
+        "src": "/assets/img/sample-community.jpg",
+        "alt": { "en": "Sample photo of parishioners", "ru": "Образец фотографии прихожан" }
       },
       "link": {
-        "page": "sisterhood",
-        "label": {
-          "en": "About the sisterhood",
-          "ru": "О сестричестве"
-        }
+        "page": "ministries",
+        "anchor": "sisterhood",
+        "label": { "en": "About the sisterhood", "ru": "О сестричестве" }
       }
     },
     {
       "id": "school",
-      "title": {
-        "en": "Russian School",
-        "ru": "Русская школа"
-      },
+      "title": { "en": "Church School", "ru": "Церковная школа" },
       "text": {
-        "en": "Established at the same time as the church in 1952. Registration for 2026-27 is open.",
-        "ru": "Основана одновременно с храмом в 1952 году. Открыта запись на 2026–27 учебный год."
+        "en": "Classes for children in the Law of God, language and church singing.",
+        "ru": "Занятия для детей: Закон Божий, язык и церковное пение."
       },
       "image": {
-        "src": "/assets/img/akt-03-crop.jpg",
+        "src": "/assets/img/sample-school.jpg",
         "alt": {
-          "en": "Russian School students",
-          "ru": "Ученики русской школы"
-        },
-        "position": "50% 40%"
+          "en": "Sample photo of the church school",
+          "ru": "Образец фотографии церковной школы"
+        }
       },
       "link": {
-        "page": "school",
-        "label": {
-          "en": "About the school",
-          "ru": "О школе"
-        }
+        "page": "ministries",
+        "anchor": "school",
+        "label": { "en": "About the school", "ru": "О школе" }
       }
     }
   ]

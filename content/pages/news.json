@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "news",
+  "slug": "news",
+  "order": 60,
+  "title": { "en": "News & Photos", "ru": "Новости и фотографии" },
+  "sections": [
+    {
+      "id": "news-header",
+      "type": "page-header",
+      "eyebrow": { "en": "News", "ru": "Новости" },
+      "title": { "en": "Parish news and photos", "ru": "Новости и фотографии прихода" },
+      "lede": {
+        "en": "Sample news items from content/news.json.",
+        "ru": "Образцы новостей из content/news.json."
+      },
+      "image": {
+        "src": "/assets/img/sample-news-2.jpg",
+        "alt": { "en": "Sample photo", "ru": "Образец фотографии" },
+        "position": "50% 50%"
+      }
+    },
+    { "id": "news", "type": "news-list", "variant": "full" }
+  ]
+}

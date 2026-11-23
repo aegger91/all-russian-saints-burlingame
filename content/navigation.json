@@ -8,13 +8,13 @@
       {
         "id": "livestream",
         "label": { "en": "Livestream", "ru": "Трансляция" },
-        "href": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+        "href": "https://www.example.org/",
         "icon": "youtube"
       },
       {
         "id": "facebook",
         "label": { "en": "Facebook", "ru": "Facebook" },
-        "href": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/",
+        "href": "https://www.example.org/",
         "icon": "facebook"
       }
     ]
@@ -22,80 +22,174 @@
   "header": {
     "items": [
       {
-        "id": "parish",
-        "label": { "en": "Our Parish", "ru": "Наш приход" },
-        "page": "parish",
+        "id": "about",
+        "label": { "en": "About", "ru": "О приходе" },
+        "page": "about",
         "children": [
-          { "id": "parish-about", "label": { "en": "Our Parish", "ru": "О приходе" }, "page": "parish" },
-          { "id": "parish-history", "label": { "en": "Parish History", "ru": "История прихода" }, "page": "history" },
-          { "id": "parish-clergy", "label": { "en": "Clergy & Parish Council", "ru": "Духовенство и приходской совет" }, "page": "clergy" },
-          { "id": "parish-membership", "label": { "en": "Parish Membership", "ru": "Членство в приходе" }, "page": "parish", "anchor": "membership" },
-          { "id": "parish-stewardship", "label": { "en": "Stewardship", "ru": "Попечительство" }, "page": "parish", "anchor": "stewardship" },
-          { "id": "parish-bylaws", "label": { "en": "Parish By-Laws", "ru": "Устав прихода" }, "page": "parish", "anchor": "bylaws" },
-          { "id": "parish-orthodoxy", "label": { "en": "About Orthodoxy", "ru": "О Православии" }, "page": "orthodoxy" }
+          {
+            "id": "about-parish",
+            "label": { "en": "Our Parish", "ru": "Наш приход" },
+            "page": "about"
+          },
+          {
+            "id": "about-history",
+            "label": { "en": "History", "ru": "История" },
+            "page": "about",
+            "anchor": "history"
+          },
+          {
+            "id": "about-clergy",
+            "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" },
+            "page": "clergy"
+          },
+          {
+            "id": "about-membership",
+            "label": { "en": "Membership", "ru": "Членство" },
+            "page": "about",
+            "anchor": "membership"
+          },
+          {
+            "id": "about-faith",
+            "label": { "en": "The Orthodox Faith", "ru": "О Православии" },
+            "page": "about",
+            "anchor": "faith"
+          }
         ]
       },
-      { "id": "services", "label": { "en": "Services", "ru": "Богослужения" }, "page": "services" },
       {
-        "id": "community",
-        "label": { "en": "Community", "ru": "Община" },
+        "id": "services",
+        "label": { "en": "Services", "ru": "Богослужения" },
+        "page": "services"
+      },
+      {
+        "id": "ministries",
+        "label": { "en": "Ministries", "ru": "Служения" },
+        "page": "ministries",
         "children": [
-          { "id": "community-choir", "label": { "en": "Choir", "ru": "Хор" }, "page": "choir" },
-          { "id": "community-sisterhood", "label": { "en": "Sisterhood", "ru": "Сестричество" }, "page": "sisterhood" },
-          { "id": "community-school", "label": { "en": "Russian School", "ru": "Русская школа" }, "page": "school" },
-          { "id": "community-news", "label": { "en": "Parish News & Photos", "ru": "Новости и фотографии" }, "page": "news" }
+          {
+            "id": "ministries-choir",
+            "label": { "en": "Choir", "ru": "Хор" },
+            "page": "ministries",
+            "anchor": "choir"
+          },
+          {
+            "id": "ministries-sisterhood",
+            "label": { "en": "Sisterhood", "ru": "Сестричество" },
+            "page": "ministries",
+            "anchor": "sisterhood"
+          },
+          {
+            "id": "ministries-school",
+            "label": { "en": "Church School", "ru": "Церковная школа" },
+            "page": "ministries",
+            "anchor": "school"
+          },
+          {
+            "id": "ministries-hall",
+            "label": { "en": "Parish Hall", "ru": "Приходской зал" },
+            "page": "ministries",
+            "anchor": "hall"
+          }
         ]
       },
-      { "id": "newsletter", "label": { "en": "Newsletter", "ru": "Бюллетень" }, "page": "newsletter" },
-      { "id": "contact", "label": { "en": "Contact", "ru": "Контакты" }, "page": "contact" }
+      {
+        "id": "news",
+        "label": { "en": "News", "ru": "Новости" },
+        "page": "news"
+      },
+      {
+        "id": "contact",
+        "label": { "en": "Contact", "ru": "Контакты" },
+        "page": "contact"
+      }
     ],
     "actions": [
-      { "id": "give", "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give", "style": "accent", "icon": "heart" }
+      {
+        "id": "give",
+        "label": { "en": "Give", "ru": "Пожертвовать" },
+        "page": "give",
+        "style": "accent",
+        "icon": "heart"
+      }
     ]
   },
   "footer": {
     "about": {
-      "en": "A parish of the Western American Diocese of the Russian Orthodox Church Outside Russia (ROCOR), serving Burlingame and the San Francisco Peninsula since 1952.",
-      "ru": "Приход Западно-Американской епархии Русской Православной Церкви Заграницей (РПЦЗ) в Бурлингейме с 1952 года."
+      "en": "A sample parish of the Orthodox Church, used to preview the parish website template. Replace this text in content/navigation.json.",
+      "ru": "Образец прихода Православной Церкви для предварительного просмотра шаблона сайта. Замените этот текст в content/navigation.json."
     },
     "columns": [
       {
         "id": "parish",
         "title": { "en": "Parish", "ru": "Приход" },
         "links": [
-          { "label": { "en": "Services", "ru": "Богослужения" }, "page": "services" },
-          { "label": { "en": "Our Parish", "ru": "О приходе" }, "page": "parish" },
-          { "label": { "en": "Parish History", "ru": "История прихода" }, "page": "history" },
-          { "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" }, "page": "clergy" },
-          { "label": { "en": "About Orthodoxy", "ru": "О Православии" }, "page": "orthodoxy" },
-          { "label": { "en": "Give", "ru": "Пожертвовать" }, "page": "give" }
+          {
+            "label": { "en": "Services", "ru": "Богослужения" },
+            "page": "services"
+          },
+          {
+            "label": { "en": "Our Parish", "ru": "О приходе" },
+            "page": "about"
+          },
+          {
+            "label": { "en": "Clergy & Council", "ru": "Духовенство и совет" },
+            "page": "clergy"
+          },
+          {
+            "label": { "en": "Give", "ru": "Пожертвовать" },
+            "page": "give"
+          }
         ]
       },
       {
-        "id": "community",
-        "title": { "en": "Community", "ru": "Община" },
+        "id": "ministries",
+        "title": { "en": "Ministries", "ru": "Служения" },
         "links": [
-          { "label": { "en": "Choir", "ru": "Хор" }, "page": "choir" },
-          { "label": { "en": "Sisterhood", "ru": "Сестричество" }, "page": "sisterhood" },
-          { "label": { "en": "Russian School", "ru": "Русская школа" }, "page": "school" },
-          { "label": { "en": "Newsletter", "ru": "Бюллетень" }, "page": "newsletter" },
-          { "label": { "en": "News & Photos", "ru": "Новости и фотографии" }, "page": "news" }
+          {
+            "label": { "en": "Choir", "ru": "Хор" },
+            "page": "ministries",
+            "anchor": "choir"
+          },
+          {
+            "label": { "en": "Sisterhood", "ru": "Сестричество" },
+            "page": "ministries",
+            "anchor": "sisterhood"
+          },
+          {
+            "label": { "en": "Church School", "ru": "Церковная школа" },
+            "page": "ministries",
+            "anchor": "school"
+          },
+          {
+            "label": { "en": "News & Photos", "ru": "Новости и фотографии" },
+            "page": "news"
+          }
         ]
       },
       {
         "id": "connect",
         "title": { "en": "Connect", "ru": "Мы на связи" },
         "links": [
-          { "label": { "en": "Livestream on YouTube", "ru": "Трансляции на YouTube" }, "href": "https://www.youtube.com/@churchofallrussiansaints-b2874", "icon": "youtube" },
-          { "label": { "en": "Facebook", "ru": "Facebook" }, "href": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/", "icon": "facebook" },
-          { "label": { "en": "Subscribe to the newsletter", "ru": "Подписка на бюллетень" }, "page": "newsletter", "anchor": "subscribe" },
-          { "label": { "en": "Contact the parish", "ru": "Связаться с приходом" }, "page": "contact" }
+          {
+            "label": { "en": "Livestream", "ru": "Трансляции" },
+            "href": "https://www.example.org/",
+            "icon": "youtube"
+          },
+          {
+            "label": { "en": "Facebook", "ru": "Facebook" },
+            "href": "https://www.example.org/",
+            "icon": "facebook"
+          },
+          {
+            "label": { "en": "Contact the parish", "ru": "Связаться с приходом" },
+            "page": "contact"
+          }
         ]
       }
     ],
     "legal": {
-      "en": "Russian Orthodox Church Outside Russia.",
-      "ru": "Русская Православная Церковь Заграницей."
+      "en": "Sample parish · Orthodox parish website template.",
+      "ru": "Образец прихода · шаблон сайта православного прихода."
     }
   }
 }

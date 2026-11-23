@@ -1,19 +1,13 @@
 {
   "$schema": "../schemas/site.schema.json",
-  "id": "all-russian-saints-burlingame",
-  "url": "https://www.allrussiansaintsburlingame.org",
-  "name": {
-    "en": "Church of All Russian Saints",
-    "ru": "Церковь Всех Святых в Земле Российской Просиявших"
-  },
-  "shortName": { "en": "All Russian Saints, Burlingame", "ru": "Церковь Всех Святых, Бурлингейм" },
-  "location": { "en": "Burlingame, California", "ru": "Бурлингейм, Калифорния" },
+  "id": "st-example",
+  "url": "https://www.example.org",
+  "name": { "en": "St. Example Orthodox Church", "ru": "Храм святого Примера" },
+  "shortName": { "en": "St. Example, Anytown", "ru": "Храм св. Примера, Энитаун" },
+  "location": { "en": "Anytown, California", "ru": "Энитаун, Калифорния" },
   "jurisdiction": {
-    "name": {
-      "en": "Western American Diocese of the Russian Orthodox Church Outside Russia (ROCOR)",
-      "ru": "Западно-Американская епархия Русской Православной Церкви Заграницей (РПЦЗ)"
-    },
-    "url": "https://wadiocese.org/"
+    "name": { "en": "Your Diocese (sample)", "ru": "Ваша епархия (образец)" },
+    "url": "https://www.example.org/"
   },
   "timezone": "America/Los_Angeles",
   "locales": [
@@ -23,68 +17,50 @@
   "sourceLocale": "en",
   "contact": {
     "address": {
-      "street": "744 El Camino Real",
-      "city": "Burlingame",
+      "street": "100 Example Avenue",
+      "city": "Anytown",
       "region": "CA",
-      "postalCode": "94010",
+      "postalCode": "90000",
       "country": "US"
     },
-    "geo": { "lat": 37.579794, "lng": -122.357822 },
-    "phone": { "display": "(650) 430-9805", "e164": "+16504309805" },
-    "email": "stefanvpavlenko@netscape.net",
-    "mapEmbedUrl": "https://www.google.com/maps?q=37.579794,-122.357822&z=15&output=embed",
-    "directionsUrl": "https://www.google.com/maps?q=37.579794,-122.357822",
-    "virtualTourUrl": "https://orthodox360.com/tours/rocor-burlingame/"
+    "phone": { "display": "(555) 010-0100", "e164": "+15550100100" },
+    "email": "office@example.org",
+    "directionsUrl": "https://www.example.org/"
   },
   "social": [
     {
       "id": "youtube",
       "label": { "en": "YouTube", "ru": "YouTube" },
-      "url": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+      "url": "https://www.example.org/",
       "icon": "youtube"
     },
     {
       "id": "facebook",
       "label": { "en": "Facebook", "ru": "Facebook" },
-      "url": "https://www.facebook.com/ChurchOfAllRussianSaintsBurlingame/",
+      "url": "https://www.example.org/",
       "icon": "facebook"
     }
   ],
-  "livestreamUrl": "https://www.youtube.com/@churchofallrussiansaints-b2874",
+  "livestreamUrl": "https://www.example.org/",
   "logo": {
-    "src": "/logo/ars-lockup-horizontal-color.svg",
-    "alt": {
-      "en": "Church of All Russian Saints, Burlingame, California — home",
-      "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния — на главную"
-    },
-    "footer": {
-      "src": "/logo/ars-lockup-horizontal-oncolor-navy.svg",
-      "alt": {
-        "en": "Church of All Russian Saints, Burlingame, California",
-        "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм, Калифорния"
-      },
-      "width": 1118,
-      "height": 380
-    },
-    "square": "/logo/ars-favicon-512.png",
-    "favicon": "/logo/ars-favicon.svg",
-    "faviconPng": "/logo/ars-favicon-32.png",
-    "appleTouchIcon": "/logo/ars-favicon-180.png"
+    "src": "/logo/logo.svg",
+    "alt": { "en": "St. Example Orthodox Church — home", "ru": "Храм святого Примера — на главную" },
+    "favicon": "/logo/favicon.svg",
+    "faviconPng": "/logo/icon-32.png",
+    "appleTouchIcon": "/logo/icon-180.png",
+    "square": "/logo/icon-512.png"
   },
   "seo": {
-    "siteName": {
-      "en": "Church of All Russian Saints, Burlingame",
-      "ru": "Церковь Всех Святых в Земле Российской Просиявших, Бурлингейм"
-    },
+    "siteName": { "en": "St. Example Orthodox Church", "ru": "Храм святого Примера" },
     "title": {
-      "en": "Church of All Russian Saints · Russian Orthodox Church in Burlingame, California",
-      "ru": "Церковь Всех Святых в Земле Российской Просиявших · Русская православная церковь в Бурлингейме"
+      "en": "St. Example Orthodox Church · Anytown",
+      "ru": "Храм святого Примера · Энитаун"
     },
     "description": {
-      "en": "Russian Orthodox parish of the Western American Diocese (ROCOR) at 744 El Camino Real, Burlingame, California. Service schedule, livestream, parish life, choir, sisterhood and Russian school.",
-      "ru": "Православный приход Западно-Американской епархии РПЦЗ: 744 El Camino Real, Бурлингейм, Калифорния. Расписание богослужений, трансляции, жизнь прихода, хор, сестричество и русская школа."
+      "en": "Sample parish website built from the Orthodox parish template: services, clergy, ministries, news and giving.",
+      "ru": "Образец сайта прихода на основе шаблона: богослужения, духовенство, служения, новости и пожертвования."
     },
-    "image": "/assets/img/newlogo-4.jpg"
+    "image": "/assets/img/sample-og.jpg"
   },
   "theme": { "tokens": "theme/tokens.json", "themeColor": "#174372" },
   "integrations": {

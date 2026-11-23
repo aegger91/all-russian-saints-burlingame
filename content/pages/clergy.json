@@ -1,0 +1,70 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "clergy",
+  "slug": "clergy",
+  "order": 30,
+  "title": { "en": "Clergy and Parish Council", "ru": "Духовенство и приходской совет" },
+  "subnav": true,
+  "sections": [
+    {
+      "id": "clergy-header",
+      "type": "page-header",
+      "eyebrow": { "en": "Clergy", "ru": "Духовенство" },
+      "title": { "en": "Clergy and Parish Council", "ru": "Духовенство и приходской совет" },
+      "lede": {
+        "en": "Sample clergy and council from content/people.json.",
+        "ru": "Образец духовенства и совета из content/people.json."
+      }
+    },
+    {
+      "id": "rector",
+      "type": "person-profile",
+      "navLabel": { "en": "Rector", "ru": "Настоятель" },
+      "person": "john-sample",
+      "group": "clergy",
+      "body": {
+        "en": "Sample biography: ordination, years of service and a few words about the rector’s ministry.",
+        "ru": "Образец биографии: рукоположение, годы служения и несколько слов о пастырском пути настоятеля."
+      },
+      "quote": {
+        "text": {
+          "en": "“A short quotation from the rector (sample).”",
+          "ru": "«Краткое изречение настоятеля (образец).»"
+        }
+      },
+      "more": {
+        "title": { "en": "Full biography", "ru": "Полная биография" },
+        "body": {
+          "en": "This is sample text for the template. Replace it with a few sentences about your parish: when it was founded, which diocese it belongs to, and what a visitor can expect.\n\nThis is sample text for the template. Replace it with a few sentences about your parish: when it was founded, which diocese it belongs to, and what a visitor can expect.",
+          "ru": "Это образец текста для шаблона. Замените его несколькими предложениями о вашем приходе: когда он основан, к какой епархии относится и чего ожидать гостю.\n\nЭто образец текста для шаблона. Замените его несколькими предложениями о вашем приходе: когда он основан, к какой епархии относится и чего ожидать гостю."
+        }
+      }
+    },
+    {
+      "id": "clergy-list",
+      "type": "people-list",
+      "navLabel": { "en": "Clergy", "ru": "Духовенство" },
+      "background": "alt",
+      "eyebrow": { "en": "Clergy", "ru": "Духовенство" },
+      "title": { "en": "Serving the parish", "ru": "Служат в приходе" },
+      "variant": "cards",
+      "columns": 2,
+      "people": [
+        { "person": "peter-example" },
+        { "person": "anna-sample" }
+      ],
+      "group": "clergy"
+    },
+    {
+      "id": "council",
+      "type": "people-list",
+      "navLabel": { "en": "Parish Council", "ru": "Приходской совет" },
+      "background": "cream",
+      "eyebrow": { "en": "Parish Council", "ru": "Приходской совет" },
+      "title": { "en": "Parish council members", "ru": "Члены приходского совета" },
+      "group": "council",
+      "variant": "directory",
+      "columns": 2
+    }
+  ]
+}

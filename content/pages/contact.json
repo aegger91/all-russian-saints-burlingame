@@ -1,0 +1,58 @@
+{
+  "$schema": "../../schemas/page.schema.json",
+  "id": "contact",
+  "slug": "contact",
+  "order": 110,
+  "title": { "en": "Contact", "ru": "Контакты" },
+  "sections": [
+    {
+      "id": "contact-header",
+      "type": "page-header",
+      "eyebrow": { "en": "Contact", "ru": "Контакты" },
+      "title": { "en": "Visit and contact", "ru": "Как нас найти" },
+      "lede": {
+        "en": "St. Example Orthodox Church, 100 Example Avenue, Anytown (sample address).",
+        "ru": "Храм святого Примера, 100 Example Avenue, Энитаун (образец адреса)."
+      }
+    },
+    {
+      "id": "office-hours",
+      "type": "notice",
+      "width": "narrow",
+      "spacing": "tight",
+      "title": { "en": "Office hours", "ru": "Часы работы канцелярии" },
+      "text": {
+        "en": "Sample notice: the parish office is open Tuesday to Friday, 10:00 am to 2:00 pm.",
+        "ru": "Образец объявления: канцелярия прихода открыта со вторника по пятницу с 10:00 до 14:00."
+      }
+    },
+    {
+      "id": "visit",
+      "type": "contact-map",
+      "eyebrow": { "en": "Address", "ru": "Адрес" },
+      "title": { "en": "Visit us", "ru": "Приходите к нам" },
+      "showMap": true,
+      "body": {
+        "en": "Sample directions: parking, public transport and accessibility. Add `mapEmbedUrl` in content/site.json to show a map.",
+        "ru": "Образец: парковка, общественный транспорт и доступность. Добавьте `mapEmbedUrl` в content/site.json, чтобы показать карту."
+      }
+    },
+    {
+      "id": "contacts",
+      "type": "people-list",
+      "background": "cream",
+      "eyebrow": { "en": "Who to contact", "ru": "К кому обращаться" },
+      "title": { "en": "Parish contacts", "ru": "Контакты прихода" },
+      "group": "contacts",
+      "columns": 2
+    },
+    {
+      "id": "links",
+      "type": "link-list",
+      "eyebrow": { "en": "Useful links", "ru": "Полезные ссылки" },
+      "title": { "en": "Links", "ru": "Ссылки" },
+      "groups": ["church", "resources"],
+      "columns": 2
+    }
+  ]
+}

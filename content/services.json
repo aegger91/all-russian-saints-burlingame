@@ -1,98 +1,120 @@
 {
   "$schema": "../schemas/services.schema.json",
   "serviceTypes": [
-    { "id": "vigil", "name": { "en": "Vigil Service", "ru": "Всенощное бдение" } },
-    { "id": "liturgy", "name": { "en": "Divine Liturgy", "ru": "Божественная литургия" } },
-    { "id": "moleben", "name": { "en": "Moleben", "ru": "Молебен" } }
+    {
+      "id": "vigil",
+      "name": { "en": "Vigil Service", "ru": "Всенощное бдение" }
+    },
+    {
+      "id": "liturgy",
+      "name": { "en": "Divine Liturgy", "ru": "Божественная литургия" }
+    },
+    {
+      "id": "moleben",
+      "name": { "en": "Moleben", "ru": "Молебен" }
+    }
   ],
   "season": {
-    "id": "nativity-fast-2026",
+    "id": "nativity-fast-sample",
     "title": { "en": "Nativity Fast", "ru": "Рождественский пост" },
-    "accent": "Рождественский Пост",
+    "accent": "Рождественский пост",
     "text": {
-      "en": "Saturday, November 28, 2026 through Wednesday, January 6, 2027",
-      "ru": "С субботы, 28 ноября 2026 г., по среду, 6 января 2027 г."
+      "en": "Sample season banner: November 28 through January 6.",
+      "ru": "Образец сезонного объявления: с 28 ноября по 6 января."
     },
     "start": "2026-11-28",
     "end": "2027-01-06"
   },
   "notices": [
     {
-      "id": "check-daily",
+      "id": "sample-notice",
       "text": {
-        "en": "Check this section daily for any schedule changes or cancellations.",
-        "ru": "Пожалуйста, проверяйте этот раздел ежедневно: в расписании возможны изменения и отмены."
+        "en": "This is a sample schedule. Edit content/services.json to publish your own services; past dates hide automatically.",
+        "ru": "Это образец расписания. Измените content/services.json, чтобы опубликовать свои богослужения; прошедшие даты скрываются автоматически."
       }
     }
   ],
   "upcoming": [
-    {
-      "id": "2026-11-26-thanksgiving",
-      "date": "2026-11-26",
-      "noService": true,
-      "title": { "en": "Thanksgiving: No Services", "ru": "День благодарения: богослужений нет" }
-    },
-    {
-      "id": "2026-11-28-vigil",
-      "date": "2026-11-28",
-      "time": "18:00",
-      "serviceType": "vigil",
-      "note": { "en": "Beginning of Nativity Fast", "ru": "Начало Рождественского поста" }
-    },
-    { "id": "2026-11-29-liturgy", "date": "2026-11-29", "time": "09:00", "serviceType": "liturgy" },
-    { "id": "2026-12-03-vigil", "date": "2026-12-03", "time": "18:00", "serviceType": "vigil" },
-    {
-      "id": "2026-12-04-liturgy",
-      "date": "2026-12-04",
-      "time": "09:00",
-      "serviceType": "liturgy",
-      "note": {
-        "en": "Feast Day: The Entry of the Most Holy Theotokos into the Temple",
-        "ru": "Праздник Введения во храм Пресвятой Богородицы"
-      },
-      "needsReview": "The original site lists this Liturgy as \"Friday, December 3\". Friday is December 4, 2026, the date of the feast; confirm with the parish."
-    },
+    { "id": "2026-11-28-vigil", "date": "2026-11-28", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2026-11-29-liturgy", "date": "2026-11-29", "time": "09:30", "serviceType": "liturgy" },
     { "id": "2026-12-05-vigil", "date": "2026-12-05", "time": "18:00", "serviceType": "vigil" },
-    { "id": "2026-12-06-liturgy", "date": "2026-12-06", "time": "09:00", "serviceType": "liturgy" },
-    { "id": "2026-12-18-vigil", "date": "2026-12-18", "time": "18:00", "serviceType": "vigil" },
-    {
-      "id": "2026-12-19-liturgy",
-      "date": "2026-12-19",
-      "time": "09:00",
-      "serviceType": "liturgy",
-      "note": {
-        "en": "Feast Day: St. Nicholas the Wonderworker, Archbishop of Myra",
-        "ru": "Праздник святителя Николая Чудотворца, архиепископа Мир Ликийских"
-      }
-    },
+    { "id": "2026-12-06-liturgy", "date": "2026-12-06", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2026-12-12-vigil", "date": "2026-12-12", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2026-12-13-liturgy", "date": "2026-12-13", "time": "09:30", "serviceType": "liturgy" },
     { "id": "2026-12-19-vigil", "date": "2026-12-19", "time": "18:00", "serviceType": "vigil" },
-    { "id": "2026-12-20-liturgy", "date": "2026-12-20", "time": "09:00", "serviceType": "liturgy" },
+    { "id": "2026-12-20-liturgy", "date": "2026-12-20", "time": "09:30", "serviceType": "liturgy" },
     { "id": "2026-12-26-vigil", "date": "2026-12-26", "time": "18:00", "serviceType": "vigil" },
-    { "id": "2026-12-27-liturgy", "date": "2026-12-27", "time": "09:00", "serviceType": "liturgy" },
+    { "id": "2026-12-27-liturgy", "date": "2026-12-27", "time": "09:30", "serviceType": "liturgy" },
     {
       "id": "2026-12-31-moleben",
       "date": "2026-12-31",
-      "time": "18:00",
+      "time": "23:00",
       "serviceType": "moleben",
+      "title": { "en": "New Year Moleben", "ru": "Новогодний молебен" }
+    },
+    { "id": "2027-01-02-vigil", "date": "2027-01-02", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-01-03-liturgy", "date": "2027-01-03", "time": "09:30", "serviceType": "liturgy" },
+    {
+      "id": "2027-01-06-vigil",
+      "date": "2027-01-06",
+      "time": "18:00",
+      "serviceType": "vigil",
+      "note": { "en": "Eve of the Nativity of Christ", "ru": "Навечерие Рождества Христова" }
+    },
+    {
+      "id": "2027-01-07-liturgy",
+      "date": "2027-01-07",
+      "time": "09:30",
+      "serviceType": "liturgy",
+      "note": { "en": "Nativity of Christ", "ru": "Рождество Христово" }
+    },
+    { "id": "2027-01-09-vigil", "date": "2027-01-09", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-01-10-liturgy", "date": "2027-01-10", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-01-16-vigil", "date": "2027-01-16", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-01-17-liturgy", "date": "2027-01-17", "time": "09:30", "serviceType": "liturgy" },
+    {
+      "id": "2027-01-19-liturgy",
+      "date": "2027-01-19",
+      "time": "09:30",
+      "serviceType": "liturgy",
       "note": {
-        "en": "Thanksgiving Prayer Service, End of Legal Year",
-        "ru": "Благодарственный молебен на окончание гражданского года"
+        "en": "Theophany. Great Blessing of Water",
+        "ru": "Богоявление. Великое освящение воды"
       }
-    }
+    },
+    { "id": "2027-01-23-vigil", "date": "2027-01-23", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-01-24-liturgy", "date": "2027-01-24", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-01-30-vigil", "date": "2027-01-30", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-01-31-liturgy", "date": "2027-01-31", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-02-06-vigil", "date": "2027-02-06", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-02-07-liturgy", "date": "2027-02-07", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-02-13-vigil", "date": "2027-02-13", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-02-14-liturgy", "date": "2027-02-14", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-02-20-vigil", "date": "2027-02-20", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-02-21-liturgy", "date": "2027-02-21", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-02-27-vigil", "date": "2027-02-27", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-02-28-liturgy", "date": "2027-02-28", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-03-06-vigil", "date": "2027-03-06", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-03-07-liturgy", "date": "2027-03-07", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-03-13-vigil", "date": "2027-03-13", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-03-14-liturgy", "date": "2027-03-14", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-03-20-vigil", "date": "2027-03-20", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-03-21-liturgy", "date": "2027-03-21", "time": "09:30", "serviceType": "liturgy" },
+    { "id": "2027-03-27-vigil", "date": "2027-03-27", "time": "18:00", "serviceType": "vigil" },
+    { "id": "2027-03-28-liturgy", "date": "2027-03-28", "time": "09:30", "serviceType": "liturgy" }
   ],
   "standing": {
-    "published": false,
-    "needsReview": "Our Parish page says Liturgy is at 9:30am on Sundays, but every Sunday in the current Upcoming Services list says 9:00am. Hidden until the parish confirms.",
+    "published": true,
     "items": [
       {
         "id": "vigil",
         "label": { "en": "Vigil Service", "ru": "Всенощное бдение" },
-        "text": { "en": "6:00pm Saturday; 7:00pm weekday Feastdays", "ru": "6:00 вечера в субботу; 7:00 вечера по будням" }
+        "text": { "en": "Saturdays at 6:00 pm", "ru": "По субботам в 18:00" }
       },
       {
         "id": "liturgy",
-        "label": { "en": "Liturgy", "ru": "Литургия" },
-        "text": { "en": "9:30am Sunday; 9:00am Saturday and weekday Feastdays", "ru": "9:30 утра в воскресенье; 9:00 утра в субботу и в праздничные дни" }
+        "label": { "en": "Divine Liturgy", "ru": "Божественная литургия" },
+        "text": { "en": "Sundays at 9:30 am", "ru": "По воскресеньям в 9:30" }
       }
     ]
   }

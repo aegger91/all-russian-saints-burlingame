@@ -15,43 +15,27 @@
       "disabled": []
     },
     "services": {
-      "order": ["services-header", "upcoming", "service-texts", "prayers"],
+      "order": ["services-header", "upcoming", "recordings", "service-texts", "prayers"],
       "disabled": []
     },
-    "parish": {
-      "order": ["parish-header", "about", "history", "membership", "stewardship", "bylaws"],
+    "about": {
+      "order": ["about-header", "about", "history", "membership", "bylaws", "faith"],
       "disabled": []
     },
-    "history": { "order": ["history-header", "history-excerpt", "history-russian"], "disabled": [] },
-    "clergy": {
-      "order": ["clergy-header", "rector", "biography", "deacon-matushka", "council"],
+    "clergy": { "order": ["clergy-header", "rector", "clergy-list", "council"], "disabled": [] },
+    "ministries": {
+      "order": ["ministries-header", "choir", "sisterhood", "school", "photos", "hall"],
       "disabled": []
     },
-    "choir": {
-      "order": [
-        "choir-header",
-        "history",
-        "conductor",
-        "singers",
-        "concerts",
-        "workshops",
-        "library"
-      ],
-      "disabled": []
-    },
-    "sisterhood": { "order": ["sisterhood-header", "about", "events"], "disabled": [] },
-    "school": {
-      "order": ["school-header", "registration", "about", "goals", "teachers", "akt"],
-      "disabled": []
-    },
-    "newsletter": { "order": ["newsletter-header", "current", "archive"], "disabled": [] },
-    "orthodoxy": { "order": ["orthodoxy-header", "text"], "disabled": [] },
+    "news": { "order": ["news-header", "news"], "disabled": [] },
     "give": {
       "order": ["give-header", "give", "dues-stewardship", "your-gifts-at-work"],
       "disabled": []
     },
-    "contact": { "order": ["contact-header", "visit", "contacts", "links"], "disabled": [] },
-    "news": { "order": ["news-header", "news"], "disabled": [] },
+    "contact": {
+      "order": ["contact-header", "office-hours", "visit", "contacts", "links"],
+      "disabled": []
+    },
     "not-found": { "order": ["not-found-header", "not-found-links"], "disabled": [] }
   }
 }
